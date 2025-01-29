@@ -3,30 +3,24 @@ site_name: obsidian-mkdocs template
 theme:
     name: 'material'
     palette:
-      # Light mode
-      - media: "(prefers-color-scheme: light)"
-        scheme: default
-        primary: pink
-        accent: indigo
-        toggle:
-          icon: material/toggle-switch-off-outline
-          name: Switch to dark mode
 
-      # Dark mode
-      - media: "(prefers-color-scheme: dark)"
-        scheme: slate
-        primary: pink
-        accent: blue
-        toggle:
-          icon: material/toggle-switch
-          name: Switch to light mode
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
 
-    # Footer anpassen oder entfernen
-    copyright: ""  # Footer-Text (leer lassen, um ihn zu entfernen)
-
-    # Logo und Favicon hinzufügen (optional)
-    # logo: assets/logo.png
-    # favicon: assets/favicon.ico
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: pink
+      accent: blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
 
 # Extensions
 markdown_extensions:
@@ -65,19 +59,10 @@ plugins:
       categories:
         - categories
         - tags
+        
 
-# Kategorienleiste über die Navigation hinzufügen
-nav:
-  - Home: index.md
-  - Kategorie 1:
-      - Seite 1: kategorie1/seite1.md
-      - Seite 2: kategorie1/seite2.md
-  - Kategorie 2:
-      - Seite 3: kategorie2/seite3.md
-
-# Benutzerdefinierte JavaScript-Dateien
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://unpkg.com/mermaid/dist/mermaid.min.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js 
