@@ -75,10 +75,6 @@ nav:
   - Kategorie 2:
       - Seite 3: kategorie2/seite3.md
 
-# Benutzerdefinierte CSS-Datei für Footer-Anpassungen
-extra_css:
-  - overrides/extra.css
-
 # Benutzerdefinierte JavaScript-Dateien
 extra_javascript:
   - javascripts/mathjax.js
