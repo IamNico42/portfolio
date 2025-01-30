@@ -18,8 +18,13 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
+      - run: pip install -U pip setuptools wheel
       - run: pip install mkdocs-material
       - run: pip install mkdocs-roamlinks-plugin
       - run: pip install mkdocs-rss-plugin
       - run: pip install mkdocs-mermaid2-plugin
-      - run: mkdocs gh-deploy --clean --force
+      - name: Build site
+        run: mkdocs build
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --clean --force
