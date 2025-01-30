@@ -48,6 +48,14 @@ markdown_extensions:
   - toc:
       permalink: true
 
+nav:
+  - Home: index.md
+  - Kategorie 1:
+      - Seite 1: kategorie1/seite1.md
+      - Seite 2: kategorie1/seite2.md
+  - Kategorie 2:
+      - Seite 3: kategorie2/seite3.md
+
 plugins:
   - search
   - roamlinks
