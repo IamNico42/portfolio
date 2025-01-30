@@ -1,4 +1,4 @@
-site_name: obsidian-mkdocs template
+site_name: Nico Portfolio
 
 theme:
     name: 'material'
@@ -7,7 +7,7 @@ theme:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: pink
+      primary: grey
       accent: indigo
       toggle:
         icon: material/toggle-switch-off-outline
@@ -16,7 +16,7 @@ theme:
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: pink
+      primary: grey
       accent: blue
       toggle:
         icon: material/toggle-switch
@@ -24,7 +24,7 @@ theme:
 
 # Extensions
 markdown_extensions:
-  # - footnotes
+  - footnotes
   # - attr_list
   - pymdownx.arithmatex:
       generic: true
@@ -50,11 +50,13 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Kategorie 1:
-      - Seite 1: kategorie1/seite1.md
-      - Seite 2: kategorie1/seite2.md
-  - Kategorie 2:
-      - Seite 3: kategorie2/seite3.md
+  - Studium:
+      - Seite 1: studium/seite1.md
+      - Seite 2: studium/seite2.md
+  - Projekte:
+      - Seite 3: projekte/seite3.md
+  - Über mich:
+      - Seite 3: about_me/seite4.md
 
 plugins:
   - search
@@ -68,6 +70,10 @@ plugins:
         - categories
         - tags
         
+
+extra:
+  generator: false
+
 
 extra_javascript:
   - javascripts/mathjax.js
