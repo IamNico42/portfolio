@@ -1,0 +1,1262 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://IamNico42.github.io/portfolio/studium/Algorithmen%20und%20Datenstruktur/1.%20Einf%C3%BChrung/">
+      
+      
+        <link rel="prev" href="../../../projects/">
+      
+      
+        <link rel="next" href="../../Betriebssysteme/1.%20Scheduling/Scheduling/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>📃 Algorithmen und Datenstruktur - Nico Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#algorithmen-und-datenstruktur" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nico Portfolio" class="md-header__button md-logo" aria-label="Nico Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nico Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📃 Algorithmen und Datenstruktur
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Index/" class="md-tabs__link">
+        
+  
+    
+  
+  Main
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about_me/seite4/" class="md-tabs__link">
+          
+  
+  About me
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../projects/" class="md-tabs__link">
+          
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Studium
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nico Portfolio" class="md-nav__button md-logo" aria-label="Nico Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nico Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Main
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    About me
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About me
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about_me/seite4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seite4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Studium
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Studium
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Algorithmen und Datenstruktur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithmen und Datenstruktur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    📃 Algorithmen und Datenstruktur
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    📃 Algorithmen und Datenstruktur
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#einfuhrung-in-algorithmen-und-datenstrukturen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Einführung in Algorithmen und Datenstrukturen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-suchalgorithmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Suchalgorithmen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Suchalgorithmen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lineare-suche" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Lineare Suche
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Betriebssysteme
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Betriebssysteme
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Scheduling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Scheduling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme/1.%20Scheduling/Scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#einfuhrung-in-algorithmen-und-datenstrukturen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Einführung in Algorithmen und Datenstrukturen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-suchalgorithmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Suchalgorithmen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Suchalgorithmen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lineare-suche" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Lineare Suche
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="algorithmen-und-datenstruktur">📃 Algorithmen und Datenstruktur</h1>
+<hr />
+<h2 id="einfuhrung-in-algorithmen-und-datenstrukturen">Einführung in Algorithmen und Datenstrukturen</h2>
+<p>Ein Algorithmus ist eine systematische Methode zur Lösung eines Problems in endlich vielen Schritten. Er kann als Rezept oder Anleitung verstanden werden.</p>
+<p>Eine <strong>Datenstruktur</strong> ist eine Möglichkeit, Daten effizient zu speichern und zu organisieren.</p>
+<hr />
+<h2 id="2-suchalgorithmen"><strong>2. Suchalgorithmen</strong></h2>
+<h3 id="21-lineare-suche"><strong>2.1 Lineare Suche</strong></h3>
+<ul>
+<li>Die einfachste Methode zur Suche in einer Liste.</li>
+<li>Durchläuft alle Elemente nacheinander.</li>
+<li>Laufzeit: <strong>O(n)</strong> im Worst Case.</li>
+</ul>
+<h1 id="test-der-tabs-funktion">📋 Test der Tabs-Funktion</h1>
+<p>=== "📝 C-Code"</p>
+<pre><code>```c
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+</code></pre>
+<p>=== "📊 Python-Code"</p>
+<pre><code>```python
+def greet():
+    print("Hello, World!")
+
+greet()
+```
+</code></pre>
+<pre><code>#include &lt;stdio.h&gt;
+
+int lineare_suche(int arr[], int n, int ziel) {
+    for (int i = 0; i &lt; n; i++) {
+        if (arr[i] == ziel)
+            return i;  // Index des gefundenen Elements
+    }
+    return -1;  // Nicht gefunden
+}
+
+int main() {
+    int arr[] = {4, 2, 9, 7, 5, 8};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int ziel = 7;
+    int index = lineare_suche(arr, n, ziel);
+
+    if (index != -1)
+        printf(&quot;Element gefunden an Index %d\n&quot;, index);
+    else
+        printf(&quot;Element nicht gefunden\n&quot;);
+
+    return 0;
+}
+
+</code></pre>
+<p><img alt="Lineare_Search.svg.svg" src="../../../images/Lineare_Search.svg.svg" /> </p>
+<h3 id="22-binare-suche-binary-search"><strong>2.2 Binäre Suche (Binary Search)</strong></h3>
+<ul>
+<li><strong>Prinzip:</strong> Linker Knoten &lt; Parent; Rechter Knoten &gt; Parent.</li>
+<li>Funktioniert nur bei <strong>sortierten Listen</strong>.</li>
+<li>Durchsucht Liste durch wiederholtes Halbieren.</li>
+<li>Laufzeit: <strong>O(log n)</strong> im Worst Case.</li>
+</ul>
+<pre><code>#include &lt;stdio.h&gt;
+
+int binaere_suche(int arr[], int links, int rechts, int ziel) {
+    while (links &lt;= rechts) {
+        int mitte = links + (rechts - links) / 2;
+
+        if (arr[mitte] == ziel)
+            return mitte;
+        else if (arr[mitte] &lt; ziel)
+            links = mitte + 1;
+        else
+            rechts = mitte - 1;
+    }
+    return -1;  // Nicht gefunden
+}
+
+int main() {
+    int arr[] = {1, 3, 5, 7, 9, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int ziel = 7;
+    int index = binaere_suche(arr, 0, n - 1, ziel);
+
+    if (index != -1)
+        printf(&quot;Element gefunden an Index %d\n&quot;, index);
+    else
+        printf(&quot;Element nicht gefunden\n&quot;);
+
+    return 0;
+}
+</code></pre>
+<p><img alt="binary_search.svg" src="../../../images/binary_search.svg" /></p>
+<h2 id="3-sortieralgorithmen"><strong>3. Sortieralgorithmen</strong></h2>
+<h3 id="31-bubble-sort"><strong>3.1 Bubble Sort</strong></h3>
+<ul>
+<li>Vergleicht benachbarte Elemente und vertauscht sie.</li>
+<li>Sehr ineffizient: <strong>O(n²)</strong>.</li>
+</ul>
+<h4 id="schritt-fur-schritt"><strong>Schritt-für-Schritt</strong></h4>
+<ol>
+<li>Gehe durch die Liste und vergleiche benachbarte Elemente.</li>
+<li>Tausche sie, falls das linke größer als das rechte ist.</li>
+<li>Wiederhole den Vorgang, bis keine Vertauschung mehr nötig ist.</li>
+</ol>
+<pre><code>void bubble_sort(int arr[], int n) { //Arraygröße als Parameter in C
+    for (int i = 0; i &lt; n - 1; i++) {
+        for (int j = 0; j &lt; n - i - 1; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                // Elemente tauschen
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+</code></pre>
+<p><img alt="bubblesort.svg" src="../../../images/bubblesort.svg" /></p>
+<h3 id="32-quicksort"><strong>3.2 Quicksort</strong></h3>
+<ul>
+<li>Ein <strong>Divide &amp; Conquer</strong> Algorithmus.</li>
+<li>Wählt ein <strong>Pivot-Element</strong> aus, partitioniert die Liste und sortiert rekursiv die beiden Hälften.</li>
+<li>Laufzeit: <strong>O(n log n)</strong> im Durchschnitt.</li>
+</ul>
+<h4 id="schritt-fur-schritt_1"><strong>Schritt-für-Schritt</strong></h4>
+<ol>
+<li>Wähle ein Pivot-Element (z. B. das letzte Element).</li>
+<li>Partitioniere die Liste in:<ul>
+<li>Elemente <strong>kleiner</strong> als Pivot.</li>
+<li>Das Pivot-Element.</li>
+<li>Elemente <strong>größer</strong> als Pivot.</li>
+</ul>
+</li>
+<li>Rufe Quicksort rekursiv für die beiden Teile auf.</li>
+</ol>
+<pre><code>#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  
+    int i = (low - 1);
+
+    for (int j = low; j &lt; high; j++) {
+        if (arr[j] &lt; pivot) {
+            i++;
+            swap(&amp;arr[i], &amp;arr[j]);
+        }
+    }
+    swap(&amp;arr[i + 1], &amp;arr[high]);
+    return (i + 1);
+}
+
+void quicksort(int arr[], int low, int high) {
+    if (low &lt; high) {
+        int pi = partition(arr, low, high);
+        quicksort(arr, low, pi - 1);
+        quicksort(arr, pi + 1, high);
+    }
+}
+
+void print_array(int arr[], int n) {
+    for (int i = 0; i &lt; n; i++)
+        printf(&quot;%d &quot;, arr[i]);
+    printf(&quot;\n&quot;);
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    quicksort(arr, 0, n - 1);
+    printf(&quot;Sortiertes Array: &quot;);
+    print_array(arr, n);
+
+    return 0;
+}
+</code></pre>
+<p>In unserem grafischen Beispiel:
+<code>Pivot = Array[Array size / 2]</code>
+<img alt="quicksort.svg" src="../../../images/quicksort.svg" /></p>
+<h2 id="4-baume"><strong>4. Bäume</strong></h2>
+<p>Ein <strong>Baum</strong> ist eine rekursive Datenstruktur mit Knoten, die miteinander verbunden sind. Der oberste Knoten heißt <strong>Wurzel</strong>.</p>
+<h3 id="41-binare-suchbaume-bst"><strong>4.1 Binäre Suchbäume (BST)</strong></h3>
+<ul>
+<li>Jeder Knoten hat <strong>höchstens zwei</strong> Kinder.</li>
+<li>Linkes Kind <strong>kleiner</strong>, rechtes Kind <strong>größer</strong> als der Elternknoten.</li>
+<li>Suchen, Einfügen und Löschen in <strong>O(log n)</strong>.</li>
+</ul>
+<h4 id="einfugen-in-einen-bst"><strong>Einfügen in einen BST</strong></h4>
+<ol>
+<li>Falls der Baum leer ist → neues Element wird die Wurzel.</li>
+<li>Falls der Wert kleiner ist → gehe nach links.</li>
+<li>Falls der Wert größer ist → gehe nach rechts.</li>
+<li>Wiederhole, bis eine freie Position gefunden wurde.</li>
+</ol>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Knoten {
+    int wert;
+    struct Knoten *links, *rechts;
+};
+
+struct Knoten* neuerKnoten(int wert) {
+    struct Knoten* knoten = (struct Knoten*)malloc(sizeof(struct Knoten));
+    knoten-&gt;wert = wert;
+    knoten-&gt;links = knoten-&gt;rechts = NULL;
+    return knoten;
+}
+
+struct Knoten* einfuegen(struct Knoten* wurzel, int wert) {
+    if (wurzel == NULL)
+        return neuerKnoten(wert);
+
+    if (wert &lt; wurzel-&gt;wert)
+        wurzel-&gt;links = einfuegen(wurzel-&gt;links, wert);
+    else
+        wurzel-&gt;rechts = einfuegen(wurzel-&gt;rechts, wert);
+
+    return wurzel;
+}
+
+void inorder(struct Knoten* wurzel) {
+    if (wurzel != NULL) {
+        inorder(wurzel-&gt;links);
+        printf(&quot;%d &quot;, wurzel-&gt;wert);
+        inorder(wurzel-&gt;rechts);
+    }
+}
+
+int main() {
+    struct Knoten* wurzel = NULL;
+    wurzel = einfuegen(wurzel, 5);
+    wurzel = einfuegen(wurzel, 3);
+    wurzel = einfuegen(wurzel, 7);
+    wurzel = einfuegen(wurzel, 2);
+    wurzel = einfuegen(wurzel, 4);
+
+    printf(&quot;Inorder Traversierung: &quot;);
+    inorder(wurzel);
+    printf(&quot;\n&quot;);
+
+    return 0;
+}
+</code></pre>
+<p><img alt="binary_search_tree.svg" src="../../../images/binary_search_tree.svg" /></p>
+<h2 id="5-heaps-und-prioritatswarteschlangen"><strong>5. Heaps und Prioritätswarteschlangen</strong></h2>
+<p>Ein <strong>Heap</strong> ist eine spezielle Binärbaum-Datenstruktur:</p>
+<ul>
+<li>Ein <strong>Min-Heap</strong> hat die Eigenschaft: Der kleinste Wert ist an der Wurzel.</li>
+<li>Ein <strong>Max-Heap</strong> hat die Eigenschaft: Der größte Wert ist an der Wurzel.</li>
+</ul>
+<h3 id="heap-operationen"><strong>Heap-Operationen</strong></h3>
+<ul>
+<li><strong>Einfügen</strong>: Element wird am Ende eingefügt und „nach oben geblubbert“.</li>
+<li><strong>Entfernen des Minimums</strong>: Wurzel entfernen, letztes Element nach oben setzen und „nach unten sinken“.</li>
+</ul>
+<h2 id="warum-ist-die-suche-in-einem-heap-ineffizient"><strong>Warum ist die Suche in einem Heap ineffizient?</strong></h2>
+<p>In einem Heap gilt die <strong>Heap-Eigenschaft</strong>:</p>
+<ul>
+<li><strong>Min-Heap:</strong> Eltern ≤ Kinder</li>
+<li><strong>Max-Heap:</strong> Eltern ≥ Kinder</li>
+</ul>
+<p>Das bedeutet:</p>
+<ul>
+<li><strong>Wir wissen nur</strong>, dass der <strong>Wurzelknoten</strong> der kleinste (Min-Heap) oder größte (Max-Heap) ist.</li>
+<li><strong>Aber wir wissen nicht</strong>, wie die anderen Elemente zueinander stehen.</li>
+<li><strong>Keine vollständige Sortierung</strong> → Wir können <strong>nicht gezielt links oder rechts</strong> gehen.</li>
+</ul>
+<h2 id="suchstrategien-im-heap"><strong>Suchstrategien im Heap</strong></h2>
+<h3 id="methode-1-breitensuche-bfs"><strong>Methode 1: Breitensuche (BFS)</strong></h3>
+<ul>
+<li><strong>Level für Level</strong> durchsuchen (wie eine Warteschlange).</li>
+<li>Gut, wenn die gesuchte Zahl nah an der Wurzel liegt.</li>
+</ul>
+<h3 id="methode-2-tiefensuche-dfs"><strong>Methode 2: Tiefensuche (DFS)</strong></h3>
+<ul>
+<li><strong>Rekursiv</strong> nach links und rechts gehen.</li>
+<li>Praktisch, wenn der Baum groß ist.</li>
+</ul>
+<h3 id="typische-anwendungsfalle"><strong>Typische Anwendungsfälle:</strong></h3>
+<ol>
+<li>
+<p><strong>Prioritätswarteschlangen (Priority Queues):</strong></p>
+<ul>
+<li>Wenn du Aufgaben nach ihrer <strong>Wichtigkeit</strong> verarbeiten willst.</li>
+<li>Beispiel: <strong>Betriebssysteme</strong> verwalten Prozesse mit unterschiedlichen Prioritäten.<ul>
+<li>→ Immer der <strong>höchste Prioritätsprozess</strong> läuft zuerst (Min-/Max-Heap).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Dijkstra-Algorithmus (kürzeste Wege in Graphen):</strong></p>
+<ul>
+<li>Heap wird verwendet, um den <strong>nächsten Knoten mit der kürzesten Distanz</strong> schnell zu finden. Mit <strong>Min-Heap</strong></li>
+<li><strong>Ohne Heap wäre dieser Algorithmus viel langsamer.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Heapsort (Sortieralgorithmus):</strong></p>
+<ul>
+<li><strong>Effizienter Sortieralgorithmus</strong> mit $O(n \log n)$ Laufzeit.</li>
+<li>Besser als Bubble Sort oder Insertion Sort.</li>
+</ul>
+</li>
+<li>
+<p><strong>Echtzeit-Systeme:</strong></p>
+<ul>
+<li><strong>Echtzeitspiele</strong>, Simulationen, Event-Handling → Aufgaben werden nach Priorität sortiert.</li>
+</ul>
+</li>
+<li>
+<p><strong>Median-Findung (Streaming-Daten):</strong></p>
+<ul>
+<li>Kombination aus Min-Heap und Max-Heap hilft, den <strong>Median von Datenströmen</strong> effizient zu berechnen.</li>
+</ul>
+</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
