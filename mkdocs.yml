@@ -26,7 +26,6 @@ theme:
 
 
     features:
-      - navigation.tabs
       - content.code.copy
       - content.code.select
       - content.code.annotate

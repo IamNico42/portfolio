@@ -76,10 +76,10 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
         return -1  # Nicht gefunden
     ```
 
- ![[binary_search.svg]]
+![[binary_search.svg]]
 
 ---
-## **3. 🚀 Sortieralgorithmen**
+## **🗃️ 3.  Sortieralgorithmen**
 
 ### **3.1 Bubble Sort**
 
@@ -92,7 +92,6 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
 2. Vergleiche benachbarte Elemente.
 3. Tausche sie, falls das linke größer ist als das rechte.
 4. Wiederholen, bis keine Vertauschung mehr nötig ist.
-
 === "🔍 Pseudo-Code"
 
     ```pseudo
@@ -150,7 +149,6 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
 	            if arr[j] > arr[j + 1]:
 	                arr[j], arr[j + 1] = arr[j + 1], arr[j]
     ```
-
 ![[bubblesort.svg]]
 ---
 ### **3.2 Quicksort**
@@ -239,6 +237,7 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
 	    return i + 1;
 	}
     ```
+    
 
 === "🐍 Python-Code"
 
@@ -251,7 +250,6 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
 	            if arr[j] > arr[j + 1]:
 	                arr[j], arr[j + 1] = arr[j + 1], arr[j]
     ```
-
 In unserem grafischen Beispiel:
 ``Pivot = Array[Array size / 2]``
 ![[quicksort.svg]]
@@ -274,6 +272,7 @@ Der oberste Knoten wird als **Wurzel** bezeichnet.
 2. **Wert < Knoten:** Gehe nach links.
 3. **Wert > Knoten:** Gehe nach rechts.
 4. **Finde die richtige Position und füge ein.**
+
 
 === "🔍 Pseudo-Code"
 
@@ -367,7 +366,7 @@ Der oberste Knoten wird als **Wurzel** bezeichnet.
 
 ![[binary_search_tree.svg]]
 ---
-## **5. Heaps und Prioritätswarteschlangen**
+## **🗃️ 5. Heaps und Prioritätswarteschlangen**
 
 Ein **Heap** ist eine spezielle Binärbaum-Datenstruktur:
 

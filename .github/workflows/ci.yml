@@ -26,4 +26,5 @@ jobs:
       - run: pip install mkdocs-awesome-pages-plugin #Sortieren von Seiten
       - run: pip install mkdocs-meta-descriptions-plugin #Format Header
       - run: pip install pymdown-extensions #idk für details?
+      - run: pip install mkdocs-blogging-plugin #blog
       - run: mkdocs gh-deploy --clean --force
