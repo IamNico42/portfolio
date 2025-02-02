@@ -75,11 +75,107 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
                 return i  # Index des gefundenen Elements
         return -1  # Nicht gefunden
     ```
+    
+![[portfolio/docs/images/Lineare_Search.svg.svg]]
 
+---
+### **2.2 Binäre Suche (Binary Search)**
+
+- Funktioniert nur bei **sortierten Listen/Arrays**.
+- Durchsucht die Liste durch **wiederholtes Halbieren** des Suchbereichs.
+- **Laufzeit:** O(log⁡n)O(\log n)O(logn) im Worst Case (logarithmische Komplexität).
+
+=== "🔍 Pseudo-Code"
+
+    ```pseudo
+	FUNKTION binaere_suche(arr, links, rechts, ziel):
+	    WÄHREND links <= rechts:
+	        mitte = (links + rechts) / 2
+	        WENN arr[mitte] == ziel:
+	            GIB mitte zurück // Index des gesuchten Elements
+	        SONST WENN arr[mitte] < ziel:
+	            links = mitte + 1  // Suche im rechten Teil
+	        SONST:
+	            rechts = mitte - 1  // Suche im linken Teil
+	    GIB -1 zurück // Falls Element nicht gefunden
+
+    ```
+
+=== "📝 C-Code"
+
+    ```c
+	int binaere_suche(int arr[], int links, int rechts, int ziel) {
+	    while (links <= rechts) {
+	        int mitte = links + (rechts - links) / 2;
+	
+	        if (arr[mitte] == ziel)
+	            return mitte;  // Element gefunden
+	
+	        if (arr[mitte] < ziel)
+	            links = mitte + 1;  // Suche im rechten Teil
+	        else
+	            rechts = mitte - 1;  // Suche im linken Teil
+	    }
+	    return -1;  // Element nicht gefunden
+	}
+
+    ```
+
+=== "☕ Java-Code"
+
+    ```java
+	public class BinarySearch {
+	    public static int binaereSuche(int[] arr, int ziel) {
+	        int links = 0, rechts = arr.length - 1;
+	
+	        while (links <= rechts) {
+	            int mitte = links + (rechts - links) / 2;
+	
+	            if (arr[mitte] == ziel)
+	                return mitte;  // Element gefunden
+	
+	            if (arr[mitte] < ziel)
+	                links = mitte + 1;  // Suche im rechten Teil
+	            else
+	                rechts = mitte - 1;  // Suche im linken Teil
+	        }
+	        return -1;  // Element nicht gefunden
+	    }
+    ```
+
+=== "🐍 Python-Code"
+
+    ```python
+	def binaere_suche(arr, ziel):
+	    links, rechts = 0, len(arr) - 1
+	
+	    while links <= rechts:
+	        mitte = (links + rechts) // 2
+	
+	        if arr[mitte] == ziel:
+	            return mitte  # Element gefunden
+	        elif arr[mitte] < ziel:
+	            links = mitte + 1  # Suche im rechten Teil
+	        else:
+	            rechts = mitte - 1  # Suche im linken Teil
+	
+	    return -1  # Element nicht gefunden
+	
+	# Beispiel
+	arr = [1, 3, 5, 7, 9, 11, 13]
+	ziel = 7
+	ergebnis = binaere_suche(arr, ziel)
+	
+	if ergebnis != -1:
+	    print(f"Element gefunden an Index {ergebnis}")
+	else:
+	    print("Element nicht gefunden")
+    ```
+    
 ![[binary_search.svg]]
 
 ---
-## **🗃️ 3.  Sortieralgorithmen**
+## **🗃️3.  Sortieralgorithmen**
 
 ### **3.1 Bubble Sort**
 
@@ -149,8 +245,11 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
 	            if arr[j] > arr[j + 1]:
 	                arr[j], arr[j + 1] = arr[j + 1], arr[j]
     ```
+
 ![[bubblesort.svg]]
+
 ---
+
 ### **3.2 Quicksort**
 
 - Ein effizienter **Divide & Conquer** Algorithmus.
@@ -253,6 +352,7 @@ Eine **Datenstruktur** ist eine Möglichkeit, Daten effizient zu speichern und z
 In unserem grafischen Beispiel:
 ``Pivot = Array[Array size / 2]``
 ![[quicksort.svg]]
+
 ---
 ## 🌳 **4. Bäume**
 
@@ -365,6 +465,7 @@ Der oberste Knoten wird als **Wurzel** bezeichnet.
     ```
 
 ![[binary_search_tree.svg]]
+
 ---
 ## **🗃️ 5. Heaps und Prioritätswarteschlangen**
 
