@@ -8,4 +8,4 @@ Also:
 
 So stellt sich mir die Frage, kann ich diese Erkenntnis einsetzen um mein Gehirn besser zu trainieren?
 Kann ich vielleicht eine Funktion in mein Gehirn "trainieren" welche durch das ausführen eines Rituals das starten einer Funktion für eine Langzeitspeicherung ist?
-
+///
