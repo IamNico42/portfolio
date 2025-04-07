@@ -6,7 +6,16 @@ aliases:
 tags:
   - Course/
 ---
-### Codebreaker: Cyberkrieg – Erweiterte Version 3.1
+### Codebreaker: Cyberkrieg
+
+Mögliche Roadmap:
+- Minigames bei (Server hacken und verteidigen)
+	- Man muss code schreiben(Vorgegebenen Brute Force o.Ä)
+		- PVE: Je nach Wahrscheinlichkeit für Erfolg mehr oder weniger Zeit zum code schreiben
+		- PVP: Derjenige der Code schneller schreibt gewinnt
+- Darknet-Marketplace(Kaufbaure items die Vorteile bieten)
+- Server können besetzt werden und passives einkommen generieren(Bitcoin mining usw.)
+- etc. siehe unten:
 
 #### Grundkonzept (Kurzfassung)
 
@@ -20,6 +29,9 @@ tags:
 
 ---
 
+### Skizze-Karte
+
+![[skizze_codebreaker.png]]
 ### Detaillierte Fortschrittskurve
 
 Die Fortschrittskurve basiert auf Erfahrungspunkten (XP), die durch Hacks und Cybersecurity-Upgrades gesammelt werden.
@@ -144,3 +156,245 @@ Die Actions-Klasse kapselt die Spieleraktionen und ist nun vollständig in die a
 - **Operationsbasis**: Jeder Spieler startet auf einem zufälligen Kontinent mit einer Basis.
 - **Actions**: Voll funktionsfähig, mit klarer Trennung von Logik und Eingabe.
 - **Server und Ereignisse**: Vielfältig, server-spezifisch und strategisch ausbalanciert.
+
+
+
+
+### 🔧 Roadmap-Erweiterung: Interaktive Mini-Games & komplexere Aktionen
+
+#### 💻 1. **Minigames beim Server-Hacken (PVE / PVP)**
+
+- **Brute Force Code-Knackung (PVE):**
+    
+    - Spieler bekommt pseudo-zufälligen Code (z.B. `"7GxP4"`), den er _schnell eintippen_ muss.
+        
+    - Zeit hängt von der Erfolgswahrscheinlichkeit ab:
+        
+        - 80%? → Spieler bekommt nur 5 Sekunden Zeit.
+            
+        - 30%? → Spieler hat 15 Sekunden.
+            
+    - Optional: Fehler reduzieren den Erfolg (z.B. jeder Tippfehler = -10% Chance).
+        
+- **PVP-Version (zwei Spieler greifen gleichen Server an):**
+    
+    - Wer **schneller** (und fehlerfreier) den Code schreibt, claimt den Server zuerst.
+        
+    - Beide sehen denselben Code oder unterschiedliche mit vergleichbarer Schwierigkeit.
+        
+- **Optional:** Codes können Mechanik repräsentieren:
+    
+    - BruteForce → Zahlencode (123456).
+        
+    - SQL-Injection → Tippe einen gültigen SQL-Befehl.
+        
+    - Phishing → Entscheide schnell, welcher Text glaubwürdig ist (Multiple Choice).
+        
+
+---
+
+#### 🧠 2. **Social Engineering / Mitarbeiter-Verführung**
+
+- Mini-Spiel mit Dialog-Optionen (Dialog-Baum):
+    
+    - NPC sagt: „Warum brauchst du Zugriff auf das Intranet?“  
+        → Antwortmöglichkeiten:
+        
+        1. „Ich bin vom IT-Support“
+            
+        2. „Ich bin neuer Praktikant“
+            
+        3. „Ich muss mit deinem Chef reden“
+            
+    - Jede Antwort hat Wahrscheinlichkeiten basierend auf Spieler-Stats (z.B. Level, Reputation, getarnte Identität).
+        
+    - Wenn erfolgreich → Zugang zum Serverraum oder Bonus-Info.
+        
+
+---
+
+#### 🗝️ 3. **Physisches Eindringen in Servergebäude**
+
+- Beim **lokalen Betreten eines Servers**:
+    
+    - **Mini-Game Schlossknacken (Lockpicking)**:
+        
+        - z.B. ASCII-basierte Darstellung (bspw. `| | | | |`) mit verschiedenen „Pin“-Stellungen.
+            
+        - Spieler muss Reihenfolge oder Takt (Timing) erraten.
+            
+        - Fehlversuche triggern ggf. Alarm (Risk-Score ++).
+            
+    - **Sicherheitskamera umgehen** (Maze):
+        
+        - Spieler bewegt sich (↑ ↓ ← →) durch ein ASCII-Labyrinth.
+            
+        - Kameras bewegen sich zyklisch – man muss im richtigen Moment vorbei.
+            
+        - Bei Fehler: Rückverfolgung + Alarm + eventuelle Sperre.
+            
+
+---
+
+#### 🔁 4. **Gegenmaßnahmen beim Verteidigen von Servern (Defense Mini-Games)**
+
+- Falls ein geclaimter Server angegriffen wird:
+    
+    - Verteidiger bekommt Chance, sich zu wehren:
+        
+        - **Firewall-Spiel**: Blocke eingehende Pakete (z.B. per Tastendruck)  
+            → z.B. wie Pong: "Gefährliche Pakete" kommen rein, du bewegst Firewall links/rechts.
+            
+        - **Code-Flicken**: Zeige dem Verteidiger eine Zeile mit Bugs (offenes Port, unsicherer Code) – muss in 5 Sekunden behoben werden.
+            
+        - **Security Patch Memory**: Zeige 4–6 Sicherheitslücken, dann deck sie ab. Danach: „Was war an Position 3?“.
+            
+
+---
+
+#### 🔍 5. **Recon / Informationsbeschaffung**
+
+- Mini-Game: Netzwerkscan → Spieler bekommt ein Netzdiagramm, muss Pfad finden zum Zielserver.
+    
+- Alternativ:
+    
+    - Multiple-Choice-Fragen zum Ziel:  
+        „Welche OS-Version läuft dort?“ – Spieler muss aus Logs erraten. „Wie lange war Server online?“ – Hinweise aus Fake-E-Mails.
+        
+
+---
+
+#### 📍 6. **Reisen & Tarnung**
+
+- Wenn Spieler von Kontinent zu Kontinent reisen:
+    
+    - **Passkontrolle umgehen / Flughafen hacken**:
+        
+        - Spiel: Falschen QR-Code generieren (eine Matrix manipulieren).
+            
+        - Optional: Fingerabdruck-Simulator (Timing-basierte Leiste, richtige Sektion treffen).
+            
+- **VPN einrichten**:
+    
+    - Mini-Spiel: Baue eine Route aus geclaimten Servern, aber...
+        
+    - Zwischenstationen mit hoher Belastung sind weniger anonym → Spieler muss schnell entscheiden.
+        
+
+---
+
+#### 📦 7. **Ressourcenverwaltung als Puzzle-Game**
+
+- Bei hoher Serverlast (z.B. viele Claims):
+    
+    - Spieler muss Ressourcen umverteilen, um alles am Laufen zu halten:
+        
+        - Mini-Tetris: RAM-/CPU-Blöcke richtig stapeln, ohne Überlast.
+            
+        - Drag-and-Drop-Simulation: CPU zuweisen zu Servern, aber: je länger du brauchst, desto eher wird einer entdeckt.
+            
+
+---
+
+#### 🧩 8. **Zentrale Herausforderung: Boss-Hack / GKS**
+
+- Finales Mini-Game: Mischung aus allen o.g. Elementen.
+    
+- z.B. Mehrere „Firewall-Layer“:
+    
+    - Level 1: Lockpicking.
+        
+    - Level 2: SQL-Guess.
+        
+    - Level 3: Reverse Engineering (z.B. Code verstehen und ändern).
+        
+    - Timer läuft → je schneller du bist, desto höher deine Chancen.
+        
+    - GKS = Supercomputer → fast wie ein „Escape Room“.
+        
+
+---
+
+### 🧱 Technische Umsetzung (funktional)
+
+Jedes Mini-Game könnte als eigene `GamePhase` eingebunden werden:
+
+scala
+
+KopierenBearbeiten
+
+`sealed trait GamePhase case class PlayerTurn(player: Player) extends GamePhase case class MiniGameInProgress(player: Player, kind: MiniGameType, target: Option[Server]) extends GamePhase case class EventTriggered(player: Player, event: GameEvent) extends GamePhase`
+
+---
+
+### 💡 Weitere spontane Ideen
+
+- **Marktplatz im Darknet**: Führe ein Schwarzmarkt-Menü ein:
+    
+    - Kaufe Exploits, Zero-Day-VPNs, Insider-Infos
+        
+    - Gib Geld aus → weniger Risiko selbst etwas zu tun
+        
+- **Beziehungen zu NPCs**:
+    
+    - Kontakte innerhalb Firmen, bei Sicherheitsfirmen
+        
+    - Manche Server sind nur angreifbar, wenn man „jemanden kennt“
+        
+- **KI-Verteidiger**:
+    
+    - Manche Firmen haben eine adaptive AI → je öfter du sie angreifst, desto besser kontert sie.
+
+
+
+
+## 🕸️ **DARKNET-MARKTPLATZ** – Feature-Planung
+
+---
+
+### 🛒 1. **Kaufbare Items & Dienste**
+
+Spieler können mit **verdientem Geld** (z. B. aus Server-Einnahmen, Nebenaufträgen oder geklauten Bitcoins) Tools & Services erwerben.
+
+#### 🔧 Erweiterungs-Typen:
+
+|Item|Kosten|Effekt|Risiko|
+|---|---|---|---|
+|**Zero-Day-Exploit**|500₿|+20% Erfolgswahrscheinlichkeit bei jedem Hack (1x verwendbar)|Hoch|
+|**VPN-Kette (5 Hops)**|200₿|Reduziert Rückverfolgungschance um 40% für 3 Runden|Niedrig|
+|**Insider-Kontakt**|300₿|Deckt Position & Infos zu verstecktem Firmenserver auf|Mittel|
+|**Keylogger-Modul**|150₿|Ermöglicht passives Code-Farming pro Runde bei geclaimtem Server|Niedrig|
+|**Proxy-Bypasser**|250₿|Reduziert Schwierigkeit eines Serverhacks um 10 %|Mittel|
+|**Backdoor-Auto-Installer**|350₿|Ermöglicht sofortiges Claimen nach erfolgreichem Hack|Hoch|
+|**Malware-Library**|400₿|Freischaltung neuer Angriffsmethoden (z. B. "Ransomware")|Mittel|
+|**Stealth Shield**|600₿|Temporär keine Aufdeckungswahrscheinlichkeit bei Einnahmen (2 Runden)|Niedrig|
+
+---
+
+### 💰 2. **Eigene Server-Nutzung im Darknet**
+
+Geclaimte Server können als _Infrastruktur_ genutzt werden – je nachdem, wie du sie konfigurierst, generieren sie passives Einkommen, aber erhöhen auch das Entdeckungsrisiko!
+
+#### 🧱 Server-Rollen
+
+|Server-Rolle|Einnahmen (pro Runde)|Risiko aufzudecken (%)|Effekte / Besonderheiten|
+|---|---|---|---|
+|**Bitcoin Miner**|+25–50₿|20–50%|CPU-abhängig. Rechenstarke Server → mehr Coins.|
+|**Darknet-Host**|+15–40₿|10–30%|Traffic erzeugt Aufmerksamkeit. Optional verschleierbar.|
+|**Datenhändler**|+20–45₿|15–45%|Nur möglich bei vorherigem Datenleck|
+|**Command & Control Node**|+30₿ (und Botnet-Funktion)|60%|Aktiviert besondere Angriffe wie Massen-DDoS.|
+
+> 💡 _Du kannst in der Runde entscheiden, welche Rolle ein Server bekommt – oder ihn nur passiv lassen (sicherer, aber kein Gewinn)._
+
+---
+
+### 🧪 4. **Zufällige Darknet-Ereignisse**
+
+Jede Runde mit Darknet-Aktivität kann Events triggern:
+
+|Event|Wahrscheinlichkeit|Effekt|
+|---|---|---|
+|**Aufdeckung**|variiert|Verlust von Server / Geldstrafe / XP-Strafe|
+|**Darknet-Razzia**|10 %|Alle Einnahmen dieser Runde verfallen|
+|**Falschlieferung**|5 %|Item funktioniert nicht|
+|**Bonus-Kunde**|5 %|Einnahme verdoppelt|
