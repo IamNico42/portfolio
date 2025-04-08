@@ -73,7 +73,8 @@ plugins:
       categories:
         - categories
         - tags
-  - meta-descriptions
+  - meta-description
+
         
 
 extra:

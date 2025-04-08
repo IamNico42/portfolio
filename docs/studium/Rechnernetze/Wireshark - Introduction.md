@@ -7,7 +7,7 @@ tags:
   - Course/
 ---
 
-#### **Einführung (Aufgabe3.1)**
+#### **Einführung (Aufgabe3)**
 
 1. 5 Erkannte Protokolle nennen
 	- UDP
@@ -15,6 +15,13 @@ tags:
 	- TCP
 	- ARP
 	- TLSv1.2
+	- QUIC
+	- ICMP 3.2
+
+3.2 117,6 ms
+3.3 Internet-Adresse: 192.168.101.21 
+Source MAC: 00:0C:29:8D:AD:E7 
+Ziel MAC: 00:50:56:C0:00:01 -> MAC Adresse von Router
 #### **Schichtenmodell ISO/OSI(Aufgabe 3.4)**
 
 Ein HTTP-Paket nutzt folgende Protokolle:
@@ -89,3 +96,47 @@ Wir haben unseren Filter eingestellt und schauen jetzt welche IP-Adressen Tx(Ups
 
 
 #### **Pakete bei Streams (Aufgabe 7)**
+
+`ip.addr == <deine IP> && tcp.port == <Port des Streams>`
+
+Port des streams finden wir unter
+- Menü: **"Statistiken" → "Gespräche" (Conversations) → TCP-Tab**
+- Stream geht über Port B(Unserer lokaler Port in diesem Fall)
+![[Wireshark-audio-stream1.svg]]
+
+
+jetzt setzen wir: 
+`ip.addr == 192.168.178.48 && tcp.port == 46169` ROT
+`ip.addr == 192.168.178.48 && tcp.port == 443 ` BLAU
+
+und gehen in I/O Graph und bekommen:
+Rot sollte der Stream-Traffic sein und Blau die allgemeine Up und Downstreams für SSL Pakete
+![[Wireshark-audio-stream2.svg]]
+
+Jetzt sehen wir deutlich wie eine Überlagerung der beiden Filter stattfindet und dass wir in regelmäßigen abständen große Pakete empfangen und senden.
+
+
+Alle 2sek ein peek mit 22 - 25 Packets
+
+Unter: - Menü: **"Statistiken" → "Gespräche" (Conversations) → TCP-Tab** können wir noch Bandbreite analysieren
+![[wireshark-conversations-tcp-audio3.PNG]]
+#### 🔹 **Download (empfangen):**
+
+- 334 kB = **334 × 1024 × 8 = 2.731.008 Bits**
+- Zeit: 19,6283 Sekunden   
+$$\frac{2.731.008 \text{ Bit}}{19,6283 \text{ Sek}} \approx \mathbf{139.2 \text{ kbps}}$$
+#### 🔹 **Upload (gesendet):**
+
+- 7 kB = **7 × 1024 × 8 = 57.344 Bits**
+- Zeit: 19,6283 Sekunden  
+$$\frac{57.344 \text{ Bit}}{19,6283 \text{ Sek}} \approx \mathbf{2.9 \text{ kbps}}$$
+
+
+Wenn man den Stream noch etwas länger laufen lässt, sieht es in etwa so aus:
+
+![[wireshark-audio-stream4.webp]]
+
+Beim Aufzeichnen eines HTTPS-basierten Streams zeigte der Netzwerkverkehr typische Pufferungs-Muster. Der Client fordert regelmäßig größere Datenmengen an, was sich in deutlich sichtbaren Paket-Bursts äußert (über 1.000 Pakete/Sekunde), gefolgt von Pausen. 
+Der Datenverkehr lief vollständig über TCP-Port 443 (HTTPS). Es wurden keine UDP-Streams verwendet. 
+Die Übertragung war überwiegend stabil, mit nur wenigen TCP-Fehlern, die keine größere Störung darstellten.
+Insgesamt lässt sich eine regelmäßige Paketübertragung in der ersten Hälfte feststellen, mit zunehmender Unregelmäßigkeit in der zweiten Hälfte, was auf unterschiedliche Pufferanforderungen oder parallele Hintergrundaktivität hindeuten könnte.
