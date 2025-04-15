@@ -76,12 +76,15 @@ $Durchsatz=min⁡(Link1,Link2,…,Linkn)$
 #### 🔍 Berechne die Verzögerungen:(1.1)
 #### 🔹 Link 1
 $$ t_{ü1} = \frac{12\,000}{60\,000\,000} = 0{,}0002\,\text{s} = 0{,}2\,\text{ms} $$ $$ t_{a1} = \frac{15}{300\,000\,000} = 5 \cdot 10^{-8}\,\text{s} = 0{,}00005\,\text{ms} $$
+
 ---
 #### 🔹 Link 2
 $$ t_{ü2} = \frac{12\,000}{25\,000\,000} = 0{,}00048\,\text{s} = 0{,}48\,\text{ms} $$$$ t_{a2} = \frac{250}{200\,000\,000} = 1{,}25 \cdot 10^{-6}\,\text{s} = 0{,}00125\,\text{ms} $$
+
 ---
 #### 🔹 Link 3
 $$ t_{ü3} = \frac{12\,000}{20\,000\,000\,000} = 6 \cdot 10^{-7}\,\text{s} = 0{,}0006\,\text{ms} $$ $$ t_{a3} = \frac{10\,000}{250\,000\,000} = 4 \cdot 10^{-5}\,\text{s} = 0{,}04\,\text{ms} $$
+
 ---
 ### 🔚 Gesamte Ende-zu-Ende-Verzögerung(1.2)
 
