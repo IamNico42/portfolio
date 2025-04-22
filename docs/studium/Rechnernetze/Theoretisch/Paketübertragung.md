@@ -152,6 +152,13 @@ Gesamtübertragungsdauer für den Burst = **9,84 ms**
 
 4)
 
+**600 Byte = 4800 Bit**  
+**1,20 Mbps = 1.200.000 Bit/s**
+
+$$
+{t}_{\text{tx}} = \frac{4800 \text{ Bit}}{1.200.000 \text{ Bit/s}} = 0{,}004\,\text{s} = 4{,}0\,\text{ms}
+$$
+
 |Zeit (ms)|Größe (B)|Verzögerung (ms)|
 |---|---|---|
 |0.0|900|6|
