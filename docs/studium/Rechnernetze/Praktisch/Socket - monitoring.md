@@ -145,11 +145,25 @@ Daraufhin bekamen wir folgendes Ergebnis
 ![[SS-Wireshark-2.png]]wo sichtbar wird, dass unser PC (192.168.0.105) eine Anfrage an den Server **199.71.0.46** gesendet hat. Das verwendete Protokoll ist `WHOIS` über **TCP Port 43** 
 ![[SS-Wireshark-3.png]]
 
+---
+
+
+![[RN-SM-3-1.PNG]]
+
+
+---
+
+
+
+
 #### 2) Im welchem Netz befindet sich der Web-Server, der in der ersten WireShark-Aufgabe aufgerufenen Web-Seite?
 
 In der WHOIS-Antwort  
 ![[SS-Wireshark-4.png]]konnten wir die Informationen zum Ziel-Server auslesen.  
 Der IP-Bereich 162.158.0.0/15 gehört zur Firma **Cloudflare, Inc.** mit Sitz in Kalifornien, USA. Das Netz trägt den Namen **CLOUDFLARENET** und ist direkt von ARIN vergeben worden. Weitere Infos wie die Organisation (AS13335), Registrierungs- und Aktualisierungsdaten sowie Hinweise zur Abuse-Meldung waren ebenfalls enthalten.
+
+
+
 
 #### 3) Welche Informationen finden Sie über die HTWG?
 
