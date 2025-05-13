@@ -1015,3 +1015,160 @@ ICMP Fehler 10054 (geschlossen): [1]
 	- UDP-Paket vom Client zum Server
 	- UDP-Antwort mit demselben Payload vom Server
 	- Kein Verbindungsaufbau/Abbau notwendig (connectionless)
+
+
+## 5. SMTP in Windows-Konsole
+
+
+**Schritt für Schritt**
+1. verbinden über cmd:
+`openssl s_client -starttls smtp -crlf -connect asmtp.htwg-konstanz.de:587`
+
+2. Einloggen mit Base64 encoded Login-Daten
+
+3. Struktur wie gefolgt in  die Konsole eingeben
+```
+mail from:<irgendeinname@beispiel.de>
+rcpt to:<DEINE_EMAIL@domain.de>
+data
+From: Fake Sender <irgendeinname@beispiel.de>
+To: Du selbst <DEINE_EMAIL@domain.de>
+Subject: Test per OpenSSL
+
+Hallo! Das ist eine Testmail über SMTP via OpenSSL.
+
+.
+```
+
+![[images/RN-SP5-1.PNG]]
+
+---
+
+## 5. SMTP in Python
+
+```Python
+import socket
+import ssl
+import base64
+import time
+
+  
+
+user="rnetin17@htwg-konstanz.de"
+password="eaN6ohdo4Uthoo"
+recipient="Nico.Roth@htwg-konstanz.de"
+sender_name="Nico"
+subject="Testmail über Python-SSL"
+body="Hey das ist eine Mail aus Python per SSL"
+host="smtp.htwg-konstanz.de"
+
+  
+
+# Base64-kodieren
+user_b64 = base64.b64encode(user.encode()).decode()
+pass_b64 = base64.b64encode(password.encode()).decode()
+
+  
+
+# Verbindung öffnen
+context = ssl.create_default_context()
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client_socket.connect((host, 587))
+
+# Plaintext-Kommunikation starten
+def send(msg):
+    print("-->", msg.strip())
+    client_socket.send((msg + "\r\n").encode())
+
+def recv():
+    print("<--", client_socket.recv(1024).decode())
+
+recv()
+send("EHLO Nico")
+recv()
+send("STARTTLS")
+recv()
+
+
+# SSL-Upgrade
+ssl_socket = context.wrap_socket(client_socket, server_hostname=host) #TLS verschlüsselung aktivieren
+time.sleep(1)
+
+# Authentifizieren und mail senden
+def send_ssl(msg):
+    print("→", msg.strip())
+    ssl_socket.send((msg + "\r\n").encode())
+
+def recv_ssl():
+    print("←", ssl_socket.recv(1024).decode())
+
+  
+send_ssl("EHLO Nico")
+recv_ssl()
+send_ssl("AUTH LOGIN")
+recv_ssl()
+send_ssl(user_b64)
+recv_ssl()
+send_ssl(pass_b64)
+recv_ssl()
+send_ssl(f"MAIL FROM:<{user}>")
+recv_ssl()
+send_ssl(f"RCPT TO:<{recipient}>")
+recv_ssl()
+send_ssl("DATA")
+recv_ssl()
+
+
+# Hier wird die Nachricht gesendet
+send_ssl(f"""From: {sender_name} <{user}>
+To: {recipient}
+Subject: {subject}
+{body}
+.""")
+
+recv_ssl()
+send_ssl("QUIT")
+recv_ssl()
+```
+
+Wahrscheinlich Fehlermeldung wegen Norton weil Norton TLS Pakete abfängt und auf Viren überprüft bei dem das Originalzertifikat durch ein selbstsigniertes Zertifikat ersetzt wird. Aber bei meinem Team-Partner hat es funktioniert.
+
+```
+PS C:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung>  c:; cd 'c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung'; & 'c:\Users\nico-\AppData\Local\Programs\Python\Python313\python.exe' 'c:\Users\nico-\.vscode\extensions\ms-python.debugpy-2025.6.0-win32-x64\bundled\libs\debugpy\launcher' '64408' '--' 'c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung\smtp_mail_send.py' 
+<-- 220 mailgate3.htwg-konstanz.de ESMTP Postfix (Ubuntu)
+
+--> EHLO Nico
+<-- 250-mailgate3.htwg-konstanz.de
+250-PIPELINING
+250-SIZE 54525952
+250-ETRN
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250 SMTPUTF8
+
+--> STARTTLS
+<-- 220 2.0.0 Ready to start TLS
+
+Traceback (most recent call last):
+  File "c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung\smtp_mail_send.py", line 38, in <module>
+    ssl_socket = context.wrap_socket(client_socket, server_hostname=host) #TLS verschlüsselung aktivieren
+  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1020)
+```
