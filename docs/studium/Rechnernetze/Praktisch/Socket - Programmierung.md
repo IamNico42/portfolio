@@ -19,7 +19,28 @@ date: 2025-04-29
 ---
 ## 3. Socket Programmierung - Rechenserver
 
-=== "🔍 Rechenserver_tcp"
+| Teil        | Typ                           | Beschreibung                |
+| ----------- | ----------------------------- | --------------------------- |
+| ID        | Unsigned Int (4 Bytes)        | Einzigartige Aufgaben-ID    |
+| Operation | UTF-8 kodiert (z. B. "SUM")   | "SUM", "PRO", "MIN", "MAX"  |
+| N         | Unsigned Char (1 Byte)        | Anzahl der folgenden Zahlen |
+| z1...zN   | Signed Ints (4 Bytes je Zahl) | Die eigentlichen Zahlen     |
+Der Server antwortet mit:
+
+| Teil       | Typ                    | Beschreibung                |
+| ---------- | ---------------------- | --------------------------- |
+| ID       | Unsigned Int (4 Bytes) | Die gleiche Aufgaben-ID     |
+| Ergebnis | Signed Int (4 Bytes)   | Das Ergebnis der Berechnung |
+
+| Format | Meaning                         | Bytes | Python Type                         |
+| ------ | ------------------------------- | ----- | ----------------------------------- |
+| !I   | Unsigned int (big-endian)       | 4     | For ID                            |
+| !i   | Signed int (big-endian)         | 4     | For each number                     |
+| !B   | Unsigned char (big-endian)      | 1     | For N (number of values)          |
+| !Ii  | Combination: Unsigned int + int | 8     | For server response: (ID, result) |
+
+
+=== "Rechenserver_tcp"
 
     ```python
 	# rechenserver_tcp.py
@@ -1054,8 +1075,8 @@ import time
 
   
 
-user="rnetin17@htwg-konstanz.de"
-password="eaN6ohdo4Uthoo"
+user="rxxxtin17@htwg-konstanz.de"
+password="eaN6ohdxxx"
 recipient="Nico.Roth@htwg-konstanz.de"
 sender_name="Nico"
 subject="Testmail über Python-SSL"
