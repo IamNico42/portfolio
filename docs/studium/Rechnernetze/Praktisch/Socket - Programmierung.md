@@ -913,6 +913,7 @@ Ja, Wichtig ist dabei, dass du **zwei getrennte Sockets** mit `SOCK_STREAM` (TCP
 
 ✅ Antwort:
 **TCP:**
+```
 [INFO] Starte TCP-Portscan auf 141.37.168.26...
 [OFFEN] TCP-Port 25
 [OFFEN] TCP-Port 7
@@ -922,13 +923,16 @@ Ja, Wichtig ist dabei, dass du **zwei getrennte Sockets** mit `SOCK_STREAM` (TCP
 [OFFEN] TCP-Port 19
 
 [FERTIG] Offene TCP-Ports: [25, 7, 9, 13, 17, 19]
+```
 
 
 **UDP:(Scans mit unterschiedlichem Ergebnis)**
+
+```
 Antwort erhalten (möglicherweise offen): [7, 13, 17, 19]
 Keine Antwort (unbekannt): [10, 15, 16, 9, 6, 20, 4, 5, 22, 2, 8, 21, 18, 12, 11, 3, 23, 14, 24, 39, 27, 37, 38, 41, 30, 26, 25, 28, 50, 36, 29, 31, 40, 48, 32, 35, 47, 43, 45, 34, 33, 42, 46, 49, 44]
 ICMP Fehler 10054 (geschlossen): [1]
-
+```
 ### **Frage 2:**
 > Wählen Sie für TCP und UDP jeweils einen offenen und einen geschlossenen Port und erklären Sie die entsprechende Paketsequenz, die Sie in WireShark aufgezeichnet haben
 
