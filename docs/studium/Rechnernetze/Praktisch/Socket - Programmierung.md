@@ -246,7 +246,7 @@ Die Verarbeitung schlägt daher fehl. Der Server ist nicht für die Nutzung mit 
 
 ##### **UDP Variante:**
 **Wireshark:**
-![[images/RN-SP3-1.png]]
+![[RN-SP3-1udp.PNG]]
 
 **Currports:**
 - Serverprozess lauscht auf Port 50000 (`LISTENING`)
@@ -308,8 +308,8 @@ Statt dem System die Wahl zu überlassen, setzt du IP & Port **vor dem `connect(
 ```
 sock.settimeout(5)
  try:
-     data = sock.recv(1024) except socket.timeout:
-     print("Timeout beim Empfang")
+	data = sock.recv(1024) except socket.timeout:
+	print("Timeout beim Empfang")
 ```
 
 ✅ Globaler Timeout für alle Sockets:
@@ -1154,42 +1154,109 @@ recv_ssl()
 
 Wahrscheinlich Fehlermeldung wegen Norton weil Norton TLS Pakete abfängt und auf Viren überprüft bei dem das Originalzertifikat durch ein selbstsigniertes Zertifikat ersetzt wird. Aber bei meinem Team-Partner hat es funktioniert.
 
-```
-PS C:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung>  c:; cd 'c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung'; & 'c:\Users\nico-\AppData\Local\Programs\Python\Python313\python.exe' 'c:\Users\nico-\.vscode\extensions\ms-python.debugpy-2025.6.0-win32-x64\bundled\libs\debugpy\launcher' '64408' '--' 'c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung\smtp_mail_send.py' 
-<-- 220 mailgate3.htwg-konstanz.de ESMTP Postfix (Ubuntu)
+=== "Auszug 1 - Nico"
+	
+	```
+	PS C:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung>  c:; cd 'c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung'; & 'c:\Users\nico-\AppData\Local\Programs\Python\Python313\python.exe' 'c:\Users\nico-\.vscode\extensions\ms-python.debugpy-2025.6.0-win32-x64\bundled\libs\debugpy\launcher' '64408' '--' 'c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung\smtp_mail_send.py' 
+	<-- 220 mailgate3.htwg-konstanz.de ESMTP Postfix (Ubuntu)
+	
+	--> EHLO Nico
+	<-- 250-mailgate3.htwg-konstanz.de
+	250-PIPELINING
+	250-SIZE 54525952
+	250-ETRN
+	250-STARTTLS
+	250-ENHANCEDSTATUSCODES
+	250-8BITMIME
+	250-DSN
+	250 SMTPUTF8
+	
+	--> STARTTLS
+	<-- 220 2.0.0 Ready to start TLS
+	
+	Traceback (most recent call last):
+	  File "c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung\smtp_mail_send.py", line 38, in <module>
+	    ssl_socket = context.wrap_socket(client_socket, server_hostname=host) #TLS verschlüsselung aktivieren
+	  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 455, in wrap_socket
+	    return self.sslsocket_class._create(
+	           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+	        sock=sock,
+	        ^^^^^^^^^^
+	    ...<5 lines>...
+	        session=session
+	        ^^^^^^^^^^^^^^^
+	    )
+	    ^
+	  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1076, in _create
+	    self.do_handshake()
+	    ~~~~~~~~~~~~~~~~~^^
+	  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1372, in do_handshake
+	    self._sslobj.do_handshake()
+	    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+	ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1020)
+	```
 
---> EHLO Nico
-<-- 250-mailgate3.htwg-konstanz.de
-250-PIPELINING
-250-SIZE 54525952
-250-ETRN
-250-STARTTLS
-250-ENHANCEDSTATUSCODES
-250-8BITMIME
-250-DSN
-250 SMTPUTF8
-
---> STARTTLS
-<-- 220 2.0.0 Ready to start TLS
-
-Traceback (most recent call last):
-  File "c:\Users\nico-\Desktop\uni\Rechnernetze\Socket Programmierung\smtp_mail_send.py", line 38, in <module>
-    ssl_socket = context.wrap_socket(client_socket, server_hostname=host) #TLS verschlüsselung aktivieren
-  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 455, in wrap_socket
-    return self.sslsocket_class._create(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        sock=sock,
-        ^^^^^^^^^^
-    ...<5 lines>...
-        session=session
-        ^^^^^^^^^^^^^^^
-    )
-    ^
-  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1076, in _create
-    self.do_handshake()
-    ~~~~~~~~~~~~~~~~~^^
-  File "c:\Users\nico-\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1372, in do_handshake
-    self._sslobj.do_handshake()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
-ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1020)
-```
+=== "Auszug 2 - Mohammed"
+	
+	```
+	S C:\Users\mohsa\Programming\HTWG\Rechnernetze> py .\mail_client.py
+	<-- 220 mailgate3.htwg-konstanz.de ESMTP Postfix (Ubuntu)
+	
+	--> EHLO mohammed
+	<-- 250-mailgate3.htwg-konstanz.de
+	250-PIPELINING
+	250-SIZE 54525952
+	250-ETRN
+	250-STARTTLS
+	250-ENHANCEDSTATUSCODES
+	250-8BITMIME
+	250-DSN
+	250-SMTPUTF8
+	250 CHUNKING
+	
+	--> STARTTLS
+	<-- 220 2.0.0 Ready to start TLS
+	
+	--> EHLO mohammed
+	<-- 250-mailgate3.htwg-konstanz.de
+	250-PIPELINING
+	250-SIZE 54525952
+	250-ETRN
+	250-AUTH PLAIN LOGIN
+	250-AUTH=PLAIN LOGIN
+	250-ENHANCEDSTATUSCODES
+	250-8BITMIME
+	250-DSN
+	250-SMTPUTF8
+	250 CHUNKING
+	
+	--> AUTH LOGIN
+	<-- 334 VXNlcmxxx
+	
+	--> cm5ldGluMTdAaHR3Zyxxx
+	<-- 334 UGFzc3dvcmQ6
+	
+	--> ZWFONm9oZGxxxx
+	<-- 235 2.7.0 Authentication successful
+	
+	--> MAIL FROM:xxx@htwg-konstanz.de
+	<-- 250 2.1.0 Ok
+	
+	--> RCPT TO:Mohxxx@htwg-konstanz.de
+	<-- 250 2.1.5 Ok
+	
+	--> DATA
+	<-- 354 End data with <CR><LF>.<CR><LF>
+	
+	--> From: Mohammed xxx@htwg-konstanz.de
+	To: Mohxxxf@htwg-konstanz.de
+	Subject: Testmail über Python-SSL
+	
+	Hey das ist eine Mail aus Python per SSL
+	
+	.
+	<-- 250 2.0.0 Ok: queued as 901D5100064
+	
+	--> QUIT
+	<-- 221 2.0.0 Bye
+	```
