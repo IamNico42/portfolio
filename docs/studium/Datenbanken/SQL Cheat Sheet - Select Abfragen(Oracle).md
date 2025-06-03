@@ -48,6 +48,14 @@ FROM A
 LEFT JOIN B ON A.id = B.a_id;
 ```
 
+### Beispiel:
+
+```
+SELECT f.Name, a.Land
+FROM Ferienwohnung f
+JOIN Adresse a ON f.ADRESSE_ID = a.ID;
+```
+
 ---
 
 ## 🧠 4. GROUP BY + HAVING – Gruppieren & Filtern
@@ -87,3 +95,8 @@ WHERE NOT EXISTS (
     SELECT 1 FROM Buchung b WHERE b.FERIENWOHNUNG_ID = f.ID
 );
 ```
+
+## 🧠 Merke:
+
+- Verwende `WHERE` zum Filtern von **einzelnen Zeilen**
+- Verwende `HAVING` nur, wenn du **`GROUP BY`** verwendest
