@@ -40,22 +40,19 @@ Man unterscheidet zwei Arten von Suchen:
 Du hast keinen Plan, was dich dem Ziel näher bringt.  
 Beispiele:
 
-|Verfahren|Beschreibung|
-|---|---|
-|**Breitensuche**|Geht systematisch Ebene für Ebene durch (wie Schlange stehen).|
-|**Tiefensuche**|Geht so tief wie möglich – oft schnell, aber verirrt sich gern.|
-|**Tiefenbeschränkte Suche**|Wie Tiefensuche, aber mit Sicherheitsgrenze.|
-|**Iterativ vertiefende Suche**|Kombi aus beiden: startet flach und geht schrittweise tiefer.|
-|**Uniforme Kostensuche**|Wählt immer den günstigsten Weg (z. B. wenig Benzinverbrauch).|
+| Verfahren                      | Beschreibung                                                    |
+| ------------------------------ | --------------------------------------------------------------- |
+| **Breitensuche**               | Geht systematisch Ebene für Ebene durch (wie Schlange stehen).  |
+| **Tiefensuche**                | Geht so tief wie möglich – oft schnell, aber verirrt sich gern. |
+| **Tiefenbeschränkte Suche**    | Wie Tiefensuche, aber mit Sicherheitsgrenze.                    |
+| **Iterativ vertiefende Suche** | Kombi aus beiden: startet flach und geht schrittweise tiefer.   |
+| **Uniforme Kostensuche**       | Wählt immer den günstigsten Weg (z. B. wenig Benzinverbrauch).  |
 
 🧮 **Bewertungskriterien** für Suchalgorithmen:
 
 - **Vollständig** – Findet der Algo eine Lösung, wenn es eine gibt?
-    
 - **Optimal** – Ist es die beste Lösung (z. B. der kürzeste Weg)?
-    
 - **Zeitkomplexität** – Wie lange dauert das Ganze?
-    
 - **Speicherbedarf** – Wie viel RAM/Platz wird gebraucht?
     
 
@@ -84,11 +81,8 @@ Beispiele:
 ### 3. 🧹 **Beispiele aus dem Alltag**
 
 - **Staubsaugerwelt**: Der Bot soll alles sauber machen → Suchproblem!
-    
 - **15-Puzzle**: Schiebe ein Feld leer und sortiere die Zahlen → Zustände!
-    
 - **Sudoku / Kartenfärbung**: Kann als sogenanntes „Constraint Satisfaction Problem“ formuliert werden.
-    
 - **Straßenkarte**: Finde den kürzesten Weg von A nach B.
     
 

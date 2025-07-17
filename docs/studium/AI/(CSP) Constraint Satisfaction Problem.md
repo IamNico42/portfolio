@@ -90,6 +90,12 @@ Backtracking ist eigentlich eine **Tiefensuche** im Suchbaum:
 - Jeder Pfad ist ein möglicher Lösungsversuch
 - Jeder Knoten = Zuweisung einer Variable
 
+### 🔍 Heuristiken im Backtracking:
+
+1. **Most Constrained Variable First**: Variable mit wenigsten erlaubten Werten zuerst wählen
+2. **Most Constraining Variable**: Variable, die die meisten anderen beeinflusst
+3. **Least Constraining Value**: Farbe wählen, die den Nachbarn am meisten Optionen lässt
+
 ---
 ## 🔐 2. **Forward Checking – Frühzeitige Prüfung**
 

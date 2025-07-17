@@ -281,3 +281,72 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 
 ![[portfolio/docs/images/it-security-WDAC.png]]
 
+---
+
+
+## 🆔 1. Was ist ein CVE?
+
+- **CVE** bedeutet _Common Vulnerabilities and Exposures_.
+    
+- Es ist eine **public database von MITRE**, in der jede bekannte Schwachstelle eine eindeutige ID erhält (z. B. CVE‑2023‑23923).
+- Mit dieser ID kann man **weltweit konsistent über dieselbe Schwachstelle sprechen** – sei es in Security-Tools, Berichten oder beim Patch-Management.
+    
+
+---
+
+## 📚 2. Was ist die NVD?
+
+- **NVD** steht für _National Vulnerability Database_ (USA, betrieben von NIST).
+- Sie **erweitert CVE-Einträge** um wichtige Daten wie CVSS-Bewertungen, Produkteinordnung (CPE), Schwachstellentypen usw. 
+- Dadurch wird NVD zur **Standardquelle für IT-Sicherheits-Analysen und Priorisierung**.
+    
+
+---
+
+## 🎯 3. Was ist CVSS (Common Vulnerability Scoring System)?
+
+- Ein **offenes Bewertungssystem (Metamodell)** zur Einschätzung der Schwere von Schwachstellen 
+    
+- Es erzeugt eine Punktzahl von **0–10** basierend auf drei Metrik-Gruppen:
+    
+    1. **Base Metrics** – konstante Eigenschaften (z. B. Angriffsvektor, Privilegienbedarf, Auswirkungen).
+    2. **Temporal Metrics** – dynamisch (z. B. wenn ein Exploit verfügbar ist).
+    3. **Environmental Metrics** – organisationsspezifisch (z. B. wie weit verbreitet das System ist) 
+        
+- **Score-Bereiche**:
+    
+    - 0.0 = Keine
+    - 0.1–3.9 = Niedrig
+    - 4.0–6.9 = Mittel
+    - 7.0–8.9 = Hoch
+    - 9.0–10.0 = Kritisch 
+        
+- Ziel: Ein **standardisiertes Bewertungssystem**, um zu entscheiden, welche Schwachstellen am schnellsten behoben werden sollten .
+    
+
+---
+
+## 🌐 4. Wie hängen CVE, NVD und CVSS zusammen?
+
+1. Sicherheitsforscher melden eine Schwachstelle → **CVE-ID** wird vergeben.
+2. NIST fügt diesen Eintrag in die **NVD ein**, ergänzt um CVSS-Werte & technische Details.
+3. Sicherheitsverantwortliche nutzen NVD-Einträge, CVSS-Scores zur **Priorisierung** und Planung von Maßnahmen.
+    
+
+---
+
+## ✅ Warum ist das wichtig?
+
+- **CVE** = eindeutige, weltweit gültige Identifikation.
+- **NVD** = umfassende Informationsquelle + funktionale Details.
+- **CVSS** = objektive Bewertung der Schwere – Grundlage für Risikoanalyse und Maßnahmenpriorisierung.
+    
+
+---
+
+### Beispiel
+
+Ein CVE mit CVSS 8,5 (z. B. CVE‑2023‑5540):
+- Deckt hohe Gefährdung von _Confidentiality, Integrity, Availability_ ab.
+- Löst ab sofort Prioritätsstufe 1 fürs Patchen aus.
+
