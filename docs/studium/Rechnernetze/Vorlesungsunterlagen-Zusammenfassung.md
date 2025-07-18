@@ -9,37 +9,6 @@ tags:
 # **Vorlesungsunterlagen-Zusammenfassung**
 
 
-# **Intra-Domain Routing**
-### 🧠 Was ist das?
-
-
-
-
-## **Link-Sate Routing**
-
-**(1) Jeder Router kennt seine Nachbarn und die Kosten zu seinen Nachbarn**
-![[RN-5-4-Link-State-Routing_1.PNG]]
-
-
-**(2) Jeder Router sendet diese Information zu allen seinen Nachbarn**
-![[RN-5-4-Link-State-Routing_2.PNG]]
-
-
-**(3) Die Nachbarn leiten die Information weiter, so dass alle Router diese Information erhalten (Flooding)**
-![[RN-5-4-Link-State-Routing_3.PNG]]
-
-
-**(4) Jeder Router kennt alle anderen Router inklusive deren Nachbarschaft**
-![[RN-5-4-Link-State-Routing_3_2.PNG]]
-
-![[RN-5-4-Link-State-Routing_4.PNG]]
-
-
-**(5) Berechnung der kürzesten Pfade nach dem Dijkstra-Algorithmus**
-![[RN-5-4-Link-State-Routing_5.PNG]]
-
----
----
 # **<u>Internet-Protokoll IPv4</u>**
 ---
 ## ✅ 1. **Was ist ein IP-Paket, und was steht im Header?**
@@ -234,6 +203,4 @@ Wenn du einen TCP-Dump liest, kannst du z. B. sehen:
 
 ![[socket-befehle.png]]
 
-
----
 ---

@@ -6,7 +6,7 @@ aliases:
 tags:
   - Course/
 ---
-# 1. User Authentication: Passwords
+## User Authentication: Passwords
 
 **Worum geht's?**  
 → Nutzer authentifizieren sich typischerweise mit Passwörtern. Damit ein Passwort sicher ist, muss es schwer zu erraten sein.
@@ -53,9 +53,7 @@ tags:
 ![[it-secuirty-passwords.png]]
 
 
-
-
-# 2. Access Control
+## 2. Access Control
 
 **Worum geht's?**  
 → Systeme müssen regeln, **wer auf welche Ressourcen zugreifen darf**.
@@ -199,10 +197,9 @@ tags:
 ![[it-secuirty-Access-Control.png]]
 
 
-# 3. Application Whitelisting (WDAC)
-## WDAC (Windows Defender Application Control)
-## Grundidee:
-
+## 3. Application Whitelisting (WDAC)
+### WDAC (Windows Defender Application Control)
+#### **Grundidee:**
 **Nur genehmigte Software darf laufen**  
 → Alles andere wird blockiert – **auch Schadsoftware**, unbekannte Programme oder manipulierte Dateien.
 **Anders als Antivirenprogramme**, die böse Software erkennen wollen, **verhindert Whitelisting** von vornherein, dass überhaupt irgendetwas Unerlaubtes startet.
@@ -347,6 +344,7 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 ### Beispiel
 
 Ein CVE mit CVSS 8,5 (z. B. CVE‑2023‑5540):
+
 - Deckt hohe Gefährdung von _Confidentiality, Integrity, Availability_ ab.
 - Löst ab sofort Prioritätsstufe 1 fürs Patchen aus.
 

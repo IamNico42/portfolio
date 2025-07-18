@@ -126,7 +126,7 @@ Immer wenn **eine Variable einen Wert bekommt**, prüfe alle **benachbarten Vari
 
 ---
 
-## 🔄 **AC-3 (Arc Consistency 3)
+## 🔄 **AC-3 (Arc Consistency 3)**
 
 ### 🎯 **Ziel:**
 
@@ -173,18 +173,15 @@ Weil:
 
 ---
 
-## **Problemstruktur nutzen 
-
+## **Problemstruktur nutzen** 
 
 ### Was bedeutet **Problemstruktur ausnutzen**?
-
 > Es heißt: **Bevor** du irgendeinen Algorithmus blind loslaufen lässt (z. B. Backtracking),  
 > schaust du dir **die Form des Problems an** – also seine **Graphstruktur** –  
 > um zu erkennen, ob du es **einfacher oder effizienter** lösen kannst.
 
 
 ### 🔄 Vergleich mit dem Alltag:
-
 Stell dir vor, du willst ein Puzzle lösen:
 
 - Du könntest **einfach drauflos puzzeln** (Backtracking)
@@ -195,13 +192,10 @@ Stell dir vor, du willst ein Puzzle lösen:
 
 ➡️ Danach entscheidest du, **wie du vorgehst**
 ### Zusammenhangskomponenten:
-
 - Wenn das CSP aus **unabhängigen Teilen** besteht → bearbeite sie getrennt
 ### Baumstruktur:
-
 - Wenn der Constraint-Graph **zyklusfrei** ist, kann man sehr schnell lösen
 ### Schnittmengenkonditionierung:
-
 - Entferne eine Variable, um einen Baum zu erhalten
 - Löse das vereinfachte Problem zuerst
 

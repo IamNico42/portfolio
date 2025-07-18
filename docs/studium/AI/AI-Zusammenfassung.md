@@ -86,6 +86,7 @@ Beispiel: Länder einfärben (keine Nachbarn in gleicher Farbe)
 
 ### Was passiert in einem Trainingsschritt?
 Für **alle Modelle**, von linear bis CNN:
+
 1. Eingabe durch Netz → **Vorhersage**
 2. Vergleich mit Zielwert → **Fehler/Loss**
 3. **Gradienten berechnen** = Wie stark ändert sich der Fehler, wenn ein Gewicht verändert wird?
@@ -94,6 +95,7 @@ Für **alle Modelle**, von linear bis CNN:
 5. Wiederholen (mehr Epochen, mehr Batches)
 ### was ist **Backpropagation**?
 > Backpropagation = „Fehler rückwärts durchs Netz schicken“, um zu wissen, **welches Gewicht wie viel Schuld hat**
+
 - In **einfachen Modellen** (z. B. logistische Regression):  
     Backprop ist nur **1 Schritt rückwärts**
 - In **tiefen Netzen** (z. B. MLP, CNN):  
@@ -104,6 +106,7 @@ Für **alle Modelle**, von linear bis CNN:
 | Lineare Regression     | MSE                 | –             | Gradient Descent                 |
 | Logistische Regression | Cross Entropy       | Sigmoid       | Gradient Descent + Backprop      |
 | MLP / FCNN / CNN       | z. B. Cross Entropy | ReLU, Softmax | Backprop durch mehrere Schichten |
+
 ### 🔹 **Lineare Regression**
 
 > **Ziel**: Einen **Zahlenwert** vorhersagen (z. B. Preis, Temperatur)
@@ -174,6 +177,7 @@ Sagt es nur 10 %: → hoher Fehler, obwohl „Katze“ korrekt ist!
 | ----------------- | --------------------------------------- | ----------------------------------------------------- |
 | **Softmax**       | Macht aus Zahlen Wahrscheinlichkeiten   | `[2.0, 1.0, 0.1] → [0.65, 0.24, 0.11]`                |
 | **Cross Entropy** | Vergleicht Vorhersage mit echter Klasse | `loss([0.65, 0.24, 0.11], [0, 1, 0])` = großer Fehler |
+
 ##### ✅ Schritt 1: **Softmax**
 > Macht aus den **Roh-Ausgaben** des Netzes (auch „Logits“ genannt) **Wahrscheinlichkeiten** für jede Klasse.
 
@@ -201,6 +205,7 @@ Softmax wandelt das um:
 Die **wahre Klasse** war **Klasse 1** → One-Hot: `[0, 1, 0]`
 Cross Entropy Loss schaut dann auf den Wert **bei der 1** (Klasse 1):
 $\text{Loss} = -\log(0.18) \approx 1.714$
+
 → Das Netz hat **nicht besonders gut geraten** → also **hoher Fehler**
 → je **höher die Vorhersage für die richtige Klasse**, desto **niedriger der Verlust**
 

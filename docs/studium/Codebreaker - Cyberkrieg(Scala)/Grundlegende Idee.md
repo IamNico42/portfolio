@@ -8,7 +8,10 @@ tags:
 ---
 ### Codebreaker: Cyberkrieg
 
-Mögliche Roadmap:
+[Link zum Projekt auf Github](https://github.com/htwg-codebreaker-org/codebreaker)
+!!Alle Commits die unter Unknown liefen waren von mir aus einem UNI-PC!!
+
+#### Mögliche Roadmap:
 - Minigames bei (Server hacken und verteidigen)
 	- Man muss code schreiben(Vorgegebenen Brute Force o.Ä)
 		- PVE: Je nach Wahrscheinlichkeit für Erfolg mehr oder weniger Zeit zum code schreiben
@@ -201,15 +204,11 @@ Die Actions-Klasse kapselt die Spieleraktionen und ist nun vollständig in die a
         → Antwortmöglichkeiten:
         
         1. „Ich bin vom IT-Support“
-            
         2. „Ich bin neuer Praktikant“
-            
         3. „Ich muss mit deinem Chef reden“
-            
+    
     - Jede Antwort hat Wahrscheinlichkeiten basierend auf Spieler-Stats (z.B. Level, Reputation, getarnte Identität).
-        
     - Wenn erfolgreich → Zugang zum Serverraum oder Bonus-Info.
-        
 
 ---
 
@@ -315,34 +314,17 @@ Die Actions-Klasse kapselt die Spieleraktionen und ist nun vollständig in die a
 
 ---
 
-### 🧱 Technische Umsetzung (funktional)
-
-Jedes Mini-Game könnte als eigene `GamePhase` eingebunden werden:
-
-scala
-
-KopierenBearbeiten
-
-`sealed trait GamePhase case class PlayerTurn(player: Player) extends GamePhase case class MiniGameInProgress(player: Player, kind: MiniGameType, target: Option[Server]) extends GamePhase case class EventTriggered(player: Player, event: GameEvent) extends GamePhase`
-
----
-
 ### 💡 Weitere spontane Ideen
 
-- **Marktplatz im Darknet**: Führe ein Schwarzmarkt-Menü ein:
-    
+- **Marktplatz im Darknet**: Führe ein Schwarzmarkt-Menü ein
     - Kaufe Exploits, Zero-Day-VPNs, Insider-Infos
-        
     - Gib Geld aus → weniger Risiko selbst etwas zu tun
         
 - **Beziehungen zu NPCs**:
-    
     - Kontakte innerhalb Firmen, bei Sicherheitsfirmen
-        
     - Manche Server sind nur angreifbar, wenn man „jemanden kennt“
         
 - **KI-Verteidiger**:
-    
     - Manche Firmen haben eine adaptive AI → je öfter du sie angreifst, desto besser kontert sie.
 
 

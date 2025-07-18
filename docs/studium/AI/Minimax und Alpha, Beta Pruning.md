@@ -6,9 +6,9 @@ aliases:
 tags:
   - Course/
 ---
-# 🎮 **Adversariale Suche & Minimax**
+#  **Adversariale Suche & Minimax**
 
-## 📚 **1️⃣ Spielbaum & Rollen**
+## 🎮 **1️⃣ Spielbaum & Rollen**
 
 1. **Spielbaum**  
     – Jeder Knoten = eine Spielsituation.  
