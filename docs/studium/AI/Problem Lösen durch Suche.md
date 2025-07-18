@@ -3,10 +3,11 @@ created:
   - "{{date: DD-MM-YYYY}} {{time}}"
 aliases:
   - "Course Code:"
+  - AI
 tags:
   - Course/
 ---
-## 🧠 **"Problemlösen durch Suchen" – Was steckt wirklich dahinter?**
+## 🧠 **"Problemlösen durch Suchen" - Was steckt wirklich dahinter?**
 
 ### 1. 🔍 **Was ist ein Suchproblem überhaupt?**
 
@@ -29,7 +30,7 @@ Um das als **Suchproblem** zu lösen, braucht man:
 
 ### 2. 🌳 **Wie wird das Problem gelöst?**
 
-Durch **Suche im Zustandsraum** – du startest beim Ausgangspunkt und probierst Aktionen aus, um ans Ziel zu kommen.
+Durch **Suche im Zustandsraum** - du startest beim Ausgangspunkt und probierst Aktionen aus, um ans Ziel zu kommen.
 
 Man unterscheidet zwei Arten von Suchen:
 
@@ -43,24 +44,24 @@ Beispiele:
 | Verfahren                      | Beschreibung                                                    |
 | ------------------------------ | --------------------------------------------------------------- |
 | **Breitensuche**               | Geht systematisch Ebene für Ebene durch (wie Schlange stehen).  |
-| **Tiefensuche**                | Geht so tief wie möglich – oft schnell, aber verirrt sich gern. |
+| **Tiefensuche**                | Geht so tief wie möglich - oft schnell, aber verirrt sich gern. |
 | **Tiefenbeschränkte Suche**    | Wie Tiefensuche, aber mit Sicherheitsgrenze.                    |
 | **Iterativ vertiefende Suche** | Kombi aus beiden: startet flach und geht schrittweise tiefer.   |
 | **Uniforme Kostensuche**       | Wählt immer den günstigsten Weg (z. B. wenig Benzinverbrauch).  |
 
 🧮 **Bewertungskriterien** für Suchalgorithmen:
 
-- **Vollständig** – Findet der Algo eine Lösung, wenn es eine gibt?
-- **Optimal** – Ist es die beste Lösung (z. B. der kürzeste Weg)?
-- **Zeitkomplexität** – Wie lange dauert das Ganze?
-- **Speicherbedarf** – Wie viel RAM/Platz wird gebraucht?
+- **Vollständig** - Findet der Algo eine Lösung, wenn es eine gibt?
+- **Optimal** - Ist es die beste Lösung (z. B. der kürzeste Weg)?
+- **Zeitkomplexität** - Wie lange dauert das Ganze?
+- **Speicherbedarf** - Wie viel RAM/Platz wird gebraucht?
     
 
 ---
 
 ### 🟢 **Informierte Suche (mit Köpfchen!)**
 
-Hier hat der Algorithmus eine **Heuristik** – eine Art „Riecher“ für gute Entscheidungen.
+Hier hat der Algorithmus eine **Heuristik** - eine Art „Riecher“ für gute Entscheidungen.
 ##### ✅ **Was ist eine Heuristik (einfach erklärt)?**
 > Eine **Heuristik** ist eine **Hilfsmethode**,  
 > die dir hilft, **schnell eine gute Entscheidung zu treffen**,  
@@ -90,14 +91,14 @@ Beispiele:
 
 ### 🧩 **Fazit:**
 
-„Problemlösen durch Suchen“ ist im Grunde ein cleveres Durchprobieren von Möglichkeiten – mit oder ohne Plan.
+„Problemlösen durch Suchen“ ist im Grunde ein cleveres Durchprobieren von Möglichkeiten - mit oder ohne Plan.
 
-> Eine **uninformierte Suche** ist ein „dummer“ Algorithmus –  
+> Eine **uninformierte Suche** ist ein „dummer“ Algorithmus -  
 > er **hat keine Ahnung**, wo das Ziel ist,  
 > sondern folgt nur **stur seiner Suchstruktur** (z. B. Breitensuche, Tiefensuche).
 
 > Ein Algorithmus, der **Heuristiken nutzen kann**,  
-> ist **informiert** – er kann mit **Hilfsmethoden und Zusatzinfos** gefüttert werden,  
+> ist **informiert** - er kann mit **Hilfsmethoden und Zusatzinfos** gefüttert werden,  
 > um **klüger, gezielter und oft schneller** zum Ziel zu kommen.
 
 |Ohne Plan 🕵️‍♂️|Mit Plan 🧠|
@@ -111,10 +112,10 @@ Beispiele:
 |---|---|---|---|---|---|---|
 |**BFS**|❌ Nein|Hoch|✅ Ja|✅ Ja|Langsam|Optimal bei gleicher Kosten pro Schritt|
 |**DFS**|❌ Nein|Niedrig|❌ Nein|❌ Nein|Schnell (aber oft falsch)|Kann sich in Sackgassen verlaufen|
-|**IDS**|❌ Nein|Niedrig|✅ Ja|✅ Ja|Langsam|Kombination aus DFS & BFS – platzsparend|
+|**IDS**|❌ Nein|Niedrig|✅ Ja|✅ Ja|Langsam|Kombination aus DFS & BFS - platzsparend|
 |**Uniform Cost Search**|❌ Nein|Hoch|✅ Ja|✅ Ja|Mittel|Wie A* ohne Heuristik|
 |**A***|✅ Ja|Hoch|✅ Ja|✅ Ja|Schnell (mit guter Heuristik)|Goldstandard für viele KI-Probleme|
-|**Greedy Best-First**|✅ Ja|Mittel|❌ Nein|❌ Nein|Sehr schnell|Oft nicht optimal – gierig eben 😅|
+|**Greedy Best-First**|✅ Ja|Mittel|❌ Nein|❌ Nein|Sehr schnell|Oft nicht optimal - gierig eben 😅|
 |**IDA***|✅ Ja|Niedrig|✅ Ja|✅ Ja|Etwas langsamer als A*|A* für wenig Speicher (z. B. eingebettete Systeme)|
 |**Weighted A***|✅ Ja|Hoch|❌ Nicht garantiert|✅ Ja|Sehr schnell|Opfer zugunsten der Geschwindigkeit|
 

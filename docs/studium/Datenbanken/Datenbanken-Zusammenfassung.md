@@ -64,10 +64,10 @@ CREATE TABLE Anmeldung (
 | „… **eine Rechnung** mit Rechnungsnummer, Datum, Betrag“                    | eine Buchung → eine Rechnung                                        | **1:1** (Buchung → Rechnung)               |
 | „… in Rechnungen können **ein oder mehrere Anzahlungen** vereinbart werden“ | eine Rechnung → mehrere Anzahlungen                                 | **1:n**                                    |
 | „… **Kunden bewerten** eine Ferienwohnung“                                  | Kunde ↔ Wohnung durch Bewertung                                     | **n:m**, aber **nur nach Buchung erlaubt** |
-| „… Mitarbeiter … sollen Daten pflegen können“                               | Zugriff auf alles – eher **keine Beziehung**, eher **Rollenmodell** |                                            |
+| „… Mitarbeiter … sollen Daten pflegen können“                               | Zugriff auf alles - eher **keine Beziehung**, eher **Rollenmodell** |                                            |
 
 
-### **ER-Modell → Relationenmodell – Übersichtstabelle**
+### **ER-Modell → Relationenmodell - Übersichtstabelle**
 
 | **ER-Modell-Element**          | **Wird im Relationenmodell zu …**                                         | **Beispiel**                                                      |
 | ------------------------------ | ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
@@ -118,7 +118,7 @@ FROM tabelle
 | `MIN(spalte)`            | Kleinster Wert                                     | `MIN(PreisProTag)`                         |
 | `MAX(spalte)`            | Größter Wert                                       | `MAX(Sterne)`                              |
 | `DESC` / `ASC`           | Absteigend / aufsteigend sortieren                 | `ORDER BY COUNT(*) DESC`                   |
-| `DISTINCT`               | Entfernt Duplikate – oft in `COUNT(DISTINCT ...)`  | `COUNT(DISTINCT marke)`                    |
+| `DISTINCT`               | Entfernt Duplikate - oft in `COUNT(DISTINCT ...)`  | `COUNT(DISTINCT marke)`                    |
 | `LIMIT n`                | Beschränkt auf n Zeilen (nicht in allen Dialekten) | `LIMIT 1` (nur Top 1)                      |
 
 ---
@@ -145,7 +145,7 @@ JOIN Adresse a ON f.ADRESSE_ID = a.ID;
 ```
 
 ---
-### 4. GROUP BY + HAVING – Gruppieren & Filtern
+### 4. GROUP BY + HAVING - Gruppieren & Filtern
 
 ```
 -- Durchschnitt pro Wohnung (nur bei Bewertungen > 4)
@@ -195,7 +195,7 @@ WHERE NOT EXISTS (
 |**INNER JOIN**|Nur übereinstimmende Zeilen in beiden Tabellen| Match vorhanden in beiden Tabellen                  |
 |**LEFT OUTER JOIN**|Alle Zeilen aus der **linken Tabelle**, plus passende aus rechts| Immer alles von links, ggf. NULLs von rechts        |
 |**RIGHT OUTER JOIN**|Alle Zeilen aus der **rechten Tabelle**, plus passende aus links| Immer alles von rechts, ggf. NULLs von links        |
-|**FULL OUTER JOIN**|Alle Zeilen aus beiden Tabellen – auch wenn keine Übereinstimmung| Zeigt alle, fehlende Daten als NULL (nicht in MySQL 
+|**FULL OUTER JOIN**|Alle Zeilen aus beiden Tabellen - auch wenn keine Übereinstimmung| Zeigt alle, fehlende Daten als NULL (nicht in MySQL 
 
 |a|b|c|d|
 |---|---|---|---|
@@ -222,7 +222,7 @@ WHERE NOT EXISTS (
 |NULL|NULL|9|16|
 
 ---
-### **Normalformen im Überblick – mit Beispielen**
+### **Normalformen im Überblick - mit Beispielen**
 
 | **NF**   | **Bedingung**                                                                    | **Verletzung**                      | **Beispielrelation (Fehler)**                                                                | **Ziel / Lösung**                                                    |     |
 | -------- | -------------------------------------------------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --- |

@@ -76,7 +76,7 @@ IT-Grundschutz Baustein:
 | Privilege                       | Bedeutung (vereinfacht)                                | Wer sollte das haben?     |
 | ------------------------------- | ------------------------------------------------------ | ------------------------- |
 | `SeShutdownPrivilege`           | System herunterfahren                                  | Benutzer, Admins          |
-| `SeBackupPrivilege`             | Alles sichern – auch ohne normale Leserechte           | Backup-Programme, Admins  |
+| `SeBackupPrivilege`             | Alles sichern - auch ohne normale Leserechte           | Backup-Programme, Admins  |
 | `SeRestorePrivilege`            | Dateien überall zurückspielen                          | Admins, Wiederherstellung |
 | `SeDebugPrivilege`              | In fremde Programme reinschauen oder verändern         | Entwickler, Debug-Tools   |
 | `SeTakeOwnershipPrivilege`      | Eigentümer von Objekten ändern                         | Admins                    |
@@ -138,9 +138,9 @@ Szenario wenn trotzdem versucht wird nicht gelistete Programme auszuführen
 |✅ **Hash-Prüfsummen**|Vergleich von Dateien mit offiziellen Hashes (SHA256 etc.)|
 |✅ **2FA für Entwickler**|Schutz von Entwicklerkonten und Repositories|
 |✅ **Code Signing Policies**|Nur signierte Software darf ausgeführt werden (z. B. mit WDAC oder AppLocker)|
-|✅ **SBOM (Software Bill of Materials)**|Dokumentation aller Abhängigkeiten in der Software – wer nutzt was?|
+|✅ **SBOM (Software Bill of Materials)**|Dokumentation aller Abhängigkeiten in der Software - wer nutzt was?|
 |✅ **Monitoring & Logging**|Frühzeitiges Erkennen verdächtigen Verhaltens|
-|✅ **Zero Trust**|„Vertraue niemandem automatisch“ – auch nicht internen Komponenten|
+|✅ **Zero Trust**|„Vertraue niemandem automatisch“ - auch nicht internen Komponenten|
 
 ---
 
@@ -238,7 +238,7 @@ Risiko = Wahrscheinlichkeit × Auswirkung
 ✅ Beispiel:
 
 > „Wenn jemand direkt API-Calls schicken kann, ohne Authentifizierung, ist das ein Risiko → Authentifizierungsprüfung einbauen.“
-#### 🧰 STRIDE-Modell – einfacher erklärt
+#### 🧰 STRIDE-Modell - einfacher erklärt
 
 Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder Buchstabe steht für eine Art von Angriff:
 
@@ -303,7 +303,7 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
 
 > Die **Common Criteria (ISO/IEC 15408)** sind ein **international standardisiertes Bewertungsschema** zur Beurteilung der **Sicherheitseigenschaften von IT-Produkten**.
 
-- **Bewertungsschema für IT-Produkte (z. B. EAL1–EAL7).**
+- **Bewertungsschema für IT-Produkte (z. B. EAL1-EAL7).**
     - **EAL4**: "Methodisch getestet und überprüft".
 - **AVA_VAN Analyse:** Schwachstellenanalyse.
 - **CEM-Dimensionen für Angreifer:** Wissen, Zeit, Zugang, Know-how, Motivation
@@ -311,7 +311,7 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
 
 Ein Hersteller kann sagen:
 > „Mein Produkt erfüllt diese Sicherheitsanforderungen und wurde unabhängig geprüft.“
-### 📏 EAL – Evaluation Assurance Level
+### 📏 EAL - Evaluation Assurance Level
 
 |EAL-Stufe|Bedeutung|
 |---|---|
@@ -325,7 +325,7 @@ Ein Hersteller kann sagen:
 
 📌 **EAL4** ist in der Praxis häufig der **höchste realistisch sinnvolle Level**  
 → z. B. für Firewalls, Security Tokens, kritische Software
-### 🔎 AVA_VAN – Schwachstellenanalyse
+### 🔎 AVA_VAN - Schwachstellenanalyse
 
 Im Rahmen von CC werden Angriffe simuliert (Vulnerability Analysis):
 
@@ -353,7 +353,7 @@ Je **höher die Stufe**, desto **fortgeschrittener muss ein Produkt abgesichert 
 |Begriff|Erklärung|
 |---|---|
 |**CC**|Standard zur Sicherheitsbewertung von IT-Produkten|
-|**EAL1–7**|Bewertungsstufen – je höher, desto aufwendiger|
+|**EAL1-7**|Bewertungsstufen - je höher, desto aufwendiger|
 |**AVA_VAN**|Teststufen für Schwachstellenanalyse|
 |**CEM-Dimensionen**|Wie stark/mächtig ist der Angreifer|
 
@@ -440,7 +440,7 @@ Nur der Besitzer des **privaten Schlüssels** kann die Nachricht entschlüsseln 
 
 ## 🧨 One-Time-Pad (OTP)
 
-Das **One-Time Pad** ist die **einzige Verschlüsselungsmethode, die mathematisch 100 % sicher ist** – aber **praktisch kaum nutzbar**.
+Das **One-Time Pad** ist die **einzige Verschlüsselungsmethode, die mathematisch 100 % sicher ist** - aber **praktisch kaum nutzbar**.
 ### 🧠 Wie funktioniert’s?
 
 1. Du hast einen Schlüssel (Pad), der:
@@ -467,17 +467,17 @@ Zum Entschlüsseln machst du wieder:
 
 |Problem|Warum es unpraktisch ist|
 |---|---|
-|**Schlüsselverteilung**|Schlüssel muss geheim und **sicher übermittelt werden** – genauso lang wie die Nachricht|
+|**Schlüsselverteilung**|Schlüssel muss geheim und **sicher übermittelt werden** - genauso lang wie die Nachricht|
 |**Kein Wiederverwenden erlaubt**|Sonst angreifbar (bekannt als „Two-Time Pad“-Angriff)|
 |**Kein Key Management möglich**|Z. B. für Millionen Nutzer nicht praktikabel|
 
-➡️ Wird **nur in der Spionage oder bei diplomatischen Missionen** verwendet – mit **physisch übergebenen Schlüsselbüchern**
+➡️ Wird **nur in der Spionage oder bei diplomatischen Missionen** verwendet - mit **physisch übergebenen Schlüsselbüchern**
 
 ---
 
 ### 🔐 Beispiel: Nonce
 
-> „Number used once“ – eine einmalig verwendete Zufallszahl in einem Protokoll
+> „Number used once“ - eine einmalig verwendete Zufallszahl in einem Protokoll
 
 ➡️ Wird z. B. beim Login oder in Netzwerkprotokollen genutzt, um sicherzustellen:
 - **Anfragen sind frisch**

@@ -1,4 +1,4 @@
-### 📘 **Strukturiertes Lernskript: Teil 1 – Symbolische KI**
+### 📘 **Strukturiertes Lernskript: Teil 1 - Symbolische KI**
 
 (→ aus Klausur SS2021)
 
@@ -22,7 +22,7 @@
 #### 🧠 **2. Aussagenlogik & Resolution**
 
 ## **Was ist der Resolutionskalkül?**
-> Der **Resolutionskalkül** ist ein Verfahren, mit dem man **automatisch prüfen kann**, ob eine Aussage **logisch aus anderen Aussagen folgt** – also ob ein Argument **gültig** ist.
+> Der **Resolutionskalkül** ist ein Verfahren, mit dem man **automatisch prüfen kann**, ob eine Aussage **logisch aus anderen Aussagen folgt** - also ob ein Argument **gültig** ist.
 
 Beispiel:
 
@@ -50,16 +50,16 @@ Beispiel: Länder einfärben (keine Nachbarn in gleicher Farbe)
 
 - **Strategien beim Backtracking**:
     
-    1. **Most Constrained Variable First** – wähle Land mit wenigsten möglichen Farben
-    2. **Most Constraining Variable First** – falls Gleichstand: Land mit meisten Nachbarn zuerst
-    3. **Least Constraining Value First** – Farbe, die wenig stört
-    4. **Forward Checking** – verbietet ungültige Farben für Nachbarn **nach** Farbwahl
+    1. **Most Constrained Variable First** - wähle Land mit wenigsten möglichen Farben
+    2. **Most Constraining Variable First** - falls Gleichstand: Land mit meisten Nachbarn zuerst
+    3. **Least Constraining Value First** - Farbe, die wenig stört
+    4. **Forward Checking** - verbietet ungültige Farben für Nachbarn **nach** Farbwahl
         
 
 ➡ **AC-3 Algorithmus**: prüft Paare (z. B. Land 1 & 2) und schränkt mögliche Farben ein, bis **Konsistenz** erreicht
 
 ---
-### 🤖 **Teil 2 – Maschinelles Lernen & Neuronale Netze**
+### 🤖 **Teil 2 - Maschinelles Lernen & Neuronale Netze**
 
 (→ Nachprüfung 2021)
 
@@ -103,7 +103,7 @@ Für **alle Modelle**, von linear bis CNN:
 
 | Modell                 | Loss-Funktion       | Aktivierung   | Optimierungsmethode              |
 | ---------------------- | ------------------- | ------------- | -------------------------------- |
-| Lineare Regression     | MSE                 | –             | Gradient Descent                 |
+| Lineare Regression     | MSE                 | -             | Gradient Descent                 |
 | Logistische Regression | Cross Entropy       | Sigmoid       | Gradient Descent + Backprop      |
 | MLP / FCNN / CNN       | z. B. Cross Entropy | ReLU, Softmax | Backprop durch mehrere Schichten |
 
@@ -148,7 +148,7 @@ Braucht Aktivierungsfunktion weil es dadurch zugänglich für Entscheidungen mac
 | Funktion       | Formel                                          | Eigenschaften                                      | Typischer Einsatz                                           | Wofür                                    |
 | -------------- | ----------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------- |
 | **Sigmoid**    | $\sigma(x) = \frac{1}{1+e^{-x}}$                | glättet auf [0,1], gut für Wahrscheinlichkeiten    | Klassifikation (z. B. logistische Regression, Output Layer) | Macht Werte zu **Wahrscheinlichkeiten**  |
-| **Tanh**       | $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}​$ | Werte zwischen [–1, 1], aber ähnlich wie Sigmoid   | Hidden Layers (früher Standard)                             | **Zentriert**, hilft bei Gradienten      |
+| **Tanh**       | $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}​$ | Werte zwischen [-1, 1], aber ähnlich wie Sigmoid   | Hidden Layers (früher Standard)                             | **Zentriert**, hilft bei Gradienten      |
 | **ReLU**       | $\text{ReLU}(x) = \max(0, x)$                   | lässt nur positive Werte durch, **sehr effizient** | Hidden Layers (heute Standard)                              | **Effizient**, verhindert viele Probleme |
 | **Leaky ReLU** | $x.wenn.x>0, sonst 0.01x$                       | wie ReLU, aber kleine Negative erlaubt             | Hidden Layers (Alternative zu ReLU)                         | Verhindert, dass Neuronen „sterben“      |
 | **Softmax**    | $\frac{e^{x_i}}{\sum e^{x_j}}$​​                | macht Wahrscheinlichkeitsverteilung aus Vektor     | Multiklass-Klassifikation (Output Layer)                    | Gibt **Wahrscheinlichkeitsverteilung**   |
@@ -238,7 +238,7 @@ $\text{Loss} = -\log(0.18) \approx 1.714$
 
 - Nutzt **Filter**, die über das Bild „wandern“ (Faltung)
 - Erkennen **Kanten, Texturen, Formen**
-- **Weniger Parameter** – z. B. 10 Filter à 3×3 = 90 Gewichte
+- **Weniger Parameter** - z. B. 10 Filter à 3×3 = 90 Gewichte
 
 📌 Vorteil:
 
@@ -295,7 +295,7 @@ Der 3×3-Ausschnitt aus dem Bild:
 
 Multipliziert mit dem Filter (elementweise):
 
-`1*–1 + 2*–1 + 3*–1 + 4*0 + 5*0 + 6*0 + 7*1 + 8*1 + 9*1 = –1 –2 –3 + 0 + 0 + 0 + 7 + 8 + 9 = **18**`
+`1*-1 + 2*-1 + 3*-1 + 4*0 + 5*0 + 6*0 + 7*1 + 8*1 + 9*1 = -1 -2 -3 + 0 + 0 + 0 + 7 + 8 + 9 = **18**`
 
 → Das ist der **erste Pixel** im Output-Bild
 

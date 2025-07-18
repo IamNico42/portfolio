@@ -8,13 +8,13 @@ Ich bin Nico, Informatikstudent - auf dieser Seite dokumentiere ich systematisch
 - 💡 **Technologieübersicht** mit Tools, Frameworks und Programmiersprachen
 ## 💬 Und wer bin ich fachlich?
 
-Ich habe mit verschiedenen Sprachen gearbeitet – manche häufiger, manche eher punktuell. Insgesamt habe ich ein gutes Gefühl für Syntax, Struktur und Konzepte – die meisten Grundlagen sind übertragbar, und mit etwas Einarbeitung bin ich in neuen Technologien schnell produktiv.
+Ich habe mit verschiedenen Sprachen gearbeitet - manche häufiger, manche eher punktuell. Insgesamt habe ich ein gutes Gefühl für Syntax, Struktur und Konzepte - die meisten Grundlagen sind übertragbar, und mit etwas Einarbeitung bin ich in neuen Technologien schnell produktiv.
 
 | Sprache        | Erfahrung | Einschätzung                    |
 | -------------- | --------- | ------------------------------- |
-| **SQL**        | 🟢🟢🟢🟢⚪ | Sehr sicher – häufig verwendet  |
-| **CSS**        | 🟢🟢🟢⚪⚪  | Basis bis solide – für Styling  |
-| **HTML**       | 🟢🟢🟢⚪⚪  | Gut – Webstrukturierung & Docs  |
+| **SQL**        | 🟢🟢🟢🟢⚪ | Sehr sicher - häufig verwendet  |
+| **CSS**        | 🟢🟢🟢⚪⚪  | Basis bis solide - für Styling  |
+| **HTML**       | 🟢🟢🟢⚪⚪  | Gut - Webstrukturierung & Docs  |
 | **Python**     | 🟢🟢🟢⚪⚪  | Solides Verständnis             |
 | **Java**       | 🟢🟢🟢⚪⚪  | Solides Verständnis             |
 | **C**          | 🟢🟢🟢⚪⚪  | Solides Verständnis             |
@@ -25,7 +25,7 @@ Ich habe mit verschiedenen Sprachen gearbeitet – manche häufiger, manche eher
 🟢 = Erfahrung / Verständnis  
 ⚪ = ausbaufähig
 
-Auch wenn jede Sprache ihre Eigenheiten hat, liegt meine Stärke besonders im **grundsätzlichen Verständnis von Programmierkonzepten**, Logik und Softwarestruktur. Die Syntax ist oft nur noch Formsache – mit etwas Übung finde ich mich in neuen Technologien und Sprachen schnell zurecht, vor allem wenn das Ziel oder Anwendungsgebiet klar ist.
+Auch wenn jede Sprache ihre Eigenheiten hat, liegt meine Stärke besonders im **grundsätzlichen Verständnis von Programmierkonzepten**, Logik und Softwarestruktur. Die Syntax ist oft nur noch Formsache - mit etwas Übung finde ich mich in neuen Technologien und Sprachen schnell zurecht, vor allem wenn das Ziel oder Anwendungsgebiet klar ist.
 
 ---
 

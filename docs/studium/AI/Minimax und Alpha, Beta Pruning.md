@@ -3,6 +3,7 @@ created:
   - "{{date: DD-MM-YYYY}} {{time}}"
 aliases:
   - "Course Code:"
+  - AI
 tags:
   - Course/
 ---
@@ -11,12 +12,12 @@ tags:
 ## 🎮 **1️⃣ Spielbaum & Rollen**
 
 1. **Spielbaum**  
-    – Jeder Knoten = eine Spielsituation.  
-    – Kanten = mögliche Züge.
+    - Jeder Knoten = eine Spielsituation.  
+    - Kanten = mögliche Züge.
     
 2. **Max‑ vs. Min‑Knoten**  
-    – **Max** (unsere KI) will die Bewertung **maximieren**.  
-    – **Min** (Gegner) will sie **minimieren**.
+    - **Max** (unsere KI) will die Bewertung **maximieren**.  
+    - **Min** (Gegner) will sie **minimieren**.
     
 3. **Blatt‑Bewertung**  
     **Tiefe erreicht** oder **Spielende** → Heuristik liefert einen Zahlenwert $E(s)$
@@ -27,11 +28,11 @@ tags:
 ## 🤖 **2️⃣ Minimax‑Verfahren**
 
 1. **Rekursion**  
-    – Wechsle abwechselnd zwischen Max und Min, bis Tiefe 0 oder terminal.
+    - Wechsle abwechselnd zwischen Max und Min, bis Tiefe 0 oder terminal.
     
 2. **Entscheidung**  
-    – **Max** nimmt `max(…)` über alle Kinder‑Werte.  
-    – **Min** nimmt `min(…)`.
+    - **Max** nimmt `max(…)` über alle Kinder‑Werte.  
+    - **Min** nimmt `min(…)`.
     
 3. **Komplexität**  
 - **Zeit:** $O(b^d)$ mit Verzweigungsfaktor $b$ und Tiefe $d$
@@ -69,10 +70,10 @@ tags:
 ## ✂️ **3️⃣ Alpha‑Beta‑Pruning**
 
 1. **α (Alpha)**  
-    – Beste bisher bekannte Bewertung für **Max**.
+    - Beste bisher bekannte Bewertung für **Max**.
     
 2. **β (Beta)**  
-    – Beste bisher bekannte Bewertung für **Min**.
+    - Beste bisher bekannte Bewertung für **Min**.
     
 3. **Pruning‑Kriterium**  
     Sobald $\beta \le \alpha$ gilt, kann der Rest des Teilbaums **abgebrochen** werden.

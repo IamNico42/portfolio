@@ -12,9 +12,9 @@ In der MNIST-Aufgabe:
     
 
 Wir unterteilen die Daten in:
-- **Trainingsdaten** – zum Lernen
-- **Validierungsdaten** – zur Kontrolle während des Trainings (tun wir "zu viel"?)
-- **Testdaten** – zur abschließenden Bewertung (wie gut ist das Modell bei neuen, unbekannten Bildern?)
+- **Trainingsdaten** - zum Lernen
+- **Validierungsdaten** - zur Kontrolle während des Trainings (tun wir "zu viel"?)
+- **Testdaten** - zur abschließenden Bewertung (wie gut ist das Modell bei neuen, unbekannten Bildern?)
     
 
 **Wichtige Begriffe:**
@@ -26,12 +26,12 @@ Wir unterteilen die Daten in:
 ## 1. 📦 **Was ist das MNIST-Datenset?**
 
 - Datensatz mit **60.000 Trainingsbildern** und **10.000 Testbildern**
-- Bilder: **28x28 Pixel**, Graustufen (Werte 0–255)
+- Bilder: **28x28 Pixel**, Graustufen (Werte 0-255)
 - Ziel: Ziffern **0 bis 9** automatisch erkennen
 - Bilder werden auf **Werte zwischen 0 und 1 normalisiert** (`/255.0`)
 - Labels werden in **One-Hot-Encoding** umgewandelt → z. B. 3 → `[0, 0, 0, 1, 0, ..., 0]`
 
-## 2. 🔢 **fcNN – Fully Connected Neural Network (Multilayer Perceptron)**
+## 2. 🔢 **fcNN - Fully Connected Neural Network (Multilayer Perceptron)**
 
 ### 📌 Aufbau:
 
@@ -47,7 +47,7 @@ Wir unterteilen die Daten in:
 - Erreicht ca. **97 % Genauigkeit** auf MNIST
 
 
-## 3. 🧠 **CNN – Convolutional Neural Network**
+## 3. 🧠 **CNN - Convolutional Neural Network**
 
 ### 📌 Aufbau:
 

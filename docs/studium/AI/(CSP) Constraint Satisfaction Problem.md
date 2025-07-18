@@ -3,6 +3,7 @@ created:
   - "{{date: DD-MM-YYYY}} {{time}}"
 aliases:
   - "Course Code:"
+  - AI
 tags:
   - Course/
 ---
@@ -13,7 +14,7 @@ Bei einem **Constraint Satisfaction Problem (CSP)** geht es **nur um eines**:
 
 > ✅ **Finde eine Zuweisung von Werten zu allen Variablen**, sodass **alle Constraints (Rahmenbedingungen)** erfüllt sind.
 
-Es gibt **keinen Gegner**, **keine Bewertung**, **kein Gewinnen oder Verlieren** – nur:
+Es gibt **keinen Gegner**, **keine Bewertung**, **kein Gewinnen oder Verlieren** - nur:
 
 - **Gültig oder nicht gültig**
 - **Lösbar oder unlösbar**
@@ -22,15 +23,15 @@ Es gibt **keinen Gegner**, **keine Bewertung**, **kein Gewinnen oder Verlieren**
 Ein **CSP** ist eine **Formalisierung eines Problems**, das durch drei Dinge beschrieben wird:
 
 1. **Variablen**  
-    – Was wir bestimmen wollen.  
+    - Was wir bestimmen wollen.  
     → z. B. welches Land welche Farbe bekommt.
     
 2. **Wertebereiche (Domains)**  
-    – Welche Werte jede Variable annehmen darf.  
+    - Welche Werte jede Variable annehmen darf.  
     → z. B. {Rot, Grün, Blau} für Farben.
     
 3. **Constraints (Bedingungen)**  
-    – Welche Kombinationen **erlaubt** oder **verboten** sind.  
+    - Welche Kombinationen **erlaubt** oder **verboten** sind.  
     → z. B. benachbarte Länder dürfen **nicht** dieselbe Farbe haben.
     
 
@@ -43,7 +44,7 @@ Ein **CSP ist gelöst**, wenn:
 👉 Also: **Ein CSP ist eine Klasse von Problemen**, und **die vorgestellten Algorithmen** wie Backtracking, AC-3 oder Min-Conflicts sind **Strategien zur Lösung** dieser Art von Problemen.
 
 
-## 📚 **Beispiele – im Detail erklärt**
+## 📚 **Beispiele - im Detail erklärt**
 
 ### 1. **Landkartenfärbung:**
 - Variablen: WA, NT, SA, ...
@@ -56,7 +57,7 @@ Ein **CSP ist gelöst**, wenn:
     
 ### 3. **Sudoku:**
 - Variablen: Zellen des Rasters
-- Werte: 1–9
+- Werte: 1-9
 - Constraints: Jede Zahl darf nur **einmal pro Zeile, Spalte und Block** vorkommen
     
 ### 4. **Krypto-Rätsel (z. B. SEND + MORE = MONEY):**
@@ -65,7 +66,7 @@ Ein **CSP ist gelöst**, wenn:
 - Rechenregeln gelten als Constraints
     
 ### 5. **Stundenplanung (Timetabling):**
-- Lehrer, Räume, Fächer – alles muss zusammenpassen
+- Lehrer, Räume, Fächer - alles muss zusammenpassen
 - Viele Regeln (z. B. keine Doppelbelegung)
 
 
@@ -97,7 +98,7 @@ Backtracking ist eigentlich eine **Tiefensuche** im Suchbaum:
 3. **Least Constraining Value**: Farbe wählen, die den Nachbarn am meisten Optionen lässt
 
 ---
-## 🔐 2. **Forward Checking – Frühzeitige Prüfung**
+## 🔐 2. **Forward Checking - Frühzeitige Prüfung**
 
 ### 🔍 Was passiert hier?
 
@@ -109,7 +110,7 @@ Immer wenn **eine Variable einen Wert bekommt**, prüfe alle **benachbarten Vari
 
 ### 🛑 Wenn bei einer Variable **kein Wert mehr möglich ist**:
 
-→ Sofort zurückspringen (backtrack) – kein Grund weiter zu suchen.
+→ Sofort zurückspringen (backtrack) - kein Grund weiter zu suchen.
 
 ### 📌 Vorteil:
 
@@ -160,14 +161,14 @@ Weil:
 
 | Kriterium                       | **Backtracking**                           | **Forward Checking**                              | **AC-3 (Constraint Propagation)**                             |
 | ------------------------------- | ------------------------------------------ | ------------------------------------------------- | ------------------------------------------------------------- |
-| **Wann prüft?**                 | Nur beim Zuweisen einer Variable           | Nach jeder Zuweisung: prüfe benachbarte Variablen | Schon **vor der Suche** – prüft systematisch alle Constraints |
+| **Wann prüft?**                 | Nur beim Zuweisen einer Variable           | Nach jeder Zuweisung: prüfe benachbarte Variablen | Schon **vor der Suche** - prüft systematisch alle Constraints |
 | **Was prüft?**                  | Nur aktuelle Zuweisung                     | Entfernt unpassende Werte bei direkten Nachbarn   | Entfernt **alle inkonsistenten Werte in allen Domains**       |
 | **Ziel**                        | Lösung durch systematische Suche           | Frühzeitige Erkennung von lokalen Dead-Ends       | Globaler Domain-Check auf Konsistenz (Filterung)              |
 | **Vorteil**                     | Einfach, aber spät dran                    | Schnelleres Zurückspringen bei Problemen          | **Kein Raten nötig**, erkennt Widersprüche **ohne Suche**     |
 | **Nachteil**                    | Erkannt Widersprüche spät                  | Noch keine vollständige Propagation               | Kann teuer sein (bei vielen Variablen/Constraints)            |
 | **Typ**                         | **Suchalgorithmus**                        | **Suche mit lokaler Vorwärtsprüfung**             | **Preprocessing / Filter-Algorithmus** vor der Suche          |
 | Betrachtet Constraints zwischen | **Aktuelle Variable vs. bisherige**        | **Aktuelle Variable vs. direkte Nachbarn**        | **Jedes (X,Y)-Paar im gesamten Graph**                        |
-| Wie weit denkt er voraus?       | Gar nicht voraus – reagiert nur auf Fehler | Prüft Nachbar-Domains auf direkte Widersprüche    | **Filtert Domains global** durch Wiederholungen               |
+| Wie weit denkt er voraus?       | Gar nicht voraus - reagiert nur auf Fehler | Prüft Nachbar-Domains auf direkte Widersprüche    | **Filtert Domains global** durch Wiederholungen               |
 
 
 
@@ -177,7 +178,7 @@ Weil:
 
 ### Was bedeutet **Problemstruktur ausnutzen**?
 > Es heißt: **Bevor** du irgendeinen Algorithmus blind loslaufen lässt (z. B. Backtracking),  
-> schaust du dir **die Form des Problems an** – also seine **Graphstruktur** –  
+> schaust du dir **die Form des Problems an** - also seine **Graphstruktur** -  
 > um zu erkennen, ob du es **einfacher oder effizienter** lösen kannst.
 
 
@@ -202,7 +203,7 @@ Stell dir vor, du willst ein Puzzle lösen:
 
 ---
 
-## 🧠 **Lokale Suche mit Min-Conflicts – Zusammenfassung**
+## 🧠 **Lokale Suche mit Min-Conflicts - Zusammenfassung**
 
 ### 🔎 **Ziel:**
 
@@ -237,7 +238,7 @@ statt den gesamten Suchbaum zu durchsuchen.
 
 - **Sehr effizient** bei großen CSPs (z. B. N-Damen mit Millionen Feldern)
 - **Einfach zu implementieren**
-- **Schnell** – oft in wenigen Schritten zur Lösung
+- **Schnell** - oft in wenigen Schritten zur Lösung
     
 
 ---
@@ -266,7 +267,7 @@ statt den gesamten Suchbaum zu durchsuchen.
 ### 🧠 **Kernaussage:**
 
 > Lokale Suche mit Min-Conflicts ist wie ein „Greedy“-Wanderer:  
-> Er startet irgendwo, schaut nur um sich herum, geht dort hin, wo es **lokal besser** aussieht –  
+> Er startet irgendwo, schaut nur um sich herum, geht dort hin, wo es **lokal besser** aussieht -  
 > aber **ohne Karte**, ohne Rückblick, und nur mit Hoffnung, dass es der richtige Weg ist.
 > Also bei schlechter Bewertung des aktuellen Zustands und der Folgezustände(Heuristik) kann man sich schneller in lokalen Minima hängenbleiben
 

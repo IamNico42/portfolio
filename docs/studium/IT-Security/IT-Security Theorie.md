@@ -3,6 +3,7 @@ created:
   - "{{date: DD-MM-YYYY}} {{time}}"
 aliases:
   - "Course Code:"
+  - IT-Security
 tags:
   - Course/
 ---
@@ -201,7 +202,7 @@ tags:
 ### WDAC (Windows Defender Application Control)
 #### **Grundidee:**
 **Nur genehmigte Software darf laufen**  
-→ Alles andere wird blockiert – **auch Schadsoftware**, unbekannte Programme oder manipulierte Dateien.
+→ Alles andere wird blockiert - **auch Schadsoftware**, unbekannte Programme oder manipulierte Dateien.
 **Anders als Antivirenprogramme**, die böse Software erkennen wollen, **verhindert Whitelisting** von vornherein, dass überhaupt irgendetwas Unerlaubtes startet.
 
 - **Whitelisting**: Standardmäßig alles blockieren, was **nicht explizit erlaubt** ist.
@@ -286,7 +287,7 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 - **CVE** bedeutet _Common Vulnerabilities and Exposures_.
     
 - Es ist eine **public database von MITRE**, in der jede bekannte Schwachstelle eine eindeutige ID erhält (z. B. CVE‑2023‑23923).
-- Mit dieser ID kann man **weltweit konsistent über dieselbe Schwachstelle sprechen** – sei es in Security-Tools, Berichten oder beim Patch-Management.
+- Mit dieser ID kann man **weltweit konsistent über dieselbe Schwachstelle sprechen** - sei es in Security-Tools, Berichten oder beim Patch-Management.
     
 
 ---
@@ -304,19 +305,19 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 
 - Ein **offenes Bewertungssystem (Metamodell)** zur Einschätzung der Schwere von Schwachstellen 
     
-- Es erzeugt eine Punktzahl von **0–10** basierend auf drei Metrik-Gruppen:
+- Es erzeugt eine Punktzahl von **0-10** basierend auf drei Metrik-Gruppen:
     
-    1. **Base Metrics** – konstante Eigenschaften (z. B. Angriffsvektor, Privilegienbedarf, Auswirkungen).
-    2. **Temporal Metrics** – dynamisch (z. B. wenn ein Exploit verfügbar ist).
-    3. **Environmental Metrics** – organisationsspezifisch (z. B. wie weit verbreitet das System ist) 
+    1. **Base Metrics** - konstante Eigenschaften (z. B. Angriffsvektor, Privilegienbedarf, Auswirkungen).
+    2. **Temporal Metrics** - dynamisch (z. B. wenn ein Exploit verfügbar ist).
+    3. **Environmental Metrics** - organisationsspezifisch (z. B. wie weit verbreitet das System ist) 
         
 - **Score-Bereiche**:
     
     - 0.0 = Keine
-    - 0.1–3.9 = Niedrig
-    - 4.0–6.9 = Mittel
-    - 7.0–8.9 = Hoch
-    - 9.0–10.0 = Kritisch 
+    - 0.1-3.9 = Niedrig
+    - 4.0-6.9 = Mittel
+    - 7.0-8.9 = Hoch
+    - 9.0-10.0 = Kritisch 
         
 - Ziel: Ein **standardisiertes Bewertungssystem**, um zu entscheiden, welche Schwachstellen am schnellsten behoben werden sollten .
     
@@ -336,7 +337,7 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 
 - **CVE** = eindeutige, weltweit gültige Identifikation.
 - **NVD** = umfassende Informationsquelle + funktionale Details.
-- **CVSS** = objektive Bewertung der Schwere – Grundlage für Risikoanalyse und Maßnahmenpriorisierung.
+- **CVSS** = objektive Bewertung der Schwere - Grundlage für Risikoanalyse und Maßnahmenpriorisierung.
     
 
 ---

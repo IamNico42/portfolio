@@ -3,6 +3,7 @@ created:
   - "{{date: DD-MM-YYYY}} {{time}}"
 aliases:
   - "Course Code:"
+  - IT-Security
 tags:
   - Course/
 ---

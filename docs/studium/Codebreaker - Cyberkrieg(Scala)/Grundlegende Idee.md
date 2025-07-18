@@ -3,6 +3,7 @@ created:
   - "{{date: DD-MM-YYYY}} {{time}}"
 aliases:
   - "Course Code:"
+  - Software-Engineering
 tags:
   - Course/
 ---
@@ -63,14 +64,14 @@ Jede Angriffsart hat Kosten und Basis-Erfolg, modifiziert durch Level, Server-Ab
 
 |**Angriff**|**Level**|**Kosten**|**Basis-Erfolg**|**Effekt**|**Realbezug**|
 |---|---|---|---|---|---|
-|**Brute-Force**|1|20 CPU|50 %|+10 CPU/Runde (neutral)|"Testet alle Passwörter – ressourcenintensiv."|
-|**Phishing**|2|5 Codezeilen|40 %|+15 RAM (neutral)|"Nutzt menschliche Fehler – billig, unsicher."|
-|**SQL-Injection**|3|10 RAM|60 %|+20 Codezeilen (neutral/gegner)|"Greift Datenbanken an – präzise."|
-|**DDoS**|4|30 CPU|55 %|Gegner verliert 1 Runde|"Überflutet Server – effektiv gegen Schwache."|
-|**Keylogger**|4|15 CPU|50 %|+20 Codezeilen (gegner)|"Zeichnet Eingaben auf – langsam, effektiv."|
-|**Wurm**|5|20 CPU, 10 RAM|65 %|+10 Ressourcen/Runde (3 Runden)|"Selbstreplizierend – nachhaltig."|
-|**Man-in-the-Middle**|5|15 RAM, 10 Codezeilen|60 %|Stiehlt 50 % der nächsten Beute|"Fängt Daten ab – perfekt für Sabotage."|
-|**Zero-Day-Exploit**|6|40 CPU, 20 Codezeilen|75 %|+50 CPU oder RAM (einmalig)|"Nutzt unbekannte Schwachstellen – mächtig."|
+|**Brute-Force**|1|20 CPU|50 %|+10 CPU/Runde (neutral)|"Testet alle Passwörter - ressourcenintensiv."|
+|**Phishing**|2|5 Codezeilen|40 %|+15 RAM (neutral)|"Nutzt menschliche Fehler - billig, unsicher."|
+|**SQL-Injection**|3|10 RAM|60 %|+20 Codezeilen (neutral/gegner)|"Greift Datenbanken an - präzise."|
+|**DDoS**|4|30 CPU|55 %|Gegner verliert 1 Runde|"Überflutet Server - effektiv gegen Schwache."|
+|**Keylogger**|4|15 CPU|50 %|+20 Codezeilen (gegner)|"Zeichnet Eingaben auf - langsam, effektiv."|
+|**Wurm**|5|20 CPU, 10 RAM|65 %|+10 Ressourcen/Runde (3 Runden)|"Selbstreplizierend - nachhaltig."|
+|**Man-in-the-Middle**|5|15 RAM, 10 Codezeilen|60 %|Stiehlt 50 % der nächsten Beute|"Fängt Daten ab - perfekt für Sabotage."|
+|**Zero-Day-Exploit**|6|40 CPU, 20 Codezeilen|75 %|+50 CPU oder RAM (einmalig)|"Nutzt unbekannte Schwachstellen - mächtig."|
 
 - **Modifikatoren**:
     - +5 % Erfolg pro Level.
@@ -91,7 +92,7 @@ Server sind auf einer 20x10-Weltkarte verteilt, mit festen großen KI-Servern un
 |**Cloud-Server**|60 %|+30 RAM, +15 CPU|Hochleistungsserver mit starker Sicherheitssoftware|Silicon Valley (1, 7)|
 |**Bankenserver**|75 %|+40 CPU, +20 Codezeilen|Hochsicherer Finanzserver|Brussels (7, 7)|
 |**Militärserver**|85 %|+50 RAM, +30 CPU|Staatliches System mit maximaler Sicherheit|Pentagon (2, 8)|
-|**GKS (Endziel)**|90 %|Sieg|Ultimativer Supercomputer – finales Ziel|Zentral (10, 5)|
+|**GKS (Endziel)**|90 %|Sieg|Ultimativer Supercomputer - finales Ziel|Zentral (10, 5)|
 |**Operationsbasis**|20 %|+10 CPU, +5 RAM (Start)|Spieler-eigener Startserver, erweiterbar|Zufällig pro Spieler|
 
 - **Änderungen**:
@@ -228,7 +229,7 @@ Die Actions-Klasse kapselt die Spieleraktionen und ist nun vollständig in die a
         
         - Spieler bewegt sich (↑ ↓ ← →) durch ein ASCII-Labyrinth.
             
-        - Kameras bewegen sich zyklisch – man muss im richtigen Moment vorbei.
+        - Kameras bewegen sich zyklisch - man muss im richtigen Moment vorbei.
             
         - Bei Fehler: Rückverfolgung + Alarm + eventuelle Sperre.
             
@@ -244,9 +245,9 @@ Die Actions-Klasse kapselt die Spieleraktionen und ist nun vollständig in die a
         - **Firewall-Spiel**: Blocke eingehende Pakete (z.B. per Tastendruck)  
             → z.B. wie Pong: "Gefährliche Pakete" kommen rein, du bewegst Firewall links/rechts.
             
-        - **Code-Flicken**: Zeige dem Verteidiger eine Zeile mit Bugs (offenes Port, unsicherer Code) – muss in 5 Sekunden behoben werden.
+        - **Code-Flicken**: Zeige dem Verteidiger eine Zeile mit Bugs (offenes Port, unsicherer Code) - muss in 5 Sekunden behoben werden.
             
-        - **Security Patch Memory**: Zeige 4–6 Sicherheitslücken, dann deck sie ab. Danach: „Was war an Position 3?“.
+        - **Security Patch Memory**: Zeige 4-6 Sicherheitslücken, dann deck sie ab. Danach: „Was war an Position 3?“.
             
 
 ---
@@ -258,7 +259,7 @@ Die Actions-Klasse kapselt die Spieleraktionen und ist nun vollständig in die a
 - Alternativ:
     
     - Multiple-Choice-Fragen zum Ziel:  
-        „Welche OS-Version läuft dort?“ – Spieler muss aus Logs erraten. „Wie lange war Server online?“ – Hinweise aus Fake-E-Mails.
+        „Welche OS-Version läuft dort?“ - Spieler muss aus Logs erraten. „Wie lange war Server online?“ - Hinweise aus Fake-E-Mails.
         
 
 ---
@@ -330,7 +331,7 @@ Die Actions-Klasse kapselt die Spieleraktionen und ist nun vollständig in die a
 
 
 
-## 🕸️ **DARKNET-MARKTPLATZ** – Feature-Planung
+## 🕸️ **DARKNET-MARKTPLATZ** - Feature-Planung
 
 ---
 
@@ -355,18 +356,18 @@ Spieler können mit **verdientem Geld** (z. B. aus Server-Einnahmen, Nebenauft
 
 ### 💰 2. **Eigene Server-Nutzung im Darknet**
 
-Geclaimte Server können als _Infrastruktur_ genutzt werden – je nachdem, wie du sie konfigurierst, generieren sie passives Einkommen, aber erhöhen auch das Entdeckungsrisiko!
+Geclaimte Server können als _Infrastruktur_ genutzt werden - je nachdem, wie du sie konfigurierst, generieren sie passives Einkommen, aber erhöhen auch das Entdeckungsrisiko!
 
 #### 🧱 Server-Rollen
 
 |Server-Rolle|Einnahmen (pro Runde)|Risiko aufzudecken (%)|Effekte / Besonderheiten|
 |---|---|---|---|
-|**Bitcoin Miner**|+25–50₿|20–50%|CPU-abhängig. Rechenstarke Server → mehr Coins.|
-|**Darknet-Host**|+15–40₿|10–30%|Traffic erzeugt Aufmerksamkeit. Optional verschleierbar.|
-|**Datenhändler**|+20–45₿|15–45%|Nur möglich bei vorherigem Datenleck|
+|**Bitcoin Miner**|+25-50₿|20-50%|CPU-abhängig. Rechenstarke Server → mehr Coins.|
+|**Darknet-Host**|+15-40₿|10-30%|Traffic erzeugt Aufmerksamkeit. Optional verschleierbar.|
+|**Datenhändler**|+20-45₿|15-45%|Nur möglich bei vorherigem Datenleck|
 |**Command & Control Node**|+30₿ (und Botnet-Funktion)|60%|Aktiviert besondere Angriffe wie Massen-DDoS.|
 
-> 💡 _Du kannst in der Runde entscheiden, welche Rolle ein Server bekommt – oder ihn nur passiv lassen (sicherer, aber kein Gewinn)._
+> 💡 _Du kannst in der Runde entscheiden, welche Rolle ein Server bekommt - oder ihn nur passiv lassen (sicherer, aber kein Gewinn)._
 
 ---
 

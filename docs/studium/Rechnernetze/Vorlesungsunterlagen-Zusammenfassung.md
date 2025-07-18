@@ -3,6 +3,7 @@ created:
   - "{{date: DD-MM-YYYY}} {{time}}"
 aliases:
   - "Course Code:"
+  - Rechnernetze
 tags:
   - Course/
 ---
@@ -45,7 +46,7 @@ Die **Protocol ID** im IP-Header sagt dem Empfänger:
 
 > **Was steckt im IP-Paket drin?**
 
-Denn IP kümmert sich nur um die Zustellung – **was drin ist, ist ihm egal**. Aber für die Software, die das Paket verarbeitet, ist das superwichtig.
+Denn IP kümmert sich nur um die Zustellung - **was drin ist, ist ihm egal**. Aber für die Software, die das Paket verarbeitet, ist das superwichtig.
 
 |Protocol ID|Bedeutung|
 |---|---|
@@ -106,7 +107,7 @@ Dazu kommen noch die **Ports** (stehen im TCP-Header):
 - Das Protokoll bestimmt **den Übertragungsstil** (TCP = sicher, UDP = schnell)
 
 ---
-## 🔄 4. **Was ist TTL – Time to Live?**
+## 🔄 4. **Was ist TTL - Time to Live?**
 
 TTL = Zahl im Header (z. B. 64), die **verhindert, dass Pakete endlos im Netz bleiben**.
 
@@ -138,13 +139,13 @@ Du sendest ein Paket mit TTL = 1 →
 
 ### 🔄 TCP-Verbindungen: Der „Gesprächsablauf“ im Netzwerk
 
-TCP ist **verbindungsorientiert** – das heißt, bevor Daten gesendet werden, wird **eine Verbindung aufgebaut**, **Daten übertragen**, und **sauber beendet**.
+TCP ist **verbindungsorientiert** - das heißt, bevor Daten gesendet werden, wird **eine Verbindung aufgebaut**, **Daten übertragen**, und **sauber beendet**.
 
 | Flag    | Bedeutung                     | Wann?                              |
 | ------- | ----------------------------- | ---------------------------------- |
 | **SYN** | Verbindung aufbauen           | 1. Schritt des Handshakes          |
 | **ACK** | Bestätigung                   | 2. & 3. Schritt, überall           |
-| **PSH** | „Push“ – Daten sofort senden  | Wenn echte Daten übertragen werden |
+| **PSH** | „Push“ - Daten sofort senden  | Wenn echte Daten übertragen werden |
 | **FIN** | Verbindung ordentlich beenden | Zum Gesprächsende                  |
 | **RST** | Verbindung abrupt abbrechen   | z. B. Fehler oder Verweigerung     |
 
@@ -196,9 +197,9 @@ Wenn du einen TCP-Dump liest, kannst du z. B. sehen:
 ### 🧠 Was man wissen sollte:
 
 - **Ohne den Handshake (SYN → SYN-ACK → ACK)** kann keine TCP-Verbindung bestehen.
-- **ACKs** kommen fast in jedem Paket vor – sie sind das Rückgrat der Zuverlässigkeit.
+- **ACKs** kommen fast in jedem Paket vor - sie sind das Rückgrat der Zuverlässigkeit.
 - **PSH** zeigt an: „Das ist ein Datenpaket.“
-- **FIN** ist höflich – **RST** ist hart.
+- **FIN** ist höflich - **RST** ist hart.
 
 
 ![[socket-befehle.png]]
