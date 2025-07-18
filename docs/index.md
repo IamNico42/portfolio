@@ -8,8 +8,6 @@ Ich bin Nico, Informatikstudent - auf dieser Seite dokumentiere ich systematisch
 - 💡 **Technologieübersicht** mit Tools, Frameworks und Programmiersprachen
 ## 💬 Und wer bin ich fachlich?
 
-## 💻 Meine Programmiersprachen & Erfahrung
-
 Ich habe mit verschiedenen Sprachen gearbeitet – manche häufiger, manche eher punktuell. Insgesamt habe ich ein gutes Gefühl für Syntax, Struktur und Konzepte – die meisten Grundlagen sind übertragbar, und mit etwas Einarbeitung bin ich in neuen Technologien schnell produktiv.
 
 | Sprache        | Erfahrung | Einschätzung                    |
