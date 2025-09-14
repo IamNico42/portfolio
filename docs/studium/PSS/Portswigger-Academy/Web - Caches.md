@@ -1,0 +1,90 @@
+
+
+## Allgemein
+
+- Caches sind Zwischenspeicher die zB beim aufrufen von Webseiten entstehen. Diese Speicher sind gute für statische Inhalte wie Bilder o.ä um schnellen zugriff auf Homepages zu gewährleisten und nicht jedes Mal alle neu laden.
+	- Vorteil: Schnelle Performance auf Webseiten nach dem 1. Mal aufrufen
+	- Nachteil: Cache Rules müssen für sensible Inhalte festgelegt werden und außerdem muss eine solide Struktur gewährleistet werden damit nichts abgefangen werden kann.
+- Die Zwischenspeicher hat jeder Server den der Aufruf durchläuft also:
+	  - **Browser-Cache** → nur lokal beim User.
+	  - **Proxy/ISP-Cache** → im Netzwerk oder beim Provider.
+	  - **CDN/Reverse Proxy Cache** (z. B. Cloudflare, Akamai, Fastly) → weltweit verteilte Server, nah beim User.
+
+## 🔑 Was ist ein Cache Key?
+
+- Wenn eine Anfrage beim Cache ankommt, muss der Cache entscheiden:
+    - **Hab ich die Antwort schon gespeichert?**
+    - Oder **muss ich die Anfrage zum Origin-Server weiterleiten?**
+        
+- Dafür bildet der Cache einen eindeutigen „Schlüssel“ (**Cache Key**) aus Teilen der Anfrage.
+    - **Standard**: URL-Pfad (`/account`) + Query-Parameter (`?id=123`).
+    - oder auch bestimmte **Header** (z. B. `Accept-Language`, `Content-Type`), Cookies oder sogar Hostnamen
+
+## Cache Rules
+
+- Cache-Rules steuern **was** und **wie lange** etwas gecacht werden darf.
+- Typisch: Nur statische Inahlte wie (CSS, JS, Bilder) weil diese seltener wechseln
+
+##### Cache Content
+- Content der Cache stored werden darf
+##### Dynamic Content
+- Content der nicht Cache stored werden darf zB: sensible Daten → Kontodaten
+- Bekommt Inhalte direkt vom Server
+##### Arten von Cache-Rules
+- **File-Extension-Regeln**: z. B. `.css`, `.js` → immer cachen.
+- **Directory-Regeln**: bestimmte Pfade wie `/static`, `/assets` → Inhalte darin werden gecacht.
+- **File-Name-Regeln**: einzelne Dateien wie `robots.txt`, `favicon.ico`.
+- Es gibt auch **Custom-Regeln** (z. B. anhand von Parametern oder dynamischer Analyse).
+## Web Cache Deception
+
+##### Angriff
+- Angreifer baut URL: `../account/home.css`
+- Cache: denkt ..`.css` sieht statisch aus -> speicher ich
+- Angreifer geht später auf URL zurück und bekommt die selben angerufenen Daten zurück
+
+##### Gegenmaßnahmen
+- **Cache Deception Armor**: überprüfen, ob _Dateiendung und tatsächlicher Content-Type_ logisch zueinander passen, bevor gecacht wird. 
+- **Strikte Trennung statischer und dynamischer Pfade**: Verzeichnisse, die ausschließlich statische Assets enthalten, und dynamische Endpunkte klar separieren.
+- **Eingegrenzte Cache Keys**: z. B. Query-Parameter, Header oder Cookies aus dem Schlüssel aussparen oder aufnehmen, je nach Relevanz für die Antwort. 
+- Nutzung von geeigneten HTTP-Headern (`Cache-Control`, `Vary`, `Expires`, `ETag`) zur Validierung und Invalidierung von Cache-Einträgen.
+- REST-API -> Keine eigene File sondern eine abstrakte File die Logik aufrut. 
+
+
+### Exploiting path mapping for web cache deception: LAB Part
+
+1. Seite mit sensiblen Daten suchen -> /my-account
+2. Dort sehen wir API-Key den wir von Carlos brauchen
+3. Path-Mapping prüfen und Zusatz-Segmente hinzufügen /my-account/.. ,asd.html, asd.js, asd.css, asd.ico 
+	- Kriterium: Normale Seite kommt zurück bzw Server ignoriert Zusätze in URL
+4. Cache-Verhalten prüfen -> URL 2x aufrufen
+	- `Cache Miss/Hit` 
+		- Zweite Antwort deutlich schneller als Erste
+5. .ico war Treffer und ergab **Cache Hit**
+6.  Baue Expoit 
+	- Body: `<img src="https://0ab100f00494eb0681770cbc006100b9.web-security-academy.net/my-account/foo.ico">`
+		- Ruft Seite auf und direkt ohne Click wird expliot geladen weil es als image verpackt wurde.
+7. Warte bis Carlos auf Link gedrückt hat und lade später den selben Link -> Dann sollte sich der Cache laden den Carlos kreiert hat beim öffnen. 
+
+
+
+
+## 🗂 Zusammenfassung Caching & Web Cache Deception
+
+- **Caches gibt’s an verschiedenen Stellen**:
+    - **Browser-Cache** → nur lokal beim User.
+    - **Proxy/ISP-Cache** → im Netzwerk oder beim Provider.
+    - **CDN/Reverse Proxy Cache** (z. B. Cloudflare, Akamai, Fastly) → weltweit verteilte Server, nah beim User.
+- **Ablauf normal**:
+    - Cache prüft: Hab ich die Ressource schon?
+        - **Cache Hit** → Liefere gespeicherte Antwort.
+        - **Cache Miss** → Hole Antwort vom Origin-Server und speichere sie evtl. ab.
+- **Cache Key** → entscheidet, ob zwei Anfragen „gleich“ sind (z. B. anhand von Pfad, Parametern, manchmal Headern).
+- **Problem (Web Cache Deception)**:
+    - Cache interpretiert URL anders als der Origin.
+    - Ergebnis: Private, dynamische Antwort landet im Cache (z. B. Kontoübersicht unter `/account/home.css`).
+    - Angreifer kann diese gecachte Antwort später abrufen.
+        
+- **Schutzmaßnahmen**:
+    - **Sensible Endpunkte** → `Cache-Control: no-store, private`.
+    - **Nur statische Ressourcen** whitelisten (`/static/*`, `/images/*`).
+    - **CDN/Proxy Regeln** setzen: niemals `/account`, `/profile` etc. cachen.
