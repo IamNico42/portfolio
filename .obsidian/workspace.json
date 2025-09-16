@@ -6,7 +6,6 @@
       {
         "id": "5133aa1dee90435e",
         "type": "tabs",
-        "dimension": 99.99999999999999,
         "children": [
           {
             "id": "ebfd79a596fd503e",
@@ -14,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "portfolio/docs/studium/PSS/Portswigger-Academy/Web - Caches.md",
+                "file": "docs/studium/PSS/Portswigger-Academy/Web - Caches.md",
                 "mode": "source",
                 "source": false
               },

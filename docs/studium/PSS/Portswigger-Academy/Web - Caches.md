@@ -88,3 +88,6 @@
     - **Sensible Endpunkte** → `Cache-Control: no-store, private`.
     - **Nur statische Ressourcen** whitelisten (`/static/*`, `/images/*`).
     - **CDN/Proxy Regeln** setzen: niemals `/account`, `/profile` etc. cachen.
+
+
+sss
