@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/4. Best-Practice - Prevent WND.md",
+                "file": "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/1. Authentication.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Best-Practice - Prevent WND"
+              "title": "1. Authentication"
             }
           }
         ]
@@ -169,11 +169,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "ebfd79a596fd503e",
+  "active": "4c170019476b7308",
   "lastOpenFiles": [
+    "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/3. Secure-Websockets.md",
+    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/1. Authentication.md",
+    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities",
+    "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/2. Manipulating Handshake-Websocket.md",
+    "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/1. Manipulating Websockets.md",
+    "docs/studium/Rechnernetze/Theoretisch/3. TCP - Congestion Control.md",
+    "docs/studium/IT-Security/IT-Security-Aktuelles(2025).md",
+    "docs/studium/IT-Security/IT-Security Zusammenfassung.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/3. Normalization discrepancies.md",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/4. Best-Practice - Prevent WND.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/2. Delimiter discrepancies.md",
+    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/4. Best-Practice - Prevent WND.md",
+    "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/Untitled.md",
+    "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/1. Web - Caches.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception",
     "site/studium/Betriebssysteme/1. Scheduling/Scheduling/index.html",
@@ -183,15 +193,12 @@
     "site/assets/javascripts/lunr/min/lunr.th.min.js",
     "site/assets/javascripts/lunr/min/lunr.te.min.js",
     "site/assets/javascripts/lunr/min/lunr.ta.min.js",
-    "site/assets/javascripts/lunr/min/lunr.sv.min.js",
-    "site/assets/javascripts/lunr/min/lunr.stemmer.support.min.js",
     "site/assets/images/favicon.png",
     "site/images/quicksort.svg",
     "site/images/Lineare_Search.svg.svg",
     "site/images/bubblesort.svg",
     "site/images/binary_search_tree.svg",
     "site/images/binary_search.svg",
-    "docs/studium/Rechnernetze/Theoretisch/3. TCP - Congestion Control.md",
     "docs/studium/Rechnernetze/Theoretisch/2. Page Load Times.md",
     "docs/studium/Rechnernetze/Theoretisch/1. Paketübertragung.md",
     "docs/studium/Rechnernetze/Praktisch/4. Peer To Peer - Projekt.md",
@@ -206,13 +213,6 @@
     "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/0. Einführung Speicherverwaltung.md",
     "docs/studium/Betriebssysteme(unvollständig)/1. Scheduling/6. CPU-Scheduling - Lottery Scheduling.md",
     "docs/studium/Betriebssysteme(unvollständig)/1. Scheduling/5. CPU-Scheduling - Multi-Level Feedback Queue (MLFQ).md",
-    "docs/studium/Betriebssysteme(unvollständig)/1. Scheduling/4. Einführung in die CPU-Scheduling.md",
-    "docs/studium/Betriebssysteme(unvollständig)/0. Einführung/3. Mechanismen Limited Direct Execution.md",
-    "docs/studium/Betriebssysteme(unvollständig)/0. Einführung/2. Einführung in Prozesse.md",
-    "docs/studium/Betriebssysteme(unvollständig)/0. Einführung/1. Ein Dialog über Virtualisierung.md",
-    "docs/studium/Theoretische Informatik/7. Turing Maschine.md",
-    "docs/studium/Theoretische Informatik/6. Chomsky-Normalform.md",
-    "docs/studium/Theoretische Informatik/5. Kellerautomat (PDA) und Kontextfreie Grammatik (CFG).md",
     "docs/images/übertragungsstrecke-RN.png",
     "docs/images/wireshark_up_down_stream.svg",
     "docs/images/Wireshark_bsp_4.svg",
