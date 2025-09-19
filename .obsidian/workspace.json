@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/1. Authentication.md",
+                "file": "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/2. MF-Authentication.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Authentication"
+              "title": "2. MF-Authentication"
             }
           }
         ]
@@ -169,22 +169,27 @@
       "bases:Create new base": false
     }
   },
-  "active": "4c170019476b7308",
+  "active": "ebfd79a596fd503e",
   "lastOpenFiles": [
+    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/1. SF-Authentication.md",
+    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/2. MF-Authentication.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/3. Secure-Websockets.md",
-    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/1. Authentication.md",
-    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/2. Manipulating Handshake-Websocket.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/1. Manipulating Websockets.md",
+    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/4. Best-Practice - Prevent WND.md",
+    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/3. Normalization discrepancies.md",
+    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/2. Delimiter discrepancies.md",
+    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/1. Web - Caches.md",
+    "docs/images/username_enumeration_burp1.png",
+    "docs/images/username_enumeration_burp4.png",
+    "docs/images/username_enumeration_burp3.png",
+    "docs/images/username_enumeration_burp2.png",
+    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities",
     "docs/studium/Rechnernetze/Theoretisch/3. TCP - Congestion Control.md",
     "docs/studium/IT-Security/IT-Security-Aktuelles(2025).md",
     "docs/studium/IT-Security/IT-Security Zusammenfassung.md",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/3. Normalization discrepancies.md",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/2. Delimiter discrepancies.md",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/4. Best-Practice - Prevent WND.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/Untitled.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/1. Web - Caches.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception",
     "site/studium/Betriebssysteme/1. Scheduling/Scheduling/index.html",
     "site/assets/javascripts/lunr/min/lunr.zh.min.js",
@@ -211,11 +216,6 @@
     "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/2. Address Translation (Adressübersetzung & Virtual Memory).md",
     "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/1. Memory API (Speicherverwaltung in C).md",
     "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/0. Einführung Speicherverwaltung.md",
-    "docs/studium/Betriebssysteme(unvollständig)/1. Scheduling/6. CPU-Scheduling - Lottery Scheduling.md",
-    "docs/studium/Betriebssysteme(unvollständig)/1. Scheduling/5. CPU-Scheduling - Multi-Level Feedback Queue (MLFQ).md",
-    "docs/images/übertragungsstrecke-RN.png",
-    "docs/images/wireshark_up_down_stream.svg",
-    "docs/images/Wireshark_bsp_4.svg",
-    "docs/images/Wireshark-upstream-downstream.svg"
+    "docs/studium/Betriebssysteme(unvollständig)/1. Scheduling/6. CPU-Scheduling - Lottery Scheduling.md"
   ]
 }
