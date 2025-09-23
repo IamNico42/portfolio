@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/4. Best-Practice - Prevent Authentication misstakes.md",
+                "file": "docs/studium/PSS/Portswigger-Academy/SSRF/1. SSRF-Basics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Best-Practice - Prevent Authentication misstakes"
+              "title": "1. SSRF-Basics"
             }
           }
         ]
@@ -169,29 +169,31 @@
       "bases:Create new base": false
     }
   },
-  "active": "ebfd79a596fd503e",
+  "active": "4c170019476b7308",
   "lastOpenFiles": [
-    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/3. Other-Authentication.md",
+    "docs/images/abuse_loopback_request_other_back-end_systems1.png",
+    "docs/studium/PSS/Portswigger-Academy/SSRF/1. SSRF-Basics.md",
+    "docs/images/abuse_loopback_request_other_back-end_systems2.png",
+    "docs/images/abuse_loopback_request_other_back-end_systems5.png",
+    "docs/images/abuse_loopback_request_other_back-end_systems4.png",
+    "docs/images/abuse_loopback_request_other_back-end_systems3.png",
+    "docs/images/abuse_loopback_request1.png",
+    "docs/images/abuse_loopback_request3.png",
+    "docs/images/abuse_loopback_request2.png",
+    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/2. Delimiter discrepancies.md",
+    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/3. Normalization discrepancies.md",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/4. Best-Practice - Prevent Authentication misstakes.md",
+    "docs/studium/PSS/Portswigger-Academy/SSRF",
+    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/3. Other-Authentication.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/4. Best-Practice - Prevent WND.md",
     "docs/images/brute-force-via-passwordchange2.png",
     "docs/images/brute-force-via-passwordchange1.png",
-    "docs/images/password-reset-mim2.png",
-    "docs/images/password-reset-mim3.png",
-    "docs/images/password-reset-mim1.png",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/2. MF-Authentication.md",
-    "docs/images/brute-force-stay-logged-in1.png",
-    "docs/images/brute-force-stay-logged-in2.png",
-    "docs/images/brute-force-stay-logged-in3.png",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/1. SF-Authentication.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/3. Secure-Websockets.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/2. Manipulating Handshake-Websocket.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/1. Manipulating Websockets.md",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/3. Normalization discrepancies.md",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/2. Delimiter discrepancies.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/1. Web - Caches.md",
-    "docs/images/username_enumeration_burp1.png",
-    "docs/images/username_enumeration_burp4.png",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities",
     "docs/studium/Rechnernetze/Theoretisch/3. TCP - Congestion Control.md",
     "docs/studium/IT-Security/IT-Security-Aktuelles(2025).md",
@@ -205,7 +207,6 @@
     "site/assets/javascripts/lunr/min/lunr.tr.min.js",
     "site/assets/javascripts/lunr/min/lunr.th.min.js",
     "site/assets/javascripts/lunr/min/lunr.te.min.js",
-    "site/assets/javascripts/lunr/min/lunr.ta.min.js",
     "docs/studium/Rechnernetze/Theoretisch/2. Page Load Times.md",
     "docs/studium/Rechnernetze/Theoretisch/1. Paketübertragung.md",
     "docs/studium/Rechnernetze/Praktisch/4. Peer To Peer - Projekt.md",
@@ -214,8 +215,6 @@
     "docs/studium/Rechnernetze/Praktisch/1. Wireshark - Introduction.md",
     "docs/studium/Betriebssysteme(unvollständig)/3. Concurrency/0. Einführung in Concurrency.md",
     "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/4. Advanced-Speicherverwaltung 1.md",
-    "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/3. Basic-Speicherverwaltung.md",
-    "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/2. Address Translation (Adressübersetzung & Virtual Memory).md",
-    "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/1. Memory API (Speicherverwaltung in C).md"
+    "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/3. Basic-Speicherverwaltung.md"
   ]
 }
