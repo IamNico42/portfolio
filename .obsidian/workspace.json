@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/studium/PSS/Portswigger-Academy/SSRF/1. SSRF-Basics.md",
+                "file": "docs/studium/PSS/Portswigger-Academy/API-Testing/5. Preventing Server-Side Parameter Pollution.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. SSRF-Basics"
+              "title": "5. Preventing Server-Side Parameter Pollution"
             }
           }
         ]
@@ -169,25 +169,31 @@
       "bases:Create new base": false
     }
   },
-  "active": "4c170019476b7308",
+  "active": "ebfd79a596fd503e",
   "lastOpenFiles": [
-    "docs/images/abuse_loopback_request_other_back-end_systems1.png",
-    "docs/studium/PSS/Portswigger-Academy/SSRF/1. SSRF-Basics.md",
-    "docs/images/abuse_loopback_request_other_back-end_systems2.png",
-    "docs/images/abuse_loopback_request_other_back-end_systems5.png",
-    "docs/images/abuse_loopback_request_other_back-end_systems4.png",
+    "docs/studium/PSS/Portswigger-Academy/API-Testing/2. Identifizieren und Interagieren mit API.md",
+    "docs/studium/PSS/Portswigger-Academy/API-Testing/3. Preventing API Vulnerabilities.md",
+    "docs/studium/PSS/Portswigger-Academy/API-Testing/5. Preventing Server-Side Parameter Pollution.md",
+    "docs/studium/PSS/Portswigger-Academy/API-Testing/4. Server-Side Parameter Pollution(SSPP).md",
+    "docs/studium/PSS/Portswigger-Academy/API-Testing/1. API Recon.md",
+    "mass_assignment3.png",
+    "mass_assignment2.png",
+    "mass_assignment1.png",
     "docs/images/abuse_loopback_request_other_back-end_systems3.png",
-    "docs/images/abuse_loopback_request1.png",
-    "docs/images/abuse_loopback_request3.png",
-    "docs/images/abuse_loopback_request2.png",
+    "docs/images/mass_assignment1.png",
+    "docs/images/mass_assignment3.png",
+    "docs/images/mass_assignment2.png",
+    "docs/images/API_email_abuse3.png",
+    "docs/images/API_email_abuse2.png",
+    "docs/images/API_email_abuse1.png",
+    "docs/studium/PSS/Portswigger-Academy/SSRF/1. SSRF-Basics.md",
+    "docs/studium/PSS/Portswigger-Academy/API-Testing",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/2. Delimiter discrepancies.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/3. Normalization discrepancies.md",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/4. Best-Practice - Prevent Authentication misstakes.md",
     "docs/studium/PSS/Portswigger-Academy/SSRF",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/3. Other-Authentication.md",
     "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/4. Best-Practice - Prevent WND.md",
-    "docs/images/brute-force-via-passwordchange2.png",
-    "docs/images/brute-force-via-passwordchange1.png",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/2. MF-Authentication.md",
     "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities/1. SF-Authentication.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/3. Secure-Websockets.md",
@@ -206,15 +212,10 @@
     "site/assets/javascripts/lunr/min/lunr.vi.min.js",
     "site/assets/javascripts/lunr/min/lunr.tr.min.js",
     "site/assets/javascripts/lunr/min/lunr.th.min.js",
-    "site/assets/javascripts/lunr/min/lunr.te.min.js",
     "docs/studium/Rechnernetze/Theoretisch/2. Page Load Times.md",
     "docs/studium/Rechnernetze/Theoretisch/1. Paketübertragung.md",
     "docs/studium/Rechnernetze/Praktisch/4. Peer To Peer - Projekt.md",
     "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
-    "docs/studium/Rechnernetze/Praktisch/2. Socket - monitoring.md",
-    "docs/studium/Rechnernetze/Praktisch/1. Wireshark - Introduction.md",
-    "docs/studium/Betriebssysteme(unvollständig)/3. Concurrency/0. Einführung in Concurrency.md",
-    "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/4. Advanced-Speicherverwaltung 1.md",
-    "docs/studium/Betriebssysteme(unvollständig)/2. Memory Management/3. Basic-Speicherverwaltung.md"
+    "docs/studium/Rechnernetze/Praktisch/2. Socket - monitoring.md"
   ]
 }
