@@ -7,6 +7,9 @@ aliases:
 tags:
   - Course/
 ---
+## Pentesting Checklist
+
+
 
 ## Kali-Tools
 ### Nmap(Portscan)
@@ -19,7 +22,11 @@ sudo nmap -sV -p- -oA juiceshopfulltcp -v3 192.168.249.14
 ```c
 gobuster dir -u http://192.168.249.14:3000/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --exclude-length 75055 
 ```
+### Sslyze(TLS anzeigen lassen)
 
+```c
+sslyze xxx-xx.xxx.net(Hostname)
+```
 ## Open-Source Tool
 [Cyber-Chef](https://gchq.github.io/CyberChef/)
 Wofür man es nutzt:
@@ -44,3 +51,7 @@ Wofür man es nutzt:
 - verlorene/vergessene Passwörter wiederherstellen (wenn Hash in ihrer DB vorkommt
 - prüfen, ob ein Passwort leicht in vorgefertigten Listen gefunden werden kann (Sicherheitscheck)  
     Einschränkungen: funktioniert gut bei kurzen, ungesalzenen Hashes (z. B. MD5, SHA1) und bei häufigen Passwörtern - nicht wirksam bei starken, langen oder gesalzenen Hashes. Für ernsthaftes Cracking (regelbasiert, GPU, gesalzene Hashes) benutzt man Tools wie hashcat oder John the Ripper (lokal, mit Zustimmung).
+
+
+[SSLYZE](https://www.ssllabs.com/)
+Was ist es: Ein Online Tool welches checkt ob das genutzte TLS vom Server den Sicherheitsstandards enstpricht. Das Ganze lässt sich alternativ manuell ausführen mit dem sslyze Befehl von Kali.
