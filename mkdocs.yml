@@ -65,6 +65,14 @@ plugins:
   - search
   - roamlinks
   - meta-descriptions
+  - glightbox:
+      selector: "img"
+      lightbox_config:
+        loop: true
+        zoomable: true
+        draggable: true
+        hideScrollbar: true
+
   - blog:
       blog_dir: projects/
   - rss:

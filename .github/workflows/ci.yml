@@ -27,4 +27,5 @@ jobs:
       - run: pip install mkdocs-meta-descriptions-plugin #Format Header
       - run: pip install pymdown-extensions #idk für details?
       - run: pip install mkdocs-blogging-plugin #blog
+      - run: pip install mkdocs-glightbox # für Bild-Zoom usw.
       - run: mkdocs gh-deploy --clean --force
