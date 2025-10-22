@@ -31,9 +31,11 @@ sslyze xxx-xx.xxx.net(Hostname)
 
 
 [SwissKy](https://github.com/swisskyrepo/PayloadsAllTheThings)
+
 Sammlung von Exploits, Payloads, Cheat Sheets.
 
 [Cyber-Chef](https://gchq.github.io/CyberChef/)
+
 Wofür man es nutzt:
 - dekodieren/encodieren (Base64, hex, URL-encoding, Base32, etc.)
 - schnelle Kryptotools (XOR, AES/RC4-Dekodierung _wenn du den Key hast_)
@@ -43,6 +45,7 @@ Wofür man es nutzt:
     Typische Szenarien: Log-Analyse, Reverse-engineering von Daten, CTF-Challenges, schnelle Debugging-Hilfen beim Protokollieren/Parsing.
 
 [Jason Web Token](https://www.jwt.io/)
+
 Was es ist: ein einfacher JWT-Debugger/Inspector (JSON Web Tokens).  
 Wofür man es nutzt:
 - Tokenstruktur ansehen (Header.Payload.Signature) - Header und Payload sofort base64url-dekodiert anzeigen
@@ -51,6 +54,7 @@ Wofür man es nutzt:
     Typische Szenarien: Backend-Entwicklung, Auth-Debugging, Verständnis/Inspektion von Tokens in APIs oder beim Pentesting (nur legal auf eigenen Systemen).
 
 [Crackstation](https://www.crackstation.net/)
+
 Was es ist: ein Online-Service, der bekannte Passwort-Hashes gegen riesige vorgefertigte Tabellen/Listen abgleicht (ähnlich Rainbow-Table Lookup).  
 Wofür man es nutzt:
 - verlorene/vergessene Passwörter wiederherstellen (wenn Hash in ihrer DB vorkommt
@@ -59,4 +63,5 @@ Wofür man es nutzt:
 
 
 [SSLYZE](https://www.ssllabs.com/)
+
 Was ist es: Ein Online Tool welches checkt ob das genutzte TLS vom Server den Sicherheitsstandards enstpricht. Das Ganze lässt sich alternativ manuell ausführen mit dem sslyze Befehl von Kali.
