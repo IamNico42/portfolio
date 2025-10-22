@@ -26,3 +26,5 @@ tags:
 	- [[5. Error-Based SQL Injection]]
 - Time Based SQL Injection
 	- [[5. Error-Based SQL Injection]]
+- SQL Injection in Different Context
+	- [[7. SQL Injection In Different Contexts]]
