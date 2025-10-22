@@ -11,11 +11,13 @@ tags:
 
 
 **Finde Injektion-Eintrittsloch**
+
 1. Teste mit `'` in diversen Abfragen ob das System mit Fehler reagiert um zu schauen ob sich der Input beeinflussen lässt.
 
 
 
 **Arten von Injektionsmöglichkeiten**
+
 - UNION/ORDER BY SELECT
 	- [[2. SQL Injection UNION Attacks]]
 - SetOfView Injection
@@ -28,3 +30,5 @@ tags:
 	- [[5. Error-Based SQL Injection]]
 - SQL Injection in Different Context
 	- [[7. SQL Injection In Different Contexts]]
+- Second-Order SQL Injection
+	- [[8. Second-Order SQL Injection]]
