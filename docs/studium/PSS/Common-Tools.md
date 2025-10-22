@@ -28,6 +28,11 @@ gobuster dir -u http://192.168.249.14:3000/ -w /usr/share/wordlists/dirbuster/di
 sslyze xxx-xx.xxx.net(Hostname)
 ```
 ## Open-Source Tool
+
+
+[SwissKy](https://github.com/swisskyrepo/PayloadsAllTheThings)
+Sammlung von Exploits, Payloads, Cheat Sheets.
+
 [Cyber-Chef](https://gchq.github.io/CyberChef/)
 Wofür man es nutzt:
 - dekodieren/encodieren (Base64, hex, URL-encoding, Base32, etc.)
