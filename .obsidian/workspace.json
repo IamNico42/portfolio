@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/studium/PSS/Portswigger-Academy/SQLi/5. Error-Based SQL Injection.md",
+                "file": "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/GraphQL Checkliste.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5. Error-Based SQL Injection"
+              "title": "GraphQL Checkliste"
             }
           }
         ]
@@ -171,6 +171,14 @@
   },
   "active": "d7f99cc27b5f5c39",
   "lastOpenFiles": [
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/5. Preventing GraphQL Attacks.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/3. Attack API.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/4. Attack API CSRF.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/2. Discovering Schema Information.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/GraphQL Checkliste.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SSRF/1. SSRF-Basics.md",
+    "docs/studium/PSS-Pentesting/Common-Tools.md",
+    "docs/studium/Rechnernetze/Theoretisch/1. Paketübertragung.md",
     "docs/images/ERROR_BASED_SQLI3.png",
     "docs/images/ERROR_BASED_SQLI4.png",
     "docs/studium/PSS/Portswigger-Academy/SQLi/5. Error-Based SQL Injection.md",
@@ -201,14 +209,7 @@
     "docs/studium/PSS/Portswigger-Academy/SQLi",
     "docs/studium/PSS/Portswigger-Academy/API-Testing/1. API Recon.md",
     "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/3. Secure-Websockets.md",
-    "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/1. Manipulating Websockets.md",
-    "docs/studium/PSS/Portswigger-Academy/WebSockets vulnerabilities/2. Manipulating Handshake-Websocket.md",
-    "docs/studium/PSS/Portswigger-Academy/Web Cache Deception/1. Web - Caches.md",
-    "docs/studium/PSS/Portswigger-Academy/API-Testing/2. Identifizieren und Interagieren mit API.md",
-    "docs/studium/PSS/Untitled.md",
-    "docs/studium/PSS/Portswigger-Academy/Prototype Pollution/3. Prototype Pollution via Browser.md",
     "docs/studium/PSS/Portswigger-Academy/Clickjacking",
-    "docs/studium/PSS/Portswigger-Academy/Prototype Pollution/2. Schwachstellen & Lösungen.md",
     "docs/studium/PSS/Portswigger-Academy/Prototype Pollution",
     "docs/studium/PSS/Portswigger-Academy/API-Testing",
     "docs/studium/PSS/Portswigger-Academy/SSRF",
