@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "5632279ef760660b",
+    "type": "split",
+    "children": [
+      {
+        "id": "3dee691c78d1cb6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7610fe75028fbd11",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "3. Socket - Programmierung"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9535cc1291a0df41",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec3a166a68d37ebc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4c170019476b7308",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "0fccfa1bdf253bf5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "486b3c7302b8118a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4ac21104119365da",
+    "type": "split",
+    "children": [
+      {
+        "id": "13ec5eeecadeea42",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b874c7a4303f893d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 3. Socket - Programmierung"
+            }
+          },
+          {
+            "id": "4cb154bd5df10b6d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Welcome"
+            }
+          },
+          {
+            "id": "92e33b47d59eff4d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a202809cfae11443",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Welcome"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "4c170019476b7308",
+  "lastOpenFiles": [
+    "replace.txt",
+    "Neues Textdokument.txt",
+    "docs/images/RN-SP5-1.PNG",
+    "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/Path traversal/1. Path Traversal.md",
+    "Screenshot (4) 1.png",
+    "Screenshot (4).png",
+    "docs/studium/PSS-Pentesting/Common-Tools.md",
+    "Shares.md",
+    "docs/studium/PSS-Pentesting/HTTP 1.1.md",
+    "docs/studium/PSS-Pentesting/OWASP-JS/Mögliche Schwachstellen.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/3. SQL Injection Set Of Views.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/1. SQL Injection.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/Authentication vulnerabilities/3. Other-Authentication.md",
+    "docs/studium/PSS-Pentesting/OWASP-JS/Database-Structure.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/API-Testing/API Checkliste.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/1. Graph QL.md",
+    "docs/studium/PSS-Pentesting/OWASP Best Practice.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/7. SQL Injection In Different Contexts.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/8. Second-Order SQL Injection.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/Path traversal/Checkliste Path Traversal.md",
+    "docs/studium/PSS-Pentesting/OWASP-JS",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/Cross-Origin Resource Sharing/2. CORS Vulnerabilities.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/Cross-Origin Resource Sharing/1. Was ist CORS.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/Cross-Origin Resource Sharing",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/4. Blind SQL Injection.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/5. Error-Based SQL Injection.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/6. Blind SQL Injection OAST Technik.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/GraphQL Checkliste.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/5. Preventing GraphQL Attacks.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/3. Attack API.md",
+    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/4. Attack API CSRF.md",
+    "docs/images/ERROR_BASED_SQLI3.png",
+    "docs/images/ERROR_BASED_SQLI4.png",
+    "docs/images/ERROR_BASED_SQLI1.png",
+    "docs/images/ERROR_BASED_SQLI2.png",
+    "diskret",
+    "get-orgas-inhalt.png",
+    "T7-get-orgas1.png",
+    "T6-get-orgas1.png",
+    "docs/studium/PSS/Portswigger-Academy/SQLi",
+    "docs/studium/PSS/Portswigger-Academy/Clickjacking",
+    "docs/studium/PSS/Portswigger-Academy/Prototype Pollution",
+    "docs/studium/PSS/Portswigger-Academy/API-Testing",
+    "docs/studium/PSS/Portswigger-Academy/SSRF",
+    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities"
+  ]
+}

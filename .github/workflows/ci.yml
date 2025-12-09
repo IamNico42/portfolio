@@ -1,0 +1,31 @@
+name: ci
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - uses: actions/cache@v4
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+      - run: pip install -U pip setuptools wheel
+      - run: pip install mkdocs-material
+      - run: pip install mkdocs-roamlinks-plugin
+      - run: pip install mkdocs-rss-plugin #
+      - run: pip install mkdocs-mermaid2-plugin #
+      - run: pip install mkdocs-awesome-pages-plugin #Sortieren von Seiten
+      - run: pip install mkdocs-meta-descriptions-plugin #Format Header
+      - run: pip install pymdown-extensions #idk für details?
+      - run: pip install mkdocs-blogging-plugin #blog
+      - run: pip install mkdocs-glightbox # für Bild-Zoom usw.
+      - run: mkdocs gh-deploy --clean --force
