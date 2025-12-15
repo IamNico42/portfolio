@@ -1,0 +1,6337 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://IamNico42.github.io/portfolio/studium/AI/%28CSP%29%20Constraint%20Satisfaction%20Problem/">
+      
+      
+        <link rel="prev" href="../../../projects/">
+      
+      
+        <link rel="next" href="../AI-Zusammenfassung/">
+      
+      
+        
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>(CSP) Constraint Satisfaction Problem - Nico Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#was-ist-ein-csp-constraint-satisfaction-problem" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nico Portfolio" class="md-header__button md-logo" aria-label="Nico Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nico Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              (CSP) Constraint Satisfaction Problem
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="blue" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nico Portfolio" class="md-nav__button md-logo" aria-label="Nico Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Nico Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👋 Willkommen auf meinem Portfolio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Studium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Studium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    (CSP) Constraint Satisfaction Problem
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    (CSP) Constraint Satisfaction Problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#was-ist-ein-csp-constraint-satisfaction-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Was ist ein CSP (Constraint Satisfaction Problem)?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beispiele-im-detail-erklart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Beispiele - im Detail erklärt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Beispiele - im Detail erklärt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-landkartenfarbung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Landkartenfärbung:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-n-damen-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. N-Damen-Problem:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sudoku" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sudoku:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-krypto-ratsel-z-b-send-more-money" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Krypto-Rätsel (z. B. SEND + MORE = MONEY):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-stundenplanung-timetabling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Stundenplanung (Timetabling):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-backtracking-klassische-suche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 1. Backtracking (klassische Suche)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 1. Backtracking (klassische Suche)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grundidee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌱 Grundidee:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiefensuche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Tiefensuche:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heuristiken-im-backtracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Heuristiken im Backtracking:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-forward-checking-fruhzeitige-prufung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 2. Forward Checking - Frühzeitige Prüfung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 2. Forward Checking - Frühzeitige Prüfung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-passiert-hier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Was passiert hier?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wenn-bei-einer-variable-kein-wert-mehr-moglich-ist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛑 Wenn bei einer Variable kein Wert mehr möglich ist:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vorteil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Vorteil:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beispiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Beispiel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ac-3-arc-consistency-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 AC-3 (Arc Consistency 3)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 AC-3 (Arc Consistency 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Ziel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warum-ist-das-sinnvoll" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Warum ist das sinnvoll?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vorgehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Vorgehen:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ergebnis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Ergebnis:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vergleich-zu-anderen-algorithmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🆚 Vergleich zu anderen Algorithmen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemstruktur-nutzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemstruktur nutzen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problemstruktur nutzen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-bedeutet-problemstruktur-ausnutzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was bedeutet Problemstruktur ausnutzen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vergleich-mit-dem-alltag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Vergleich mit dem Alltag:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zusammenhangskomponenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zusammenhangskomponenten:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baumstruktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baumstruktur:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schnittmengenkonditionierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schnittmengenkonditionierung:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lokale-suche-mit-min-conflicts-zusammenfassung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Lokale Suche mit Min-Conflicts - Zusammenfassung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Lokale Suche mit Min-Conflicts - Zusammenfassung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ziel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔎 Ziel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ablauf-des-algorithmus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Ablauf des Algorithmus:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#was-bedeutet-lokal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Was bedeutet „lokal“?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Stärken:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schwachen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Schwächen:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typische-gegenmanahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Typische Gegenmaßnahmen:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernaussage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Kernaussage:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fazit-wann-nutzt-man-was" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Fazit: Wann nutzt man was?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI-Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Machine%20Learning%20%26%20Neuronale%20Netze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning &amp; Neuronale Netze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Minimax%20und%20Alpha%2C%20Beta%20Pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adversariale Suche &amp; Minimax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Problem%20L%C3%B6sen%20durch%20Suche/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Lösen durch Suche
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fcNN%2C%20CNN%2C%20Deep%20Learning%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fcNN, CNN, Deep Learning Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmen und Datenstruktur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algorithmen und Datenstruktur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/1.%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmen und Datenstruktur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/2.%20Grundlagen_Graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphen: Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/3.%20Union-Find%20und%20Kruskal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Union Find
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/4.%20K%C3%BCrzeste%20Weg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kürzeste Weg - Algorithmen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/5.%20Selbstbalancierende%20B%C3%A4ume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Selbstbalancierende Bäume
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/6.%20Graphentheorie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphentheorie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/7.%20DFS%20-%20Detailreich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiefensuchbäume (DFS-Trees) und ihre Anwendung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Betriebssysteme(unvollständig)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Betriebssysteme(unvollständig)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/Inhaltsverzeichnis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inhaltsverzeichnis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Einführung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0. Einführung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/1.%20Ein%20Dialog%20%C3%BCber%20Virtualisierung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ein Dialog über Virtualisierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/2.%20Einf%C3%BChrung%20in%20Prozesse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process API - Erstellen und Verwalten von Prozessen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/3.%20Mechanismen%20Limited%20Direct%20Execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mechanism: Limited Direct Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Scheduling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. Scheduling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/4.%20Einf%C3%BChrung%20in%20die%20CPU-Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung in die CPU-Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/5.%20CPU-Scheduling%20-%20Multi-Level%20Feedback%20Queue%20%28MLFQ%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduling-Algorithmen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/6.%20CPU-Scheduling%20-%20Lottery%20Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proportional Share Scheduling (Fair Sharing)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Memory Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Memory Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/0.%20Einf%C3%BChrung%20Speicherverwaltung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/1.%20Memory%20API%20%28Speicherverwaltung%20in%20C%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory API (Speicherverwaltung in C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/2.%20Address%20Translation%20%28Adress%C3%BCbersetzung%20%26%20Virtual%20Memory%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address Translation (Adressübersetzung &amp; Virtual Memory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/3.%20Basic-Speicherverwaltung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic-Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/4.%20Advanced-Speicherverwaltung%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_5" id="__nav_3_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Concurrency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/3.%20Concurrency/0.%20Einf%C3%BChrung%20in%20Concurrency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Einführung in Concurrency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebreaker   Cyberkrieg(Scala)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebreaker   Cyberkrieg(Scala)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Codebreaker%20-%20Cyberkrieg%28Scala%29/Grundlegende%20Idee%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 I. CORE ENGINE (Fundament)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Codebreaker%20-%20Cyberkrieg%28Scala%29/Grundlegende%20Idee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grundlegende Idee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbanken
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Datenbanken
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Datenbanken/Datenbanken-Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbanken Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6">
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IT Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security%20Theorie%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Theorie 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security%20Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security-Aktuelles%282025%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Aktuelles(2025)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security-HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root-Me HTTP Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security-XSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root-Me XSS Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PSS Pentesting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PSS Pentesting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Common-Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/HTTP%201.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP 1.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/OWASP%20Best%20Practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OWASP Best Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4" id="__nav_3_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Active-Directory/1.%20Windows%20Domains/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Domains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Active-Directory/2.%20WAD%20Angriffsmodelle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. WAD Angriffsmodelle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5" id="__nav_3_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portswigger Academy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Portswigger Academy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_1" id="__nav_3_7_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Testing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Testing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/API-Testing/1.%20API%20Recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. API Recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/API-Testing/2.%20Identifizieren%20und%20Interagieren%20mit%20API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Identifizieren und Interagieren mit API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/API-Testing/3.%20Preventing%20API%20Vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Preventing API Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/API-Testing/4.%20Server-Side%20Parameter%20Pollution%28SSPP%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Server Side Parameter Pollution(SSPP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/API-Testing/5.%20Preventing%20Server-Side%20Parameter%20Pollution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Preventing Server Side Parameter Pollution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/API-Testing/API%20Checkliste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Checkliste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_2" id="__nav_3_7_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Authentication vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/1.%20SF-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SF Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/2.%20MF-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. MF Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/3.%20Other-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Other Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/4.%20Best-Practice%20-%20Prevent%20Authentication%20misstakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Best Practice   Prevent Authentication misstakes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_3" id="__nav_3_7_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Clickjacking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Clickjacking/1.%20Was%20ist%20Clickjacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Was ist Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Clickjacking/2.%20Clickbandit%20-%20Prefilled%20Input%20Clickjacking%20-%20Multistep%20Clickjacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Clickbandit   Prefilled Input Clickjacking   Multistep Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Clickjacking/3.%20Preventing%20Clickjacking%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wie verhindert man Clickjacking?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_4" id="__nav_3_7_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross Origin Resource Sharing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cross Origin Resource Sharing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Cross-Origin%20Resource%20Sharing/1.%20Was%20ist%20CORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Was ist CORS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Cross-Origin%20Resource%20Sharing/2.%20CORS%20Vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. CORS Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_5" id="__nav_3_7_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Upload vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    File Upload vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/File-Upload%20vulnerabilities/1.%20File-Upload%20vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. File Upload vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_6">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_6" id="__nav_3_7_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GraphQL API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/1.%20Graph%20QL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Graph QL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/2.%20Discovering%20Schema%20Information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Discovering Schema Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/3.%20Attack%20API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Attack API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/5.%20Preventing%20GraphQL%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Preventing GraphQL Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/GraphQL%20Checkliste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL Checkliste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_7">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_7" id="__nav_3_7_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path traversal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Path traversal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Path%20traversal/1.%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Path%20traversal/2.%20Preventing%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preventing Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Path%20traversal/Checkliste%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checkliste Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_8">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_8" id="__nav_3_7_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prototype Pollution
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prototype Pollution
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Prototype%20Pollution/1.%20Prototype%20Pollution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prototype Pollution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Prototype%20Pollution/2.%20Schwachstellen%20%26%20L%C3%B6sungen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Schwachstellen &amp; Lösungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Prototype%20Pollution/3.%20Prototype%20Pollution%20via%20Browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Prototype Pollution via Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_9">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_9" id="__nav_3_7_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SQLi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/1.%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/2.%20SQL%20Injection%20UNION%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. SQL Injection UNION Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/3.%20SQL%20Injection%20Set%20Of%20Views/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Injection Set Of Views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/4.%20Blind%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Blind SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/5.%20Error-Based%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Error Based SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/6.%20Blind%20SQL%20Injection%20OAST%20Technik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Blind SQL Injection OAST Technik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/7.%20SQL%20Injection%20In%20Different%20Contexts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. SQL Injection In Different Contexts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/8.%20Second-Order%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Second Order SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/9.%20Prevent%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Prevent SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SQLi/Checkliste%20SQLi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checkliste SQLi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_10">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_10" id="__nav_3_7_5_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SSRF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/SSRF/1.%20SSRF-Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SSRF Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_11">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_11" id="__nav_3_7_5_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Cache Deception
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web Cache Deception
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/1.%20Web%20-%20Caches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Web   Caches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/2.%20Delimiter%20Discrepancies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Delimiter Discrepancies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/3.%20Normalization%20Discrepancies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Normalization Discrepancies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/4.%20Best-Practice%20-%20Prevent%20WND/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Best Practice   Prevent WND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_12">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_12" id="__nav_3_7_5_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSockets vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WebSockets vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/WebSockets%20vulnerabilities/1.%20Manipulating%20Websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Manipulating Websockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/WebSockets%20vulnerabilities/2.%20Manipulating%20Handshake-Websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Manipulating Handshake Websocket
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PSS-Pentesting/Portswigger-Academy/WebSockets%20vulnerabilities/3.%20Secure-Websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Secure Websockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechnernetze
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rechnernetze
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Vorlesungsunterlagen-Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vorlesungsunterlagen-Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Praktisch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Praktisch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/1.%20Wireshark%20-%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Wireshark   Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/2.%20Socket%20-%20monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Socket Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/3.%20Socket%20-%20Programmierung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Socket Programmierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/4.%20Peer%20To%20Peer%20-%20Projekt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Peer To Peer - Projekt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8_3" id="__nav_3_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theoretisch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theoretisch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Theoretisch/1.%20Paket%C3%BCbertragung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Paketübertragung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Theoretisch/2.%20Page%20Load%20Times/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Page Load Times
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Theoretisch/3.%20TCP%20-%20Congestion%20Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. TCP   Congestion Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signale Sensoren Systeme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Signale Sensoren Systeme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Signale%20Sensoren%20Systeme/1.%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Signale%20Sensoren%20Systeme/2.%20Signale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Signale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Signale%20Sensoren%20Systeme/3.%20Fourier%20Analyse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Fourier Analyse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10">
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theoretische Informatik
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theoretische Informatik
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/1.%20Sprachen%20u.%20Grammatik%20u.%20BNF%20u.%20Syntaxdiagramm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Sprachen u. Grammatik u. BNF u. Syntaxdiagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/2.%20Regul%C3%A4re%20Sprachen%2C%20Endlicher%20Automat%2C%20Regul%C3%A4re%20Grammatik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reguläre Sprachen, Endlicher Automat, Reguläre Grammatik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/3.%20Determinismus%20und%20Potenzmengenkonstruktion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Determinismus und Potenzmengenkonstruktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/4.%20Regul%C3%A4re%20Ausdr%C3%BCcke/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Reguläre Ausdrücke
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/5.%20Kellerautomat%20%28PDA%29%20und%20Kontextfreie%20Grammatik%20%28CFG%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Kellerautomat (PDA) und Kontextfreie Grammatik (CFG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/6.%20Chomsky-Normalform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Chomsky Normalform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/7.%20Turing%20Maschine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Turing Maschine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#was-ist-ein-csp-constraint-satisfaction-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Was ist ein CSP (Constraint Satisfaction Problem)?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beispiele-im-detail-erklart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Beispiele - im Detail erklärt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Beispiele - im Detail erklärt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-landkartenfarbung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Landkartenfärbung:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-n-damen-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. N-Damen-Problem:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sudoku" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sudoku:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-krypto-ratsel-z-b-send-more-money" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Krypto-Rätsel (z. B. SEND + MORE = MONEY):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-stundenplanung-timetabling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Stundenplanung (Timetabling):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-backtracking-klassische-suche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 1. Backtracking (klassische Suche)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 1. Backtracking (klassische Suche)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grundidee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌱 Grundidee:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tiefensuche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Tiefensuche:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heuristiken-im-backtracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Heuristiken im Backtracking:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-forward-checking-fruhzeitige-prufung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 2. Forward Checking - Frühzeitige Prüfung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 2. Forward Checking - Frühzeitige Prüfung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-passiert-hier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Was passiert hier?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wenn-bei-einer-variable-kein-wert-mehr-moglich-ist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛑 Wenn bei einer Variable kein Wert mehr möglich ist:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vorteil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Vorteil:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beispiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Beispiel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ac-3-arc-consistency-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 AC-3 (Arc Consistency 3)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 AC-3 (Arc Consistency 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Ziel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warum-ist-das-sinnvoll" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Warum ist das sinnvoll?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vorgehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Vorgehen:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ergebnis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Ergebnis:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vergleich-zu-anderen-algorithmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🆚 Vergleich zu anderen Algorithmen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemstruktur-nutzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemstruktur nutzen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problemstruktur nutzen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-bedeutet-problemstruktur-ausnutzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was bedeutet Problemstruktur ausnutzen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vergleich-mit-dem-alltag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Vergleich mit dem Alltag:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zusammenhangskomponenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zusammenhangskomponenten:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baumstruktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baumstruktur:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schnittmengenkonditionierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schnittmengenkonditionierung:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lokale-suche-mit-min-conflicts-zusammenfassung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Lokale Suche mit Min-Conflicts - Zusammenfassung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Lokale Suche mit Min-Conflicts - Zusammenfassung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ziel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔎 Ziel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ablauf-des-algorithmus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Ablauf des Algorithmus:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#was-bedeutet-lokal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Was bedeutet „lokal“?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Stärken:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schwachen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Schwächen:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typische-gegenmanahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Typische Gegenmaßnahmen:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernaussage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Kernaussage:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fazit-wann-nutzt-man-was" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Fazit: Wann nutzt man was?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>(CSP) Constraint Satisfaction Problem</h1>
+
+<h2 id="was-ist-ein-csp-constraint-satisfaction-problem">🔍 <strong>Was ist ein CSP (Constraint Satisfaction Problem)?</strong><a class="headerlink" href="#was-ist-ein-csp-constraint-satisfaction-problem" title="Permanent link">¶</a></h2>
+<p>Bei einem <strong>Constraint Satisfaction Problem (CSP)</strong> geht es <strong>nur um eines</strong>:</p>
+<blockquote>
+<p>✅ <strong>Finde eine Zuweisung von Werten zu allen Variablen</strong>, sodass <strong>alle Constraints (Rahmenbedingungen)</strong> erfüllt sind.</p>
+</blockquote>
+<p>Es gibt <strong>keinen Gegner</strong>, <strong>keine Bewertung</strong>, <strong>kein Gewinnen oder Verlieren</strong> - nur:</p>
+<ul>
+<li><strong>Gültig oder nicht gültig</strong></li>
+<li><strong>Lösbar oder unlösbar</strong></li>
+<li><strong>Eine Lösung oder keine Lösung</strong> (manchmal auch mehrere)</li>
+</ul>
+<p>Ein <strong>CSP</strong> ist eine <strong>Formalisierung eines Problems</strong>, das durch drei Dinge beschrieben wird:</p>
+<ol>
+<li>
+<p><strong>Variablen</strong>  </p>
+<ul>
+<li>Was wir bestimmen wollen.<br>
+→ z. B. welches Land welche Farbe bekommt.</li>
+</ul>
+</li>
+<li>
+<p><strong>Wertebereiche (Domains)</strong>  </p>
+<ul>
+<li>Welche Werte jede Variable annehmen darf.<br>
+→ z. B. {Rot, Grün, Blau} für Farben.</li>
+</ul>
+</li>
+<li>
+<p><strong>Constraints (Bedingungen)</strong>  </p>
+<ul>
+<li>Welche Kombinationen <strong>erlaubt</strong> oder <strong>verboten</strong> sind.<br>
+→ z. B. benachbarte Länder dürfen <strong>nicht</strong> dieselbe Farbe haben.</li>
+</ul>
+</li>
+</ol>
+<p>Ein <strong>CSP ist gelöst</strong>, wenn:</p>
+<ul>
+<li>jede Variable <strong>einen Wert</strong> zugewiesen bekommt,</li>
+<li><strong>alle Constraints erfüllt</strong> sind.</li>
+</ul>
+<p>👉 Also: <strong>Ein CSP ist eine Klasse von Problemen</strong>, und <strong>die vorgestellten Algorithmen</strong> wie Backtracking, AC-3 oder Min-Conflicts sind <strong>Strategien zur Lösung</strong> dieser Art von Problemen.</p>
+<h2 id="beispiele-im-detail-erklart">📚 <strong>Beispiele - im Detail erklärt</strong><a class="headerlink" href="#beispiele-im-detail-erklart" title="Permanent link">¶</a></h2>
+<h3 id="1-landkartenfarbung">1. <strong>Landkartenfärbung:</strong><a class="headerlink" href="#1-landkartenfarbung" title="Permanent link">¶</a></h3>
+<ul>
+<li>Variablen: WA, NT, SA, ...</li>
+<li>Werte: {R, G, B}</li>
+<li>Constraint: keine benachbarten Regionen dürfen die gleiche Farbe haben</li>
+</ul>
+<h3 id="2-n-damen-problem">2. <strong>N-Damen-Problem:</strong><a class="headerlink" href="#2-n-damen-problem" title="Permanent link">¶</a></h3>
+<ul>
+<li>Ziel: 8 Damen so auf ein Schachbrett setzen, dass sie sich nicht schlagen</li>
+<li>Constraint: keine zwei Damen in gleicher Zeile, Spalte oder Diagonale</li>
+</ul>
+<h3 id="3-sudoku">3. <strong>Sudoku:</strong><a class="headerlink" href="#3-sudoku" title="Permanent link">¶</a></h3>
+<ul>
+<li>Variablen: Zellen des Rasters</li>
+<li>Werte: 1-9</li>
+<li>Constraints: Jede Zahl darf nur <strong>einmal pro Zeile, Spalte und Block</strong> vorkommen</li>
+</ul>
+<h3 id="4-krypto-ratsel-z-b-send-more-money">4. <strong>Krypto-Rätsel (z. B. SEND + MORE = MONEY):</strong><a class="headerlink" href="#4-krypto-ratsel-z-b-send-more-money" title="Permanent link">¶</a></h3>
+<ul>
+<li>Buchstaben sind Ziffern</li>
+<li>Jede Ziffer darf nur <strong>einmal</strong> vorkommen (Alldiff)</li>
+<li>Rechenregeln gelten als Constraints</li>
+</ul>
+<h3 id="5-stundenplanung-timetabling">5. <strong>Stundenplanung (Timetabling):</strong><a class="headerlink" href="#5-stundenplanung-timetabling" title="Permanent link">¶</a></h3>
+<ul>
+<li>Lehrer, Räume, Fächer - alles muss zusammenpassen</li>
+<li>Viele Regeln (z. B. keine Doppelbelegung)</li>
+</ul>
+<hr>
+<h2 id="1-backtracking-klassische-suche">🧩 1. <strong>Backtracking (klassische Suche)</strong><a class="headerlink" href="#1-backtracking-klassische-suche" title="Permanent link">¶</a></h2>
+<h3 id="grundidee">🌱 Grundidee:<a class="headerlink" href="#grundidee" title="Permanent link">¶</a></h3>
+<p>Man beginnt mit einer <strong>leeren Zuweisung</strong> und füllt sie <strong>schrittweise</strong> auf:</p>
+<ul>
+<li>Wähle eine Variable</li>
+<li>Probiere einen Wert aus</li>
+<li>Prüfe, ob das zu bisherigen Zuweisungen passt (also keine Constraint-Verletzung)</li>
+<li>Wenn ja → weiter</li>
+<li>Wenn nein oder später keine Möglichkeit mehr → <strong>zurückspringen</strong> (= backtrack)</li>
+</ul>
+<h3 id="tiefensuche">🧠 Tiefensuche:<a class="headerlink" href="#tiefensuche" title="Permanent link">¶</a></h3>
+<p>Backtracking ist eigentlich eine <strong>Tiefensuche</strong> im Suchbaum:</p>
+<ul>
+<li>Jeder Pfad ist ein möglicher Lösungsversuch</li>
+<li>Jeder Knoten = Zuweisung einer Variable</li>
+</ul>
+<h3 id="heuristiken-im-backtracking">🔍 Heuristiken im Backtracking:<a class="headerlink" href="#heuristiken-im-backtracking" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Most Constrained Variable First</strong>: Variable mit wenigsten erlaubten Werten zuerst wählen</li>
+<li><strong>Most Constraining Variable</strong>: Variable, die die meisten anderen beeinflusst</li>
+<li><strong>Least Constraining Value</strong>: Farbe wählen, die den Nachbarn am meisten Optionen lässt</li>
+</ol>
+<hr>
+<h2 id="2-forward-checking-fruhzeitige-prufung">🔐 2. <strong>Forward Checking - Frühzeitige Prüfung</strong><a class="headerlink" href="#2-forward-checking-fruhzeitige-prufung" title="Permanent link">¶</a></h2>
+<h3 id="was-passiert-hier">🔍 Was passiert hier?<a class="headerlink" href="#was-passiert-hier" title="Permanent link">¶</a></h3>
+<p>Immer wenn <strong>eine Variable einen Wert bekommt</strong>, prüfe alle <strong>benachbarten Variablen</strong>:</p>
+<ul>
+<li>Welche Werte sind dort <strong>jetzt noch erlaubt</strong>, angesichts der neuen Zuweisung?</li>
+<li><strong>Streiche</strong> verbotene Werte (die gegen Constraints verstoßen würden)</li>
+</ul>
+<h3 id="wenn-bei-einer-variable-kein-wert-mehr-moglich-ist">🛑 Wenn bei einer Variable <strong>kein Wert mehr möglich ist</strong>:<a class="headerlink" href="#wenn-bei-einer-variable-kein-wert-mehr-moglich-ist" title="Permanent link">¶</a></h3>
+<p>→ Sofort zurückspringen (backtrack) - kein Grund weiter zu suchen.</p>
+<h3 id="vorteil">📌 Vorteil:<a class="headerlink" href="#vorteil" title="Permanent link">¶</a></h3>
+<ul>
+<li>Erkennt <strong>Dead Ends</strong> sehr früh</li>
+<li>Spart <strong>unnötige Arbeit</strong> tiefer im Suchbaum</li>
+</ul>
+<h3 id="beispiel">🧠 Beispiel:<a class="headerlink" href="#beispiel" title="Permanent link">¶</a></h3>
+<ul>
+<li>WA = Rot</li>
+<li>NT kann nur noch Grün oder Blau</li>
+<li>SA hatte vorher {R, G, B} → nach Ausschluss: nur noch B</li>
+<li>Wenn das dann auch unmöglich ist → sofort zurück!</li>
+</ul>
+<hr>
+<h2 id="ac-3-arc-consistency-3">🔄 <strong>AC-3 (Arc Consistency 3)</strong><a class="headerlink" href="#ac-3-arc-consistency-3" title="Permanent link">¶</a></h2>
+<h3 id="ziel">🎯 <strong>Ziel:</strong><a class="headerlink" href="#ziel" title="Permanent link">¶</a></h3>
+<p><strong>Einschränkung der Domains</strong>, indem <strong>unbrauchbare Werte entfernt werden</strong>, bevor überhaupt nach einer Lösung gesucht wird.</p>
+<h3 id="warum-ist-das-sinnvoll">🧩 Warum ist das sinnvoll?<a class="headerlink" href="#warum-ist-das-sinnvoll" title="Permanent link">¶</a></h3>
+<p>Weil:</p>
+<ul>
+<li>Wir können uns so später <strong>unnötige Suchpfade im Baum sparen</strong></li>
+<li>Wir erkennen <strong>Widersprüche</strong>, <strong>ohne überhaupt zu raten oder zu suchen</strong></li>
+<li>Es ist wie ein "automatisches Vorfiltern" aller schlechten Möglichkeiten</li>
+</ul>
+<h3 id="vorgehen">⚙️ <strong>Vorgehen:</strong><a class="headerlink" href="#vorgehen" title="Permanent link">¶</a></h3>
+<ol>
+<li>Starte mit <strong>allen Kanten (Constraints)</strong> im CSP (z. B. (X,Y))</li>
+<li>Für jede Kante <code>(X,Y)</code> prüfe:<br>
+    Gibt es für <strong>jeden Wert x ∈ Domain(X)</strong> einen Wert y ∈ Domain(Y), sodass der Constraint erfüllt ist?</li>
+<li>Wenn <strong>nicht</strong>, streiche <code>x</code> aus Domain(X)</li>
+<li>Wenn sich Domain(X) ändert → prüfe alle Nachbarn von X erneut</li>
+<li>Wiederholen, bis keine Änderung mehr</li>
+</ol>
+<h3 id="ergebnis">🧠 <strong>Ergebnis:</strong><a class="headerlink" href="#ergebnis" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>Jede Domain enthält <strong>nur noch Werte</strong>, die <strong>prinzipiell</strong> in einer Lösung vorkommen können</p>
+</li>
+<li>
+<p>Erkennt <strong>Widersprüche frühzeitig</strong> (z. B. leere Domain)</p>
+</li>
+</ul>
+<h3 id="vergleich-zu-anderen-algorithmen">🆚 <strong>Vergleich zu anderen Algorithmen</strong><a class="headerlink" href="#vergleich-zu-anderen-algorithmen" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Kriterium</th>
+<th><strong>Backtracking</strong></th>
+<th><strong>Forward Checking</strong></th>
+<th><strong>AC-3 (Constraint Propagation)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wann prüft?</strong></td>
+<td>Nur beim Zuweisen einer Variable</td>
+<td>Nach jeder Zuweisung: prüfe benachbarte Variablen</td>
+<td>Schon <strong>vor der Suche</strong> - prüft systematisch alle Constraints</td>
+</tr>
+<tr>
+<td><strong>Was prüft?</strong></td>
+<td>Nur aktuelle Zuweisung</td>
+<td>Entfernt unpassende Werte bei direkten Nachbarn</td>
+<td>Entfernt <strong>alle inkonsistenten Werte in allen Domains</strong></td>
+</tr>
+<tr>
+<td><strong>Ziel</strong></td>
+<td>Lösung durch systematische Suche</td>
+<td>Frühzeitige Erkennung von lokalen Dead-Ends</td>
+<td>Globaler Domain-Check auf Konsistenz (Filterung)</td>
+</tr>
+<tr>
+<td><strong>Vorteil</strong></td>
+<td>Einfach, aber spät dran</td>
+<td>Schnelleres Zurückspringen bei Problemen</td>
+<td><strong>Kein Raten nötig</strong>, erkennt Widersprüche <strong>ohne Suche</strong></td>
+</tr>
+<tr>
+<td><strong>Nachteil</strong></td>
+<td>Erkannt Widersprüche spät</td>
+<td>Noch keine vollständige Propagation</td>
+<td>Kann teuer sein (bei vielen Variablen/Constraints)</td>
+</tr>
+<tr>
+<td><strong>Typ</strong></td>
+<td><strong>Suchalgorithmus</strong></td>
+<td><strong>Suche mit lokaler Vorwärtsprüfung</strong></td>
+<td><strong>Preprocessing / Filter-Algorithmus</strong> vor der Suche</td>
+</tr>
+<tr>
+<td>Betrachtet Constraints zwischen</td>
+<td><strong>Aktuelle Variable vs. bisherige</strong></td>
+<td><strong>Aktuelle Variable vs. direkte Nachbarn</strong></td>
+<td><strong>Jedes (X,Y)-Paar im gesamten Graph</strong></td>
+</tr>
+<tr>
+<td>Wie weit denkt er voraus?</td>
+<td>Gar nicht voraus - reagiert nur auf Fehler</td>
+<td>Prüft Nachbar-Domains auf direkte Widersprüche</td>
+<td><strong>Filtert Domains global</strong> durch Wiederholungen</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="problemstruktur-nutzen"><strong>Problemstruktur nutzen</strong><a class="headerlink" href="#problemstruktur-nutzen" title="Permanent link">¶</a></h2>
+<h3 id="was-bedeutet-problemstruktur-ausnutzen">Was bedeutet <strong>Problemstruktur ausnutzen</strong>?<a class="headerlink" href="#was-bedeutet-problemstruktur-ausnutzen" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>Es heißt: <strong>Bevor</strong> du irgendeinen Algorithmus blind loslaufen lässt (z. B. Backtracking),<br>
+schaust du dir <strong>die Form des Problems an</strong> - also seine <strong>Graphstruktur</strong> -<br>
+um zu erkennen, ob du es <strong>einfacher oder effizienter</strong> lösen kannst.</p>
+</blockquote>
+<h3 id="vergleich-mit-dem-alltag">🔄 Vergleich mit dem Alltag:<a class="headerlink" href="#vergleich-mit-dem-alltag" title="Permanent link">¶</a></h3>
+<p>Stell dir vor, du willst ein Puzzle lösen:</p>
+<ul>
+<li>Du könntest <strong>einfach drauflos puzzeln</strong> (Backtracking)</li>
+<li>Oder du <strong>schaust zuerst</strong>, ob:<ul>
+<li>Du die Ecken findest → (Strukturanalyse)</li>
+<li>Es zwei getrennte Puzzle-Sektionen gibt → (Komponenten)</li>
+<li>Ein Bereich besonders kompliziert aussieht → (Cutset)</li>
+</ul>
+</li>
+</ul>
+<p>➡️ Danach entscheidest du, <strong>wie du vorgehst</strong></p>
+<h3 id="zusammenhangskomponenten">Zusammenhangskomponenten:<a class="headerlink" href="#zusammenhangskomponenten" title="Permanent link">¶</a></h3>
+<ul>
+<li>Wenn das CSP aus <strong>unabhängigen Teilen</strong> besteht → bearbeite sie getrennt</li>
+</ul>
+<h3 id="baumstruktur">Baumstruktur:<a class="headerlink" href="#baumstruktur" title="Permanent link">¶</a></h3>
+<ul>
+<li>Wenn der Constraint-Graph <strong>zyklusfrei</strong> ist, kann man sehr schnell lösen</li>
+</ul>
+<h3 id="schnittmengenkonditionierung">Schnittmengenkonditionierung:<a class="headerlink" href="#schnittmengenkonditionierung" title="Permanent link">¶</a></h3>
+<ul>
+<li>Entferne eine Variable, um einen Baum zu erhalten</li>
+<li>Löse das vereinfachte Problem zuerst</li>
+</ul>
+<hr>
+<h2 id="lokale-suche-mit-min-conflicts-zusammenfassung">🧠 <strong>Lokale Suche mit Min-Conflicts - Zusammenfassung</strong><a class="headerlink" href="#lokale-suche-mit-min-conflicts-zusammenfassung" title="Permanent link">¶</a></h2>
+<h3 id="ziel_1">🔎 <strong>Ziel:</strong><a class="headerlink" href="#ziel_1" title="Permanent link">¶</a></h3>
+<p>Finde eine gültige Lösung für ein CSP, indem du <strong>schrittweise Konflikte reduzierst</strong>,<br>
+statt den gesamten Suchbaum zu durchsuchen.</p>
+<h3 id="ablauf-des-algorithmus">🔄 <strong>Ablauf des Algorithmus:</strong><a class="headerlink" href="#ablauf-des-algorithmus" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Starte mit einer vollständigen, zufälligen Zuweisung</strong> (auch mit Fehlern)</li>
+<li>
+<p><strong>Solange Konflikte bestehen:</strong></p>
+<ul>
+<li>Wähle eine <strong>Variable, die gerade Konflikte verursacht</strong></li>
+<li><strong>Ändere ihren Wert</strong> so, dass <strong>die Konflikte minimiert</strong> werden</li>
+<li>Wiederhole den Vorgang</li>
+</ul>
+</li>
+<li>
+<p><strong>Abbruch:</strong></p>
+<ul>
+<li>✅ Wenn <strong>kein Konflikt mehr da ist</strong> → Lösung gefunden</li>
+<li>❌ Oder nach vielen Versuchen → vermutlich Sackgasse</li>
+</ul>
+</li>
+</ol>
+<h3 id="was-bedeutet-lokal">🧩 <strong>Was bedeutet „lokal“?</strong><a class="headerlink" href="#was-bedeutet-lokal" title="Permanent link">¶</a></h3>
+<ul>
+<li>Es wird <strong>immer nur eine Variable auf einmal geändert</strong></li>
+<li>Es wird <strong>nur im direkten „Nachbarschaftsbereich“</strong> des aktuellen Zustands geschaut</li>
+<li>Keine globale Sicht, keine Rückverfolgung</li>
+</ul>
+<hr>
+<h3 id="starken">🎯 <strong>Stärken:</strong><a class="headerlink" href="#starken" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Sehr effizient</strong> bei großen CSPs (z. B. N-Damen mit Millionen Feldern)</li>
+<li><strong>Einfach zu implementieren</strong></li>
+<li><strong>Schnell</strong> - oft in wenigen Schritten zur Lösung</li>
+</ul>
+<hr>
+<h3 id="schwachen">⚠️ <strong>Schwächen:</strong><a class="headerlink" href="#schwachen" title="Permanent link">¶</a></h3>
+<ul>
+<li>Kann in <strong>lokalen Minima</strong> hängen bleiben<br>
+    → Wenn keine Änderung mehr Konflikte reduziert</li>
+<li><strong>Abhängig vom Startzustand</strong></li>
+<li><strong>Heuristik-basiert</strong> → schlechte Heuristik = schlechte Ergebnisse</li>
+<li><strong>Keine Garantie</strong>, eine Lösung zu finden</li>
+</ul>
+<hr>
+<h3 id="typische-gegenmanahmen">🛠 <strong>Typische Gegenmaßnahmen:</strong><a class="headerlink" href="#typische-gegenmanahmen" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Technik</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Random Restart</strong></td>
+<td>Nach festgefahrenem Zustand: komplett neu starten</td>
+</tr>
+<tr>
+<td><strong>Zufallsbewegung</strong></td>
+<td>Manchmal bewusst eine „schlechtere“ Wahl treffen</td>
+</tr>
+<tr>
+<td><strong>Mehrfachdurchläufe</strong></td>
+<td>Algorithmus mehrfach starten, beste Lösung behalten</td>
+</tr>
+<tr>
+<td><strong>Hybridverfahren</strong></td>
+<td>Lokale Suche mit anderen Techniken kombinieren</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="kernaussage">🧠 <strong>Kernaussage:</strong><a class="headerlink" href="#kernaussage" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>Lokale Suche mit Min-Conflicts ist wie ein „Greedy“-Wanderer:<br>
+Er startet irgendwo, schaut nur um sich herum, geht dort hin, wo es <strong>lokal besser</strong> aussieht -<br>
+aber <strong>ohne Karte</strong>, ohne Rückblick, und nur mit Hoffnung, dass es der richtige Weg ist.
+Also bei schlechter Bewertung des aktuellen Zustands und der Folgezustände(Heuristik) kann man sich schneller in lokalen Minima hängenbleiben</p>
+</blockquote>
+<hr>
+<h2 id="fazit-wann-nutzt-man-was">✅ Fazit: Wann nutzt man was?<a class="headerlink" href="#fazit-wann-nutzt-man-was" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Strategie</th>
+<th>Gut für</th>
+<th>Vorteil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Backtracking</strong></td>
+<td>Kleine/mittlere Probleme</td>
+<td>Einfach, systematisch</td>
+</tr>
+<tr>
+<td><strong>Forward Checking</strong></td>
+<td>Mittlere Probleme</td>
+<td>Frühzeitiges Erkennen</td>
+</tr>
+<tr>
+<td><strong>AC-3</strong></td>
+<td>Vorverarbeitung, große Domains</td>
+<td>Reduziert Suchraum</td>
+</tr>
+<tr>
+<td><strong>Min-Conflicts</strong></td>
+<td>Sehr große Probleme</td>
+<td>Extrem schnell, aber unvollständig</td>
+</tr>
+<tr>
+<td><strong>Graph-Tricks</strong></td>
+<td>Strukturierte CSPs</td>
+<td>Nutzt Problemform clever aus</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

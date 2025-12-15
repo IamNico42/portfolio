@@ -1,0 +1,6296 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://IamNico42.github.io/portfolio/studium/Rechnernetze/Praktisch/2.%20Socket%20-%20monitoring/">
+      
+      
+        <link rel="prev" href="../1.%20Wireshark%20-%20Introduction/">
+      
+      
+        <link rel="next" href="../3.%20Socket%20-%20Programmierung/">
+      
+      
+        
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>2. Socket Monitoring - Nico Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-monitoring-von-sockets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Nico Portfolio" class="md-header__button md-logo" aria-label="Nico Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nico Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Socket Monitoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="blue" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Nico Portfolio" class="md-nav__button md-logo" aria-label="Nico Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Nico Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👋 Willkommen auf meinem Portfolio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Studium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Studium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/%28CSP%29%20Constraint%20Satisfaction%20Problem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    (CSP) Constraint Satisfaction Problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/AI-Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/Machine%20Learning%20%26%20Neuronale%20Netze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning &amp; Neuronale Netze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/Minimax%20und%20Alpha%2C%20Beta%20Pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adversariale Suche &amp; Minimax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/Problem%20L%C3%B6sen%20durch%20Suche/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Lösen durch Suche
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/fcNN%2C%20CNN%2C%20Deep%20Learning%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fcNN, CNN, Deep Learning Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmen und Datenstruktur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algorithmen und Datenstruktur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Algorithmen%20und%20Datenstruktur/1.%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmen und Datenstruktur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Algorithmen%20und%20Datenstruktur/2.%20Grundlagen_Graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphen: Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Algorithmen%20und%20Datenstruktur/3.%20Union-Find%20und%20Kruskal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Union Find
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Algorithmen%20und%20Datenstruktur/4.%20K%C3%BCrzeste%20Weg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kürzeste Weg - Algorithmen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Algorithmen%20und%20Datenstruktur/5.%20Selbstbalancierende%20B%C3%A4ume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Selbstbalancierende Bäume
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Algorithmen%20und%20Datenstruktur/6.%20Graphentheorie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphentheorie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Algorithmen%20und%20Datenstruktur/7.%20DFS%20-%20Detailreich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiefensuchbäume (DFS-Trees) und ihre Anwendung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Betriebssysteme(unvollständig)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Betriebssysteme(unvollständig)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/Inhaltsverzeichnis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inhaltsverzeichnis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Einführung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0. Einführung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/1.%20Ein%20Dialog%20%C3%BCber%20Virtualisierung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ein Dialog über Virtualisierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/2.%20Einf%C3%BChrung%20in%20Prozesse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process API - Erstellen und Verwalten von Prozessen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/3.%20Mechanismen%20Limited%20Direct%20Execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mechanism: Limited Direct Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Scheduling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. Scheduling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/4.%20Einf%C3%BChrung%20in%20die%20CPU-Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung in die CPU-Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/5.%20CPU-Scheduling%20-%20Multi-Level%20Feedback%20Queue%20%28MLFQ%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduling-Algorithmen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/6.%20CPU-Scheduling%20-%20Lottery%20Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proportional Share Scheduling (Fair Sharing)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Memory Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Memory Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/0.%20Einf%C3%BChrung%20Speicherverwaltung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/1.%20Memory%20API%20%28Speicherverwaltung%20in%20C%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory API (Speicherverwaltung in C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/2.%20Address%20Translation%20%28Adress%C3%BCbersetzung%20%26%20Virtual%20Memory%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address Translation (Adressübersetzung &amp; Virtual Memory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/3.%20Basic-Speicherverwaltung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic-Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/4.%20Advanced-Speicherverwaltung%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_5" id="__nav_3_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Concurrency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Betriebssysteme%28unvollst%C3%A4ndig%29/3.%20Concurrency/0.%20Einf%C3%BChrung%20in%20Concurrency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Einführung in Concurrency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebreaker   Cyberkrieg(Scala)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebreaker   Cyberkrieg(Scala)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Codebreaker%20-%20Cyberkrieg%28Scala%29/Grundlegende%20Idee%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧱 I. CORE ENGINE (Fundament)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Codebreaker%20-%20Cyberkrieg%28Scala%29/Grundlegende%20Idee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grundlegende Idee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbanken
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Datenbanken
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Datenbanken/Datenbanken-Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbanken Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6">
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IT Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../IT-Security/IT-Security%20Theorie%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Theorie 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../IT-Security/IT-Security%20Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../IT-Security/IT-Security-Aktuelles%282025%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Aktuelles(2025)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../IT-Security/IT-Security-HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root-Me HTTP Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../IT-Security/IT-Security-XSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root-Me XSS Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PSS Pentesting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PSS Pentesting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Common-Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/HTTP%201.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP 1.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/OWASP%20Best%20Practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OWASP Best Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4" id="__nav_3_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Active-Directory/1.%20Windows%20Domains/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Domains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Active-Directory/2.%20WAD%20Angriffsmodelle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. WAD Angriffsmodelle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5" id="__nav_3_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portswigger Academy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Portswigger Academy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_1" id="__nav_3_7_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Testing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Testing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/API-Testing/1.%20API%20Recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. API Recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/API-Testing/2.%20Identifizieren%20und%20Interagieren%20mit%20API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Identifizieren und Interagieren mit API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/API-Testing/3.%20Preventing%20API%20Vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Preventing API Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/API-Testing/4.%20Server-Side%20Parameter%20Pollution%28SSPP%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Server Side Parameter Pollution(SSPP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/API-Testing/5.%20Preventing%20Server-Side%20Parameter%20Pollution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Preventing Server Side Parameter Pollution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/API-Testing/API%20Checkliste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Checkliste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_2" id="__nav_3_7_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Authentication vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/1.%20SF-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SF Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/2.%20MF-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. MF Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/3.%20Other-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Other Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Authentication%20vulnerabilities/4.%20Best-Practice%20-%20Prevent%20Authentication%20misstakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Best Practice   Prevent Authentication misstakes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_3" id="__nav_3_7_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Clickjacking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Clickjacking/1.%20Was%20ist%20Clickjacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Was ist Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Clickjacking/2.%20Clickbandit%20-%20Prefilled%20Input%20Clickjacking%20-%20Multistep%20Clickjacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Clickbandit   Prefilled Input Clickjacking   Multistep Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Clickjacking/3.%20Preventing%20Clickjacking%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wie verhindert man Clickjacking?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_4" id="__nav_3_7_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross Origin Resource Sharing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cross Origin Resource Sharing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Cross-Origin%20Resource%20Sharing/1.%20Was%20ist%20CORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Was ist CORS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Cross-Origin%20Resource%20Sharing/2.%20CORS%20Vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. CORS Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_5" id="__nav_3_7_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Upload vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    File Upload vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/File-Upload%20vulnerabilities/1.%20File-Upload%20vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. File Upload vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_6">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_6" id="__nav_3_7_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GraphQL API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/1.%20Graph%20QL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Graph QL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/2.%20Discovering%20Schema%20Information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Discovering Schema Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/3.%20Attack%20API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Attack API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/5.%20Preventing%20GraphQL%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Preventing GraphQL Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/GraphQL%20API/GraphQL%20Checkliste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL Checkliste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_7">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_7" id="__nav_3_7_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path traversal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Path traversal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Path%20traversal/1.%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Path%20traversal/2.%20Preventing%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preventing Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Path%20traversal/Checkliste%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checkliste Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_8">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_8" id="__nav_3_7_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prototype Pollution
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prototype Pollution
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Prototype%20Pollution/1.%20Prototype%20Pollution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prototype Pollution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Prototype%20Pollution/2.%20Schwachstellen%20%26%20L%C3%B6sungen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Schwachstellen &amp; Lösungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Prototype%20Pollution/3.%20Prototype%20Pollution%20via%20Browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Prototype Pollution via Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_9">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_9" id="__nav_3_7_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SQLi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/1.%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/2.%20SQL%20Injection%20UNION%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. SQL Injection UNION Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/3.%20SQL%20Injection%20Set%20Of%20Views/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Injection Set Of Views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/4.%20Blind%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Blind SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/5.%20Error-Based%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Error Based SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/6.%20Blind%20SQL%20Injection%20OAST%20Technik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Blind SQL Injection OAST Technik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/7.%20SQL%20Injection%20In%20Different%20Contexts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. SQL Injection In Different Contexts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/8.%20Second-Order%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Second Order SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/9.%20Prevent%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Prevent SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SQLi/Checkliste%20SQLi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checkliste SQLi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_10">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_10" id="__nav_3_7_5_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SSRF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/SSRF/1.%20SSRF-Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SSRF Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_11">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_11" id="__nav_3_7_5_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Cache Deception
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web Cache Deception
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/1.%20Web%20-%20Caches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Web   Caches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/2.%20Delimiter%20Discrepancies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Delimiter Discrepancies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/3.%20Normalization%20Discrepancies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Normalization Discrepancies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/Web%20Cache%20Deception/4.%20Best-Practice%20-%20Prevent%20WND/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Best Practice   Prevent WND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5_12">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_5_12" id="__nav_3_7_5_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSockets vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WebSockets vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/WebSockets%20vulnerabilities/1.%20Manipulating%20Websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Manipulating Websockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/WebSockets%20vulnerabilities/2.%20Manipulating%20Handshake-Websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Manipulating Handshake Websocket
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PSS-Pentesting/Portswigger-Academy/WebSockets%20vulnerabilities/3.%20Secure-Websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Secure Websockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechnernetze
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rechnernetze
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Vorlesungsunterlagen-Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vorlesungsunterlagen-Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Praktisch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Praktisch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Wireshark%20-%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Wireshark   Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Socket Monitoring
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Socket Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2-monitoring-von-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Monitoring von Sockets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Monitoring von Sockets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-wie-viele-sockets-sind-insgesamt-geoffnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1) Wie viele Sockets sind insgesamt geöffnet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-wie-unterscheiden-sich-die-eintrage-von-tcp-und-udp-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2) Wie unterscheiden sich die Einträge von TCP und UDP Sockets?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-wie-viele-server-ports-hat-ihr-rechner-geoffnet-statelistening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4) Wie viele Server Ports hat Ihr Rechner geöffnet (state=Listening)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-wie-viele-sockets-established-werden-neu-geoffnet-wenn-sie-die-messung-nach-einer-minute-erneut-durchfuhren-bzw-die-ergebnisse-aktualisieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5) Wie viele Sockets (ESTABLISHED) werden neu geöffnet, wenn Sie die Messung nach einer Minute erneut durchführen bzw. die Ergebnisse aktualisieren?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-sehen-sie-zahlreiche-sockets-mit-ip-adresse-127001-finden-sie-heraus-wofur-diese-ip-adresse-benutzt-wird-und-blenden-sie-alle-sockets-mit-dieser-adresse-aus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6) Sehen Sie zahlreiche Sockets mit IP-Adresse 127.0.0.1? Finden Sie heraus, wofür diese IP Adresse benutzt wird und blenden Sie alle Sockets mit dieser Adresse aus.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-bestimmen-sie-anhand-der-portnummer-und-der-portliste-fur-einige-interessanteunbekannte-prozesse-mit-welchem-protokoll-diese-kommunizieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7) Bestimmen Sie anhand der Portnummer und der Portliste für einige interessante/unbekannte Prozesse, mit welchem Protokoll diese kommunizieren.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-details-uber-die-kommunikationspartner-ihres-pcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Details über die Kommunikationspartner ihres PCs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Details über die Kommunikationspartner ihres PCs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-finden-sie-uber-wireshark-heraus-wie-das-programm-ipnetinfo-die-informationen-erhalt-welcher-server-wird-kontaktiert-welches-protokoll-wird-verwendet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Finden Sie über WireShark heraus, wie das Programm „IPnetInfo“ die Informationen erhält. Welcher Server wird kontaktiert? Welches Protokoll wird verwendet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-im-welchem-netz-befindet-sich-der-web-server-der-in-der-ersten-wireshark-aufgabe-aufgerufenen-web-seite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Im welchem Netz befindet sich der Web-Server, der in der ersten WireShark-Aufgabe aufgerufenen Web-Seite?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-welche-informationen-finden-sie-uber-die-htwg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Welche Informationen finden Sie über die HTWG?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-welche-remote-ports-werden-verwendet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Welche Remote-Ports werden verwendet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-wie-viele-verschiedenen-firmen-konnen-sie-die-remote-hosts-zuordnen-am-besten-uber-contact-name-in-ipnetinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Wie viele verschiedenen Firmen können Sie die Remote-Hosts zuordnen (am Besten über Contact Name in IPNetInfo)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-laden-sie-eine-andere-populare-web-seite-und-vergleichen-sie-die-liste-der-kontaktierten-firmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Laden Sie eine andere populäre Web-Seite und vergleichen Sie die Liste der kontaktierten Firmen.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Laden Sie eine andere populäre Web-Seite und vergleichen Sie die Liste der kontaktierten Firmen.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beispiel-zeitde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beispiel Zeit.de:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Socket%20-%20Programmierung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Socket Programmierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Peer%20To%20Peer%20-%20Projekt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Peer To Peer - Projekt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8_3" id="__nav_3_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theoretisch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theoretisch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretisch/1.%20Paket%C3%BCbertragung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Paketübertragung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretisch/2.%20Page%20Load%20Times/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Page Load Times
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretisch/3.%20TCP%20-%20Congestion%20Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. TCP   Congestion Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signale Sensoren Systeme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Signale Sensoren Systeme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Signale%20Sensoren%20Systeme/1.%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Signale%20Sensoren%20Systeme/2.%20Signale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Signale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Signale%20Sensoren%20Systeme/3.%20Fourier%20Analyse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Fourier Analyse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10">
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theoretische Informatik
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theoretische Informatik
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Theoretische%20Informatik/1.%20Sprachen%20u.%20Grammatik%20u.%20BNF%20u.%20Syntaxdiagramm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Sprachen u. Grammatik u. BNF u. Syntaxdiagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Theoretische%20Informatik/2.%20Regul%C3%A4re%20Sprachen%2C%20Endlicher%20Automat%2C%20Regul%C3%A4re%20Grammatik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reguläre Sprachen, Endlicher Automat, Reguläre Grammatik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Theoretische%20Informatik/3.%20Determinismus%20und%20Potenzmengenkonstruktion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Determinismus und Potenzmengenkonstruktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Theoretische%20Informatik/4.%20Regul%C3%A4re%20Ausdr%C3%BCcke/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Reguläre Ausdrücke
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Theoretische%20Informatik/5.%20Kellerautomat%20%28PDA%29%20und%20Kontextfreie%20Grammatik%20%28CFG%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Kellerautomat (PDA) und Kontextfreie Grammatik (CFG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Theoretische%20Informatik/6.%20Chomsky-Normalform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Chomsky Normalform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Theoretische%20Informatik/7.%20Turing%20Maschine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Turing Maschine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2-monitoring-von-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Monitoring von Sockets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Monitoring von Sockets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-wie-viele-sockets-sind-insgesamt-geoffnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1) Wie viele Sockets sind insgesamt geöffnet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-wie-unterscheiden-sich-die-eintrage-von-tcp-und-udp-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2) Wie unterscheiden sich die Einträge von TCP und UDP Sockets?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-wie-viele-server-ports-hat-ihr-rechner-geoffnet-statelistening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4) Wie viele Server Ports hat Ihr Rechner geöffnet (state=Listening)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-wie-viele-sockets-established-werden-neu-geoffnet-wenn-sie-die-messung-nach-einer-minute-erneut-durchfuhren-bzw-die-ergebnisse-aktualisieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5) Wie viele Sockets (ESTABLISHED) werden neu geöffnet, wenn Sie die Messung nach einer Minute erneut durchführen bzw. die Ergebnisse aktualisieren?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-sehen-sie-zahlreiche-sockets-mit-ip-adresse-127001-finden-sie-heraus-wofur-diese-ip-adresse-benutzt-wird-und-blenden-sie-alle-sockets-mit-dieser-adresse-aus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6) Sehen Sie zahlreiche Sockets mit IP-Adresse 127.0.0.1? Finden Sie heraus, wofür diese IP Adresse benutzt wird und blenden Sie alle Sockets mit dieser Adresse aus.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-bestimmen-sie-anhand-der-portnummer-und-der-portliste-fur-einige-interessanteunbekannte-prozesse-mit-welchem-protokoll-diese-kommunizieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7) Bestimmen Sie anhand der Portnummer und der Portliste für einige interessante/unbekannte Prozesse, mit welchem Protokoll diese kommunizieren.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-details-uber-die-kommunikationspartner-ihres-pcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Details über die Kommunikationspartner ihres PCs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Details über die Kommunikationspartner ihres PCs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-finden-sie-uber-wireshark-heraus-wie-das-programm-ipnetinfo-die-informationen-erhalt-welcher-server-wird-kontaktiert-welches-protokoll-wird-verwendet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Finden Sie über WireShark heraus, wie das Programm „IPnetInfo“ die Informationen erhält. Welcher Server wird kontaktiert? Welches Protokoll wird verwendet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-im-welchem-netz-befindet-sich-der-web-server-der-in-der-ersten-wireshark-aufgabe-aufgerufenen-web-seite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Im welchem Netz befindet sich der Web-Server, der in der ersten WireShark-Aufgabe aufgerufenen Web-Seite?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-welche-informationen-finden-sie-uber-die-htwg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Welche Informationen finden Sie über die HTWG?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-welche-remote-ports-werden-verwendet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Welche Remote-Ports werden verwendet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-wie-viele-verschiedenen-firmen-konnen-sie-die-remote-hosts-zuordnen-am-besten-uber-contact-name-in-ipnetinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Wie viele verschiedenen Firmen können Sie die Remote-Hosts zuordnen (am Besten über Contact Name in IPNetInfo)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-laden-sie-eine-andere-populare-web-seite-und-vergleichen-sie-die-liste-der-kontaktierten-firmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Laden Sie eine andere populäre Web-Seite und vergleichen Sie die Liste der kontaktierten Firmen.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Laden Sie eine andere populäre Web-Seite und vergleichen Sie die Liste der kontaktierten Firmen.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beispiel-zeitde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beispiel Zeit.de:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>2. Socket Monitoring</h1>
+
+<h2 id="2-monitoring-von-sockets">2 Monitoring von Sockets<a class="headerlink" href="#2-monitoring-von-sockets" title="Permanent link">¶</a></h2>
+<h4 id="21-wie-viele-sockets-sind-insgesamt-geoffnet">2.1) Wie viele Sockets sind insgesamt geöffnet?<a class="headerlink" href="#21-wie-viele-sockets-sind-insgesamt-geoffnet" title="Permanent link">¶</a></h4>
+<ul>
+<li>100 total Ports 
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/RN-Sockets-count.PNG" data-desc-position="bottom"><img alt="images/RN-Sockets-count.PNG" src="../../../../images/RN-Sockets-count.PNG"></a></li>
+</ul>
+<h4 id="22-wie-unterscheiden-sich-die-eintrage-von-tcp-und-udp-sockets">2.2) Wie unterscheiden sich die Einträge von TCP und UDP Sockets?<a class="headerlink" href="#22-wie-unterscheiden-sich-die-eintrage-von-tcp-und-udp-sockets" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Merkmal</th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verbindung</td>
+<td>Ja (Handshake)</td>
+<td>Nein</td>
+</tr>
+<tr>
+<td>Geschwindigkeit</td>
+<td>Langsamer, aber sicher</td>
+<td>Schneller, aber unsicher</td>
+</tr>
+<tr>
+<td>Garantie</td>
+<td>Reihenfolge + Fehlerfreiheit</td>
+<td>Keine Garantie</td>
+</tr>
+<tr>
+<td>State sichtbar?</td>
+<td>Ja (LISTENING, ESTABLISHED usw.)</td>
+<td>Nein (kein Verbindungsstatus)</td>
+</tr>
+<tr>
+<td>Beispiel</td>
+<td>Webseiten, Emails, SSH, FTP</td>
+<td>Online-Spiele, Streaming, DNS</td>
+</tr>
+<tr>
+<td>#### 2.3) Was bedeutet die Spalte „State“ bei TCP Sockets?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>LISTENING: Socket wartet auf eingehende Verbindungen.</li>
+<li>ESTABLISHED: Verbindung ist aktiv und Daten fließen.</li>
+<li>TIMEWAIT: Verbindung wurde beendet, wartet noch auf vollständige Schließung.</li>
+<li>CLOSEWAIT: Andere Seite hat Verbindung beendet, aber eigene Seite noch nicht.</li>
+<li>SYNSENT / SYNRECEIVED: Verbindungsaufbau im Gange.</li>
+</ul>
+<h4 id="24-wie-viele-server-ports-hat-ihr-rechner-geoffnet-statelistening">2.4) Wie viele Server Ports hat Ihr Rechner geöffnet (state=Listening)?<a class="headerlink" href="#24-wie-viele-server-ports-hat-ihr-rechner-geoffnet-statelistening" title="Permanent link">¶</a></h4>
+<ul>
+<li>Filter in CurrPorts auf <code>State = Listening</code> setzen.</li>
+<li>Nur die Einträge zählen, wo "Listening" steht.</li>
+<li>37 Listening sockets. 82 total ports (TCP-Listening, UDP)</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/RN-Socket-Listening-State.PNG" data-desc-position="bottom"><img alt="images/RN-Socket-Listening-State.PNG" src="../../../../images/RN-Socket-Listening-State.PNG"></a></p>
+<h4 id="25-wie-viele-sockets-established-werden-neu-geoffnet-wenn-sie-die-messung-nach-einer-minute-erneut-durchfuhren-bzw-die-ergebnisse-aktualisieren">2.5) Wie viele Sockets (ESTABLISHED) werden neu geöffnet, wenn Sie die Messung nach einer Minute erneut durchführen bzw. die Ergebnisse aktualisieren?<a class="headerlink" href="#25-wie-viele-sockets-established-werden-neu-geoffnet-wenn-sie-die-messung-nach-einer-minute-erneut-durchfuhren-bzw-die-ergebnisse-aktualisieren" title="Permanent link">¶</a></h4>
+<ol>
+<li>Verbindungen Filtern, auswählen und speichern</li>
+<li>Messungen vergleichen</li>
+</ol>
+<p><strong>Erste Messung</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prozessname</th>
+<th>PID</th>
+<th>Protokoll</th>
+<th>Lokaler Port</th>
+<th>Lokale IP</th>
+<th>Remote Port</th>
+<th>Remote IP</th>
+<th>Remote Hostname</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>svchost.exe</td>
+<td>3300</td>
+<td>TCP</td>
+<td>59265</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>172.211.123.249</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>NortonSvc.exe</td>
+<td>3880</td>
+<td>TCP</td>
+<td>27196</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>23.48.23.63</td>
+<td>a23-48-23-63.deploy.static.akamaitechnologies.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>NortonSvc.exe</td>
+<td>3880</td>
+<td>TCP</td>
+<td>49112</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>34.73.71.173</td>
+<td>173.71.73.34.bc.googleusercontent.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>nllToolsSvc.exe</td>
+<td>4052</td>
+<td>TCP</td>
+<td>6746</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>13.83.93.5</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>nllToolsSvc.exe</td>
+<td>4052</td>
+<td>TCP</td>
+<td>27121</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>13.83.93.5</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>6737</td>
+<td>192.168.178.48</td>
+<td>5228</td>
+<td>64.233.167.188</td>
+<td>wl-in-f188.1e100.net</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27145</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>162.159.138.234</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27178</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>104.18.30.192</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27181</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>104.18.13.178</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27186</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>34.36.71.237</td>
+<td>237.71.36.34.bc.googleusercontent.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27187</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>34.160.67.133</td>
+<td>133.67.160.34.bc.googleusercontent.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27194</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>23.50.131.29</td>
+<td>a23-50-131-29.deploy.static.akamaitechnologies.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27195</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>104.18.32.47</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27197</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>23.50.131.29</td>
+<td>a23-50-131-29.deploy.static.akamaitechnologies.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27198</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>172.64.155.209</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>57480</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>162.159.135.234</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>57495</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>35.186.224.45</td>
+<td>45.224.186.35.bc.googleusercontent.com</td>
+<td>Established</td>
+</tr>
+</tbody>
+</table>
+<p><strong>zweite Messung</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prozessname</th>
+<th>PID</th>
+<th>Protokoll</th>
+<th>Lokaler Port</th>
+<th>Lokale IP</th>
+<th>Remote Port</th>
+<th>Remote IP</th>
+<th>Remote Hostname</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>svchost.exe</td>
+<td>3300</td>
+<td>TCP</td>
+<td>59265</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>172.211.123.249</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>NortonSvc.exe</td>
+<td>3880</td>
+<td>TCP</td>
+<td>49112</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>34.73.71.173</td>
+<td>173.71.73.34.bc.googleusercontent.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>nllToolsSvc.exe</td>
+<td>4052</td>
+<td>TCP</td>
+<td>6746</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>13.83.93.5</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>nllToolsSvc.exe</td>
+<td>4052</td>
+<td>TCP</td>
+<td>27121</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>13.83.93.5</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>6737</td>
+<td>192.168.178.48</td>
+<td>5228</td>
+<td>64.233.167.188</td>
+<td>wl-in-f188.1e100.net</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27145</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>162.159.138.234</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27195</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>104.18.32.47</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>27198</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>172.64.155.209</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>57480</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>162.159.135.234</td>
+<td></td>
+<td>Established</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>12760</td>
+<td>TCP</td>
+<td>57495</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>35.186.224.45</td>
+<td>45.224.186.35.bc.googleusercontent.com</td>
+<td>Established</td>
+</tr>
+<tr>
+<td>NortonSvc.exe</td>
+<td>3880</td>
+<td>TCP</td>
+<td>27201</td>
+<td>192.168.178.48</td>
+<td>443</td>
+<td>2.16.168.103</td>
+<td>a2-16-168-103.deploy.static.akamaitechnologies.com</td>
+<td>Established</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ergebnis</strong></p>
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Prozessname</th>
+<th>Lokaler Port</th>
+<th>Remote-IP</th>
+<th>Remote-Hostname</th>
+<th>Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fehlt</strong></td>
+<td>NortonSvc.exe</td>
+<td>27196</td>
+<td>23.48.23.63</td>
+<td>a23-48-23-63.deploy.static.akamaitechnologies.com</td>
+<td>Verbindung geschlossen</td>
+</tr>
+<tr>
+<td><strong>Fehlt</strong></td>
+<td>chrome.exe</td>
+<td>27178</td>
+<td>104.18.30.192</td>
+<td></td>
+<td>Verbindung geschlossen</td>
+</tr>
+<tr>
+<td><strong>Fehlt</strong></td>
+<td>chrome.exe</td>
+<td>27181</td>
+<td>104.18.13.178</td>
+<td></td>
+<td>Verbindung geschlossen</td>
+</tr>
+<tr>
+<td><strong>Fehlt</strong></td>
+<td>chrome.exe</td>
+<td>27186</td>
+<td>34.36.71.237</td>
+<td>237.71.36.34.bc.googleusercontent.com</td>
+<td>Verbindung geschlossen</td>
+</tr>
+<tr>
+<td><strong>Fehlt</strong></td>
+<td>chrome.exe</td>
+<td>27187</td>
+<td>34.160.67.133</td>
+<td>133.67.160.34.bc.googleusercontent.com</td>
+<td>Verbindung geschlossen</td>
+</tr>
+<tr>
+<td><strong>Fehlt</strong></td>
+<td>chrome.exe</td>
+<td>27194</td>
+<td>23.50.131.29</td>
+<td>a23-50-131-29.deploy.static.akamaitechnologies.com</td>
+<td>Verbindung geschlossen</td>
+</tr>
+<tr>
+<td><strong>Fehlt</strong></td>
+<td>chrome.exe</td>
+<td>27197</td>
+<td>23.50.131.29</td>
+<td>a23-50-131-29.deploy.static.akamaitechnologies.com</td>
+<td>Verbindung geschlossen</td>
+</tr>
+<tr>
+<td><strong>Neu</strong></td>
+<td>NortonSvc.exe</td>
+<td>27201</td>
+<td>2.16.168.103</td>
+<td>a2-16-168-103.deploy.static.akamaitechnologies.com</td>
+<td>Neue Verbindung aufgebaut</td>
+</tr>
+</tbody>
+</table>
+<h4 id="26-sehen-sie-zahlreiche-sockets-mit-ip-adresse-127001-finden-sie-heraus-wofur-diese-ip-adresse-benutzt-wird-und-blenden-sie-alle-sockets-mit-dieser-adresse-aus">2.6) Sehen Sie zahlreiche Sockets mit IP-Adresse 127.0.0.1? Finden Sie heraus, wofür diese IP Adresse benutzt wird und blenden Sie alle Sockets mit dieser Adresse aus.<a class="headerlink" href="#26-sehen-sie-zahlreiche-sockets-mit-ip-adresse-127001-finden-sie-heraus-wofur-diese-ip-adresse-benutzt-wird-und-blenden-sie-alle-sockets-mit-dieser-adresse-aus" title="Permanent link">¶</a></h4>
+<p>127.0.0.1 ist die sogenannte Loopback-Adresse, das bedeutet, dass dein eigener Computer redet mit sich selbst, also eine Netzwerkverbindung innerhalb deines Rechners.</p>
+<p>Viele Programme brauchen eine Möglichkeit, intern Daten auszutauschen, zum Beispiel:
+- Ein Webbrowser (z.B. Chrome, Firefox) benutzt 127.0.0.1, wenn Plugins oder Erweiterungen lokal kommunizieren.
+- Entwicklungsumgebungen wie Visual Studio, XAMPP oder Docker verwenden 127.0.0.1, um Server und Datenbanken lokal zu betreiben (z.B. ein Webserver wie Apache läuft lokal).
+- Sicherheitssoftware (wie Antivirenprogramme) könnte sich selbst über 127.0.0.1 überwachen.
+- Spiele oder Apps, die lokale APIs benutzen (z.B. Discord Overlay für Spiele).</p>
+<p><strong>Beispiel:</strong></p>
+<ul>
+<li>Man startet einen kleinen lokalen Webserver (z.B. <code>http://127.0.0.1:8080/</code>), um eine Webseite zu testen, aber niemand aus dem Internet kann auf diese Webseite zugreifen.</li>
+</ul>
+<p>Um diese Socketsauszublenden,gehst du so vor:
+- Menü -&gt;Options -&gt; Advanced Filter
+- Trage dort ein:
+    <code>exclude:both:tcpudp:127.0.0.1</code></p>
+<p>Die ganze 127.0.0.0/8 IP-Range (also von 127.0.0.0 bis 127.255.255.255) ist reserviert für Loopback.
+Aber fast immer wird einfach 127.0.0.1 genutzt.</p>
+<h4 id="27-bestimmen-sie-anhand-der-portnummer-und-der-portliste-fur-einige-interessanteunbekannte-prozesse-mit-welchem-protokoll-diese-kommunizieren">2.7) Bestimmen Sie anhand der Portnummer und der Portliste für einige interessante/unbekannte Prozesse, mit welchem Protokoll diese kommunizieren.<a class="headerlink" href="#27-bestimmen-sie-anhand-der-portnummer-und-der-portliste-fur-einige-interessanteunbekannte-prozesse-mit-welchem-protokoll-diese-kommunizieren" title="Permanent link">¶</a></h4>
+<ul>
+<li>Bei der Bestimmung des Dienstes und Protokolls ist ausschließlich der Remote Port relevant, da der lokale Port vom Betriebssystem dynamisch vergeben wird und keine Zuordnung zu einem festen Protokoll hat.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Prozessname</th>
+<th>Lokaler Port</th>
+<th>Remote Port</th>
+<th>Zieladresse</th>
+<th>Dienst / Protokoll laut Portliste</th>
+<th>Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>svchost.exe</td>
+<td>59265</td>
+<td>443</td>
+<td>172.211.123.249</td>
+<td>HTTPS (TCP)</td>
+<td>Verschlüsselte Webkommunikation</td>
+</tr>
+<tr>
+<td>NortonSvc.exe</td>
+<td>27196</td>
+<td>443</td>
+<td>23.48.23.63 (a23-48-23-63.deploy.static.akamaitechnologies.com)</td>
+<td>HTTPS (TCP)</td>
+<td>Verbindung zu Cloud-Servern (Updates)</td>
+</tr>
+<tr>
+<td>NortonSvc.exe</td>
+<td>49112</td>
+<td>443</td>
+<td>34.73.71.173 (173.71.73.34.bc.googleusercontent.com)</td>
+<td>HTTPS (TCP)</td>
+<td>Vermutlich Google Cloud-Server</td>
+</tr>
+<tr>
+<td>nllToolsSvc.exe</td>
+<td>6746</td>
+<td>443</td>
+<td>13.83.93.5</td>
+<td>HTTPS (TCP)</td>
+<td>Microsoft Azure Cloud-Server (vermutlich)</td>
+</tr>
+<tr>
+<td>nllToolsSvc.exe</td>
+<td>27121</td>
+<td>443</td>
+<td>13.83.93.5</td>
+<td>HTTPS (TCP)</td>
+<td>Microsoft Azure Cloud-Server (vermutlich)</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>6737</td>
+<td>5228</td>
+<td>64.233.167.188 (wl-in-f188.1e100.net)</td>
+<td>Android Cloud Messaging (Google Services TCP)</td>
+<td>Verbindungen zu Google-Diensten (Push)</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>27145</td>
+<td>443</td>
+<td>162.159.138.234</td>
+<td>HTTPS (TCP)</td>
+<td>Webseitenbesuch oder Hintergrunddienste</td>
+</tr>
+<tr>
+<td>chrome.exe</td>
+<td>57480</td>
+<td>443</td>
+<td>162.159.135.234</td>
+<td>HTTPS (TCP)</td>
+<td>Webseitenbesuch oder Hintergrunddienste</td>
+</tr>
+<tr>
+<td>NortonSvc.exe</td>
+<td>27201</td>
+<td>443</td>
+<td>2.16.168.103 (a2-16-168-103.deploy.static.akamaitechnologies.com)</td>
+<td>HTTPS (TCP)</td>
+<td>neue Verbindung zu Akamai-Server</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-details-uber-die-kommunikationspartner-ihres-pcs">3 Details über die Kommunikationspartner ihres PCs<a class="headerlink" href="#3-details-uber-die-kommunikationspartner-ihres-pcs" title="Permanent link">¶</a></h2>
+<h4 id="1-finden-sie-uber-wireshark-heraus-wie-das-programm-ipnetinfo-die-informationen-erhalt-welcher-server-wird-kontaktiert-welches-protokoll-wird-verwendet">1) Finden Sie über WireShark heraus, wie das Programm „IPnetInfo“ die Informationen erhält. Welcher Server wird kontaktiert? Welches Protokoll wird verwendet?<a class="headerlink" href="#1-finden-sie-uber-wireshark-heraus-wie-das-programm-ipnetinfo-die-informationen-erhalt-welcher-server-wird-kontaktiert-welches-protokoll-wird-verwendet" title="Permanent link">¶</a></h4>
+<p>Wir haben zuerst in <strong>CurrPorts</strong> ein Programm mit externer IP-Adresse markiert
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/SS-Currports-1.png" data-desc-position="bottom"><img alt="SS-Currports-1.png" src="../../../../images/SS-Currports-1.png"></a>
+und mit <strong>IPNetInfo</strong> abgefragt <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/SS-IPNetInfo-1.png" data-desc-position="bottom"><img alt="SS-IPNetInfo-1.png" src="../../../../images/SS-IPNetInfo-1.png"></a>Währenddessen lief <strong>Wireshark</strong> im Hintergrund.<br>
+Um gezielt den Datenverkehr von IPNetInfo zu beobachten, haben wir im Filterfeld den Begriff <code>whois</code> verwendet.<br>
+Daraufhin bekamen wir folgendes Ergebnis 
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/SS-Wireshark-2.png" data-desc-position="bottom"><img alt="SS-Wireshark-2.png" src="../../../../images/SS-Wireshark-2.png"></a>wo sichtbar wird, dass unser PC (192.168.0.105) eine Anfrage an den Server <strong>199.71.0.46</strong> gesendet hat. Das verwendete Protokoll ist <code>WHOIS</code> über <strong>TCP Port 43</strong> 
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/SS-Wireshark-3.png" data-desc-position="bottom"><img alt="SS-Wireshark-3.png" src="../../../../images/SS-Wireshark-3.png"></a></p>
+<hr>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/RN-SM-3-1.PNG" data-desc-position="bottom"><img alt="RN-SM-3-1.PNG" src="../../../../images/RN-SM-3-1.PNG"></a></p>
+<hr>
+<h4 id="2-im-welchem-netz-befindet-sich-der-web-server-der-in-der-ersten-wireshark-aufgabe-aufgerufenen-web-seite">2) Im welchem Netz befindet sich der Web-Server, der in der ersten WireShark-Aufgabe aufgerufenen Web-Seite?<a class="headerlink" href="#2-im-welchem-netz-befindet-sich-der-web-server-der-in-der-ersten-wireshark-aufgabe-aufgerufenen-web-seite" title="Permanent link">¶</a></h4>
+<p>In der WHOIS-Antwort<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/SS-Wireshark-4.png" data-desc-position="bottom"><img alt="SS-Wireshark-4.png" src="../../../../images/SS-Wireshark-4.png"></a>konnten wir die Informationen zum Ziel-Server auslesen.<br>
+Der IP-Bereich 162.158.0.0/15 gehört zur Firma <strong>Cloudflare, Inc.</strong> mit Sitz in Kalifornien, USA. Das Netz trägt den Namen <strong>CLOUDFLARENET</strong> und ist direkt von ARIN vergeben worden. Weitere Infos wie die Organisation (AS13335), Registrierungs- und Aktualisierungsdaten sowie Hinweise zur Abuse-Meldung waren ebenfalls enthalten.</p>
+<h4 id="3-welche-informationen-finden-sie-uber-die-htwg">3) Welche Informationen finden Sie über die HTWG?<a class="headerlink" href="#3-welche-informationen-finden-sie-uber-die-htwg" title="Permanent link">¶</a></h4>
+<p>Erstens, www.htwg-konstanz.de pingen:
+</p><div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">mohsa</span><span class="p">\</span><span class="n">Github</span><span class="p">\</span><span class="n">Quartz</span><span class="p">&gt;</span> <span class="n">ping</span> <span class="n">www</span><span class="p">.</span><span class="n">htwg-konstanz</span><span class="p">.</span><span class="n">de</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">Pinging</span> <span class="n">cms</span><span class="p">.</span><span class="n">htwg-konstanz</span><span class="p">.</span><span class="n">de</span> <span class="p">[</span><span class="n">141</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">20</span><span class="p">.</span><span class="n">31</span><span class="p">]</span> <span class="n">with</span> <span class="n">32</span> <span class="n">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">Reply</span> <span class="n">from</span> <span class="n">141</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">20</span><span class="p">.</span><span class="n">31</span><span class="p">:</span> <span class="n">bytes</span><span class="p">=</span><span class="n">32</span> <span class="n">time</span><span class="p">=</span><span class="n">1ms</span> <span class="n">TTL</span><span class="p">=</span><span class="n">59</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">Reply</span> <span class="n">from</span> <span class="n">141</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">20</span><span class="p">.</span><span class="n">31</span><span class="p">:</span> <span class="n">bytes</span><span class="p">=</span><span class="n">32</span> <span class="n">time</span><span class="p">=</span><span class="n">1ms</span> <span class="n">TTL</span><span class="p">=</span><span class="n">59</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">Reply</span> <span class="n">from</span> <span class="n">141</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">20</span><span class="p">.</span><span class="n">31</span><span class="p">:</span> <span class="n">bytes</span><span class="p">=</span><span class="n">32</span> <span class="n">time</span><span class="p">=</span><span class="n">1ms</span> <span class="n">TTL</span><span class="p">=</span><span class="n">59</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">Reply</span> <span class="n">from</span> <span class="n">141</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">20</span><span class="p">.</span><span class="n">31</span><span class="p">:</span> <span class="n">bytes</span><span class="p">=</span><span class="n">32</span> <span class="n">time</span><span class="p">=</span><span class="n">1ms</span> <span class="n">TTL</span><span class="p">=</span><span class="n">59</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">Ping</span> <span class="n">statistics</span> <span class="k">for</span> <span class="n">141</span><span class="p">.</span><span class="n">37</span><span class="p">.</span><span class="n">20</span><span class="p">.</span><span class="n">31</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">Packets</span><span class="p">:</span> <span class="n">Sent</span> <span class="p">=</span> <span class="n">4</span><span class="p">,</span> <span class="n">Received</span> <span class="p">=</span> <span class="n">4</span><span class="p">,</span> <span class="n">Lost</span> <span class="p">=</span> <span class="n">0</span> <span class="p">(</span><span class="n">0</span><span class="p">%</span> <span class="n">loss</span><span class="p">),</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">Approximate</span> <span class="n">round</span> <span class="n">trip</span> <span class="n">times</span> <span class="k">in</span> <span class="n">milli-seconds</span><span class="p">:</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">Minimum</span> <span class="p">=</span> <span class="n">1ms</span><span class="p">,</span> <span class="n">Maximum</span> <span class="p">=</span> <span class="n">1ms</span><span class="p">,</span> <span class="n">Average</span> <span class="p">=</span> <span class="n">1ms</span>
+</span></code></pre></div>
+Die IP-Adresse ist 141.37.20.31<p></p>
+<p>```txt title="In IPNetInfo 141.37.20.31 eingegeben" {28-42}
+% This is the RIPE Database query service.
+% The objects are in RPSL format.
+%
+% The RIPE Database is subject to Terms and Conditions.
+% See https://docs.db.ripe.net/terms-conditions.html</p>
+<p>% Information related to '141.37.0.0 - 141.37.255.255'</p>
+<p>% Abuse contact for '141.37.0.0 - 141.37.255.255' is 'abuse@htwg-konstanz.de'</p>
+<p>inetnum:        141.37.0.0 - 141.37.255.255
+netname:        FH-KN
+country:        DE
+admin-c:        HKTW1-RIPE
+tech-c:         HKTW1-RIPE
+org:            ORG-HKTW1-RIPE
+status:         LEGACY
+remarks:        <strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><em>
+remarks:        * DEFAULT ABUSE CONTACT: abuse@htwg-konstanz.de  *
+remarks:        </em><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>
+mnt-by:         BELWUE-MNT
+mnt-by:         RIPE-NCC-LEGACY-MNT
+created:        2002-04-25T09:54:38Z
+last-modified:  2016-04-14T08:23:18Z
+source:         RIPE
+sponsoring-org: ORG-BA9-RIPE</p>
+<p>organisation:   ORG-HKTW1-RIPE
+org-name:       Hochschule Konstanz Technik, Wirtschaft und Gestaltung
+country:        DE
+org-type:       OTHER
+address:        Brauneggerstr. 55
+address:        78462 Konstanz, Germany
+e-mail:         netzwerk@htwg-konstanz.de
+admin-c:        HKTW1-RIPE
+tech-c:         HKTW1-RIPE
+abuse-c:        HKTW1-RIPE
+mnt-ref:        BELWUE-MNT
+mnt-by:         BELWUE-MNT
+created:        2015-06-17T14:46:25Z
+last-modified:  2022-12-01T17:31:18Z
+source:         RIPE</p>
+<p>role:           Hochschule Konstanz Technik, Wirtschaft und Gestaltung
+address:        Brauneggerstr. 55
+address:        78462 Konstanz, Germany
+e-mail:         netzwerk@htwg-konstanz.de
+admin-c:        MS3208-RIPE
+tech-c:         MS3208-RIPE
+nic-hdl:        HKTW1-RIPE
+abuse-mailbox:  abuse@htwg-konstanz.de
+mnt-by:         BELWUE-MNT
+created:        2015-06-17T14:46:25Z
+last-modified:  2015-06-18T11:34:36Z
+source:         RIPE</p>
+<p>% Information related to '141.37.0.0/16AS553'</p>
+<p>route:          141.37.0.0/16
+descr:          FH-KONSTANZ
+origin:         AS553
+mnt-by:         BELWUE-MNT
+created:        1970-01-01T00:00:00Z
+last-modified:  2001-09-22T09:32:38Z
+source:         RIPE</p>
+<p>% This query was served by the RIPE Database Query Service version 1.117 (ABERDEEN)
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>---
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>## 4 Sockets beim Laden einer Web-Seite
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>#### 1) Bestimmen Sie die Anzahl Sockets, die geöffnet werden, wenn Sie www.spiegel.de herunterladen. a) Wenn es Sie interessiert: vergleichen Sie die Anzahl der Sockets mit und ohne Ad-Blocker
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Wir haben in CurrPorts alle aktiven Verbindungen gefiltert, die vom Browserprozess `chrome.exe` geöffnet wurden. Dabei haben wir jeweils nach dem Laden von Spiegel, die Anzahl der aktiven Sockets gezählt einmal mit und einmal ohne Adblocker.
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>- Ohne Adblocker wurden **45 Sockets** geöffnet.
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>![SS-Currports-2.png](&lt;../../../images/SS-Currports-2.png&gt;)
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>- Mit aktiviertem Adblocker waren es nur **23 Sockets**.
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>![SS-Currports-3.png](&lt;../../../images/SS-Currports-3.png&gt;)
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>-&gt; Der Vergleich zeigt, dass der Einsatz eines Adblockers die Anzahl der geöffneten Verbindungen deutlich reduziert, da viele externe Inhalte z. B. Werbung, Tracking, Analytics nicht geladen werden.
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>#### 2) Was ist die maximale Anzahl von Sockets pro Remote-IP-Adresse?
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>Die Anzahl der Sockets pro Remote-IP-Adresse ist nicht begrenzt, solange genügend Ports verfügbar sind und die Server-Software die Verbindungen verarbeiten kann.
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>Ein Socket ist technisch definiert als Kombination aus lokaler IP-Adresse, lokalem Port, Remote-IP-Adresse und Remote-Port.  
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>Auf Client-Seite stehen dafür **bis zu 65.536 Ports** zur Verfügung (durch die 16-Bit-Portnummern). Das bedeutet, dass ein Client theoretisch bis zu 65.536 gleichzeitige Verbindungen zu einer einzigen Remote-IP-Adresse aufbauen kann, sofern jede Verbindung einen anderen lokalen Port verwendet.
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>In der Praxis ist die maximale Anzahl jedoch durch mehrere Faktoren eingeschränkt:
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>- **Windows-Betriebssystem**:  
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    Standardmäßig ist der Bereich für dynamische (ephemere) Ports auf z. B. **49152-65535** beschränkt, also etwa **16.384 Ports**.  
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    Dieses Limit lässt sich mit dem Befehl
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>```powershell
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>netsh int ipv4 set dynamicport tcp start=1025 num=64510
+</span></code></pre></div><p></p>
+<h4 id="3-welche-remote-ports-werden-verwendet">3) Welche Remote-Ports werden verwendet?<a class="headerlink" href="#3-welche-remote-ports-werden-verwendet" title="Permanent link">¶</a></h4>
+<p>Beim Zugriff auf <strong>Spiegel</strong> fällt auf, dass hauptsächlich der Port <strong>443</strong> verwendet wird.<br>
+Das ist sinnvoll, da dieser Port standardmäßig für das HTTPS-Protokoll reserviert ist, welches heute bei nahezu allen Webseiten zur verschlüsselten Kommunikation eingesetzt wird.</p>
+<p>In CurrPorts oder Wireshark ist erkennbar, dass fast alle Verbindungen zu externen Servern den Remote-Port <strong>443</strong> nutzen. Weitere Ports (z. B. 80 für HTTP) kommen kaum noch vor, da moderne Webseiten standardmäßig HTTPS erzwingen.</p>
+<h4 id="4-wie-viele-verschiedenen-firmen-konnen-sie-die-remote-hosts-zuordnen-am-besten-uber-contact-name-in-ipnetinfo">4) Wie viele verschiedenen Firmen können Sie die Remote-Hosts zuordnen (am Besten über Contact Name in IPNetInfo)?<a class="headerlink" href="#4-wie-viele-verschiedenen-firmen-konnen-sie-die-remote-hosts-zuordnen-am-besten-uber-contact-name-in-ipnetinfo" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/SS-IPNetInfo-2.png" data-desc-position="bottom"><img alt="SS-IPNetInfo-2.png" src="../../../../images/SS-IPNetInfo-2.png"></a></p>
+<table>
+<thead>
+<tr>
+<th>IP Address</th>
+<th>Contact Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63.140.62.120</td>
+<td>Adobe Inc.</td>
+</tr>
+<tr>
+<td>63.140.62.210</td>
+<td>Adobe Inc.</td>
+</tr>
+<tr>
+<td>104.109.250.19</td>
+<td>Akamai International, BV</td>
+</tr>
+<tr>
+<td>108.128.223.16</td>
+<td>Amazon Data Services Ireland Limited</td>
+</tr>
+<tr>
+<td>54.76.180.38</td>
+<td>Amazon Technologies Inc.</td>
+</tr>
+<tr>
+<td>3.160.150.48</td>
+<td>Amazon.com, Inc.</td>
+</tr>
+<tr>
+<td>178.250.1.11</td>
+<td>Criteo Network Operations Center</td>
+</tr>
+<tr>
+<td>178.250.1.38</td>
+<td>Criteo Network Operations Center</td>
+</tr>
+<tr>
+<td>35.210.58.154</td>
+<td>Google LLC</td>
+</tr>
+<tr>
+<td>64.233.184.188</td>
+<td>Google LLC</td>
+</tr>
+<tr>
+<td>142.250.180.99</td>
+<td>Google LLC</td>
+</tr>
+<tr>
+<td>128.65.210.183</td>
+<td>Link11 GmbH Hostmaster</td>
+</tr>
+<tr>
+<td>150.171.27.10</td>
+<td>Microsoft Corporation</td>
+</tr>
+<tr>
+<td>150.171.30.10</td>
+<td>Microsoft Corporation</td>
+</tr>
+<tr>
+<td>80.67.82.90</td>
+<td>Network Architecture Role Account</td>
+</tr>
+</tbody>
+</table>
+<h4 id="5-laden-sie-eine-andere-populare-web-seite-und-vergleichen-sie-die-liste-der-kontaktierten-firmen">5) Laden Sie eine andere populäre Web-Seite und vergleichen Sie die Liste der kontaktierten Firmen.<a class="headerlink" href="#5-laden-sie-eine-andere-populare-web-seite-und-vergleichen-sie-die-liste-der-kontaktierten-firmen" title="Permanent link">¶</a></h4>
+<h5 id="beispiel-zeitde">Beispiel <a href="https://www.zeit.de">Zeit.de</a>:<a class="headerlink" href="#beispiel-zeitde" title="Permanent link">¶</a></h5>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../images/SS-IPNetInfo-3.png" data-desc-position="bottom"><img alt="SS-IPNetInfo-3.png" src="../../../../images/SS-IPNetInfo-3.png"></a></p>
+<table>
+<thead>
+<tr>
+<th>IP Address</th>
+<th>Contact Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>52.222.236.101</td>
+<td>Amazon.com, Inc.</td>
+</tr>
+<tr>
+<td>151.101.1.55</td>
+<td>Fastly, Inc.</td>
+</tr>
+<tr>
+<td>151.101.129.55</td>
+<td>Fastly, Inc.</td>
+</tr>
+<tr>
+<td>35.246.185.66</td>
+<td>Google LLC</td>
+</tr>
+<tr>
+<td>64.233.184.188</td>
+<td>Google LLC</td>
+</tr>
+<tr>
+<td>185.54.150.140</td>
+<td>Grigori Karlik</td>
+</tr>
+<tr>
+<td>167.235.124.61</td>
+<td>Hetzner Online GmbH - Contact Role</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
