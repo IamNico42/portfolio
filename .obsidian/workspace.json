@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3dee691c78d1cb6c",
+        "id": "d407b306d91be469",
         "type": "tabs",
         "children": [
           {
-            "id": "7610fe75028fbd11",
+            "id": "c37df6e833a815f0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
+                "file": "docs/studium/PSS-Pentesting/Common-Tools.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3. Socket - Programmierung"
+              "title": "Common-Tools"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
+                "file": "docs/studium/PSS-Pentesting/Common-Tools.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 3. Socket - Programmierung"
+              "title": "Backlinks for Common-Tools"
             }
           },
           {
@@ -168,17 +168,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "4c170019476b7308",
+  "active": "c37df6e833a815f0",
   "lastOpenFiles": [
+    "docs/studium/PSS-Pentesting/Active-Directory/2. WAD Angriffsmodelle.md",
+    "docs/studium/PSS-Pentesting/Active-Directory/1. Windows Domains.md",
+    "docs/studium/PSS-Pentesting/Common-Tools.md",
+    "FINDING - Unzureichend geschützte SMB-Shares.md",
+    "Shares.md",
+    "Screenshot (4) 1.png",
+    "Bilder/Screenshot (4).png.md",
+    "Bilder",
+    "Screenshot (4).png",
+    "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
     "replace.txt",
     "Neues Textdokument.txt",
     "docs/images/RN-SP5-1.PNG",
-    "docs/studium/Rechnernetze/Praktisch/3. Socket - Programmierung.md",
     "docs/studium/PSS-Pentesting/Portswigger-Academy/Path traversal/1. Path Traversal.md",
-    "Screenshot (4) 1.png",
-    "Screenshot (4).png",
-    "docs/studium/PSS-Pentesting/Common-Tools.md",
-    "Shares.md",
     "docs/studium/PSS-Pentesting/HTTP 1.1.md",
     "docs/studium/PSS-Pentesting/OWASP-JS/Mögliche Schwachstellen.md",
     "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/3. SQL Injection Set Of Views.md",
@@ -199,9 +204,6 @@
     "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/5. Error-Based SQL Injection.md",
     "docs/studium/PSS-Pentesting/Portswigger-Academy/SQLi/6. Blind SQL Injection OAST Technik.md",
     "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/GraphQL Checkliste.md",
-    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/5. Preventing GraphQL Attacks.md",
-    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/3. Attack API.md",
-    "docs/studium/PSS-Pentesting/Portswigger-Academy/GraphQL API/4. Attack API CSRF.md",
     "docs/images/ERROR_BASED_SQLI3.png",
     "docs/images/ERROR_BASED_SQLI4.png",
     "docs/images/ERROR_BASED_SQLI1.png",
@@ -213,8 +215,6 @@
     "docs/studium/PSS/Portswigger-Academy/SQLi",
     "docs/studium/PSS/Portswigger-Academy/Clickjacking",
     "docs/studium/PSS/Portswigger-Academy/Prototype Pollution",
-    "docs/studium/PSS/Portswigger-Academy/API-Testing",
-    "docs/studium/PSS/Portswigger-Academy/SSRF",
-    "docs/studium/PSS/Portswigger-Academy/Authentication vulnerabilities"
+    "docs/studium/PSS/Portswigger-Academy/API-Testing"
   ]
 }
