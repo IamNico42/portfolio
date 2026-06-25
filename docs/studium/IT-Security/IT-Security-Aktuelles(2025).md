@@ -1,3 +1,14 @@
+---
+created:
+  - "{{date: DD-MM-YYYY}} {{time}}"
+aliases:
+  - "Course Code:"
+  - IT-Security
+tags:
+  - Course/IT-Security
+  - Semester-5
+  - Informatik
+---
 **Current Attacks**
  _Find a report - that is not older than three months - about a malware attack on a company or public institution in Germany. Describe the attack and how malware was used to overcome security mechanisms and achieve the attacker’s goals. Could the attack or its effects have been prevented? How?_
 

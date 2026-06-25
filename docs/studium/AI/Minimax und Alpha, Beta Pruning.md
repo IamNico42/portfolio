@@ -5,7 +5,7 @@ aliases:
   - "Course Code:"
   - AI
 tags:
-  - Course/
+  - Course/AI
 ---
 #  **Adversariale Suche & Minimax**
 

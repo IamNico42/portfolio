@@ -1,3 +1,14 @@
+---
+created:
+  - "{{date: DD-MM-YYYY}} {{time}}"
+aliases:
+  - "Course Code:"
+  - IT-Security
+tags:
+  - Course/IT-Security
+  - Informatik
+  - Semester-5
+---
 ### 💡 **1. IT-Grundschutz (IT Base Protection)**
 
 **Wichtig:**

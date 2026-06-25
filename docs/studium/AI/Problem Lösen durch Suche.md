@@ -5,7 +5,7 @@ aliases:
   - "Course Code:"
   - AI
 tags:
-  - Course/
+  - Course/AI
 ---
 ## 🧠 **"Problemlösen durch Suchen" - Was steckt wirklich dahinter?**
 

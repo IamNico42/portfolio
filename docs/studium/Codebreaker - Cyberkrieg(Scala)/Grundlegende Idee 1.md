@@ -5,7 +5,7 @@ aliases:
   - "Course Code:"
   - Software-Engineering
 tags:
-  - Course/
+  - Course/Software-Engineering
 ---
 # 🧱 **I. CORE ENGINE (Fundament)**
 
@@ -20,6 +20,9 @@ tags:
 
 ### 📝 ToDo
 
+
+
+
 #### **1. Turn-System finalisieren**
 
 -  Phasen implementieren (Travel → Actions → Resolve → Income → End)
@@ -31,7 +34,70 @@ tags:
 
 -  globaler Seed
 -  deterministische Events für Replays/Lobby
+
+---
+
+# **Spieler muss zuerst die Welt “entdecken”**
+
+Wir fügen dem Player zwei neue Parameter hinzu:
+
+1️⃣ **scanRange** → Wie weit der Spieler Map-Tiles sieht  
+2️⃣ **networkRange** → Reichweite der erreichbaren Ziele (Server, Regionen)  
+3️⃣ **infrastructureLevel** → Einfluss auf TravelModes + networkRange  
+4️⃣ **visibilityMap** → welche Tiles der Spieler schon kennt
+
+Damit bekommt dein Spiel ein _Fog-of-War / Recon_-System wie in Strategiespielen, aber in Hacker-Form.
+# 🧭 **2. Was bedeuten diese Werte?**
+
+## 🔍 **scanRange**
+
+Wie weit der Spieler die Map sehen kann.
+
+- Level 1 → scanRange = 2
+- Mit erster Server-Claim → +1
+- Infrastruktur-Level steigt → +1
+- Darknet-Item "GeoScanner" → temporär +5
     
+
+→ _Fog of War_: Spieler sieht nicht die ganze Welt.
+
+## 🌐 **networkRange**
+
+Wie weit er remote hacken kann.
+
+- Standard: 10 Tiles
+- Jeder geclaimte Server erweitert Netzwerk um +5
+- C2-Server → +10
+- VPN-Kette → temporär +20
+- Regionen mit High-Tech erhöhen Effektivität
+    
+
+→ _Ein Spieler in Afrika kann China nicht sofort remote hacken._
+
+## 🏗️ **infrastructureLevel**
+
+Bestimmt Reisemöglichkeiten + Netzwerkleistung.
+
+- Level 0 = nur zu Fuß
+- Level 1 = Auto freischalten
+- Level 2 = Züge
+- Level 3 = Flugzeuge
+- Level 4 = globale Reichweite
+    
+
+→ Du baust dir **dein eigenes Cyber-Infrastruktur-Netzwerk**.
+
+Das ist ULTRA legitim als Gameplay-System.
+
+
+## 🗺️ **visibilityMap**
+
+Set von Koordinaten, die der Spieler bisher kennt.
+
+Beispiel:
+`visibilityMap = Set((2,7), (2,8), (3,7), (3,8))`
+
+Der Spieler sieht auf der Karte nur diese Tiles.
 
 ---
 

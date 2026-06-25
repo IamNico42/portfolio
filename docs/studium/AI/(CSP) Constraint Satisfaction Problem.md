@@ -5,7 +5,7 @@ aliases:
   - "Course Code:"
   - AI
 tags:
-  - Course/
+  - Course/AI
 ---
 ## 🔍 **Was ist ein CSP (Constraint Satisfaction Problem)?**
 

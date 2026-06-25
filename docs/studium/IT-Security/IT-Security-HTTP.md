@@ -5,7 +5,9 @@ aliases:
   - "Course Code:"
   - IT-Security
 tags:
-  - Course/
+  - Course/IT-Security
+  - Semester-5
+  - Informatik
 ---
 # Root-Me HTTP Dokumentation
 

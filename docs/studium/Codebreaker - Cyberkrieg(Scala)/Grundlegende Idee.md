@@ -5,7 +5,7 @@ aliases:
   - "Course Code:"
   - Software-Engineering
 tags:
-  - Course/
+  - Course/Software-Engineering
 ---
 ### Codebreaker: Cyberkrieg
 

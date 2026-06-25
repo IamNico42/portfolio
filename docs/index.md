@@ -25,7 +25,18 @@ Ich habe mit verschiedenen Sprachen gearbeitet - manche häufiger, manche eher p
 🟢 = Erfahrung / Verständnis  
 ⚪ = ausbaufähig
 
-Auch wenn jede Sprache ihre Eigenheiten hat, liegt meine Stärke besonders im **grundsätzlichen Verständnis von Programmierkonzepten**, Logik und Softwarestruktur. Die Syntax ist oft nur noch Formsache - mit etwas Übung finde ich mich in neuen Technologien und Sprachen schnell zurecht, vor allem wenn das Ziel oder Anwendungsgebiet klar ist.
+Auch wenn jede Sprache ihre Eigenheiten hat, liegt meine Stärke besonders im **grundsätzlichen Verständnis von Programmierkonzepten, Logik und Softwarestruktur.** Die Syntax ist oft nur noch Formsache - mit etwas Übung finde ich mich in neuen Technologien und Sprachen schnell zurecht.
+
+Die Frage, die sich heute viele Unternehmen stellen, ist, welchen Mehrwert ein Informatiker noch bietet, wenn sich bereits viele Aufgaben durch KI automatisieren oder unterstützen lassen. Ich kann jedoch mit gutem Gewissen sagen, dass meine Stärke ohnehin nie nur im Schreiben von Syntax lag, sondern vielmehr darin, komplexe Konzepte in kleine, verständliche und logisch strukturierte Komponenten zu zerlegen, welche dann wiederum gut und effizient durch KI umsetzbar sind.
+Gerade trotz KI bleibt es entscheidend, dass man:
+- Probleme sauber analysieren kann,
+- Systeme und Zusammenhänge versteht,
+- Anforderungen sinnvoll strukturiert,
+- Fehlerquellen erkennt,
+- Prozesse logisch plant,
+- und technische Lösungen kritisch hinterfragt.
+
+KI kann beim Implementieren unterstützen, aber sie ersetzt nicht das konzeptionelle Denken, die Architektur komplexer Systeme oder das Verständnis dafür, warum bestimmte Lösungen sinnvoller sind als andere. Genau dort sehe ich meine Stärke.
 
 ---
 

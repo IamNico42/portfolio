@@ -5,7 +5,7 @@ aliases:
   - "Course Code:"
   - Rechnernetze
 tags:
-  - Course/
+  - Course/Rechnernetze
 ---
 # **Vorlesungsunterlagen-Zusammenfassung**
 
