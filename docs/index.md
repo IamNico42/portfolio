@@ -29,6 +29,7 @@ Auch wenn jede Sprache ihre Eigenheiten hat, liegt meine Stärke besonders im **
 
 Die Frage, die sich heute viele Unternehmen stellen, ist, welchen Mehrwert ein Informatiker noch bietet, wenn sich bereits viele Aufgaben durch KI automatisieren oder unterstützen lassen. Ich kann jedoch mit gutem Gewissen sagen, dass meine Stärke ohnehin nie nur im Schreiben von Syntax lag, sondern vielmehr darin, komplexe Konzepte in kleine, verständliche und logisch strukturierte Komponenten zu zerlegen, welche dann wiederum gut und effizient durch KI umsetzbar sind.
 Gerade trotz KI bleibt es entscheidend, dass man:
+
 - Probleme sauber analysieren kann,
 - Systeme und Zusammenhänge versteht,
 - Anforderungen sinnvoll strukturiert,
