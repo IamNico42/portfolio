@@ -9,7 +9,7 @@ tags:
 ---
 Die **adversariale Suche** wird bei Spielen verwendet, in denen zwei Spieler gegensätzliche Ziele verfolgen. Minimax eignet sich insbesondere für deterministische Zwei-Personen-Nullsummenspiele mit vollständiger Information.
 
-### 1. Spielbaum und Rollen
+## 1. Spielbaum und Rollen
 Ein Spiel wird als Baum dargestellt:
 
 - **Knoten:** aktuelle Spielsituationen
@@ -26,7 +26,7 @@ Ist ein Spielzustand terminal oder die maximale Suchtiefe erreicht, liefert die 
 - hoher Wert: gut für Max
 - niedriger Wert: gut für Min
 - neutraler Wert: ausgeglichene Stellung
-### 2. Minimax-Verfahren
+## 2. Minimax-Verfahren
 Minimax durchsucht den Spielbaum rekursiv:
 
 1. Max untersucht alle möglichen eigenen Züge.
@@ -66,7 +66,7 @@ function minimax(s, d, player):
         return best
 ```
 
-#### Komplexität
+### Komplexität
 
 Mit dem Verzweigungsfaktor $b$ und der Suchtiefe $d$ gilt:
 
@@ -81,7 +81,7 @@ Mit dem Verzweigungsfaktor $b$ und der Suchtiefe $d$ gilt:
 | Max | wählt den größten Kindwert |
 | Min | wählt den kleinsten Kindwert |
 
-### 3. Alpha-Beta-Pruning
+## 3. Alpha-Beta-Pruning
 **Alpha-Beta-Pruning** verbessert Minimax, indem Teilbäume übersprungen werden, die das Endergebnis nicht mehr beeinflussen können.
 
 Das Verfahren liefert dieselbe Entscheidung wie vollständiges Minimax, untersucht aber häufig deutlich weniger Knoten.
@@ -141,7 +141,7 @@ function alphabeta(s, d, alpha, beta, player):
         return value
 ```
 
-#### Komplexität
+### Komplexität
 
 Die Laufzeit hängt von der Reihenfolge der untersuchten Züge ab:
 
@@ -150,7 +150,7 @@ Die Laufzeit hängt von der Reihenfolge der untersuchten Züge ab:
 
 Im besten Fall kann dadurch bei vergleichbarem Aufwand ungefähr die doppelte Suchtiefe erreicht werden.
 
-### 4. Heuristische Zugreihenfolge
+## 4. Heuristische Zugreihenfolge
 Alpha-Beta-Pruning arbeitet besonders effektiv, wenn vielversprechende Züge zuerst untersucht werden. Dadurch werden Alpha und Beta früher verbessert und mehr Teilbäume können abgeschnitten werden.
 
 Mögliche Verfahren sind:

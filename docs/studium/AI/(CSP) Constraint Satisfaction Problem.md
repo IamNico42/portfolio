@@ -7,7 +7,7 @@ aliases:
 tags:
   - Course/AI
 ---
-## **Was ist ein CSP (Constraint Satisfaction Problem)?**
+## Was ist ein CSP (Constraint Satisfaction Problem)?
 
 
 Bei einem **Constraint Satisfaction Problem (CSP)** geht es **nur um eines**:
@@ -44,32 +44,32 @@ Ein **CSP ist gelöst**, wenn:
 Also: **Ein CSP ist eine Klasse von Problemen**, und **die vorgestellten Algorithmen** wie Backtracking, AC-3 oder Min-Conflicts sind **Strategien zur Lösung** dieser Art von Problemen.
 
 
-## **Beispiele - im Detail erklärt**
+## Beispiele - im Detail erklärt
 
-### 1. **Landkartenfärbung:**
+### 1. Landkartenfärbung:
 - Variablen: WA, NT, SA, ...
 - Werte: {R, G, B}
 - Constraint: keine benachbarten Regionen dürfen die gleiche Farbe haben
     
-### 2. **N-Damen-Problem:**
+### 2. N-Damen-Problem:
 - Ziel: 8 Damen so auf ein Schachbrett setzen, dass sie sich nicht schlagen
 - Constraint: keine zwei Damen in gleicher Zeile, Spalte oder Diagonale
     
-### 3. **Sudoku:**
+### 3. Sudoku:
 - Variablen: Zellen des Rasters
 - Werte: 1-9
 - Constraints: Jede Zahl darf nur **einmal pro Zeile, Spalte und Block** vorkommen
     
-### 4. **Krypto-Rätsel (z. B. SEND + MORE = MONEY):**
+### 4. Krypto-Rätsel (z. B. SEND + MORE = MONEY):
 - Buchstaben sind Ziffern
 - Jede Ziffer darf nur **einmal** vorkommen (Alldiff)
 - Rechenregeln gelten als Constraints
     
-### 5. **Stundenplanung (Timetabling):**
+### 5. Stundenplanung (Timetabling):
 - Lehrer, Räume, Fächer - alles muss zusammenpassen
 - Viele Regeln (z. B. keine Doppelbelegung)
 
-## 1. **Backtracking (klassische Suche)**
+## 1. Backtracking (klassische Suche)
 
 ### Grundidee:
 
@@ -94,7 +94,7 @@ Backtracking ist eigentlich eine **Tiefensuche** im Suchbaum:
 1. **Most Constrained Variable First**: Variable mit wenigsten erlaubten Werten zuerst wählen
 2. **Most Constraining Variable**: Variable, die die meisten anderen beeinflusst
 3. **Least Constraining Value**: Farbe wählen, die den Nachbarn am meisten Optionen lässt
-## 2. **Forward Checking - Frühzeitige Prüfung**
+## 2. Forward Checking - Frühzeitige Prüfung
 
 ### Was passiert hier?
 
@@ -120,9 +120,9 @@ Immer wenn **eine Variable einen Wert bekommt**, prüfe alle **benachbarten Vari
 - NT kann nur noch Grün oder Blau
 - SA hatte vorher {R, G, B} -> nach Ausschluss: nur noch B
 - Wenn das dann auch unmöglich ist -> sofort zurück!
-## **AC-3 (Arc Consistency 3)**
+## AC-3 (Arc Consistency 3)
 
-### **Ziel:**
+### Ziel:
 
 **Einschränkung der Domains**, indem **unbrauchbare Werte entfernt werden**, bevor überhaupt nach einer Lösung gesucht wird.
 
@@ -134,7 +134,7 @@ Weil:
 - Wir erkennen **Widersprüche**, **ohne überhaupt zu raten oder zu suchen**
 - Es ist wie ein "automatisches Vorfiltern" aller schlechten Möglichkeiten
 
-### **Vorgehen:**
+### Vorgehen:
 
 1. Starte mit **allen Kanten (Constraints)** im CSP (z. B. (X,Y))
 2. Für jede Kante `(X,Y)` prüfe:  
@@ -144,12 +144,12 @@ Weil:
 5. Wiederholen, bis keine Änderung mehr
     
 
-### **Ergebnis:**
+### Ergebnis:
 
 - Jede Domain enthält **nur noch Werte**, die **prinzipiell** in einer Lösung vorkommen können
 - Erkennt **Widersprüche frühzeitig** (z. B. leere Domain)
 
-### **Vergleich zu anderen Algorithmen**
+### Vergleich zu anderen Algorithmen
 
 | Kriterium                       | **Backtracking**                           | **Forward Checking**                              | **AC-3 (Constraint Propagation)**                             |
 | ------------------------------- | ------------------------------------------ | ------------------------------------------------- | ------------------------------------------------------------- |
@@ -162,7 +162,7 @@ Weil:
 | Betrachtet Constraints zwischen | **Aktuelle Variable vs. bisherige**        | **Aktuelle Variable vs. direkte Nachbarn**        | **Jedes (X,Y)-Paar im gesamten Graph**                        |
 | Wie weit denkt er voraus?       | Gar nicht voraus - reagiert nur auf Fehler | Prüft Nachbar-Domains auf direkte Widersprüche    | **Filtert Domains global** durch Wiederholungen               |
 
-## **Problemstruktur nutzen** 
+## Problemstruktur nutzen
 
 ### Was bedeutet **Problemstruktur ausnutzen**?
 > Es heißt: **Bevor** man irgendeinen Algorithmus blind loslaufen lässt (z. B. Backtracking),  
@@ -188,14 +188,14 @@ Danach entscheidest man, **wie man vorgeht**
 - Entferne eine Variable, um einen Baum zu erhalten
 - Löse das vereinfachte Problem zuerst
 
-## **Lokale Suche mit Min-Conflicts - Zusammenfassung**
+## Lokale Suche mit Min-Conflicts - Zusammenfassung
 
-### **Ziel:**
+### Ziel:
 
 Finde eine gültige Lösung für ein CSP, indem man **schrittweise Konflikte reduziert**,  
 statt den gesamten Suchbaum zu durchsuchen.
 
-### **Ablauf des Algorithmus:**
+### Ablauf des Algorithmus:
 
 1. **Starte mit einer vollständigen, zufälligen Zuweisung** (auch mit Fehlern)
 2. **Solange Konflikte bestehen:**
@@ -210,19 +210,19 @@ statt den gesamten Suchbaum zu durchsuchen.
         
 
 
-### **Was bedeutet „lokal“?**
+### Was bedeutet „lokal“?
 
 - Es wird **immer nur eine Variable auf einmal geändert**
 - Es wird **nur im direkten „Nachbarschaftsbereich“** des aktuellen Zustands geschaut
 - Keine globale Sicht, keine Rückverfolgung
     
-### **Stärken:**
+### Stärken:
 
 - **Sehr effizient** bei großen CSPs (z. B. N-Damen mit Millionen Feldern)
 - **Einfach zu implementieren**
 - **Schnell** - oft in wenigen Schritten zur Lösung
     
-### **Schwächen:**
+### Schwächen:
 
 - Kann in **lokalen Minima** hängen bleiben  
     -> Wenn keine Änderung mehr Konflikte reduziert
@@ -230,7 +230,7 @@ statt den gesamten Suchbaum zu durchsuchen.
 - **Heuristik-basiert** -> schlechte Heuristik = schlechte Ergebnisse
 - **Keine Garantie**, eine Lösung zu finden
 
-### **Typische Gegenmaßnahmen:**
+### Typische Gegenmaßnahmen:
 
 |Technik|Beschreibung|
 |---|---|
@@ -239,7 +239,7 @@ statt den gesamten Suchbaum zu durchsuchen.
 |**Mehrfachdurchläufe**|Algorithmus mehrfach starten, beste Lösung behalten|
 |**Hybridverfahren**|Lokale Suche mit anderen Techniken kombinieren|
 
-### **Kernaussage:**
+### Kernaussage:
 
 > Lokale Suche mit Min-Conflicts ist wie ein „Greedy“-Wanderer:  
 > Er startet irgendwo, schaut nur um sich herum, geht dort hin, wo es **lokal besser** aussieht -  

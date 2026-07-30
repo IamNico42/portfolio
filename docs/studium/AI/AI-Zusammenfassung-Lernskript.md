@@ -1,4 +1,3 @@
-# Strukturiertes Lernskript: Symbolische KI und neuronale Netze
 
 ## Teil 1 – Symbolische KI
 
