@@ -7,7 +7,7 @@ aliases:
 tags:
   - Course/Betriebssysteme
 ---
-## **📌 Einführung: Prozesse und Scheduling
+## Einführung: Prozesse und Scheduling
 
 Im Rahmen dieser Lehrveranstaltung wurden wir wöchentlich zu dem Buch [🔗 O-STEP Book](https://pages.cs.wisc.edu/~remzi/OSTEP)
 einzeln abgefragt. Wir haben Kapitel 3-38 behandelt. In der Abfrage konnte alles mögliche was in den jeweiligen Kapiteln zu finden ist, drankommen. Wöchentlich wurden in etwa 2-3 Kapitel behandelt. 
@@ -50,9 +50,7 @@ Es kann daher vorkommen, dass einzelne Aspekte **verkürzt**, **vereinfacht** od
 
 - Vergleich aller Scheduling-Algorithmen und deren Effizienz.
 
----
-
-## **📌 Teil 2: Speicherverwaltung (Kapitel 12-24)**
+## Teil 2: Speicherverwaltung (Kapitel 12-24)
 
 🔹 **Kapitel 12 - Adressräume**
 
@@ -109,10 +107,7 @@ Es kann daher vorkommen, dass einzelne Aspekte **verkürzt**, **vereinfacht** od
 🔹 **Kapitel 24 - Zusammenfassung der Speicherverwaltung**
 
 - Vergleich von **Paging, Swapping und Segmentierung**.
-
----
-
-## **📌 Teil 3: Concurrency & Synchronisation (Kapitel 25-34)**
+## Teil 3: Concurrency & Synchronisation (Kapitel 25-34)
 
 🔹 **Kapitel 25 - Einführung in Concurrency**
 

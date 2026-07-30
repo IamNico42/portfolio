@@ -7,123 +7,176 @@ aliases:
 tags:
   - Course/AI
 ---
-## 🧠 **"Problemlösen durch Suchen" - Was steckt wirklich dahinter?**
+## 1. Suchprobleme
+Bei einem Suchproblem soll eine Folge von Aktionen gefunden werden, die von einem Startzustand zu einem Zielzustand führt.
 
-### 1. 🔍 **Was ist ein Suchproblem überhaupt?**
+Ein Beispiel ist das Problem, bei dem ein Bauer einen Wolf, eine Ziege und einen Kohlkopf sicher über einen Fluss bringen muss.
 
-Du hast ein Problem und suchst eine Lösung → Beispiel: Bauer will Ziege, Kohl und Wolf über den Fluss bringen, ohne dass sich jemand gegenseitig frisst.
+Ein Suchproblem besteht aus:
 
-Um das als **Suchproblem** zu lösen, braucht man:
-
-|Begriff|Bedeutung|
+| Begriff | Bedeutung |
 |---|---|
-|**Zustand**|Wie die Welt gerade aussieht (z. B. „Ziege ist links“).|
-|**Startzustand**|Ausgangspunkt (z. B. alles ist auf der linken Seite).|
-|**Zielzustand**|Wunschzustand (z. B. alles ist sicher rechts angekommen).|
-|**Aktionen**|Was kann man tun? (z. B. „Bauer fährt mit Wolf nach rechts“).|
-|**Übergänge**|Durch eine Aktion ändert sich der Zustand.|
-|**Kosten**|Manche Wege kosten mehr (z. B. Sprit, Zeit…).|
+| **Zustand** | aktuelle Situation des Problems |
+| **Startzustand** | Ausgangspunkt der Suche |
+| **Aktionen** | mögliche Handlungen in einem Zustand |
+| **Übergangsmodell** | beschreibt, welcher Zustand durch eine Aktion entsteht |
+| **Zieltest** | prüft, ob ein Zielzustand erreicht wurde |
+| **Pfadkosten** | Gesamtkosten der ausgeführten Aktionen |
 
-➡️ Daraus entsteht ein **Zustandsraum**, also eine Art riesiges Entscheidungsdiagramm.
+Alle erreichbaren Zustände bilden den **Zustandsraum**. Eine Lösung ist eine Folge von Aktionen vom Startzustand zu einem Zielzustand.
 
----
+Eine optimale Lösung besitzt unter allen Lösungen die geringsten Pfadkosten.
+## 2. Suche im Zustandsraum
+Ein Suchalgorithmus beginnt beim Startzustand und erzeugt durch mögliche Aktionen weitere Zustände.
+Dabei entsteht ein Suchbaum:
 
-### 2. 🌳 **Wie wird das Problem gelöst?**
+- **Wurzel:** Startzustand
+- **Knoten:** untersuchte Zustände
+- **Kanten:** ausgeführte Aktionen
+- **Blätter:** noch nicht weiter untersuchte Zustände
 
-Durch **Suche im Zustandsraum** - du startest beim Ausgangspunkt und probierst Aktionen aus, um ans Ziel zu kommen.
+Da derselbe Zustand über unterschiedliche Wege erreichbar sein kann, sollte bei einer Graphsuche gespeichert werden, welche Zustände bereits untersucht wurden.
 
-Man unterscheidet zwei Arten von Suchen:
+Suchverfahren werden in **uninformierte** und **informierte Suche** unterteilt.
+## 3. Uninformierte Suche
+Uninformierte Suchverfahren besitzen keine Schätzung darüber, welcher Zustand dem Ziel besonders nahe ist. Sie verwenden nur die Definition des Suchproblems.
 
----
+### Breitensuche
+Die **Breitensuche (BFS)** untersucht alle Knoten einer Ebene, bevor die nächste Ebene durchsucht wird.
+Eigenschaften:
 
-### 🔵 **Uninformierte Suche (blinde Suche)**
+- vollständig bei endlichem Verzweigungsfaktor
+- optimal bei gleichen Schrittkosten
+- hoher Speicherbedarf
 
-Du hast keinen Plan, was dich dem Ziel näher bringt.  
-Beispiele:
+### Tiefensuche
+Die **Tiefensuche (DFS)** verfolgt einen Pfad möglichst weit, bevor sie zurückkehrt und einen anderen Pfad untersucht.
+Eigenschaften:
 
-| Verfahren                      | Beschreibung                                                    |
-| ------------------------------ | --------------------------------------------------------------- |
-| **Breitensuche**               | Geht systematisch Ebene für Ebene durch (wie Schlange stehen).  |
-| **Tiefensuche**                | Geht so tief wie möglich - oft schnell, aber verirrt sich gern. |
-| **Tiefenbeschränkte Suche**    | Wie Tiefensuche, aber mit Sicherheitsgrenze.                    |
-| **Iterativ vertiefende Suche** | Kombi aus beiden: startet flach und geht schrittweise tiefer.   |
-| **Uniforme Kostensuche**       | Wählt immer den günstigsten Weg (z. B. wenig Benzinverbrauch).  |
+- geringer Speicherbedarf
+- nicht grundsätzlich vollständig
+- nicht optimal
+- kann sich in unendlichen Pfaden oder Zyklen verlieren
 
-🧮 **Bewertungskriterien** für Suchalgorithmen:
+### Tiefenbeschränkte Suche
+Die **tiefenbeschränkte Suche** funktioniert wie die Tiefensuche, beendet einen Pfad aber bei einer festgelegten Tiefe.
 
-- **Vollständig** - Findet der Algo eine Lösung, wenn es eine gibt?
-- **Optimal** - Ist es die beste Lösung (z. B. der kürzeste Weg)?
-- **Zeitkomplexität** - Wie lange dauert das Ganze?
-- **Speicherbedarf** - Wie viel RAM/Platz wird gebraucht?
-    
+Dadurch werden unendlich tiefe Pfade verhindert. Liegt die Lösung unterhalb der Grenze, wird sie jedoch nicht gefunden.
 
----
+### Iterativ vertiefende Suche
+Die **iterativ vertiefende Suche (IDS)** führt mehrfach eine tiefenbeschränkte Suche durch. Die maximale Tiefe wird dabei schrittweise erhöht.
+Sie verbindet:
 
-### 🟢 **Informierte Suche (mit Köpfchen!)**
+- den geringen Speicherbedarf der Tiefensuche
+- die Vollständigkeit der Breitensuche
+- die Optimalität bei gleichen Schrittkosten
 
-Hier hat der Algorithmus eine **Heuristik** - eine Art „Riecher“ für gute Entscheidungen.
-##### ✅ **Was ist eine Heuristik (einfach erklärt)?**
-> Eine **Heuristik** ist eine **Hilfsmethode**,  
-> die dir hilft, **schnell eine gute Entscheidung zu treffen**,  
-> **ohne alles durchzuprobieren**.
+### Uniform-Cost Search
+Die **Uniform-Cost Search (UCS)** untersucht immer den bisher günstigsten Pfad.
+Die Auswahl erfolgt nach den bisherigen Pfadkosten:
 
-Beispiele:
+$$
+f(n)=g(n)
+$$
 
-|Verfahren|Beschreibung|
-|---|---|
-|**Gierige Suche**|Immer zum Knoten, der dem Ziel am nächsten scheint (z. B. Luftlinie).|
-|**A*-Suche**|Kombiniert den Weg, den man schon gemacht hat **g(n)** + den geschätzten Restweg **h(n)** → **f(n) = g(n) + h(n)**.|
+Dabei sind $g(n)$ die Kosten vom Startzustand bis zum Knoten $n$.
 
-> 📌 Wichtig:  
-> Gute Heuristiken = kluge Tipps, welche Wege sich lohnen → spart mega viel Rechenzeit!
+UCS ist vollständig und optimal, wenn die Schrittkosten positiv und nach unten begrenzt sind.
 
----
+## 4. Informierte Suche
+Informierte Suchverfahren verwenden zusätzlich eine **Heuristik**.
 
-### 3. 🧹 **Beispiele aus dem Alltag**
+Eine Heuristik $h(n)$ schätzt die verbleibenden Kosten von einem Knoten $n$ bis zum Ziel:
 
-- **Staubsaugerwelt**: Der Bot soll alles sauber machen → Suchproblem!
-- **15-Puzzle**: Schiebe ein Feld leer und sortiere die Zahlen → Zustände!
-- **Sudoku / Kartenfärbung**: Kann als sogenanntes „Constraint Satisfaction Problem“ formuliert werden.
-- **Straßenkarte**: Finde den kürzesten Weg von A nach B.
-    
+$$
+h(n) \approx \text{Kosten von } n \text{ bis zum Ziel}
+$$
 
----
+Eine gute Heuristik kann die Anzahl der untersuchten Zustände deutlich reduzieren. Sie verändert jedoch nicht den eigentlichen Zustandsraum.
 
-### 🧩 **Fazit:**
+### Greedy Best-First Search
+Die gierige Suche wählt den Knoten aus, der laut Heuristik dem Ziel am nächsten liegt:
 
-„Problemlösen durch Suchen“ ist im Grunde ein cleveres Durchprobieren von Möglichkeiten - mit oder ohne Plan.
+$$
+f(n)=h(n)
+$$
 
-> Eine **uninformierte Suche** ist ein „dummer“ Algorithmus -  
-> er **hat keine Ahnung**, wo das Ziel ist,  
-> sondern folgt nur **stur seiner Suchstruktur** (z. B. Breitensuche, Tiefensuche).
+Die bisherigen Pfadkosten werden nicht berücksichtigt.
+Eigenschaften:
 
-> Ein Algorithmus, der **Heuristiken nutzen kann**,  
-> ist **informiert** - er kann mit **Hilfsmethoden und Zusatzinfos** gefüttert werden,  
-> um **klüger, gezielter und oft schneller** zum Ziel zu kommen.
+- kann schnell eine Lösung finden
+- ist nicht grundsätzlich vollständig
+- ist nicht optimal
 
-|Ohne Plan 🕵️‍♂️|Mit Plan 🧠|
-|---|---|
-|Uninformierte Suche|Informierte Suche|
-|Probieren alles durch|Probieren „schlaue“ Wege zuerst|
-|Langsamer|Effizienter, wenn Heuristik gut ist|
-### 🔍 **Vergleich von Suchalgorithmen in Bezug auf Heuristik**
+### A*-Suche
+Die A*-Suche kombiniert die bisherigen Pfadkosten mit den geschätzten Restkosten:
 
-|Algorithmus|Heuristik?|Speicherbedarf|Optimal?|Komplett?|Geschwindigkeit|Bemerkung|
-|---|---|---|---|---|---|---|
-|**BFS**|❌ Nein|Hoch|✅ Ja|✅ Ja|Langsam|Optimal bei gleicher Kosten pro Schritt|
-|**DFS**|❌ Nein|Niedrig|❌ Nein|❌ Nein|Schnell (aber oft falsch)|Kann sich in Sackgassen verlaufen|
-|**IDS**|❌ Nein|Niedrig|✅ Ja|✅ Ja|Langsam|Kombination aus DFS & BFS - platzsparend|
-|**Uniform Cost Search**|❌ Nein|Hoch|✅ Ja|✅ Ja|Mittel|Wie A* ohne Heuristik|
-|**A***|✅ Ja|Hoch|✅ Ja|✅ Ja|Schnell (mit guter Heuristik)|Goldstandard für viele KI-Probleme|
-|**Greedy Best-First**|✅ Ja|Mittel|❌ Nein|❌ Nein|Sehr schnell|Oft nicht optimal - gierig eben 😅|
-|**IDA***|✅ Ja|Niedrig|✅ Ja|✅ Ja|Etwas langsamer als A*|A* für wenig Speicher (z. B. eingebettete Systeme)|
-|**Weighted A***|✅ Ja|Hoch|❌ Nicht garantiert|✅ Ja|Sehr schnell|Opfer zugunsten der Geschwindigkeit|
+$$
+f(n)=g(n)+h(n)
+$$
 
+Dabei gilt:
 
----
-### 🧠 Merkhilfe:
+- $g(n)$: tatsächliche Kosten vom Start bis zum Knoten
+- $h(n)$: geschätzte Kosten vom Knoten bis zum Ziel
+- $f(n)$: geschätzte Gesamtkosten des Lösungswegs
 
-|Suche-Typ|Nutzt `h(n)`?|Beispiel|
+A* ist optimal, wenn die Heuristik die tatsächlichen Restkosten nicht überschätzt. Eine solche Heuristik heißt **zulässig**:
+
+$$
+h(n) \leq h^*(n)
+$$
+
+Dabei bezeichnet $h^*(n)$ die tatsächlichen minimalen Restkosten.
+Bei einer Graphsuche sollte die Heuristik zusätzlich konsistent sein.
+
+### Weitere Verfahren
+- **IDA\*:** verbindet A* mit iterativer Vertiefung und benötigt weniger Speicher
+- **Weighted A\*:** gewichtet die Heuristik stärker und bevorzugt dadurch eine schnellere Suche
+
+Für Weighted A* gilt:
+
+$$
+f(n)=g(n)+w\cdot h(n)
+$$
+
+Für $w>1$ wird die Suche häufig schneller, die optimale Lösung ist aber nicht mehr garantiert.
+## 5. Bewertung von Suchalgorithmen
+Suchalgorithmen werden anhand folgender Kriterien verglichen:
+
+- **Vollständigkeit:** Wird eine Lösung gefunden, wenn eine existiert?
+- **Optimalität:** Wird die Lösung mit den geringsten Kosten gefunden?
+- **Zeitaufwand:** Wie viele Knoten werden untersucht?
+- **Speicherbedarf:** Wie viele Knoten müssen gespeichert werden?
+
+| Verfahren | Heuristik | Vollständig | Optimal | Speicherbedarf |
+|---|---:|---|---|---|
+| **BFS** | nein | ja | bei gleichen Schrittkosten | hoch |
+| **DFS** | nein | nicht generell | nein | niedrig |
+| **Tiefenbeschränkte Suche** | nein | nur bei ausreichender Grenze | nein | niedrig |
+| **IDS** | nein | ja | bei gleichen Schrittkosten | niedrig |
+| **UCS** | nein | ja | ja | hoch |
+| **Greedy Best-First** | ja | nicht generell | nein | häufig hoch |
+| **A\*** | ja | unter geeigneten Bedingungen | mit zulässiger Heuristik | hoch |
+| **IDA\*** | ja | unter geeigneten Bedingungen | mit zulässiger Heuristik | niedrig |
+| **Weighted A\*** | ja | unter geeigneten Bedingungen | nicht garantiert | hoch |
+
+Die Aussagen gelten unter üblichen Voraussetzungen wie einem endlichen Verzweigungsfaktor und positiven Schrittkosten.
+## 6. Beispiele
+Typische Suchprobleme sind:
+
+- **Flussüberquerung:** sichere Reihenfolge der Transporte bestimmen
+- **Staubsaugerwelt:** alle verschmutzten Felder reinigen
+- **15-Puzzle:** Zahlen durch Verschieben in die richtige Reihenfolge bringen
+- **Navigation:** günstigsten Weg zwischen zwei Orten finden
+- **Spielplanung:** mögliche Spielzüge untersuchen
+
+Sudoku und Kartenfärbung können ebenfalls als Suchprobleme betrachtet werden. Häufig werden sie jedoch als **Constraint Satisfaction Problems (CSP)** modelliert, da dabei Variablen, Wertebereiche und Bedingungen im Mittelpunkt stehen.
+## Zusammenfassung
+
+| Suchart | Verwendete Informationen | Beispiele |
 |---|---|---|
-|**Informiert**|✅ Ja|A*, Greedy, IDA*|
-|**Uninformiert**|❌ Nein|BFS, DFS, IDS|
+| **Uninformierte Suche** | nur Zustände, Aktionen, Zieltest und Kosten | BFS, DFS, IDS, UCS |
+| **Informierte Suche** | zusätzliche Schätzung $h(n)$ | Greedy, A*, IDA* |
+
+Uninformierte Verfahren folgen ihrer festgelegten Suchstrategie, ohne die Entfernung zum Ziel zu schätzen. Informierte Verfahren verwenden eine Heuristik, um vielversprechende Zustände früher zu untersuchen.

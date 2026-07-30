@@ -7,14 +7,12 @@ aliases:
 tags:
   - Course/
 ---
-## Pentesting Checklist
-
-
+## Best Practice in Web - Security von OWASP
+[OWASP Best-Practice - click here](https://github.com/owasp/asvs/blob/master/5.0/en/)
 
 ## Kali-Tools
 
 ### **Exiftool**
-
 Ein extrem mächtiges Tool, um **Metadaten in Dateien zu lesen und zu manipulieren** (EXIF, IPTC, XMP usw.).  
 Es wird im Pentesting häufig genutzt für:
 
@@ -34,19 +32,20 @@ exiftool -Comment="<?php echo file_get_contents('/home/carlos/secret'); ?>" imag
 ```
 
 Das Ergebnis ist eine Datei, die:
+
 - technisch ein **PNG** bleibt
 - aber **PHP-Code im Kommentar** trägt
 - und mit der Endung `.php` abgespeichert wird
     
 
 In schwachen Upload-Filtern kann das dazu führen, dass:
+
 - das Bild **als gültiges PNG erkannt wird** (Magic Bytes stimmen)
 - der Server die Datei **trotzdem als PHP interpretiert**
 
-→ Klassischer **Content-Type / Magic Bytes Bypass**.
+-> Klassischer **Content-Type / Magic Bytes Bypass**.
 
 ### **NXC - NetExec**
-
 Ein modernes Active-Directory- und Netzwerk-Automationstool (Nachfolger von CrackMapExec).  
 NXC automatisiert **Authentication, Enumeration, Lateral Movement & Exploits** über mehrere Protokolle wie **SMB, LDAP, WINRM, MSSQL, SSH** usw.
 
@@ -69,8 +68,6 @@ Du definierst eine **Ziel-IP / ein ganzes Netzwerk** + **Benutzerdaten**, und NX
 - **MSSQL** – SQL-Login und Enumeration  
 - **SSH** – Unix Enumeration  
 - **Kerberos** – Auth-Testing & Roast Attacks
-
-
 ### **FFUF**
 Ist ein extrem schnelles Fuzzer-Tool mit dem man Verzeichnisse, Dateien, Parameter, Hosts, Subdomains und Header usw. bruteforcen kann. (dirbuster + wfuzz + gobuster in einem)
 
@@ -153,7 +150,6 @@ gobuster dir -u http://192.168.249.14:3000/ -w /usr/share/wordlists/dirbuster/di
 - `gcs`, `s3`, `tftp` — Spezialisierte Bucket / TFTP Prüfungen.
 - `completion` — Auto-completion script für deine Shell erzeugen.
 - `help`, `version` — Self-explain.
-    
 - `-u` URL / Ziel (bei vielen Modi nötig)
 - `-w` Wordlist (Pfad) — `-` = STDIN
 - `-t` Threads (default 10) — mehr = schneller, aber lauter
@@ -192,52 +188,48 @@ sqlmap -u "http://hostname:port/rest/products/search?q=apple+juice"-p q --schema
 - `--crawl=N` : crawl die Site und finde Parameter (nützlich, aber zeitaufwändig)
     
 Gefährlich / nur mit Vorsicht:
-- `--os-shell`, `--os-pwn`, `--os-shell` → **NICHT** verwenden, wenn du nur API-Discovery willst. (Diese geben dir OS-Zugang — nicht nötig bei SQL-Audit und riskant.)
+
+- `--os-shell`, `--os-pwn`, `--os-shell`
 
 
 ## Hacker-News
-
 [Hacker-News]((https://hckrnews.com/#)
 [Bleeping-Computer](https://www.bleepingcomputer.com/)
 
 ## Open-Source Tool
-
 [Hacker-Tricks]([HackTricks - HackTricks](https://book.hacktricks.wiki/en/index.html))
-
 Hilfreiche Sammlung, Network - Wifi Pentesting
 
 [SwissKy](https://swisskyrepo.github.io/PayloadsAllTheThings/)
-
 Sammlung von Exploits, Payloads, Cheat Sheets.
 
 [Cyber-Chef](https://gchq.github.io/CyberChef/)
-
 Wofür man es nutzt:
+
 - dekodieren/encodieren (Base64, hex, URL-encoding, Base32, etc.)
 - schnelle Kryptotools (XOR, AES/RC4-Dekodierung _wenn du den Key hast_)
 - Hashing, Prüfsummen, Umwandlung zwischen Formaten (binary↔text)
 - Textanalyse / RegEx / Datenextraktion / CSV/JSON-Manipulation
-- Forensik/CTF/Prototyping: man baut „Rezepte“ aus einzelnen Schritten (z. B. From Base64 → XOR → UTF-8 Decode).  
+- Forensik/CTF/Prototyping: man baut „Rezepte“ aus einzelnen Schritten (z. B. From Base64 -> XOR -> UTF-8 Decode).  
     Typische Szenarien: Log-Analyse, Reverse-engineering von Daten, CTF-Challenges, schnelle Debugging-Hilfen beim Protokollieren/Parsing.
 
 [Jason Web Token](https://www.jwt.io/)
-
 Was es ist: ein einfacher JWT-Debugger/Inspector (JSON Web Tokens).  
 Wofür man es nutzt:
+
 - Tokenstruktur ansehen (Header.Payload.Signature) - Header und Payload sofort base64url-dekodiert anzeigen
 - Claims prüfen (exp, iat, sub, roles, etc.)
 - Signatur überprüfen (wenn du das Geheimnis / den öffentlichen Schlüssel hast) - praktisch zum Debuggen von Auth-Implementierungen  
     Typische Szenarien: Backend-Entwicklung, Auth-Debugging, Verständnis/Inspektion von Tokens in APIs oder beim Pentesting (nur legal auf eigenen Systemen).
 
 [Crackstation](https://www.crackstation.net/)
-
 Was es ist: ein Online-Service, der bekannte Passwort-Hashes gegen riesige vorgefertigte Tabellen/Listen abgleicht (ähnlich Rainbow-Table Lookup).  
 Wofür man es nutzt:
+
 - verlorene/vergessene Passwörter wiederherstellen (wenn Hash in ihrer DB vorkommt
 - prüfen, ob ein Passwort leicht in vorgefertigten Listen gefunden werden kann (Sicherheitscheck)  
     Einschränkungen: funktioniert gut bei kurzen, ungesalzenen Hashes (z. B. MD5, SHA1) und bei häufigen Passwörtern - nicht wirksam bei starken, langen oder gesalzenen Hashes. Für ernsthaftes Cracking (regelbasiert, GPU, gesalzene Hashes) benutzt man Tools wie hashcat oder John the Ripper (lokal, mit Zustimmung).
 
 
 [SSLYZE](https://www.ssllabs.com/)
-
 Was ist es: Ein Online Tool welches checkt ob das genutzte TLS vom Server den Sicherheitsstandards enstpricht. Das Ganze lässt sich alternativ manuell ausführen mit dem sslyze Befehl von Kali.

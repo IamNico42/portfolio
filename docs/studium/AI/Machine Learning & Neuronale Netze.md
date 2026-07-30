@@ -1,158 +1,167 @@
-## **1.2 Lineare Regression**
+## Lineare Regression
 
-### 🎯 **Ziel:**
+### Ziel
 
-Ein Modell, das eine lineare Beziehung zwischen einer Eingabe XXX und einer Ausgabe yyy findet.
+Die **lineare Regression** modelliert den Zusammenhang zwischen Eingabewerten und einer numerischen Ausgabe.
 
-### 📝 **Mathematisches Modell:**
+Bei einem einzelnen Eingabemerkmal lautet das Modell:
 
-$$y=wX+b$$
-
-- X ist die Eingabematrix mit m Beispielen und n Features.
-- w ist der Vektor der Gewichte.
-- b ist der Bias-Wert.
-
-### 🔢 **Fehlermetrik: Mean Squared Error (MSE)**
-
-- MSE sagt aus für das Modell was **gut** oder **schlecht** ist.
 $$
-MSE=n1​∑(y^​i​−yi​)2
+\hat{y} = wx + b
 $$
 
-### 🔽 **Gradientenabstieg zur Optimierung**
+Dabei gilt:
 
-- Berechnen Gradient des Fehlers damit wir wissen in welche Richtung wir uns bewegen müssen.
-- Wir ändern `w` und `b` ein kleines Stück -> Modell wird besser
+- $x$: Eingabewert
+- $\hat{y}$: vorhergesagter Wert
+- $w$: Gewicht beziehungsweise Steigung
+- $b$: Bias beziehungsweise Achsenabschnitt
 
-$$w := w - \alpha \frac{\partial J}{\partial w}$$
-$$b := b - \alpha \frac{\partial J}{\partial b}$$
+Bei mehreren Eingabemerkmalen wird die Matrixschreibweise verwendet:
 
-### 🖥️ **Python-Implementierung**
+$$
+\hat{\mathbf y} = X\mathbf w + b
+$$
+
+Dabei enthält $X$ die Trainingsbeispiele und $\mathbf w$ die zugehörigen Gewichte.
+
+### Mean Squared Error
+
+Der **Mean Squared Error (MSE)** misst den durchschnittlichen quadratischen Abstand zwischen den vorhergesagten und den tatsächlichen Werten:
+
+$$
+\operatorname{MSE}
+=
+\frac{1}{m}
+\sum_{i=1}^{m}
+(\hat{y}_i-y_i)^2
+$$
+
+Ein kleiner MSE bedeutet, dass die Vorhersagen nahe an den tatsächlichen Werten liegen. Durch das Quadrieren werden große Abweichungen besonders stark gewichtet.
+
+### Optimierung durch Gradientenabstieg
+
+Ziel des Trainings ist es, die Werte von $w$ und $b$ so anzupassen, dass der MSE möglichst klein wird.
+
+Der Gradient gibt an, in welche Richtung sich der Fehler am stärksten verändert. Die Parameter werden entgegen dieser Richtung aktualisiert:
+
+$$
+w
+\leftarrow
+w-\alpha\frac{\partial J}{\partial w}
+$$
+
+$$
+b
+\leftarrow
+b-\alpha\frac{\partial J}{\partial b}
+$$
+
+Dabei gilt:
+
+- $J$: Loss-Funktion, hier der MSE
+- $\alpha$: Learning Rate
+- $\frac{\partial J}{\partial w}$: Gradient für das Gewicht
+- $\frac{\partial J}{\partial b}$: Gradient für den Bias
+
+Für die lineare Regression ergeben sich die Gradienten:
+
+$$
+\frac{\partial J}{\partial w}
+=
+\frac{2}{m}
+\sum_{i=1}^{m}
+(\hat{y}_i-y_i)x_i
+$$
+
+$$
+\frac{\partial J}{\partial b}
+=
+\frac{2}{m}
+\sum_{i=1}^{m}
+(\hat{y}_i-y_i)
+$$
+
+Der Trainingsablauf besteht damit aus:
+
+1. Vorhersagen berechnen
+2. MSE bestimmen
+3. Gradienten berechnen
+4. Gewicht und Bias aktualisieren
+5. Vorgang wiederholen
+
+### Python-Implementierung
 
 ```python
 import numpy as np
+import matplotlib.pyplot as plt
 
-  
+# Trainingsdaten
+X = np.array([1, 2, 3, 4, 5], dtype=float)
+y = np.array([2, 4, 6, 8, 10], dtype=float)
 
-# Daten generieren
-X = np.array([[1], [2], [3], [4], [5]])
-y = np.array([2, 4, 6, 8, 10])
-
-# Parameter initialisieren
-w = 0.000
-b = 0.000
-alpha = 0.0025  # Lernrate
+# Parameter
+w = 0.0
+b = 0.0
+learning_rate = 0.01
 epochs = 1000
-
-# Listen zum Speichern von Änderungen
-w_history = []
-b_history = []
+m = len(X)
 
 # Gradientenabstieg
 for _ in range(epochs):
-    y_pred = w * X.flatten() + b  # X muss flach sein
-    dw = (-2 / len(X)) * np.sum(X.flatten() * (y - y_pred))  # Skalar
-    db = (-2 / len(X)) * np.sum(y - y_pred)  # Skalar
-    w -= alpha * dw
-    b -= alpha * db
-    w_history.append(w)
-    b_history.append(b)
+    y_pred = w * X + b
+    error = y_pred - y
 
-print(f"Trainiertes Modell: y = {w}x + {b}")
+    dw = (2 / m) * np.sum(error * X)
+    db = (2 / m) * np.sum(error)
 
-import matplotlib.pyplot as plt
+    w -= learning_rate * dw
+    b -= learning_rate * db
 
-plt.scatter(X, y, label="Daten")
-plt.plot(X, w*X + b, color='red', label="Regressionslinie")
+print(f"Trainiertes Modell: y = {w:.3f}x + {b:.3f}")
+
+# Ergebnis darstellen
+plt.scatter(X, y, label="Trainingsdaten")
+plt.plot(X, w * X + b, color="red", label="Regressionslinie")
+plt.xlabel("x")
+plt.ylabel("y")
 plt.legend()
 plt.show()
 ```
 
+Das trainierte Modell nähert sich der zugrunde liegenden Funktion an:
+
+$$
+y = 2x
+$$
+
 ![[1_iB5TFe77kfkWIxzcLT92Wg.gif]]
 
-### 🔁 Das Ganze nochmal ganz bildlich:
+### Learning Rate
 
-Stell dir vor, dein Modell steht auf einem **Berg aus Fehlern**.
+Die **Learning Rate** bestimmt, wie stark die Parameter bei jedem Trainingsschritt verändert werden.
 
-- Oben: Schlechter Fehler (groß)
-- Unten: Kleiner Fehler (gut)
+- **Zu groß:** Das Minimum kann übersprungen werden und das Training instabil werden.
+- **Zu klein:** Das Training verläuft stabil, benötigt aber viele Schritte.
+- **Passend gewählt:** Der Fehler sinkt schnell und gleichmäßig.
 
-👉 Der **MSE sagt dir**, wie hoch du gerade bist.  
-👉 Der **Gradient sagt dir**, in welche Richtung du runterlaufen musst.  
-👉 Der **Gradientenabstieg ist das Laufen**.
+Eine mögliche Erweiterung ist eine dynamische Learning Rate, die während des Trainings reduziert wird:
 
+```python
+learning_rate = 0.1
 
-### 🧠 Wie die beiden zusammenspielen:
+for epoch in range(100):
+    y_pred = w * X + b
+    error = y_pred - y
 
-1. Du machst eine Vorhersage mit deinem aktuellen Modell.
-2. Du berechnest den MSE → **Wie schlecht ist das?**
-3. Du berechnest den Gradienten des Fehlers → **In welche Richtung müssen wir `w` und `b` ändern?**
-4. Du änderst `w` und `b` ein kleines Stück → Modell wird besser.
-5. Wiederhole das viele Male → und du bekommst ein Modell, das sehr gute Vorhersagen macht!
+    dw = (2 / m) * np.sum(error * X)
+    db = (2 / m) * np.sum(error)
 
-### 🔁 Beispielcode: Gradient und Lernrate
+    w -= learning_rate * dw
+    b -= learning_rate * db
 
-
-```Python
-a_ = -0,5
-a_history = -0.5
-eta = 0.0003
-for i in range(0,5):
-  grad_a = -2/len(y)*np.sum((y -a_ * x - b) *x)
-  a_ = a_ - eta*grad_a
-  a_history =np.append(a_history,a_)
-print(a_history)
+    if (epoch + 1) % 20 == 0:
+        learning_rate *= 0.5
 ```
 
-Zeigt den Verlauf wie sich unser Modell verbessert.
-
-`[-0.5 1.80415034 0.80054605 1.23767972 1.04728007 1.13021135]`
-
-- a_ := Startwert
-- eta := Ist die Lernrate(In wie große Abständen gesprungen wird)
-		- (Hohe Lernrate = Schneller, aber ungenauer)
-		- (Kleine Lernrate = Langsamer, aber ziemlich genau)
-
-**Probem: Finde eine gute Lernrate**
-	- Idee: Adaptive Learning Rate(Passe die Lernrate an zB nach 5 Durchläufen oder andere Bedingungen)
-zB:
-#### 🚀 Dynamische Lernrate (Heuristik)
-
-Idee:
-- **Anfangs**: Große Lernrate → schnelleres Lernen
-- **Später**: Kleinere Lernrate → feinere Anpassung
-
-#### Beispiel: Alle 20 Elemente eta halbieren
-```Python
-eta = 0.1
-for i in range(100):
-    grad_a = ... # wie üblich
-    a_ = a_ - eta * grad_a
-
-    if i % 20 == 0:
-        eta = eta * 0.5  # Lernrate halbieren
-
-```
-➡️ So verhinderst du Überschwinger und machst das Modell präziser
-
-#### Beispiel: Wenn sich der Gradient kaum noch ändert → Lernrate verringern
-```Python
-# Wenn sich der Gradient kaum noch ändert → Lernrate verringern
-if abs(grad_a) < 0.01:
-    eta = eta * 0.5
-```
-➡️ Das wäre eine einfache **Heuristik**:  
-**„Wenn kaum noch Verbesserung → langsamer werden“**
-
-
-
-### 9. 🎲 **Dropout**
-
-#### Wofür braucht man das?
-- Gegen **Overfitting**
-- Lässt Netzwerk **robuster** und **generalisierender** lernen
-    
-#### 🛠️ Wie setzt man es ein?
-
-- Während Training: zufällig z. B. 50 % der Neuronen deaktivieren
-- Während Test: **volle Kapazität aktivieren**
+Zu Beginn ermöglichen größere Schritte ein schnelleres Lernen. Später sorgen kleinere Schritte für eine genauere Annäherung an das Minimum.

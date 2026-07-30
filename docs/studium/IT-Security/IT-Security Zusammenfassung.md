@@ -9,8 +9,7 @@ tags:
   - Informatik
   - Semester-5
 ---
-### 💡 **1. IT-Grundschutz (IT Base Protection)**
-
+### 1. IT-Grundschutz (IT Base Protection
 **Wichtig:**
 
 - Unterschiede zwischen **Basis-, Kern- und Standard-Absicherung**.
@@ -19,6 +18,7 @@ tags:
 	- Standard: Umfassender Schutz mit Analyse und Dokumentation
 
 IT-Grundschutz Baustein:
+
 	1. Welches Gerät bzw. Maßnahme?(Notebook, Handy, Server, PC)
 	2. Wovor soll es geschützt werden?(Ransome, Maleware, Physischer Zugang)
 	3. Welche Sicherheitsstufe braucht es?(niedrig, mittel, hoch)
@@ -29,10 +29,9 @@ IT-Grundschutz Baustein:
 	- Systemadministratoren 
 
 
-## 🔐 **2. Authentifizierung & Passwortsicherheit**
+## 2. Authentifizierung & Passwortsicherheit
 
 ### Authentifizierungsmethoden
-
 - **Wissen**: Passwort, PIN.
 - **Besitz**: Schlüssel, Karte.
 - **Sein**: Fingerabdruck, Gesicht (Biometrie).
@@ -40,21 +39,19 @@ IT-Grundschutz Baustein:
     
 
 ### Passwortsicherheit
-
 - **Hashing**: Speicherung von Passwörtern als Einwegfunktion.
 - **Salting**: Einzigartiger Zusatzwert verhindert Rainbow-Table-Angriffe.
 - **Empfohlene Methoden**: Bcrypt, Argon2. (Hat schon integriertes Salting)
 - **Empfohlene Mindestlänge**: z. B. 8 Zeichen an der HTWG.
-## 💥 **3. Schadsoftware (Malware)**
-
+## 3. Schadsoftware (Malware)
 - **Ransomware**: Verschlüsselt Daten, verlangt Lösegeld.
 - **Verbreitungswege**: E-Mail, Schwachstellen, USB-Sticks.
 - **Erkennung durch Antivirenprogramme:**
     
-    1. **Signaturbasiert**: Bekannte Muster → schnell, aber blind für neue Viren.
+    1. **Signaturbasiert**: Bekannte Muster -> schnell, aber blind für neue Viren.
 	    1. Erkennt keine Zero-Day angriffe
 	    2. Erkennt Signaturen wie zB Zeichenfolge `x90x90xE8x00x00`
-    2. **Heuristik**: Verhaltensanalyse → erkennt neue Varianten.
+    2. **Heuristik**: Verhaltensanalyse -> erkennt neue Varianten.
 	    1. Erkennen auffälliges verhalten wie zB
 		       - Selbstreplikation
 		       - Verschlüsselung von Dateien
@@ -63,13 +60,8 @@ IT-Grundschutz Baustein:
     3. **Sandboxing**: Testausführung in sicherer Umgebung.
 	    1. Verdächtige Programme werden erstmal in einem virtuellen Contianer ausgeführt
         
-
----
-
-## 🔓 **4. Zugriffssteuerung (Access Control)**
-
+## 4. Zugriffssteuerung (Access Control)
 - **Grundbegriffe:**
-    
     - **SID**: Security Identifier (Benutzer oder Gruppenkennung).
 	    - In Tokens, Zugriffslisten(ACL), Events/Logs
     - **Privilege**: Systemweite Rechte.
@@ -96,21 +88,16 @@ IT-Grundschutz Baustein:
 | `SeLoadDriverPrivilege`         | Kernel-Treiber laden                                   | Nur sehr vertrauenswürdig |
 
 - **Arten der Steuerung:**
-    
     - **DAC (Discretionary Access Control)**: Benutzer entscheidet.
 	    - Owner der Datei kann Rechte vergeben
-	    - Du erstellst eine Datei und erlaubst „Benutzer B“ Lesezugriff → das ist DAC.
+	    - Du erstellst eine Datei und erlaubst „Benutzer B“ Lesezugriff -> das ist DAC.
     - **RBAC (Role-Based Access Control)**: Rechte über Rollen.
 	    - Rollen die diverse Rechte haben
     - **ABAC (Attribute-Based Access Control)**: Zugriff nach Attributen.
 	    - zB: Benutzer Max mit SID ".." Darf heute um 16Uhr-20Uhr die Datei öffnen
 	    - Zusätzlich falls man ergänzende Attribute haben möchte mit RBAC oder DAC
         
-
----
-
-## ✅ **5. Positivlisten / Whitelisting (WDAC)**
-
+## 5. Positivlisten / Whitelisting (WDAC)
 - **WDAC = Windows Defender Application Control**
     - Nur zugelassene Programme dürfen starten.
         
@@ -127,45 +114,33 @@ Szenario wenn trotzdem versucht wird nicht gelistete Programme auszuführen
 
 - **Herausforderungen:** Flexibilität bei PC-Pools, Updates.
     
-
----
-
-## 🔗 **6. Lieferkettensicherheit / Supply Chain Attacks**
-
+## 6. Lieferkettensicherheit / Supply Chain Attacks
 - **Was ist das?**
     - Angreifer manipulieren Software oder Komponenten während der Entwicklung oder Verteilung.
     - System wird schon beim Zulieferer kompromittiert.
-    - 
         
 - **Beispiele:** SolarWinds, log4j.
 - **Risiken durch Drittanbieter:** z. B. Huawei (politisch), Open Source (Transparenz vs. Kontrolle).
 - **Maßnahmen:** Signaturen, Vertrauen in Quellen, 2FA für Maintainer.
 
-### 🛡️ Schutzmaßnahmen gegen Supply Chain Attacks
+### Schutzmaßnahmen gegen Supply Chain Attacks
 
-|Maßnahme|Erklärung|
-|---|---|
-|✅ **Digitale Signaturen**|Sicherstellen, dass Software nicht verändert wurde (Authentizität + Integrität)|
-|✅ **Hash-Prüfsummen**|Vergleich von Dateien mit offiziellen Hashes (SHA256 etc.)|
-|✅ **2FA für Entwickler**|Schutz von Entwicklerkonten und Repositories|
-|✅ **Code Signing Policies**|Nur signierte Software darf ausgeführt werden (z. B. mit WDAC oder AppLocker)|
-|✅ **SBOM (Software Bill of Materials)**|Dokumentation aller Abhängigkeiten in der Software - wer nutzt was?|
-|✅ **Monitoring & Logging**|Frühzeitiges Erkennen verdächtigen Verhaltens|
-|✅ **Zero Trust**|„Vertraue niemandem automatisch“ - auch nicht internen Komponenten|
+| Maßnahme                              | Erklärung                                                                       |
+| ------------------------------------- | ------------------------------------------------------------------------------- |
+| **Digitale Signaturen**               | Sicherstellen, dass Software nicht verändert wurde (Authentizität + Integrität) |
+| **Hash-Prüfsummen**                   | Vergleich von Dateien mit offiziellen Hashes (SHA256 etc.)                      |
+| **2FA für Entwickler**                | Schutz von Entwicklerkonten und Repositories                                    |
+| **Code Signing Policies**             | Nur signierte Software darf ausgeführt werden (z. B. mit WDAC oder AppLocker)   |
+| **SBOM (Software Bill of Materials)** | Dokumentation aller Abhängigkeiten in der Software - wer nutzt was?             |
+| **Monitoring & Logging**              | Frühzeitiges Erkennen verdächtigen Verhaltens                                   |
+| **Zero Trust**                        | „Vertraue niemandem automatisch“ - auch nicht internen Komponenten              |
 
----
-
-## 🧬 **7. Schwachstellen & Verwundbarkeiten**
-
+## 7. Schwachstellen & Verwundbarkeiten
 - **Datenbanken wie NVD (National Vulnerability Database)** helfen beim Patchmanagement.
 - **CVE**: Eindeutige Kennungen für Schwachstellen.
 - **CWE**: Kategorisierung von Schwachstellentypen (z. B. CWE-120 = Buffer Overflow).
     
-
----
-
-## 🧪 **8. Statische Codeanalyse**
-
+## 8. Statische Codeanalyse
 - **Analyse des Codes ohne Ausführung.**
 - Ziel: Schwachstellen frühzeitig erkennen.
     
@@ -176,7 +151,7 @@ Szenario wenn trotzdem versucht wird nicht gelistete Programme auszuführen
         
 - **Problematisch:** Viele False Positives führen zu Frustration und Ignoranz.
 
-### 🔐 Sicherheit:
+### Sicherheit:
 - **Buffer Overflows**
 - **SQL Injections**
 - **XSS
@@ -185,7 +160,7 @@ Szenario wenn trotzdem versucht wird nicht gelistete Programme auszuführen
 - **Ressourcenlecks**
 - **Unsichere API-Nutzung**
 - **Race Conditions** (nur teilweise)
-### 🧹 Codequalität:
+### Codequalität:
 - Unbenutzter Code
 - Magische Zahlen
 - Spaghetticode
@@ -194,9 +169,9 @@ Szenario wenn trotzdem versucht wird nicht gelistete Programme auszuführen
 - Schlechte Namensgebung
 - Missachtung von „Clean Code“-Prinzipie
 
-## 📦 Tools für statische Codeanalyse
+## Tools für statische Codeanalyse
 
-### 🔹 Open Source & frei
+### Open Source & frei
 
 |Tool|Sprache|Spezialisiert auf…|
 |---|---|---|
@@ -207,9 +182,7 @@ Szenario wenn trotzdem versucht wird nicht gelistete Programme auszuführen
 |**Brakeman**|Ruby on Rails|Web-Schwachstellen|
 |**Semgrep**|Multi-Language|Muster- & Policy-Erkennung|
 
----
-
-## 📈 **9. Risikobewertung (Risk Assessment)**
+## 9. Risikobewertung (Risk Assessment)
 
 - **Zwei Hauptfaktoren:**
     - **Wahrscheinlichkeit** (dass ein Schaden eintritt)
@@ -226,9 +199,7 @@ Risiko = Wahrscheinlichkeit × Auswirkung
 |**Mittlere Wahrscheinlichkeit**|🟡 niedrig-mittel|🟠 mittel|🔴 hoch|
 |**Hohe Wahrscheinlichkeit**|🟡 mittel|🔴 hoch|🔴 kritisch|
 
----
-
-## 🧱 **10. Microsoft SDL (Security Development Lifecycle)**
+## 10. Microsoft SDL (Security Development Lifecycle)
 
 > Microsoft SDL(Security Development Lifecycle) ist wichtig damit man schon während der Entwicklung feststellt an welchen Stellen im Code wir vorsichtig sein müssen. Es werden schon Risiken betrachtet bevor die App überhaupt gebaut wird.
 
@@ -238,7 +209,7 @@ Risiko = Wahrscheinlichkeit × Auswirkung
     - **Security Requirements**
     - **Incident Response Plan**
 
-### 🔎 1. **Threat Modeling**
+### 1. **Threat Modeling**
 
 > Frühzeitige Analyse: **Welche Bedrohungen könnten unsere Software treffen?**
 
@@ -246,10 +217,10 @@ Risiko = Wahrscheinlichkeit × Auswirkung
 - Tools: STRIDE-Modell (Spoofing, Tampering, Repudiation, Info Disclosure, Denial of Service, Elevation of Privilege)
 - Ergebnis: **Bedrohungsszenarien + passende Gegenmaßnahmen**
 
-✅ Beispiel:
+Beispiel:
 
-> „Wenn jemand direkt API-Calls schicken kann, ohne Authentifizierung, ist das ein Risiko → Authentifizierungsprüfung einbauen.“
-#### 🧰 STRIDE-Modell - einfacher erklärt
+> „Wenn jemand direkt API-Calls schicken kann, ohne Authentifizierung, ist das ein Risiko -> Authentifizierungsprüfung einbauen.“
+#### STRIDE-Modell - einfacher erklärt
 
 Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder Buchstabe steht für eine Art von Angriff:
 
@@ -262,7 +233,7 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
 |D|**Denial of Service**|Dienst lahmlegen|Server wird mit Anfragen geflutet (DDoS)|
 |E|**Elevation of Privilege**|Berechtigungen ausweiten|Normaler Nutzer wird plötzlich Admin|
 
-### 🧱 2. **Use of Safe Libraries**
+### 2. **Use of Safe Libraries**
 
 > Statt alles selbst zu implementieren: **bewährte, geprüfte Bibliotheken verwenden**
 
@@ -271,14 +242,14 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
     - Verwende `bcrypt` statt eigenen Passwort-Hash
     - Nutze Framework-eigene Schutzmechanismen (ORMs, CSRF-Tokens)
 
-### 📜 3. **Security Requirements**
+### 3. **Security Requirements**
 
 > Schon in der **Planung** werden **Sicherheitsanforderungen** definiert
 - Beispiel: „Login muss gegen Brute-Force geschützt sein“
 - Zugriffskontrollen, Verschlüsselung, Logging etc.
 - Sicherheit wird **Teil der Spezifikation**
 
-### 📛 4. **Incident Response Plan**
+### 4. **Incident Response Plan**
 
 > Was tun, **wenn doch was schiefgeht**?
 - Wer ist verantwortlich?
@@ -287,9 +258,9 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
 - Welche Logs benötigen wir?
     
 
-➡️ Muss **vor dem Ernstfall** klar definiert sein!
+Muss **vor dem Ernstfall** klar definiert sein!
 
-### 🎯 Weitere SDL-Elemente (je nach Phase):
+### Weitere SDL-Elemente (je nach Phase):
 
 |Phase|Maßnahme|
 |---|---|
@@ -299,7 +270,7 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
 |Release|Sicherheits-Review, Signatur|
 |Betrieb|Patching, Monitoring, Incident Handling|
 
-### ✅ Vorteile des SDL:
+### Vorteile des SDL:
 
 |Vorteil|Warum wichtig?|
 |---|---|
@@ -308,9 +279,7 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
 |Wiederholbarer Prozess|Sicherheit wird systematisch, nicht zufällig|
 |Kompatibel mit DevOps|Lässt sich in CI/CD integrieren|
 
----
-
-## 🏅 **11. Zertifizierung / Common Criteria (CC)**
+## 11. Zertifizierung / Common Criteria (CC)
 
 > Die **Common Criteria (ISO/IEC 15408)** sind ein **international standardisiertes Bewertungsschema** zur Beurteilung der **Sicherheitseigenschaften von IT-Produkten**.
 
@@ -318,25 +287,25 @@ Das ist ein Werkzeug zum **systematischen Nachdenken über Bedrohungen**. Jeder 
     - **EAL4**: "Methodisch getestet und überprüft".
 - **AVA_VAN Analyse:** Schwachstellenanalyse.
 - **CEM-Dimensionen für Angreifer:** Wissen, Zeit, Zugang, Know-how, Motivation
-### 🛠️ Ziel: Vertrauen schaffen
+### Ziel: Vertrauen schaffen
 
 Ein Hersteller kann sagen:
 > „Mein Produkt erfüllt diese Sicherheitsanforderungen und wurde unabhängig geprüft.“
-### 📏 EAL - Evaluation Assurance Level
+### EAL - Evaluation Assurance Level
 
-|EAL-Stufe|Bedeutung|
-|---|---|
-|**EAL1**|Funktional getestet|
-|**EAL2**|Strukturell getestet|
-|**EAL3**|Methodisch getestet|
-|**EAL4**|✅ _Methodisch getestet und überprüft_|
-|**EAL5**|Semi-formal getestet und überprüft|
-|**EAL6**|Semi-formal verifiziert|
-|**EAL7**|Formal verifiziert (höchste Stufe, teuer)|
+| EAL-Stufe | Bedeutung                                 |
+| --------- | ----------------------------------------- |
+| **EAL1**  | Funktional getestet                       |
+| **EAL2**  | Strukturell getestet                      |
+| **EAL3**  | Methodisch getestet                       |
+| **EAL4**  | _Methodisch getestet und überprüft_       |
+| **EAL5**  | Semi-formal getestet und überprüft        |
+| **EAL6**  | Semi-formal verifiziert                   |
+| **EAL7**  | Formal verifiziert (höchste Stufe, teuer) |
 
-📌 **EAL4** ist in der Praxis häufig der **höchste realistisch sinnvolle Level**  
-→ z. B. für Firewalls, Security Tokens, kritische Software
-### 🔎 AVA_VAN - Schwachstellenanalyse
+**EAL4** ist in der Praxis häufig der **höchste realistisch sinnvolle Level**  
+-> z. B. für Firewalls, Security Tokens, kritische Software
+### AVA_VAN - Schwachstellenanalyse
 
 Im Rahmen von CC werden Angriffe simuliert (Vulnerability Analysis):
 
@@ -345,7 +314,7 @@ Im Rahmen von CC werden Angriffe simuliert (Vulnerability Analysis):
 |**AVA_VAN.1**|Gelegenheitsschwachstellen, geringes Know-how|
 |**AVA_VAN.5**|Fortgeschrittene, organisierte Angriffe|
 
-### 🧠 CEM-Dimensionen: Wie bewertet man einen Angreifer?
+### CEM-Dimensionen: Wie bewertet man einen Angreifer?
 
 Das **Common Evaluation Methodology (CEM)** bewertet einen Angreifer anhand von:
 
@@ -359,7 +328,7 @@ Das **Common Evaluation Methodology (CEM)** bewertet einen Angreifer anhand von:
 
 Je **höher die Stufe**, desto **fortgeschrittener muss ein Produkt abgesichert sein**, um als sicher zu gelten.
 
-### ✅ Zusammenfassung: Common Criteria
+### Zusammenfassung: Common Criteria
 
 |Begriff|Erklärung|
 |---|---|
@@ -368,7 +337,7 @@ Je **höher die Stufe**, desto **fortgeschrittener muss ein Produkt abgesichert 
 |**AVA_VAN**|Teststufen für Schwachstellenanalyse|
 |**CEM-Dimensionen**|Wie stark/mächtig ist der Angreifer|
 
-### 🧠 Verbindung zum Rest der Sicherheitskonzepte
+### Verbindung zum Rest der Sicherheitskonzepte
 
 |Konzept|Verbindung zu SDL/CC|
 |---|---|
@@ -378,103 +347,84 @@ Je **höher die Stufe**, desto **fortgeschrittener muss ein Produkt abgesichert 
 |Access Control / ACLs|Werden in Sicherheitsanforderungen & Evaluation berücksichtigt|
 |Kryptographie|Muss in CC-Produkten dokumentiert & begründet sein|
 
----
-
-## 🔐 **12. Kryptographie**
-
+## 12. Kryptographie
 - **Symmetrisch:** Ein Schlüssel für Ver- und Entschlüsselung (z. B. AES = Advanced Encryption Standard)
 - **Asymmetrisch:** Zwei Schlüssel (öffentlich/privat, z. B. RSA).
 - **Hybrid:** Kombination (z. B. bei HTTPS).
 - **One-Time-Pad:** Theoretisch perfekt sicher, aber unpraktisch.
 - **Verwendung von Zufallszahlen:** z. B. Schlüsselerzeugung, Nonce
 
-### 🔑 Symmetrische Kryptographie
-### ▶️ Prinzip:
+### Symmetrische Kryptographie
+### Prinzip:
 > **Ein Schlüssel** zum Ver- **und** Entschlüssel
-🔐 **Beide Seiten müssen denselben geheimen Schlüssel kennen.**
+ > **Beide Seiten müssen denselben geheimen Schlüssel kennen.**
 
-### 🧠 Eigenschaften:
+### Eigenschaften:
 - Sehr schnell
 - Geeignet für große Datenmengen
 - Schlüsselverteilung ist die Schwachstelle
-
----
-### 🗝️ Asymmetrische Kryptographie
-
-### ▶️ Prinzip:
+### Asymmetrische Kryptographie
+### Prinzip:
 > Zwei Schlüssel:
 > - **Öffentlicher Schlüssel** (zum Verschlüsseln oder Prüfen)
 > - **Privater Schlüssel** (zum Entschlüsseln oder Signieren)
 
 Nur der Besitzer des **privaten Schlüssels** kann die Nachricht entschlüsseln oder eine Signatur erzeugen.
 
-#### 🧠 Eigenschaften:
-
+#### Eigenschaften:
 - Keine gemeinsame Schlüsselverteilung nötig
 - Langsamer als symmetrisch
 - Ermöglicht **Digitale Signaturen**
-
----
-### 🔀 Hybride Kryptosysteme
+### Hybride Kryptosysteme
 
 > Kombinieren **symmetrisch + asymmetrisch**, um das Beste aus beiden Welten zu nutzen.
 
-🛠️ **Typisch in der Praxis**:
+ **Typisch in der Praxis**:
 - **Asymmetrisch** für sicheren Schlüsselaustausch
 - Danach: **Symmetrisch** für schnellen Datentransfer
     
-
-#### 📦 Beispiel: **HTTPS (TLS)**
-
-1. Browser(Client) → Server: Fragt Zertifikat an
+#### Beispiel: **HTTPS (TLS)**
+1. Browser(Client) -> Server: Fragt Zertifikat an
 2. Browser(Client) generiert geheimen Session-Key
 3. Client schickt ihn asymmetrisch verschlüsselt an Server(z. B. mit RSA(Rivest Shamir Adleman))
 4. Server kann Verbindung nun über symmetrische Verschlüsselung laufen lassen (z. B. AES)
 
-#### 🔎 Details zum Schlüsselaustausch
-#### 🔐 RSA-Modus (älter, aber einfach):
-
-- Client erzeugt Session-Key → verschlüsselt ihn mit RSA
+#### Details zum Schlüsselaustausch
+#### RSA-Modus (älter, aber einfach):
+- Client erzeugt Session-Key -> verschlüsselt ihn mit RSA
 - Server entschlüsselt ihn mit seinem privaten Schlüssel
     
 
-#### 🧮 ECDHE-Modus (moderner):
-
+#### ECDHE-Modus (moderner):
 - Beide Seiten generieren temporäre elliptische Schlüsselpaare
 - Nutzen **Diffie-Hellman über elliptische Kurven** (ECDHE)
 - Vorteile:
-    - **Perfect Forward Secrecy (PFS)** → selbst wenn der private Schlüssel geleakt wird, sind alte Sessions **weiterhin sicher**
+    - **Perfect Forward Secrecy (PFS)** -> selbst wenn der private Schlüssel geleakt wird, sind alte Sessions **weiterhin sicher**
         
-➡️ Moderne Browser + Server **nutzen immer ECDHE** für mehr Sicherheit
+Moderne Browser + Server **nutzen immer ECDHE** für mehr Sicherheit
 
----
-
-## 🧨 One-Time-Pad (OTP)
-
+## One-Time-Pad (OTP)
 Das **One-Time Pad** ist die **einzige Verschlüsselungsmethode, die mathematisch 100 % sicher ist** - aber **praktisch kaum nutzbar**.
-### 🧠 Wie funktioniert’s?
-
+### Wie funktioniert’s?
 1. Du hast einen Schlüssel (Pad), der:
     - **genauso lang ist wie die Nachricht**
     - **wirklich zufällig ist** (nicht pseudorandom!)
     - **nur einmal verwendet wird**
-        
 2. Du verschlüsselst mit **XOR**
-    
     `Ciphertext = Nachricht XOR Schlüssel`
     
 
 Zum Entschlüsseln machst du wieder:
 
 `Nachricht = Ciphertext XOR Schlüssel`
-### ✅ Vorteile:
+### Vorteile
 
 |Vorteil|Warum?|
 |---|---|
 |**Perfekte Sicherheit**|Wenn die Bedingungen erfüllt sind, ist das Verfahren **nicht zu knacken**, selbst mit unendlich Rechenleistung|
 |**Einfaches Verfahren**|Nur XOR, keine komplizierten Algorithmen|
 
-### ❌ Nachteile:
+### Nachteile:
 
 |Problem|Warum es unpraktisch ist|
 |---|---|
@@ -482,21 +432,17 @@ Zum Entschlüsseln machst du wieder:
 |**Kein Wiederverwenden erlaubt**|Sonst angreifbar (bekannt als „Two-Time Pad“-Angriff)|
 |**Kein Key Management möglich**|Z. B. für Millionen Nutzer nicht praktikabel|
 
-➡️ Wird **nur in der Spionage oder bei diplomatischen Missionen** verwendet - mit **physisch übergebenen Schlüsselbüchern**
-
----
-
-### 🔐 Beispiel: Nonce
+Wird **nur in der Spionage oder bei diplomatischen Missionen** verwendet - mit **physisch übergebenen Schlüsselbüchern**
+### Beispiel: Nonce
 
 > „Number used once“ - eine einmalig verwendete Zufallszahl in einem Protokoll
 
-➡️ Wird z. B. beim Login oder in Netzwerkprotokollen genutzt, um sicherzustellen:
+Wird z. B. beim Login oder in Netzwerkprotokollen genutzt, um sicherzustellen:
 - **Anfragen sind frisch**
 - **Es wird nichts wiederholt oder aufgezeichnet**
-
 
 **Beispiel:**
 - Server schickt Nonce: `723984`
 - Client antwortet mit: `Signatur(Nutzername + Passwort + Nonce)`
 
-→ Wenn ein Angreifer das mitschneidet, **nützt es ihm nichts beim nächsten Versuch**
+-> Wenn ein Angreifer das mitschneidet, **nützt es ihm nichts beim nächsten Versuch**

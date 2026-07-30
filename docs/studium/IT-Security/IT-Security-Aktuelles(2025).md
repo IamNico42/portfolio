@@ -24,21 +24,18 @@ Die Gewerkschaft der Polizei MV sprach schnell eine Warnung aus und forderte von
 - Es scheint eher eine Attacke auf die zentrale Serverinfrastruktur gewesen zu sein, möglicherweise kombiniert mit Zugriff auf Anmeldedaten oder Schwachstellen.
 
 Welche Mechnismen würden ein solches Risiko minimieren?
+
 - **Endpoint-Schutz kritischer mobiler Geräte** ist essenziell - gerade bei Polizei-Diensthandys müssen Schutzmechanismen wie MDM (Mobile Device Management)(Black Berry UEM), Zwei-Faktor-Authentifizierung und regelmäßige Sicherheitsupdates vorhanden sein.
 - **Redundante Kommunikationssysteme** (z. B. analoge Funkgeräte) sind unerlässlich - digitale Lösungen allein reichen oft noch nicht aus.
 - **Frühwarnsysteme und Incident-Response-Pläne** müssen vorhanden sein, damit im Notfall eine schnelle Reaktion möglich ist.
 - **Netzwerksegmentierung & Zero‑Trust‑Prinzip**- Trenne MDM-Server/Verwaltungsnetz (VLAN A) strikt vom Mitarbeiternetz (VLAN B).
 - **Monitoring & Intrusion Detection** - Definiere Regeln, z. B. für ungewöhnlich viele Login-Versuche, Remote-Wipe-Befehle oder neue Geräteinstallationen. Generiere einen Test-Angriff (Brute‑Force‑Versuch) - und beobachte einen ausgelösten Alarm.
 
-
 https://konbriefing.com/de-topics/hackerangriff-deutschland.html
 https://www.ostsee-zeitung.de/mecklenburg-vorpommern/mecklenburg-vorpommern-hackerangriff-legt-polizeihandys-lahm-2FEWD6V2DVH5XAK4XGKMLYWTPU.html
 https://security-network.com/angriffsversuch-auf-dienstliche-smartphones/
 https://www.gdp.de/mv/de/stories/2025/06/04062025-versuchter-cyberangriff
 https://www.golem.de/news/mecklenburg-vorpommern-hackerangriff-trifft-diensthandys-der-polizei-2506-196815.html
-
-
----
 ### 2.1 Wie viele neue Malware‑Varianten werden täglich gemeldet?
 
 Im **BSI‑Lagebericht 2024** heißt es:

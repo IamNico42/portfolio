@@ -115,7 +115,6 @@ FROM tabelle
 [ORDER BY sortierung [ASC|DESC]];
 ```
 
----
 ### 2. Wichtige **Aggregatsfunktionen**
 
 | Funktion                 | Beschreibung                                       | Beispiel                                   |
@@ -131,7 +130,6 @@ FROM tabelle
 | `DISTINCT`               | Entfernt Duplikate - oft in `COUNT(DISTINCT ...)`  | `COUNT(DISTINCT marke)`                    |
 | `LIMIT n`                | Beschränkt auf n Zeilen (nicht in allen Dialekten) | `LIMIT 1` (nur Top 1)                      |
 
----
 ### 3. Joins (Tabellen verknüpfen)
 
 ```
@@ -154,7 +152,6 @@ FROM Ferienwohnung f
 JOIN Adresse a ON f.ADRESSE_ID = a.ID;
 ```
 
----
 ### 4. GROUP BY + HAVING - Gruppieren & Filtern
 
 ```
@@ -168,7 +165,6 @@ HAVING AVG(Sterne) > 4;
 - `GROUP BY`: gruppiert Zeilen (z. B. pro Kunde, Wohnung, Land)
 - `HAVING`: filtert Gruppen (wie WHERE, aber nach Gruppierung)
 
----
 ###  5. `NOT IN` vs. `NOT EXISTS` (um „nicht enthaltene“ Fälle zu finden)
 
 #### Ferienwohnungen ohne Buchungen
@@ -196,8 +192,6 @@ WHERE NOT EXISTS (
 - Verwende `WHERE` zum Filtern von **einzelnen Zeilen**
 - Verwende `HAVING` nur, wenn du **`GROUP BY`** verwendest
 
-
----
 ### Überblick: Arten von JOINs
 
 |JOIN-Typ|Was er macht| Gibt Zeilen aus, wenn ...                           |
@@ -231,7 +225,6 @@ WHERE NOT EXISTS (
 |NULL|NULL|4|4|
 |NULL|NULL|9|16|
 
----
 ### **Normalformen im Überblick - mit Beispielen**
 
 | **NF**   | **Bedingung**                                                                    | **Verletzung**                      | **Beispielrelation (Fehler)**                                                                | **Ziel / Lösung**                                                    |     |
@@ -242,7 +235,7 @@ WHERE NOT EXISTS (
 | **BCNF** | Für jede FA `X → Y` ist `X` ein **Superschlüssel**                               | Nicht-Superschlüssel bestimmt etwas | `Kurs(kursID, raum, dozentID)` mit `dozentID → raum` aber `dozentID` ist kein Superschlüssel | Zerlegen nach `dozentID → raum`: eigene Relation                     |     |
 
 
-## **Arten von Funktionalen Abhängigkeiten**
+## Arten von Funktionalen Abhängigkeiten
 
 ### Typische Keywords, die FAs andeuten:
 

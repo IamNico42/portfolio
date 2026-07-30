@@ -1,108 +1,228 @@
+# Grundlagen des maschinellen Lernens am Beispiel MNIST
 
+## 1. Überwachtes Lernen
 
-## **Grundlagen des Maschinellen Lernens**
+Beim **überwachten Lernen (Supervised Learning)** lernt ein Modell anhand von Eingabedaten $X$ und den zugehörigen Zielwerten $Y$, Vorhersagen für neue Daten zu treffen.
 
-### 📘 Erklärung:
+Bei MNIST gilt:
 
-Beim **überwachten Lernen (Supervised Learning)** lernt ein Modell anhand von **Eingabedaten (X)** und den zugehörigen **Zielwerten (Y)**, wie es Vorhersagen treffen kann.
+- **Eingabe $X$:** Bild einer handgeschriebenen Ziffer
+- **Zielwert $Y$:** dargestellte Ziffer zwischen 0 und 9
 
-In der MNIST-Aufgabe:
-- Eingabe: 28x28-Bild von einer Zahl
-- Ziel: Welche Ziffer ist darauf zu sehen (z. B. 5)
-    
+Die Daten werden aufgeteilt in:
 
-Wir unterteilen die Daten in:
-- **Trainingsdaten** - zum Lernen
-- **Validierungsdaten** - zur Kontrolle während des Trainings (tun wir "zu viel"?)
-- **Testdaten** - zur abschließenden Bewertung (wie gut ist das Modell bei neuen, unbekannten Bildern?)
-    
+- **Trainingsdaten:** zum Lernen der Modellparameter
+- **Validierungsdaten:** zur Kontrolle während des Trainings
+- **Testdaten:** zur abschließenden Bewertung
 
-**Wichtige Begriffe:**
-- **Loss-Funktion**: misst den Fehler → z. B. `categorical_crossentropy`
-- **Optimizer**: passt die Gewichte an → z. B. `adam`
-- **Epochen**: wie oft das Modell alle Trainingsdaten durchläuft
-- **Batch-Größe**: Gibt an, **wie viele Trainingsbeispiele gleichzeitig** verarbeitet werden, **bevor** das Modell die Gewichte aktualisiert
+Die Validierungsdaten helfen dabei, Overfitting zu erkennen. Die Testdaten werden erst nach dem Training verwendet.
 
-## 1. 📦 **Was ist das MNIST-Datenset?**
+## 2. MNIST-Datensatz und Vorverarbeitung
 
-- Datensatz mit **60.000 Trainingsbildern** und **10.000 Testbildern**
-- Bilder: **28x28 Pixel**, Graustufen (Werte 0-255)
-- Ziel: Ziffern **0 bis 9** automatisch erkennen
-- Bilder werden auf **Werte zwischen 0 und 1 normalisiert** (`/255.0`)
-- Labels werden in **One-Hot-Encoding** umgewandelt → z. B. 3 → `[0, 0, 0, 1, 0, ..., 0]`
+Der **MNIST-Datensatz** besteht aus:
 
-## 2. 🔢 **fcNN - Fully Connected Neural Network (Multilayer Perceptron)**
+- 60.000 Trainingsbildern
+- 10.000 Testbildern
+- Bildern mit $28 \times 28$ Pixeln
+- Graustufenwerten zwischen 0 und 255
+- den Ziffern 0 bis 9 als Klassen
 
-### 📌 Aufbau:
+### Normalisierung
 
-- Eingabedaten müssen **geflattet** werden: 28×28 → Vektor mit 784 Werten
-- Besteht aus: `Dense`-Layern + Aktivierungsfunktionen (`sigmoid`, `relu`)
-- Output-Layer: 10 Neuronen mit `softmax` für Wahrscheinlichkeiten
-    
+Die Pixelwerte werden normalerweise auf einen Bereich zwischen 0 und 1 normalisiert:
 
-### 📌 Eigenschaften:
+$$
+x_{\text{norm}} = \frac{x}{255}
+$$
 
-- **Jede Verbindung** zwischen den Neuronen wird trainiert
-- **Räumliche Struktur** des Bildes geht **verloren**
-- Erreicht ca. **97 % Genauigkeit** auf MNIST
+Dadurch wird das Training stabiler und effizienter.
 
+### One-Hot-Encoding
 
-## 3. 🧠 **CNN - Convolutional Neural Network**
+Beim **One-Hot-Encoding** wird jede Klasse durch einen Vektor dargestellt.
 
-### 📌 Aufbau:
+Beispiel für die Ziffer 3:
 
-- **Arbeitet direkt mit 2D-Bildern** (kein Flatten nötig!)
-- Typische Layer:
-    - `Conv2D`: erkennt lokale Muster mit kleinen Filtern (z. B. 3x3)
-    - `MaxPooling2D`: reduziert Größe, hebt wichtigste Infos hervor
-    - `Flatten`: bereitet Ausgabe für Dense-Schichten vor
-    - `Dense + softmax`: Klassifikation
-        
+```text
+[0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+```
 
-### 📌 Warum CNNs besser für Bilder sind:
+One-Hot-Encoding wird zusammen mit `categorical_crossentropy` verwendet. Bei ganzzahligen Labels von 0 bis 9 kann alternativ `sparse_categorical_crossentropy` eingesetzt werden.
 
-- **Erkennen lokale Muster** wie Kanten, Linien, Kreise
-- **Behalten räumliche Lage bei**
-- **Robust gegenüber Verschiebung** von Ziffern im Bild
-- Lernen tiefere, abstraktere Repräsentationen
-- Erreichen **über 99 % Genauigkeit** auf MNIST
+## 3. Training eines Modells
 
-## 4. 🧩 **Was sind lokale Muster & wie erkennt CNN sie?**
+Ein Trainingsschritt besteht aus folgenden Schritten:
 
-### 📌 Lokale Muster:
+1. Das Modell verarbeitet die Eingabedaten.
+2. Es erzeugt eine Vorhersage.
+3. Die Loss-Funktion berechnet den Fehler.
+4. Backpropagation berechnet die Gradienten.
+5. Der Optimizer aktualisiert die Gewichte.
 
-- Kleine visuelle Merkmale: z. B. Ecken, Striche, Kreise
-- Ein Filter (3×3 oder 5×5) „scannt“ das Bild
-- Multipliziert Filter & Bildausschnitt → ergibt Feature Map
-    
+### Softmax und Cross Entropy
 
-### 📌 CNN-Schichten lernen:
+Die Rohwerte der letzten Schicht werden als **Logits** bezeichnet. Softmax wandelt diese Werte in Wahrscheinlichkeiten um:
 
-- Frühe Layer: Kanten, einfache Muster
-- Spätere Layer: Formen, Ziffern
-- CNN erkennt **was** und **wo** ein Muster ist → fcNN nicht
+$$
+\operatorname{softmax}(z_i)
+=
+\frac{e^{z_i}}{\sum_j e^{z_j}}
+$$
 
+Beispiel:
 
-## 5. ⚙️ **Softmax, One-Hot-Encoding und Optimizer**
+```text
+Logits:        [2.3, 5.1, -1.2]
+Wahrscheinlichkeiten: [0.057, 0.941, 0.002]
+```
 
-### ✅ Softmax:
+Die **Cross Entropy** misst, welche Wahrscheinlichkeit das Modell der richtigen Klasse zuordnet:
 
-- Wandelt Roh-Ausgaben des Netzes in **Wahrscheinlichkeiten** um
-- Beispiel: `[2.3, 5.1, -1.2]` → `[0.1, 0.89, 0.01]`
-    
-### ✅ One-Hot-Encoding:
+$$
+L = -\log(p_{\text{richtig}})
+$$
 
-- Wandelt Zielklassen in Vektoren mit genau **einer 1** an der richtigen Stelle um
-- Wird für die **Loss-Berechnung mit `categorical_crossentropy`** benötigt
-    
-### ✅ Optimizer (`adam`):
+Eine hohe Wahrscheinlichkeit für die richtige Klasse führt zu einem niedrigen Loss.
 
-- Berechnet, **wie die Gewichte geändert werden müssen**, um den Fehler zu minimieren
-- Adam ist **schnell, effizient und selbstanpassend**
+### Backpropagation und Optimizer
 
-## 6. 📊 **Trainingsmetriken & Auswertung**
+Backpropagation berechnet die Gradienten des Loss bezüglich der Gewichte. Der Optimizer verwendet diese Gradienten zur Aktualisierung:
 
-- **Accuracy**: Anteil korrekt klassifizierter Bilder
-- **Loss**: Maß für den Vorhersagefehler
-- **Confusion Matrix**: Zeigt, welche Klassen wie oft **verwechselt** wurden
-- **Trainingsverlauf (Plots)**: visualisiert Lernfortschritt
+$$
+w_{\text{neu}}
+=
+w_{\text{alt}}
+-
+\eta
+\frac{\partial L}{\partial w}
+$$
+
+Dabei ist $\eta$ die **Learning Rate**. Ein häufig verwendeter Optimizer ist **Adam**.
+
+### Wichtige Begriffe
+
+- **Epoche:** einmalige Verarbeitung aller Trainingsdaten
+- **Batch:** Teilmenge der Trainingsdaten
+- **Batch-Größe:** Anzahl der Beispiele pro Trainingsschritt
+- **Learning Rate:** Größe der Gewichtsänderungen
+- **Loss:** Maß für den Vorhersagefehler
+
+## 4. Fully Connected Neural Network
+
+Bei einem **Fully Connected Neural Network (FCNN)** beziehungsweise **Multilayer Perceptron (MLP)** ist jedes Neuron mit allen Neuronen der folgenden Schicht verbunden.
+
+### Aufbau
+
+Das $28 \times 28$ große Bild wird zunächst in einen Vektor mit 784 Werten umgewandelt:
+
+```text
+28×28-Bild
+    ↓
+Flatten: 784 Werte
+    ↓
+Dense Layer mit ReLU
+    ↓
+Output Layer mit 10 Neuronen und Softmax
+```
+
+### Eigenschaften
+
+- einfache Netzwerkstruktur
+- viele trainierbare Parameter
+- räumliche Anordnung der Pixel geht beim Flattening verloren
+- lokale Bildstrukturen werden nicht direkt berücksichtigt
+
+Werden 784 Eingaben mit 100 Neuronen verbunden, entstehen einschließlich der Bias-Werte:
+
+$$
+784 \cdot 100 + 100 = 78\,500
+$$
+
+trainierbare Parameter.
+
+Ein FCNN erreicht auf MNIST abhängig von Aufbau und Training häufig ungefähr 97 bis 98 % Genauigkeit.
+
+## 5. Convolutional Neural Network
+
+Ein **Convolutional Neural Network (CNN)** verarbeitet Bilder zunächst in ihrer zweidimensionalen Form und berücksichtigt dadurch lokale und räumliche Strukturen.
+
+### Aufbau
+
+```text
+28×28-Bild
+    ↓
+Conv2D + ReLU
+    ↓
+MaxPooling2D
+    ↓
+Conv2D + ReLU
+    ↓
+Flatten
+    ↓
+Dense + Softmax
+```
+
+### Faltung und lokale Muster
+
+Eine Faltungsschicht verwendet kleine Filter, beispielsweise mit einer Größe von $3 \times 3$. Diese werden über das Bild verschoben und erzeugen **Feature-Maps**.
+
+Die Filter können unter anderem folgende Merkmale erkennen:
+
+- Kanten
+- Linien
+- Ecken
+- Rundungen
+- komplexere Formen
+
+Frühe Schichten erkennen einfache Merkmale. Tiefere Schichten kombinieren diese zu komplexeren Mustern und Bestandteilen von Ziffern.
+
+Die Filtergewichte werden während des Trainings gelernt und an allen Bildpositionen wiederverwendet. Dadurch benötigt ein CNN meist weniger Parameter als ein vergleichbares FCNN.
+
+### Pooling
+
+Pooling verkleinert Feature-Maps. Beim **Max Pooling** wird der größte Wert eines lokalen Bereichs übernommen.
+
+Beispiel:
+
+```text
+1  4
+3  2
+```
+
+Ergebnis:
+
+```text
+4
+```
+
+Pooling reduziert die Datenmenge und erhöht die Toleranz gegenüber kleinen Verschiebungen.
+
+### Vorteile gegenüber einem FCNN
+
+- lokale Bildmuster werden berücksichtigt
+- räumliche Strukturen bleiben länger erhalten
+- Filtergewichte werden wiederverwendet
+- häufig weniger Parameter
+- besonders gut für Bildverarbeitung geeignet
+
+CNNs erreichen auf MNIST abhängig von Architektur und Training häufig über 99 % Genauigkeit.
+
+## 6. Auswertung
+
+Nach dem Training wird das Modell mit unbekannten Testdaten bewertet.
+
+Wichtige Metriken sind:
+
+- **Accuracy:** Anteil korrekt klassifizierter Bilder
+- **Loss:** Maß für den Vorhersagefehler
+- **Confusion Matrix:** zeigt Verwechslungen zwischen Klassen
+- **Trainingsverlauf:** zeigt Accuracy und Loss für Trainings- und Validierungsdaten
+
+Ein mögliches Zeichen für **Overfitting** ist:
+
+- Training Loss sinkt weiter
+- Validation Loss steigt
+- Training Accuracy steigt
+- Validation Accuracy stagniert oder sinkt
+
+Das Modell passt sich dann immer stärker an die Trainingsdaten an, während sich die Leistung auf unbekannten Daten verschlechtert.

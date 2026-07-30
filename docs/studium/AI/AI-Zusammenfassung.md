@@ -1,70 +1,238 @@
-### 📘 **Strukturiertes Lernskript: Teil 1 - Symbolische KI**
+# Strukturiertes Lernskript: Symbolische KI und neuronale Netze
 
-(→ aus Klausur SS2021)
+## Teil 1 – Symbolische KI
 
-#### 🧠 **1. Suchen & Problemlösen**
+### 1. Suchen und Problemlösen
+Bei Suchproblemen wird eine Aufgabe durch **Zustände**, **Aktionen**, einen **Startzustand** und einen **Zielzustand** beschrieben.
+#### Beispiel: Wasserkrugproblem
+Gegeben sind drei Gefäße mit einem Fassungsvermögen von $8$, $5$ und $3$ Litern.
+Ein Zustand wird als Tupel dargestellt:
 
-**Beispielaufgabe (Wasserkrugproblem)**: Ziel ist ein Zustand mit (x, y, z) = (4, 4, 0)
+$$
+(x,y,z)
+$$
 
-- **Zustand** = (Inhalt 8l, 5l, 3l)
-- **Aktionen** = Umfüllen zwischen Gefäßen, nur bis maximal voll oder leer
-- **Suchstrategien**:
-    
-    - **Breitensuche**: prüft alle Möglichkeiten pro Ebene → findet **immer kürzeste Lösung**
-    - **Tiefensuche**: geht tief in einen Pfad → **nicht garantiert** kürzeste
-    - **Iterativ vertiefende Tiefensuche**: wie Tiefensuche, aber in Schritten → **findet auch kürzeste**
-        
-
-👉 **Merksatz**: Breitensuche = optimal, aber speicherintensiv
-
----
-
-#### 🧠 **2. Aussagenlogik & Resolution**
-
-## **Was ist der Resolutionskalkül?**
-> Der **Resolutionskalkül** ist ein Verfahren, mit dem man **automatisch prüfen kann**, ob eine Aussage **logisch aus anderen Aussagen folgt** - also ob ein Argument **gültig** ist.
+Dabei beschreiben $x$, $y$ und $z$ die aktuellen Füllmengen der drei Gefäße.
 
 Beispiel:
 
-- α₁: a ∧ b → c
-- α₂: c → d ∨ e
-- α₃: e → d
-- γ: a → (b → d)
-    
+- Startzustand: $(8,0,0)$
+- Zielzustand: $(4,4,0)$
+- mögliche Aktion: Wasser von einem Gefäß in ein anderes umfüllen
+- Umfüllen erfolgt, bis das Quellgefäß leer oder das Zielgefäß voll ist
 
-➡ **Ziel**: Mit Resolution zeigen, dass γ logisch folgt.
+Das Problem kann als Suchgraph dargestellt werden:
 
-**Schritte:**
+- Knoten entsprechen Zuständen.
+- Kanten entsprechen erlaubten Aktionen.
+- Gesucht wird ein Pfad vom Startzustand zum Zielzustand.
 
-1. **Umformen in KNF** (Konjunktive Normalform)
-2. **Negation der Zielaussage**
-3. **Resolutionskalkül anwenden**, bis leere Klausel (Widerspruch) gefunden wird
+#### Breitensuche
+Die **Breitensuche** durchsucht den Suchbaum Ebene für Ebene.
+Eigenschaften:
 
-    
+- vollständig bei endlicher Verzweigung
+- findet bei einheitlichen Aktionskosten eine kürzeste Lösung
+- benötigt häufig viel Speicher
+
+#### Tiefensuche
+Die **Tiefensuche** verfolgt zunächst einen Pfad möglichst weit in die Tiefe.
+Eigenschaften:
+
+- geringer Speicherverbrauch
+- findet nicht garantiert eine kürzeste Lösung
+- kann ohne Zyklenerkennung oder Tiefenbegrenzung in unendlichen Pfaden hängen bleiben
+
+#### Iterativ vertiefende Tiefensuche
+Die **iterativ vertiefende Tiefensuche** führt wiederholt eine tiefenbegrenzte Tiefensuche aus. Die maximale Tiefe wird dabei schrittweise erhöht.
+
+Eigenschaften:
+- kombiniert den geringen Speicherverbrauch der Tiefensuche mit der Vollständigkeit der Breitensuche
+- findet bei einheitlichen Aktionskosten eine kürzeste Lösung
+- untersucht einige obere Ebenen mehrfach
+
+> **Merksatz:** Die Breitensuche findet bei einheitlichen Aktionskosten eine kürzeste Lösung, benötigt dafür aber viel Speicher.
+
+### 2. Aussagenlogik und Resolution
+#### Was ist der Resolutionskalkül?
+Der **Resolutionskalkül** ist ein Verfahren, mit dem automatisch geprüft werden kann, ob eine Aussage logisch aus einer Menge anderer Aussagen folgt.
+Es soll gezeigt werden:
+
+$$
+\alpha_1,\alpha_2,\ldots,\alpha_n \models \gamma
+$$
+
+Dazu wird die Zielaussage $\gamma$ negiert. Anschließend wird geprüft, ob die vorhandenen Aussagen zusammen mit $\neg\gamma$ zu einem Widerspruch führen.
+
+Gilt:
+
+$$
+\alpha_1\land\alpha_2\land\ldots\land\alpha_n\land\neg\gamma
+$$
+
+ist unerfüllbar, dann folgt $\gamma$ logisch aus den Voraussetzungen.
+#### Resolutionsregel
+Aus zwei Klauseln
+
+$$
+A\lor p
+$$
+
+und
+
+$$
+B\lor\neg p
+$$
+
+kann die neue Klausel
+
+$$
+A\lor B
+$$
+
+abgeleitet werden.
+
+Die beiden Literale $p$ und $\neg p$ werden dabei aufgelöst.
+
+#### Beispiel
+Gegeben sind:
+
+$$
+\alpha_1:(a\land b)\rightarrow c
+$$
+
+$$
+\alpha_2:c\rightarrow(d\lor e)
+$$
+
+$$
+\alpha_3:e\rightarrow d
+$$
+
+Zu zeigen ist:
+
+$$
+\gamma:a\rightarrow(b\rightarrow d)
+$$
+
+#### Vorgehensweise
+1. Alle Voraussetzungen in konjunktive Normalform umwandeln.
+2. Die Zielaussage negieren.
+3. Auch die negierte Zielaussage in Klauseln umwandeln.
+4. Die Resolutionsregel anwenden.
+5. Eine leere Klausel zeigt einen Widerspruch.
+
+#### Umwandlung in Klauseln
+Aus $\alpha_1$ folgt:
+
+$$
+\neg a\lor\neg b\lor c
+$$
+
+Aus $\alpha_2$ folgt:
+
+$$
+\neg c\lor d\lor e
+$$
+
+Aus $\alpha_3$ folgt:
+
+$$
+\neg e\lor d
+$$
+
+Die Zielaussage ist äquivalent zu:
+
+$$
+(a\land b)\rightarrow d
+$$
+
+Ihre Negation lautet:
+
+$$
+a\land b\land\neg d
+$$
+
+Daraus entstehen die Klauseln:
+
+$$
+a
+$$
+
+$$
+b
+$$
+
+$$
+\neg d
+$$
+
+Durch schrittweise Resolution kann zunächst $c$ und anschließend $d$ hergeleitet werden. Die Klauseln $d$ und $\neg d$ ergeben schließlich die leere Klausel:
+
+$$
+\Box
+$$
+
+Damit liegt ein Widerspruch vor und die Zielaussage folgt logisch aus den Voraussetzungen:
+
+$$
+\alpha_1,\alpha_2,\alpha_3\models\gamma
+$$
+
+### 3. Constraint Satisfaction Problems
+Ein **Constraint Satisfaction Problem**, kurz CSP, besteht aus:
+
+- einer Menge von Variablen
+- einem Wertebereich für jede Variable
+- Bedingungen beziehungsweise Constraints zwischen den Variablen
+
+#### Beispiel: Kartenfärbung
+Jedes Land stellt eine Variable dar. Der Wertebereich besteht aus den verfügbaren Farben.
+Ein möglicher Constraint lautet:
+> Zwei benachbarte Länder dürfen nicht dieselbe Farbe besitzen.
+
+#### Backtracking
+Beim Backtracking wird schrittweise eine Variable belegt. Führt eine Belegung zu einem Widerspruch, wird zur vorherigen Entscheidung zurückgekehrt und ein anderer Wert ausprobiert.
+
+#### Most Constrained Variable First
+Diese Strategie wird auch **Minimum Remaining Values**, kurz MRV, genannt.
+Es wird die Variable ausgewählt, die aktuell die wenigsten gültigen Werte besitzt.
+Dadurch werden schwierige Entscheidungen möglichst früh getroffen.
+
+#### Most Constraining Variable First
+Diese Strategie wird auch **Degree Heuristic** genannt.
+Bei einem Gleichstand wird die Variable gewählt, die an den meisten Constraints mit noch unbelegten Variablen beteiligt ist.
+
+#### Least Constraining Value First
+Es wird der Wert gewählt, der die Wertebereiche der anderen Variablen möglichst wenig einschränkt.
+
+#### Forward Checking
+Nach jeder Belegung werden ungültige Werte aus den Wertebereichen direkt benachbarter Variablen entfernt.
+
+Wird der Wertebereich einer Variable dadurch leer, kann sofort zurückgesprungen werden.
+
+#### AC-3-Algorithmus
+Der AC-3-Algorithmus stellt **Arc Consistency** für binäre Constraints her.
+
+Eine gerichtete Kante $(X_i,X_j)$ ist konsistent, wenn für jeden möglichen Wert von $X_i$ mindestens ein kompatibler Wert von $X_j$ existiert.
+
+Der Algorithmus arbeitet grundsätzlich so:
+
+1. Alle gerichteten Constraint-Kanten werden in eine Warteschlange eingefügt.
+2. Eine Kante $(X_i,X_j)$ wird entnommen.
+3. Nicht unterstützte Werte werden aus dem Wertebereich von $X_i$ entfernt.
+4. Wurde der Wertebereich verändert, werden betroffene Nachbarkanten erneut geprüft.
+5. Der Vorgang endet, wenn die Warteschlange leer ist oder ein Wertebereich leer wird.
+
+AC-3 kann Wertebereiche stark verkleinern und Widersprüche früh erkennen. Arc Consistency garantiert allerdings nicht immer, dass bereits eine vollständige Lösung gefunden wurde.
 
 ---
+## Teil 2 – Maschinelles Lernen und neuronale Netze
 
-#### 🧠 **3. Constraint Satisfaction Problems (CSP)**
+### 1. One-Hot-Encoding
+**One-Hot-Encoding** wandelt Kategorien in numerische Vektoren um.
 
-Beispiel: Länder einfärben (keine Nachbarn in gleicher Farbe)
-
-- **Strategien beim Backtracking**:
-    
-    1. **Most Constrained Variable First** - wähle Land mit wenigsten möglichen Farben
-    2. **Most Constraining Variable First** - falls Gleichstand: Land mit meisten Nachbarn zuerst
-    3. **Least Constraining Value First** - Farbe, die wenig stört
-    4. **Forward Checking** - verbietet ungültige Farben für Nachbarn **nach** Farbwahl
-        
-
-➡ **AC-3 Algorithmus**: prüft Paare (z. B. Land 1 & 2) und schränkt mögliche Farben ein, bis **Konsistenz** erreicht
-
----
-### 🤖 **Teil 2 - Maschinelles Lernen & Neuronale Netze**
-
-(→ Nachprüfung 2021)
-
-## Was ist **One-Hot-Encoding**?
-**One-Hot-Encoding** ist eine Methode, um **Kategorien** (= Klassen) in Zahlen umzuwandeln, sodass sie von **mathematischen Modellen** verstanden werden können.
+Für jede Klasse existiert genau eine Position im Vektor. Die Position der zugehörigen Klasse erhält den Wert $1$, alle anderen Positionen erhalten den Wert $0$.
 
 | Klasse | One-Hot-Vektor |
 | ------ | -------------- |
@@ -72,310 +240,627 @@ Beispiel: Länder einfärben (keine Nachbarn in gleicher Farbe)
 | Katze  | `[0, 1, 0]`    |
 | Maus   | `[0, 0, 1]`    |
 
-### Allgemein:
-- **Epoche** = einmal durch alle Trainingsdaten
-- **Batch Size** = wie viele Beispiele gleichzeitig gelernt werden
-- **Learning Rate** = wie groß die Schritte beim Gewichts-Update sind
-- - **Gewicht (w)**: multipliziert mit Input
-- **Bias (b)**: wird **addiert**, um Verschiebung zu ermöglichen  
-    → Funktioniert wie der y-Achsenabschnitt in einer linearen Funktion
+One-Hot-Encoding drückt keine natürliche Reihenfolge zwischen den Klassen aus. Hund, Katze und Maus werden somit nicht als unterschiedlich große Zahlen interpretiert.
+### 2. Grundbegriffe des Trainings
+- **Epoche:** Ein vollständiger Durchlauf durch alle Trainingsdaten.
+- **Batch:** Eine Teilmenge der Trainingsdaten, die gemeinsam verarbeitet wird.
+- **Batch Size:** Anzahl der Beispiele innerhalb eines Batches.
+- **Learning Rate:** Bestimmt die Größe der Schritte beim Aktualisieren der Parameter.
+- **Gewicht $w$:** Parameter, mit dem ein Eingabewert multipliziert wird.
+- **Bias $b$:** Additiver Parameter, der eine Verschiebung der Funktion ermöglicht.
+- **Loss:** Numerischer Wert, der den Fehler des Modells beschreibt.
+- **Logit:** Rohausgabe eines Modells vor einer Wahrscheinlichkeitsfunktion wie Sigmoid oder Softmax.
 
-### was ist **Gradient Descent**?
-- ein **Fehler/Loss** berechnet wird
-- dieser **minimiert** werden soll
+Ein einfaches lineares Modell berechnet beispielsweise:
 
-### Was passiert in einem Trainingsschritt?
-Für **alle Modelle**, von linear bis CNN:
+$$
+z=wx+b
+$$
 
-1. Eingabe durch Netz → **Vorhersage**
-2. Vergleich mit Zielwert → **Fehler/Loss**
-3. **Gradienten berechnen** = Wie stark ändert sich der Fehler, wenn ein Gewicht verändert wird?
-4. **Gewichte anpassen mit Gradient Descent**:
-    $w = w - \eta \cdot \frac{\partial L}{\partial w}​$
-5. Wiederholen (mehr Epochen, mehr Batches)
-### was ist **Backpropagation**?
-> Backpropagation = „Fehler rückwärts durchs Netz schicken“, um zu wissen, **welches Gewicht wie viel Schuld hat**
+Der Bias entspricht dabei ungefähr dem Achsenabschnitt einer linearen Funktion.
+### 3. Gradient Descent
+**Gradient Descent** ist ein Optimierungsverfahren zur Minimierung einer Loss-Funktion.
 
-- In **einfachen Modellen** (z. B. logistische Regression):  
-    Backprop ist nur **1 Schritt rückwärts**
-- In **tiefen Netzen** (z. B. MLP, CNN):  
-    Backpropagation **läuft durch alle Layer zurück** und berechnet alle Gradienten
+Der Gradient beschreibt, in welche Richtung der Loss am stärksten ansteigt. Zur Minimierung werden die Parameter deshalb in die entgegengesetzte Richtung verändert.
+Für ein Gewicht $w$ gilt:
 
-| Modell                 | Loss-Funktion       | Aktivierung   | Optimierungsmethode              |
-| ---------------------- | ------------------- | ------------- | -------------------------------- |
-| Lineare Regression     | MSE                 | -             | Gradient Descent                 |
-| Logistische Regression | Cross Entropy       | Sigmoid       | Gradient Descent + Backprop      |
-| MLP / FCNN / CNN       | z. B. Cross Entropy | ReLU, Softmax | Backprop durch mehrere Schichten |
+$$
+w
+\leftarrow
+w-\eta\frac{\partial L}{\partial w}
+$$
 
-### 🔹 **Lineare Regression**
+Dabei ist:
 
-> **Ziel**: Einen **Zahlenwert** vorhersagen (z. B. Preis, Temperatur)
+- $L$ die Loss-Funktion
+- $\eta$ die Learning Rate
+- $\frac{\partial L}{\partial w}$ die Ableitung des Loss nach dem Gewicht
 
-Formel:
-$\hat{y} = a \cdot x + b$
+Für den Bias gilt entsprechend:
 
-- `x`: Eingabewert (z. B. Größe)
-- `y`: Ausgabewert (z. B. Gewicht)
-- `a`: Steigung (wie stark y sich mit x verändert)
-- `b`: Achsenabschnitt (Startwert)
-    
+$$
+b
+\leftarrow
+b-\eta\frac{\partial L}{\partial b}
+$$
 
-📌 **Beispiel**:  
-Du möchtest das **Gewicht einer Person** aufgrund ihrer **Größe** schätzen.  
-→ Je größer die Person, desto mehr wiegt sie im Schnitt → Lineare Beziehung
+Eine zu große Learning Rate kann dazu führen, dass das Minimum übersprungen wird. Eine zu kleine Learning Rate kann das Training stark verlangsamen.
 
 ---
 
-### 🔹 **Logistische Regression**
+### 4. Ablauf eines Trainingsschritts
+Ein Trainingsschritt besteht grundsätzlich aus folgenden Schritten:
 
-> **Ziel**: Eine **Wahrscheinlichkeit** vorhersagen (z. B. „gehört zur Klasse 1“)
+1. **Forward Pass:** Die Eingabe wird durch das Modell verarbeitet.
+2. **Vorhersage:** Das Modell erzeugt eine Ausgabe.
+3. **Loss-Berechnung:** Die Vorhersage wird mit dem Zielwert verglichen.
+4. **Gradientenberechnung:** Die Ableitungen des Loss nach den Parametern werden berechnet.
+5. **Parameter-Update:** Ein Optimierungsverfahren passt Gewichte und Bias-Werte an.
+6. **Wiederholung:** Der Prozess wird für weitere Batches und Epochen wiederholt.
 
-Formel:
+### 5. Backpropagation
+**Backpropagation** ist ein Verfahren zur effizienten Berechnung der Gradienten in einem Netzwerk.
+
+Der Loss wird nicht als Wert „rückwärtsgeschickt“. Stattdessen wird mithilfe der Kettenregel berechnet, wie stark jeder Parameter den Loss beeinflusst.
+
+In einem tiefen neuronalen Netz werden die Gradienten von der Ausgabeschicht durch alle vorherigen Schichten zurückgerechnet.
+
+Backpropagation und Gradient Descent erfüllen unterschiedliche Aufgaben:
+
+- **Backpropagation berechnet die Gradienten.**
+- **Gradient Descent beziehungsweise ein anderer Optimierer aktualisiert die Parameter.**
+
+Auch bei einfachen Modellen wie linearer oder logistischer Regression werden Gradienten berechnet. Der Begriff Backpropagation wird jedoch hauptsächlich im Zusammenhang mit mehrschichtigen neuronalen Netzen verwendet.
+
+| Modell | Typische Loss-Funktion | Ausgabe beziehungsweise Aktivierung | Training |
+| ------ | ---------------------- | ----------------------------------- | -------- |
+| Lineare Regression | Mean Squared Error | lineare Ausgabe | Gradientenberechnung und Optimierung |
+| Binäre logistische Regression | Binary Cross Entropy | Sigmoid | Gradientenberechnung und Optimierung |
+| Multiklassen-Klassifikation | Categorical Cross Entropy | Softmax | Backpropagation und Optimierung |
+| MLP oder CNN | abhängig von der Aufgabe | beispielsweise ReLU in versteckten Schichten | Backpropagation und Optimierung |
+
+### 6. Lineare Regression
+Die lineare Regression sagt einen kontinuierlichen Zahlenwert voraus, beispielsweise einen Preis oder eine Temperatur.
+
+Für eine Eingabevariable gilt:
+
 $$
-\sigma(z) = \frac{1}{1 + e^{-z}} \quad \text{wobei } z = a \cdot x + b
+\hat y=ax+b
 $$
 
-- Gibt **Wahrscheinlichkeiten zwischen 0 und 1** aus
-- Wird genutzt bei **Klassifikationsaufgaben** (z. B. "Spam oder nicht?")
+Dabei ist:
 
-📌 **Beispiel**:  
-Du möchtest vorhersagen, ob eine E-Mail **Spam** ist → 0 = nein, 1 = ja  
-Die logistische Regression berechnet: „Wie sicher bin ich mir, dass es Spam ist?“
+- $x$ der Eingabewert
+- $\hat y$ die Vorhersage
+- $a$ die Steigung beziehungsweise das Gewicht
+- $b$ der Achsenabschnitt beziehungsweise Bias
 
-Braucht Aktivierungsfunktion weil es dadurch zugänglich für Entscheidungen macht statt nur wie bei der linearen Regression einen Wert zu berechnen
-## Bekannte Aktivierungsfunktionen:
+Ein Beispiel ist die Schätzung des Körpergewichts anhand der Körpergröße. Eine lineare Regression modelliert dabei einen näherungsweise linearen Zusammenhang.
 
-| Funktion       | Formel                                          | Eigenschaften                                      | Typischer Einsatz                                           | Wofür                                    |
-| -------------- | ----------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------- |
-| **Sigmoid**    | $\sigma(x) = \frac{1}{1+e^{-x}}$                | glättet auf [0,1], gut für Wahrscheinlichkeiten    | Klassifikation (z. B. logistische Regression, Output Layer) | Macht Werte zu **Wahrscheinlichkeiten**  |
-| **Tanh**       | $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}​$ | Werte zwischen [-1, 1], aber ähnlich wie Sigmoid   | Hidden Layers (früher Standard)                             | **Zentriert**, hilft bei Gradienten      |
-| **ReLU**       | $\text{ReLU}(x) = \max(0, x)$                   | lässt nur positive Werte durch, **sehr effizient** | Hidden Layers (heute Standard)                              | **Effizient**, verhindert viele Probleme |
-| **Leaky ReLU** | $x.wenn.x>0, sonst 0.01x$                       | wie ReLU, aber kleine Negative erlaubt             | Hidden Layers (Alternative zu ReLU)                         | Verhindert, dass Neuronen „sterben“      |
-| **Softmax**    | $\frac{e^{x_i}}{\sum e^{x_j}}$​​                | macht Wahrscheinlichkeitsverteilung aus Vektor     | Multiklass-Klassifikation (Output Layer)                    | Gibt **Wahrscheinlichkeitsverteilung**   |
-
----
-
-#### 🔥 **3. Cross Entropy Loss**
-
-**Misst den Fehler**, wenn ein neuronales Netz eine Klasse vorhersagen soll.
-Formel (bei einer Klasse 1):
+Eine häufig verwendete Loss-Funktion ist der Mean Squared Error:
 
 $$
-\text{Loss} = -\log(\text{p})
+\operatorname{MSE}
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+(y_i-\hat y_i)^2
 $$
-- `p` ist die vorhergesagte Wahrscheinlichkeit für die **richtige Klasse**
-- Je näher `p` an 1 → **kleiner Verlust**
-- Je näher `p` an 0 → **sehr großer Verlust**
 
-📌 **Beispiel**:  
-Die wahre Klasse ist **Katze**.  
-Das Modell sagt mit 90 %: „Das ist eine Katze.“  
-→ Guter Wert, niedriger Fehler  
-Sagt es nur 10 %: → hoher Fehler, obwohl „Katze“ korrekt ist!
+### 7. Logistische Regression
+Die logistische Regression wird für Klassifikationsaufgaben verwendet.
+Zunächst wird ein Logit berechnet:
 
-| Funktion          | Aufgabe                                 | Beispiel                                              |
-| ----------------- | --------------------------------------- | ----------------------------------------------------- |
-| **Softmax**       | Macht aus Zahlen Wahrscheinlichkeiten   | `[2.0, 1.0, 0.1] → [0.65, 0.24, 0.11]`                |
-| **Cross Entropy** | Vergleicht Vorhersage mit echter Klasse | `loss([0.65, 0.24, 0.11], [0, 1, 0])` = großer Fehler |
+$$
+z=ax+b
+$$
 
-##### ✅ Schritt 1: **Softmax**
-> Macht aus den **Roh-Ausgaben** des Netzes (auch „Logits“ genannt) **Wahrscheinlichkeiten** für jede Klasse.
+Anschließend wird die Sigmoid-Funktion angewendet:
 
-📌 Beispiel:
+$$
+\sigma(z)
+=
+\frac{1}{1+e^{-z}}
+$$
 
-Roh-Ausgabe vom Netz (z. B. letzte Schicht, noch **keine Wahrscheinlichkeiten**):
+Die Sigmoid-Funktion bildet den Logit auf einen Wert zwischen $0$ und $1$ ab. Dieser Wert kann als Wahrscheinlichkeit für die positive Klasse interpretiert werden.
 
+Beispiel:
 
-`[2.5, 1.0, -0.5]`
+- $0$ = kein Spam
+- $1$ = Spam
 
-Softmax wandelt das um:
+Die Ausgabe kann mithilfe eines Schwellenwertes in eine konkrete Entscheidung umgewandelt werden. Bei einem Schwellenwert von $0{,}5$ gilt beispielsweise:
 
-`[0.78, 0.18, 0.04]`
+- $\sigma(z)<0{,}5$ → Klasse 0
+- $\sigma(z)\geq 0{,}5$ → Klasse 1
 
-➡ Das Netz „glaubt“:
+Die Aktivierungsfunktion macht aus dem unbeschränkten Logit eine interpretierbare Wahrscheinlichkeit. Sie ist nicht nur für die Entscheidung zuständig, sondern definiert das probabilistische Modell der logistischen Regression.
 
-- Klasse 0 mit 78 %
-- Klasse 1 mit 18 %
-- Klasse 2 mit 4 %
-    
-##### ✅ Schritt 2: **Cross Entropy**
-> Vergleicht diese Wahrscheinlichkeiten mit der **richtigen Klasse** (One-Hot)
+### 8. Aktivierungsfunktionen
+Aktivierungsfunktionen ermöglichen neuronalen Netzen die Modellierung nichtlinearer Zusammenhänge.
 
-📌 Beispiel:  
-Die **wahre Klasse** war **Klasse 1** → One-Hot: `[0, 1, 0]`
-Cross Entropy Loss schaut dann auf den Wert **bei der 1** (Klasse 1):
-$\text{Loss} = -\log(0.18) \approx 1.714$
+Ohne nichtlineare Aktivierungsfunktionen würden mehrere aufeinanderfolgende lineare Schichten insgesamt wieder nur eine lineare Funktion darstellen.
 
-→ Das Netz hat **nicht besonders gut geraten** → also **hoher Fehler**
-→ je **höher die Vorhersage für die richtige Klasse**, desto **niedriger der Verlust**
+| Funktion | Formel | Wertebereich | Typischer Einsatz |
+| -------- | ------ | ------------ | ----------------- |
+| **Sigmoid** | $\sigma(x)=\frac{1}{1+e^{-x}}$ | $(0,1)$ | binärer Output |
+| **Tanh** | $\tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$ | $(-1,1)$ | versteckte Schichten, vor allem ältere Architekturen |
+| **ReLU** | $\operatorname{ReLU}(x)=\max(0,x)$ | $[0,\infty)$ | versteckte Schichten |
+| **Leaky ReLU** | $\operatorname{LeakyReLU}(x)=\max(\alpha x,x)$ | $(-\infty,\infty)$ | Alternative zu ReLU |
+| **Softmax** | $\operatorname{softmax}(z)_i=\frac{e^{z_i}}{\sum_{j=1}^{K}e^{z_j}}$ | Wahrscheinlichkeitsverteilung | Multiklassen-Output |
 
----
+#### Sigmoid
+Sigmoid erzeugt Werte zwischen $0$ und $1$ und eignet sich daher für binäre Wahrscheinlichkeiten.
+In tiefen versteckten Schichten kann Sigmoid zu sehr kleinen Gradienten führen.
 
-## 🟣 **3. CNN vs. Fully Connected Layer**
+#### Tanh
+Tanh erzeugt Werte zwischen $-1$ und $1$. Die Funktion ist um null zentriert, kann aber ebenfalls unter verschwindenden Gradienten leiden.
 
-## 🔥 Was ist **Overfitting**?
-> Overfitting bedeutet, dass dein Modell die **Trainingsdaten zu gut auswendig gelernt hat**, aber **auf neuen Daten schlecht funktioniert**.
+#### ReLU
+ReLU setzt negative Eingaben auf null und lässt positive Werte unverändert.
+Vorteile:
 
-### 🛠 Was hilft gegen Overfitting?
-- **Mehr Daten**
-- **Dropout** → zufälliges Abschalten von Neuronen beim Training
-- **Regularisierung** (z. B. L2)
-- **Batch-Normalisierung**
-- **Frühes Stoppen** (Early Stopping)
-- **Datenaugmentation** (z. B. Bilder leicht kippen, drehen, spiegeln, um mehr Vielfalt zu schaffen)
+- einfache Berechnung
+- gute Gradienten für positive Eingaben
+- häufig effizient in tiefen Netzen
 
-### 🔹 **Fully Connected (FC)**
+Ein möglicher Nachteil ist das Problem der **dying ReLU**. Ein Neuron kann dauerhaft nur noch negative Eingaben erhalten und dadurch immer null ausgeben.
 
-- Jedes Neuron ist mit **allen Neuronen** der nächsten Schicht verbunden
-- Viele Parameter → hohe Rechenlast
-- Keine Rücksicht auf **räumliche Struktur** (z. B. bei Bildern)
+#### Leaky ReLU
+Leaky ReLU lässt auch im negativen Bereich einen kleinen Gradienten zu:
 
-📌 Beispiel: Eingabebild mit 784 Pixeln (28×28) → 100 Neuronen → **78.400 Gewichte!**
+$$
+\operatorname{LeakyReLU}(x)
+=
+\begin{cases}
+x, & x>0 \\
+\alpha x, & x\leq 0
+\end{cases}
+$$
 
----
+Typischerweise ist $\alpha$ eine kleine positive Zahl, beispielsweise $0{,}01$.
 
-### 🔹 **CNN (Convolutional Neural Network)**
+#### Softmax
+Softmax wandelt einen Vektor aus Logits in eine Wahrscheinlichkeitsverteilung um.
+Es gilt:
 
-- Nutzt **Filter**, die über das Bild „wandern“ (Faltung)
-- Erkennen **Kanten, Texturen, Formen**
-- **Weniger Parameter** - z. B. 10 Filter à 3×3 = 90 Gewichte
+$$
+\sum_{i=1}^{K}p_i=1
+$$
 
-📌 Vorteil:
+Softmax wird typischerweise in der Ausgabeschicht einer Multiklassen-Klassifikation verwendet.
 
-- CNNs erkennen **lokale Muster** (z. B. Augen in Gesichtern)
-- Weniger Overfitting
-- Besser für Bilder geeignet
+### 9. Cross-Entropy-Loss
+Cross Entropy misst den Unterschied zwischen der vorhergesagten Wahrscheinlichkeitsverteilung und der tatsächlichen Klasse.
 
-Stell dir vor, du hast ein sehr kleines Bild (z. B. Graustufen, 5×5 Pixel):
+#### Categorical Cross Entropy
 
-### 📷 Bild (Input-Matrix)
+Für $K$ Klassen lautet die Loss-Funktion:
 
+$$
+L
+=
+-\sum_{i=1}^{K}
+y_i\log(p_i)
+$$
+
+Dabei ist:
+
+- $y_i$ der Zielwert der Klasse $i$
+- $p_i$ die vorhergesagte Wahrscheinlichkeit der Klasse $i$
+
+Bei One-Hot-Encoding besitzt nur die korrekte Klasse den Wert $1$. Deshalb reduziert sich die Formel auf:
+
+$$
+L=-\log(p_{\text{richtig}})
+$$
+
+Je näher die vorhergesagte Wahrscheinlichkeit der richtigen Klasse an $1$ liegt, desto kleiner ist der Loss.
+Je näher sie an $0$ liegt, desto größer wird der Loss.
+
+#### Binary Cross Entropy
+Für eine binäre Klassifikation gilt:
+
+$$
+L
+=
+-\left(
+y\log(p)
++
+(1-y)\log(1-p)
+\right)
+$$
+
+#### Zusammenspiel von Softmax und Cross Entropy
+Softmax wandelt Logits in Wahrscheinlichkeiten um. Cross Entropy bewertet anschließend die Wahrscheinlichkeit der richtigen Klasse.
+
+Beispiel für Logits:
+
+```text
+[2.5, 1.0, -0.5]
 ```
+
+Nach Softmax ergibt sich ungefähr:
+
+```text
+[0.786, 0.175, 0.039]
+```
+
+Das Modell ordnet damit folgende Wahrscheinlichkeiten zu:
+
+- Klasse 0: ungefähr 78,6 %
+- Klasse 1: ungefähr 17,5 %
+- Klasse 2: ungefähr 3,9 %
+
+Ist Klasse 1 die richtige Klasse, lautet der One-Hot-Vektor:
+
+```text
+[0, 1, 0]
+```
+
+Der Loss betrachtet die vorhergesagte Wahrscheinlichkeit der richtigen Klasse:
+
+$$
+L=-\log(0{,}175)\approx 1{,}74
+$$
+
+Die Wahrscheinlichkeit der richtigen Klasse ist relativ niedrig. Entsprechend ist der Loss vergleichsweise hoch.
+
+
+## Teil 3 – Fully Connected Networks und CNNs
+
+### 1. Overfitting
+**Overfitting** bedeutet, dass ein Modell die Trainingsdaten sehr gut beschreibt, aber auf neuen, unbekannten Daten schlecht generalisiert.
+
+Typische Anzeichen sind:
+
+- niedriger Trainingsfehler
+- deutlich höherer Validierungs- oder Testfehler
+- starke Anpassung an Rauschen oder zufällige Besonderheiten der Trainingsdaten
+
+Mögliche Gegenmaßnahmen sind:
+
+- mehr Trainingsdaten
+- Datenaugmentation
+- L1- oder L2-Regularisierung
+- Dropout
+- Early Stopping
+- kleinere beziehungsweise einfachere Modelle
+- geeignete Validierung
+- teilweise Batch-Normalisierung als zusätzlicher regularisierender Effekt
+
+Batch-Normalisierung ist allerdings nicht primär eine Methode gegen Overfitting, sondern dient vor allem der Stabilisierung des Trainings.
+
+---
+
+### 2. Fully Connected Layer
+Bei einer vollständig verbundenen Schicht ist jedes Eingabeneuron mit jedem Ausgabeneuron verbunden.
+
+Eigenschaften:
+
+- viele trainierbare Parameter
+- keine direkte Berücksichtigung räumlicher Nachbarschaften
+- flexibel für allgemeine Merkmalsvektoren
+- bei großen Bildern schnell sehr parameterintensiv
+
+#### Beispiel
+Ein Bild mit $28\times28=784$ Pixeln wird mit einer Schicht aus 100 Neuronen verbunden.
+Die Anzahl der Gewichte beträgt:
+
+$$
+784\cdot100=78\,400
+$$
+
+Zusätzlich besitzt jedes der 100 Neuronen einen Bias. Insgesamt entstehen damit:
+
+$$
+78\,400+100=78\,500
+$$
+
+trainierbare Parameter.
+
+---
+
+### 3. Convolutional Neural Network
+Ein **Convolutional Neural Network**, kurz CNN, verarbeitet Daten mithilfe lokaler Filter beziehungsweise Kernel.
+
+Ein Filter wird über das Bild verschoben und verarbeitet jeweils einen kleinen lokalen Ausschnitt.
+
+Vorteile:
+
+- lokale Muster können erkannt werden
+- Filtergewichte werden an allen Bildpositionen wiederverwendet
+- räumliche Strukturen werden berücksichtigt
+- meist deutlich weniger Parameter als bei einer vergleichbaren vollständig verbundenen Schicht
+
+Typische gelernte Merkmale sind:
+
+- Kanten
+- Ecken
+- Texturen
+- einfache Formen
+- komplexere Objektteile in tieferen Schichten
+
+Die Parameterteilung kann das Risiko von Overfitting gegenüber einer ähnlich großen vollständig verbundenen Architektur reduzieren. Ein CNN kann bei ungeeigneter Modellgröße oder zu wenigen Daten trotzdem overfitten.
+
+#### Anzahl der Filterparameter
+Bei einem Graustufenbild und zehn Filtern der Größe $3\times3$ entstehen:
+
+$$
+10\cdot3\cdot3=90
+$$
+
+Filtergewichte.
+
+Zusätzlich können zehn Bias-Werte vorhanden sein:
+
+$$
+90+10=100
+$$
+
+Bei mehreren Eingangskanälen muss zusätzlich die Anzahl der Kanäle berücksichtigt werden:
+
+$$
+\text{Parameter}
+=
+K_hK_wC_{\text{in}}C_{\text{out}}
++
+C_{\text{out}}
+$$
+
+Dabei ist:
+
+- $K_h$ die Höhe des Filters
+- $K_w$ die Breite des Filters
+- $C_{\text{in}}$ die Anzahl der Eingangskanäle
+- $C_{\text{out}}$ die Anzahl der Filter beziehungsweise Ausgangskanäle
+
+---
+
+### 4. Beispiel einer Faltung
+Gegeben ist ein Graustufenbild mit $5\times5$ Pixeln:
+
+```text
 1  2  3  0  1
 4  5  6  1  0
 7  8  9  0  1
 1  2  3  4  5
 0  1  2  3  4
-
 ```
 
-Und du hast **einen Filter**, der Kanten in horizontaler Richtung erkennt. Der sieht z. B. so aus:
+Ein Sobel-Filter zur Erkennung horizontaler Kanten lautet:
 
-### 🧩 Filter (3×3 Matrix)
-
-```
--1 -1 -1
- 0  0  0
- 1  1  1
+```text
+-1  -2  -1
+ 0   0   0
+ 1   2   1
 ```
 
-Das ist ein sogenannter **Sobel-Filter**, der **horizontale Kanten** erkennt (oben dunkel, unten hell → z. B. Augenbraue über Auge).
+Der Filter reagiert auf Änderungen in vertikaler Richtung und hebt dadurch horizontale Kanten hervor.
 
-## 🔁 Was passiert jetzt?
+Der Filter wird über das Bild verschoben. Bei jedem Schritt werden folgende Operationen ausgeführt:
 
-Der Filter **„wandert“ über das Bild**, von links nach rechts, oben nach unten, immer 3×3 Ausschnitte.
-Bei jedem Schritt wird:
+1. Bildausschnitt und Filter werden elementweise multipliziert.
+2. Die einzelnen Produkte werden addiert.
+3. Das Ergebnis bildet einen Wert der Output-Feature-Map.
 
-1. Das **Filterelement mit dem Bildausschnitt multipliziert**
-2. Die Produkte werden **aufsummiert**
-3. Das ergibt **einen Pixel im Ausgabebild**
-    
+#### Erster Bildausschnitt
 
----
-
-### 🔍 Beispiel-Schritt 1 (linke obere Ecke):
-
-Der 3×3-Ausschnitt aus dem Bild:
-
-```
+```text
 1  2  3
 4  5  6
 7  8  9
 ```
 
-Multipliziert mit dem Filter (elementweise):
+Elementweise Multiplikation und Summierung:
 
-`1*-1 + 2*-1 + 3*-1 + 4*0 + 5*0 + 6*0 + 7*1 + 8*1 + 9*1 = -1 -2 -3 + 0 + 0 + 0 + 7 + 8 + 9 = **18**`
+$$
+\begin{aligned}
+&1(-1)+2(-2)+3(-1)\\
+&+4(0)+5(0)+6(0)\\
+&+7(1)+8(2)+9(1)\\
+&=24
+\end{aligned}
+$$
 
-→ Das ist der **erste Pixel** im Output-Bild
+Der erste Wert der Feature-Map ist damit $24$.
 
+Bei einem $5\times5$-Bild, einem $3\times3$-Filter, Stride $1$ und ohne Padding entsteht eine $3\times3$-Feature-Map:
+
+```text
+24  X  X
+ X  X  X
+ X  X  X
 ```
-18  X  X
-X   X  X
-X   X  X
+
+In vielen Softwarebibliotheken wird technisch eine Kreuzkorrelation berechnet, weil der Filter nicht gespiegelt wird. Im Zusammenhang mit CNNs wird dieser Vorgang trotzdem üblicherweise als Convolution beziehungsweise Faltung bezeichnet.
+
+Der Sobel-Filter ist ein fest vorgegebener Filter. In einem CNN werden die Filtergewichte dagegen normalerweise während des Trainings gelernt.
+
+> Ein CNN-Filter verarbeitet lokale Bildbereiche und erzeugt daraus Feature-Maps. Die Filtergewichte werden während des Trainings so angepasst, dass sie für die jeweilige Aufgabe hilfreiche Merkmale erkennen.
+
+---
+
+### 5. Padding, Stride und Pooling
+#### Padding
+
+Beim Padding wird der Rand der Eingabe um zusätzliche Werte erweitert, häufig um Nullen.
+
+Padding kann verhindern, dass die räumliche Größe der Feature-Map nach jeder Faltung stark abnimmt.
+
+#### Stride
+
+Der Stride gibt an, um wie viele Positionen der Filter bei jedem Schritt verschoben wird.
+
+- Stride $1$ → Verschiebung um eine Position
+- Stride $2$ → Verschiebung um zwei Positionen und dadurch eine kleinere Feature-Map
+
+#### Pooling
+Pooling verkleinert Feature-Maps, indem lokale Bereiche zusammengefasst werden.
+
+Beim Max Pooling wird beispielsweise der größte Wert eines Bereichs übernommen.
+
+Beispiel:
+
+```text
+1  4
+3  2
 ```
 
-### 💡 Fazit:
-> Ein CNN-Filter ist eine kleine Matrix (z. B. 3×3), die lokal über das Bild läuft und **wichtige Muster erkennt**, z. B. Kanten. Das Netz lernt im Training selbst, **welche Filter am besten funktionieren**.
+Das Max Pooling liefert:
+
+```text
+4
+```
+
+Pooling reduziert die räumliche Auflösung und kann die Robustheit gegenüber kleinen Verschiebungen erhöhen.
 
 ---
 
-#### 🧠 **5. Batch-Normierung**
+### 6. Batch-Normalisierung
+Batch-Normalisierung normalisiert während des Trainings die Aktivierungen eines Mini-Batches.
 
-- **Standardisiert Eingaben pro Mini-Batch**
-- Vorteil: schnelleres & stabileres Training
-- Formel:
-$$
- x' = \frac{x - \text{Mittelwert}}{\text{Standardabweichung} + \varepsilon} \quad\Rightarrow\quad BN(x') = \alpha x' + \beta
-$$
-
----
-## 🔴 **L1-Regularisierung**
-
-### 🧮 Formel:
-$$
-\text{Loss} = \text{Fehler} + \lambda \cdot \sum |w|
-$$
-- Bestraft **alle Gewichte linear**
-- Hat den Effekt, dass **viele Gewichte exakt null werden**
-
-## 🔵 **L2-Regularisierung** (das ist die „Standard“-Variante)
-
-### 🧮 Formel:
+Zunächst werden Mittelwert und Varianz berechnet:
 
 $$
-\text{Loss} = \text{Fehler} + \lambda \cdot \sum w^2
+\mu_B
+=
+\frac{1}{m}
+\sum_{i=1}^{m}x_i
 $$
 
-- `λ` ist ein Parameter, wie **stark du die Bestrafung** willst
-- Große Gewichte → **überproportional stärker bestraft**
-- Aber: **Gewichte werden nicht null**, sondern nur **kleiner gehalten**
-    
+$$
+\sigma_B^2
+=
+\frac{1}{m}
+\sum_{i=1}^{m}
+(x_i-\mu_B)^2
+$$
 
-📌 **Was passiert?**  
-Das Netz **verteilt die Verantwortung** gleichmäßig.  
-Es **vermeidet es**, dass ein einzelnes Neuron „alles“ speichert (und damit überfitten kann).
+Anschließend wird normalisiert:
 
-| Name        | Auch genannt | Bestraft große …      | Effekt                     | Vorteil                         | Nachteil      |
-| ----------- | ------------ | --------------------- | -------------------------- | ------------------------------- | ------------- |
-| **L1**      | Lasso        | Absolutwerte          | Macht Gewichte **null**    | Spart Speicher, Feature-Auswahl | Eher instabil |
-| **L2**      | Ridge        | Quadrate der Gewichte | Macht Gewichte **kleiner** | Glatteres robusteres Lernen     | Eher träger   |
-| Kombination | Elastic Net  | Mischung aus beidem   |                            |                                 |               |
+$$
+\hat{x}_i
+=
+\frac{x_i-\mu_B}
+{\sqrt{\sigma_B^2+\varepsilon}}
+$$
 
+Danach werden eine lernbare Skalierung $\gamma$ und eine lernbare Verschiebung $\beta$ angewendet:
 
+$$
+y_i
+=
+\gamma\hat{x}_i+\beta
+$$
 
----
-#### 🧪 **6. Dropout**
+Vorteile:
 
-- In jedem Trainingsschritt: zufällige Neuronen auf 0(deaktiviert)
-- Welche Neuronen deaktiviert werden ändert sich in jedem Schritt
-- Damit alle Neuronen einmal drankommen und nicht einzelne zu viel trainiert
-  werden und zu Superneuronen werden
+- stabileres Training
+- häufig größere mögliche Learning Rates
+- geringere Abhängigkeit von der Parameterinitialisierung
+- teilweise regularisierender Nebeneffekt
 
-- Ziel: **Overfitting verhindern**, Netzwerk lernt **redundante Merkmale**1
-    
+Während der Inferenz werden normalerweise gespeicherte beziehungsweise gleitend gemittelte Mittelwerte und Varianzen verwendet.
 
 ---
 
-#### 👁 **7. Analyse trainierter CNNs**
+### 7. L1-Regularisierung
+Bei der L1-Regularisierung wird die Summe der Absolutwerte der Gewichte zum ursprünglichen Loss addiert:
 
-- **CAM (Class Activation Mapping)**: zeigt, wo das Netz "hinschaut"
-- **Guided Backpropagation**: zeigt, welche Eingabepixel am wichtigsten waren
+$$
+L_{\text{gesamt}}
+=
+L_{\text{Daten}}
++
+\lambda
+\sum_i|w_i|
+$$
 
-| Begriff                         | Bedeutung                                                          |
-| ------------------------------- | ------------------------------------------------------------------ |
-| **Logits**                      | Rohwerte vor der Softmax                                           |
-| **Feature Maps**                | Zwischenergebnisse nach Faltungen (in CNNs)                        |
-| **Pooling (z. B. Max Pooling)** | Verkleinert Feature Maps, wählt z. B. größtes Element aus Regionen |
-| **Padding / Stride**            | Steuerung, wie Filter über Bild laufen                             |
+Eigenschaften:
 
+- begünstigt sparsame Parameterlösungen
+- kann viele Gewichte exakt oder nahezu auf null setzen
+- kann eine Form von Merkmalsauswahl bewirken
+- ist an der Stelle $w=0$ nicht differenzierbar, kann dort aber mithilfe eines Subgradienten optimiert werden
+
+---
+
+### 8. L2-Regularisierung
+Bei der L2-Regularisierung wird die Summe der quadrierten Gewichte zum ursprünglichen Loss addiert:
+
+$$
+L_{\text{gesamt}}
+=
+L_{\text{Daten}}
++
+\lambda
+\sum_iw_i^2
+$$
+
+Eigenschaften:
+
+- große Gewichte werden besonders stark bestraft
+- Gewichte werden in Richtung null gedrückt
+- Gewichte werden normalerweise nicht exakt null
+- das Modell wird weniger empfindlich gegenüber einzelnen Eingabemerkmalen
+
+L2-Regularisierung wird häufig mit Weight Decay in Verbindung gebracht. Bei einfachem Gradient Descent sind beide eng miteinander verbunden. Bei bestimmten adaptiven Optimierern sind L2-Regularisierung und entkoppeltes Weight Decay allerdings nicht exakt dasselbe.
+
+| Methode | Regularisierungsterm | Typischer Effekt |
+| ------- | -------------------- | ---------------- |
+| **L1** | $\lambda\sum_i|w_i|$ | fördert sparsame Gewichte und mögliche Nullen |
+| **L2** | $\lambda\sum_iw_i^2$ | hält die Gewichte insgesamt kleiner |
+| **Elastic Net** | Kombination aus L1 und L2 | verbindet die Eigenschaften beider Verfahren |
+
+Die Bezeichnungen **Lasso** und **Ridge** stammen vor allem aus der linearen Regression. Bei neuronalen Netzen werden meist die Begriffe L1- und L2-Regularisierung verwendet.
+
+---
+
+### 9. Dropout
+Dropout deaktiviert während des Trainings zufällig einen Teil der Aktivierungen einer Schicht.
+
+Ein deaktiviertes Neuron beziehungsweise dessen Aktivierung wird für den aktuellen Trainingsschritt auf null gesetzt.
+
+Wichtig:
+
+- Die Auswahl wird bei jedem Trainingsschritt neu getroffen.
+- Die Parameter der deaktivierten Neuronen werden nicht dauerhaft gelöscht.
+- Das Netzwerk kann sich weniger stark auf einzelne Aktivierungen verlassen.
+- Redundante und robustere Repräsentationen werden gefördert.
+- Während der Inferenz ist Dropout normalerweise deaktiviert.
+
+Bei **Inverted Dropout** werden die verbleibenden Aktivierungen bereits während des Trainings passend skaliert. Dadurch ist während der Inferenz keine zusätzliche Skalierung notwendig.
+
+Ziel ist die Verringerung von Overfitting und die Verbesserung der Generalisierung.
+
+---
+
+### 10. Analyse trainierter CNNs
+#### CAM und Grad-CAM
+
+**Class Activation Mapping**, kurz CAM, erzeugt eine Heatmap, die zeigt, welche Bildregionen zur Vorhersage einer bestimmten Klasse beigetragen haben.
+
+Das ursprüngliche CAM setzt eine bestimmte Netzwerkarchitektur mit Global Average Pooling voraus.
+
+**Grad-CAM** ist allgemeiner einsetzbar und verwendet Gradienten, um relevante Bereiche einer Feature-Map zu gewichten.
+
+Die Heatmaps zeigen Hinweise auf relevante Bildregionen. Sie beweisen jedoch nicht automatisch einen kausalen Zusammenhang.
+#### Guided Backpropagation
+Guided Backpropagation visualisiert, welche Eingabebereiche eine starke positive Wirkung auf bestimmte Aktivierungen besitzen.
+
+Das Verfahren erzeugt häufig detailreiche Darstellungen, ist aber ebenfalls keine vollständige kausale Erklärung des Modellverhaltens.
+
+#### Wichtige Begriffe
+
+| Begriff | Bedeutung |
+| ------- | --------- |
+| **Logits** | Rohausgaben des Modells vor Sigmoid oder Softmax |
+| **Feature-Maps** | Zwischenergebnisse einer Faltungsoperation |
+| **Kernel beziehungsweise Filter** | Kleine Gewichtsmatrix zur lokalen Verarbeitung |
+| **Pooling** | Verkleinerung und Zusammenfassung von Feature-Maps |
+| **Padding** | Ergänzung des Eingaberandes |
+| **Stride** | Schrittweite des Filters |
+| **Receptive Field** | Bereich der ursprünglichen Eingabe, der eine Aktivierung beeinflusst |
+| **CAM beziehungsweise Grad-CAM** | Visualisierung klassenrelevanter Bildbereiche |

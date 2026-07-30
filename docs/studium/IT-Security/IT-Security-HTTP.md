@@ -9,13 +9,11 @@ tags:
   - Semester-5
   - Informatik
 ---
-# Root-Me HTTP Dokumentation
-
-## 🧩 Challenge-Ziel (HTTP-Post)
+## Challenge-Ziel (HTTP-Post)
 
 **Ziel:** Das Ziel dieser Challenge besteht darin, die serverseitige Verarbeitung von HTTP-POST-Anfragen zu manipulieren, um einen Highscore von **999999** oder höher zu erreichen. Die bereitgestellte HTML-Seite enthält ein Formular, das beim Absenden einen zufälligen Score generiert. Unser Ziel ist es, diesen Mechanismus zu umgehen und einen gewünschten Score direkt an den Server zu senden.
 
-### 🧠 Analyse der Webseite
+### Analyse der Webseite
 
 Beim Aufrufen der Challenge-Seite unter:​
 
@@ -87,13 +85,11 @@ C:\Users\nico->curl -X POST -d "score=1000000&generate=Give+a+try%21" http://cha
 
 ![[IT-Security-HTTP-Post.png]]
 
----
-
-## 🧩 Challenge-Ziel (HTTP - Improper Redirect)
+## Challenge-Ziel (HTTP - Improper Redirect)
 
 **Ziel:** Diese Challenge demonstriert eine häufige Schwachstelle in PHP-Anwendungen, bei der nach einer Weiterleitung mittels `header('Location: ...')` kein `exit();` oder `die();` aufgerufen wird. Dadurch wird der nachfolgende Code weiterhin ausgeführt und an den Client gesendet, obwohl eine Weiterleitung stattgefunden hat.​
 
-### 🧠 Analyse der Webseite
+### Analyse der Webseite
 
 Beim Aufrufen der Challenge-Seite unter:​
 
@@ -101,7 +97,7 @@ Beim Aufrufen der Challenge-Seite unter:​
 
 wird ein Login-Formular angezeigt. Nach dem Absenden des Formulars mit beliebigen Zugangsdaten erfolgt eine Weiterleitung.​
 
-### 🛠️ Lösungsschritte
+### Lösungsschritte
 
 1. **HTTP-Antwort analysieren:** Um die vollständige HTTP-Antwort einschließlich der Header und des Body zu sehen, verwenden wir den folgenden Befehl:
 
@@ -137,17 +133,15 @@ Location: ./login.php?redirect
 </html>
 ```
 
-### 📝 Hintergrundinformation
+### Hintergrundinformation
 
 In PHP sollte nach einer Weiterleitung mittels `header("Location: ...")` immer ein `exit();` oder `die();` folgen, um sicherzustellen, dass kein weiterer Code ausgeführt wird. In dieser Challenge wurde dies absichtlich weggelassen, wodurch der nachfolgende HTML-Inhalt (inklusive des Flags) weiterhin an den Client gesendet wird, obwohl eine Weiterleitung stattgefunden hat.
 
----
-
-## 🧩 Challenge-Ziel (HTTP - Verb Tampering)
+## Challenge-Ziel (HTTP - Verb Tampering)
 
 **Ziel:** Diese Challenge demonstriert eine Schwachstelle, bei der durch die Manipulation des HTTP-Verbs (auch bekannt als HTTP-Methode) Zugriff auf Ressourcen erlangt werden kann, die normalerweise durch Zugriffskontrollen geschützt sind.​
 
-### 🧠 Analyse der Webseite
+### Analyse der Webseite
 
 Beim Aufrufen der Challenge-Seite unter:​
 
@@ -156,7 +150,7 @@ Beim Aufrufen der Challenge-Seite unter:​
 wird der Zugriff verweigert. Dies deutet darauf hin, dass bestimmte HTTP-Methoden (wie GET oder POST) durch Zugriffskontrollen eingeschränkt sind.​
 
 
-### 🛠️ Lösungsschritte
+### Lösungsschritte
 
 1. **Senden einer Anfrage mit einer alternativen HTTP-Methode:** Um die Zugriffskontrolle zu umgehen, senden wir eine Anfrage mit einer anderen HTTP-Methode, beispielsweise `OPTIONS`.
     
@@ -196,18 +190,14 @@ curl -X OPTIONS "http://challenge01.root-me.org/web-serveur/ch8/" ^
 ```
 
 In diesem Beispiel lautet der Flag: `a23e$dme96d3saez$$prap`
-### 📝 Hintergrundinformation
+### Hintergrundinformation
 
 HTTP Verb Tampering tritt auf, wenn ein Webserver oder eine Anwendung Zugriffskontrollen basierend auf HTTP-Methoden implementiert, jedoch nicht alle Methoden ordnungsgemäß überprüft. Angreifer können alternative oder weniger häufig verwendete HTTP-Methoden verwenden, um Zugriff auf geschützte Ressourcen zu erhalten oder Sicherheitsmechanismen zu umgehen.
-
----
-
-## 🧩 Challenge-Ziel (HTTP - Cookies)
+## Challenge-Ziel (HTTP - Cookies)
 
 **Ziel:** Diese Challenge demonstriert eine Schwachstelle in der Cookie-Verwaltung, bei der durch Manipulation von Cookies Zugriff auf administrative Funktionen erlangt werden kann.​
 
-
-### 🧠 Analyse der Webseite
+### Analyse der Webseite
 
 Beim Aufrufen der Challenge-Seite unter:​
 
@@ -233,8 +223,7 @@ Im HTML-Quellcode ist folgender Kommentar zu finden:​
 
 Dies deutet darauf hin, dass ein Cookie namens `ch7` mit dem Wert `visiteur` gesetzt wird.​
 
-
-### 🛠️ Lösungsschritte
+### Lösungsschritte
 
 1. **Senden einer POST-Anfrage:** Zuerst senden wir eine POST-Anfrage, um den Cookie `ch7` zu erhalten.
     
@@ -277,6 +266,6 @@ Vary: Accept-Encoding
 C:\Users\nico->
 ```
 
-### 📝 Hintergrundinformation
+### Hintergrundinformation
 
 Diese Challenge zeigt, wie wichtig eine sichere Verwaltung von Cookies ist. Wenn der Zugriff auf administrative Funktionen lediglich durch den Wert eines Cookies gesteuert wird, können Angreifer durch Manipulation dieses Cookies unbefugten Zugriff erlangen. Es ist daher entscheidend, dass Server die Authentizität und Integrität von Cookies überprüfen und nicht allein auf deren Vorhandensein oder Wert vertrauen.

@@ -7,121 +7,157 @@ aliases:
 tags:
   - Course/AI
 ---
-#  **Adversariale Suche & Minimax**
+Die **adversariale Suche** wird bei Spielen verwendet, in denen zwei Spieler gegensätzliche Ziele verfolgen. Minimax eignet sich insbesondere für deterministische Zwei-Personen-Nullsummenspiele mit vollständiger Information.
 
-## 🎮 **1️⃣ Spielbaum & Rollen**
+### 1. Spielbaum und Rollen
+Ein Spiel wird als Baum dargestellt:
 
-1. **Spielbaum**  
-    - Jeder Knoten = eine Spielsituation.  
-    - Kanten = mögliche Züge.
-    
-2. **Max‑ vs. Min‑Knoten**  
-    - **Max** (unsere KI) will die Bewertung **maximieren**.  
-    - **Min** (Gegner) will sie **minimieren**.
-    
-3. **Blatt‑Bewertung**  
-    **Tiefe erreicht** oder **Spielende** → Heuristik liefert einen Zahlenwert $E(s)$
-    
+- **Knoten:** aktuelle Spielsituationen
+- **Kanten:** mögliche Züge
+- **Blätter:** Spielende oder erreichte Suchtiefe
 
----
+Die Spieler übernehmen abwechselnd zwei Rollen:
 
-## 🤖 **2️⃣ Minimax‑Verfahren**
+- **Max:** versucht die Bewertung zu maximieren
+- **Min:** versucht die Bewertung zu minimieren
 
-1. **Rekursion**  
-    - Wechsle abwechselnd zwischen Max und Min, bis Tiefe 0 oder terminal.
-    
-2. **Entscheidung**  
-    - **Max** nimmt `max(…)` über alle Kinder‑Werte.  
-    - **Min** nimmt `min(…)`.
-    
-3. **Komplexität**  
-- **Zeit:** $O(b^d)$ mit Verzweigungsfaktor $b$ und Tiefe $d$
-- **Platz:** $O(d)$ (Rekursionstiefe)
+Ist ein Spielzustand terminal oder die maximale Suchtiefe erreicht, liefert die Bewertungsfunktion $E(s)$ einen Zahlenwert. Die Bewertung erfolgt aus der Sicht von Max:
+
+- hoher Wert: gut für Max
+- niedriger Wert: gut für Min
+- neutraler Wert: ausgeglichene Stellung
+### 2. Minimax-Verfahren
+Minimax durchsucht den Spielbaum rekursiv:
+
+1. Max untersucht alle möglichen eigenen Züge.
+2. Min wählt anschließend den für Max ungünstigsten Gegenzug.
+3. Max wählt den Zug mit dem besten Ergebnis unter diesen Bedingungen.
+
+Dabei gilt:
+
+- **Max-Knoten:** übernimmt den größten Kindwert
+- **Min-Knoten:** übernimmt den kleinsten Kindwert
 
 ![[MiniMax.PNG]]
 
-=== "🔍 Pseudo-Code-MiniMax"
+#### Pseudocode
 
-    ```Pseudo
-		function minimax(s, d, player):
-		  if d=0 oder s terminal: return E(s)
-		  if player=Max:
-		    best = −∞
-		    for Zug z in s: best = max(best, minimax(s nach z, d−1, Min))
-		    return best
-		  else:
-		    best = +∞
-		    for Zug z in s: best = min(best, minimax(s nach z, d−1, Max))
-		    return best
-    ```
+```text
+function minimax(s, d, player):
+    if d = 0 or s is terminal:
+        return E(s)
 
+    if player = Max:
+        best = -∞
 
-#### 📝 **Zusammenfassung Minimax**
+        for each move z in s:
+            value = minimax(s after z, d - 1, Min)
+            best = max(best, value)
 
-|Begriff|Beschreibung|
+        return best
+
+    else:
+        best = +∞
+
+        for each move z in s:
+            value = minimax(s after z, d - 1, Max)
+            best = min(best, value)
+
+        return best
+```
+
+#### Komplexität
+
+Mit dem Verzweigungsfaktor $b$ und der Suchtiefe $d$ gilt:
+
+- **Zeitkomplexität:** $O(b^d)$
+- **Rekursionstiefe:** $O(d)$
+
+| Begriff | Bedeutung |
 |---|---|
-|**Max‑Knoten**|wählt das **größte** Kind >>>|
-|**Min‑Knoten**|wählt das **kleinste** Kind <<<|
-|**E(s)**|Bewertungsfunktion an den „Blättern“|
-|**Parameter**|sss: Stellung, ddd: Tiefe, player∈{Max,Min}player\in\{Max,Min\}player∈{Max,Min}|
+| $s$ | aktueller Spielzustand |
+| $d$ | verbleibende Suchtiefe |
+| $E(s)$ | Bewertung des Zustands |
+| Max | wählt den größten Kindwert |
+| Min | wählt den kleinsten Kindwert |
 
----
+### 3. Alpha-Beta-Pruning
+**Alpha-Beta-Pruning** verbessert Minimax, indem Teilbäume übersprungen werden, die das Endergebnis nicht mehr beeinflussen können.
 
-## ✂️ **3️⃣ Alpha‑Beta‑Pruning**
+Das Verfahren liefert dieselbe Entscheidung wie vollständiges Minimax, untersucht aber häufig deutlich weniger Knoten.
 
-1. **α (Alpha)**  
-    - Beste bisher bekannte Bewertung für **Max**.
-    
-2. **β (Beta)**  
-    - Beste bisher bekannte Bewertung für **Min**.
-    
-3. **Pruning‑Kriterium**  
-    Sobald $\beta \le \alpha$ gilt, kann der Rest des Teilbaums **abgebrochen** werden.
-    
-4. **Vorteil**  
-    **Im besten Fall:** $O(b^{\frac{d}{2}})$ statt $O(b^d)$
+Dabei werden zwei Schranken verwendet:
+
+- **Alpha $\alpha$:** beste bisher bekannte Bewertung für Max
+- **Beta $\beta$:** beste bisher bekannte Bewertung für Min
+
+Sobald gilt:
+
+$$
+\beta \leq \alpha
+$$
+
+kann die weitere Untersuchung des Teilbaums abgebrochen werden.
 
 ![[MiniMaxAlphaBeta.PNG]]
 
-=== "🔍 Pseudo-Code-MiniMax mit Alpha Beta Pruning"
+#### Pseudocode
 
-    ```Pseudo
-		function alphabeta(s, d, α, β, player):
-		  if d=0 oder s terminal: return E(s)
-		  if player=Max:
-		    v = −∞
-		    for Zug z:
-		      v = max(v, alphabeta(s nach z, d−1, α, β, Min))
-		      α = max(α, v)
-		      if β ≤ α: break
-		    return v
-		  else:
-		    v = +∞
-		    for Zug z:
-		      v = min(v, alphabeta(s nach z, d−1, α, β, Max))
-		      β = min(β, v)
-		      if β ≤ α: break
-		    return v
-    ```
-#### 📝 **Kurzzusammenfassung αβ**
+```text
+function alphabeta(s, d, alpha, beta, player):
+    if d = 0 or s is terminal:
+        return E(s)
 
-| Symbol      | Bedeutung                                                  |
-| ----------- | ---------------------------------------------------------- |
-| **α**       | Max’s bisher beste Option (untere Schranke)                |
-| **β**       | Min’s bisher beste Option (obere Schranke)                 |
-| **Pruning** | Wenn β≤α\beta \le \alphaβ≤α, keine weitere Expansion nötig |
+    if player = Max:
+        value = -∞
 
----
+        for each move z in s:
+            value = max(
+                value,
+                alphabeta(s after z, d - 1, alpha, beta, Min)
+            )
 
-## 4. Heuristische Zugreihenfolge (Move Ordering)
+            alpha = max(alpha, value)
 
-Um Alpha‑Beta effektiver zu machen, sollten „gute“ Züge zuerst untersucht werden, damit Schnittkriterien früher greifen:
+            if beta <= alpha:
+                break
 
-- **Kaptur‑Züge**: Züge, die einen Eroberungszug auslösen, oft hohe Bewertung → Priorität.
-- **Bonus‑Züge**: Züge, die in die eigene Kalah enden und einen weiteren Zug erlauben.
-- **“Killer‑Moves”**: Aus früheren Knoten gespeicherte besonders stark prunende Züge.
-- **Partial‑Evaluator**: Kurze, schnelle Heuristik, um Züge vorab grob zu bewerten und zu sortieren.
+        return value
 
-Mit guter Zugreihenfolge nähert sich die Laufzeit $O(b^\frac{d}{2})$
+    else:
+        value = +∞
 
-im Durchschnitt an.
+        for each move z in s:
+            value = min(
+                value,
+                alphabeta(s after z, d - 1, alpha, beta, Max)
+            )
+
+            beta = min(beta, value)
+
+            if beta <= alpha:
+                break
+
+        return value
+```
+
+#### Komplexität
+
+Die Laufzeit hängt von der Reihenfolge der untersuchten Züge ab:
+
+- **schlechtester Fall:** $O(b^d)$
+- **bester Fall:** $O(b^{d/2})$
+
+Im besten Fall kann dadurch bei vergleichbarem Aufwand ungefähr die doppelte Suchtiefe erreicht werden.
+
+### 4. Heuristische Zugreihenfolge
+Alpha-Beta-Pruning arbeitet besonders effektiv, wenn vielversprechende Züge zuerst untersucht werden. Dadurch werden Alpha und Beta früher verbessert und mehr Teilbäume können abgeschnitten werden.
+
+Mögliche Verfahren sind:
+
+- **Fangzüge:** Züge, bei denen gegnerische Spielsteine erobert werden
+- **Bonuszüge:** Züge, die beispielsweise in der eigenen Kalah enden und einen weiteren Zug ermöglichen
+- **Killer Moves:** Züge, die an anderen Stellen derselben Suchtiefe bereits zu einem Abbruch geführt haben
+- **Schnelle Vorbewertung:** grobe Bewertung aller Züge vor der eigentlichen Suche
+
+Eine gute Zugreihenfolge verändert das Ergebnis nicht, kann die benötigte Rechenzeit aber deutlich reduzieren.

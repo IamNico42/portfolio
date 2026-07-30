@@ -12,7 +12,7 @@ theme:
       accent: indigo
       toggle:
         icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+        name: Dark mode
 
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
@@ -21,7 +21,7 @@ theme:
       accent: blue
       toggle:
         icon: material/toggle-switch
-        name: Switch to light mode
+        name: Light mode
 
 
 
@@ -32,6 +32,12 @@ theme:
 
 # Extensions
 markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - nl2br
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
   - toc:
@@ -64,6 +70,7 @@ markdown_extensions:
 plugins:
   - search
   - roamlinks
+  - callouts
   - meta-descriptions
   - glightbox:
       selector: "img"
@@ -83,8 +90,8 @@ plugins:
         - categories
         - tags
 
-
-        
+extra_css:
+  - stylesheets/styles.css
 
 extra:
   generator: false

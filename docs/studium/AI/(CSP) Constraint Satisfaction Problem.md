@@ -7,12 +7,12 @@ aliases:
 tags:
   - Course/AI
 ---
-## 🔍 **Was ist ein CSP (Constraint Satisfaction Problem)?**
+## **Was ist ein CSP (Constraint Satisfaction Problem)?**
 
 
 Bei einem **Constraint Satisfaction Problem (CSP)** geht es **nur um eines**:
 
-> ✅ **Finde eine Zuweisung von Werten zu allen Variablen**, sodass **alle Constraints (Rahmenbedingungen)** erfüllt sind.
+> **Finde eine Zuweisung von Werten zu allen Variablen**, sodass **alle Constraints (Rahmenbedingungen)** erfüllt sind.
 
 Es gibt **keinen Gegner**, **keine Bewertung**, **kein Gewinnen oder Verlieren** - nur:
 
@@ -24,15 +24,15 @@ Ein **CSP** ist eine **Formalisierung eines Problems**, das durch drei Dinge bes
 
 1. **Variablen**  
     - Was wir bestimmen wollen.  
-    → z. B. welches Land welche Farbe bekommt.
+    -> z. B. welches Land welche Farbe bekommt.
     
 2. **Wertebereiche (Domains)**  
     - Welche Werte jede Variable annehmen darf.  
-    → z. B. {Rot, Grün, Blau} für Farben.
+    -> z. B. {Rot, Grün, Blau} für Farben.
     
 3. **Constraints (Bedingungen)**  
     - Welche Kombinationen **erlaubt** oder **verboten** sind.  
-    → z. B. benachbarte Länder dürfen **nicht** dieselbe Farbe haben.
+    -> z. B. benachbarte Länder dürfen **nicht** dieselbe Farbe haben.
     
 
 Ein **CSP ist gelöst**, wenn:
@@ -41,10 +41,10 @@ Ein **CSP ist gelöst**, wenn:
 - **alle Constraints erfüllt** sind.
     
 
-👉 Also: **Ein CSP ist eine Klasse von Problemen**, und **die vorgestellten Algorithmen** wie Backtracking, AC-3 oder Min-Conflicts sind **Strategien zur Lösung** dieser Art von Problemen.
+Also: **Ein CSP ist eine Klasse von Problemen**, und **die vorgestellten Algorithmen** wie Backtracking, AC-3 oder Min-Conflicts sind **Strategien zur Lösung** dieser Art von Problemen.
 
 
-## 📚 **Beispiele - im Detail erklärt**
+## **Beispiele - im Detail erklärt**
 
 ### 1. **Landkartenfärbung:**
 - Variablen: WA, NT, SA, ...
@@ -69,38 +69,34 @@ Ein **CSP ist gelöst**, wenn:
 - Lehrer, Räume, Fächer - alles muss zusammenpassen
 - Viele Regeln (z. B. keine Doppelbelegung)
 
+## 1. **Backtracking (klassische Suche)**
 
----
-## 🧩 1. **Backtracking (klassische Suche)**
-
-### 🌱 Grundidee:
+### Grundidee:
 
 Man beginnt mit einer **leeren Zuweisung** und füllt sie **schrittweise** auf:
 
 - Wähle eine Variable
 - Probiere einen Wert aus
 - Prüfe, ob das zu bisherigen Zuweisungen passt (also keine Constraint-Verletzung)
-- Wenn ja → weiter
-- Wenn nein oder später keine Möglichkeit mehr → **zurückspringen** (= backtrack)
+- Wenn ja -> weiter
+- Wenn nein oder später keine Möglichkeit mehr -> **zurückspringen** (= backtrack)
     
 
-### 🧠 Tiefensuche:
+### Tiefensuche:
 
 Backtracking ist eigentlich eine **Tiefensuche** im Suchbaum:
 
 - Jeder Pfad ist ein möglicher Lösungsversuch
 - Jeder Knoten = Zuweisung einer Variable
 
-### 🔍 Heuristiken im Backtracking:
+### Heuristiken im Backtracking:
 
 1. **Most Constrained Variable First**: Variable mit wenigsten erlaubten Werten zuerst wählen
 2. **Most Constraining Variable**: Variable, die die meisten anderen beeinflusst
 3. **Least Constraining Value**: Farbe wählen, die den Nachbarn am meisten Optionen lässt
+## 2. **Forward Checking - Frühzeitige Prüfung**
 
----
-## 🔐 2. **Forward Checking - Frühzeitige Prüfung**
-
-### 🔍 Was passiert hier?
+### Was passiert hier?
 
 Immer wenn **eine Variable einen Wert bekommt**, prüfe alle **benachbarten Variablen**:
 
@@ -108,32 +104,29 @@ Immer wenn **eine Variable einen Wert bekommt**, prüfe alle **benachbarten Vari
 - **Streiche** verbotene Werte (die gegen Constraints verstoßen würden)
     
 
-### 🛑 Wenn bei einer Variable **kein Wert mehr möglich ist**:
+### Wenn bei einer Variable **kein Wert mehr möglich ist**:
 
-→ Sofort zurückspringen (backtrack) - kein Grund weiter zu suchen.
+-> Sofort zurückspringen (backtrack) - kein Grund weiter zu suchen.
 
-### 📌 Vorteil:
+### Vorteil:
 
 - Erkennt **Dead Ends** sehr früh
 - Spart **unnötige Arbeit** tiefer im Suchbaum
     
 
-### 🧠 Beispiel:
+### Beispiel:
 
 - WA = Rot
 - NT kann nur noch Grün oder Blau
-- SA hatte vorher {R, G, B} → nach Ausschluss: nur noch B
-- Wenn das dann auch unmöglich ist → sofort zurück!
+- SA hatte vorher {R, G, B} -> nach Ausschluss: nur noch B
+- Wenn das dann auch unmöglich ist -> sofort zurück!
+## **AC-3 (Arc Consistency 3)**
 
----
-
-## 🔄 **AC-3 (Arc Consistency 3)**
-
-### 🎯 **Ziel:**
+### **Ziel:**
 
 **Einschränkung der Domains**, indem **unbrauchbare Werte entfernt werden**, bevor überhaupt nach einer Lösung gesucht wird.
 
-### 🧩 Warum ist das sinnvoll?
+### Warum ist das sinnvoll?
 
 Weil:
 
@@ -141,23 +134,22 @@ Weil:
 - Wir erkennen **Widersprüche**, **ohne überhaupt zu raten oder zu suchen**
 - Es ist wie ein "automatisches Vorfiltern" aller schlechten Möglichkeiten
 
-### ⚙️ **Vorgehen:**
+### **Vorgehen:**
 
 1. Starte mit **allen Kanten (Constraints)** im CSP (z. B. (X,Y))
 2. Für jede Kante `(X,Y)` prüfe:  
     Gibt es für **jeden Wert x ∈ Domain(X)** einen Wert y ∈ Domain(Y), sodass der Constraint erfüllt ist?
 3. Wenn **nicht**, streiche `x` aus Domain(X)
-4. Wenn sich Domain(X) ändert → prüfe alle Nachbarn von X erneut
+4. Wenn sich Domain(X) ändert -> prüfe alle Nachbarn von X erneut
 5. Wiederholen, bis keine Änderung mehr
     
 
-### 🧠 **Ergebnis:**
+### **Ergebnis:**
 
 - Jede Domain enthält **nur noch Werte**, die **prinzipiell** in einer Lösung vorkommen können
-    
 - Erkennt **Widersprüche frühzeitig** (z. B. leere Domain)
 
-### 🆚 **Vergleich zu anderen Algorithmen**
+### **Vergleich zu anderen Algorithmen**
 
 | Kriterium                       | **Backtracking**                           | **Forward Checking**                              | **AC-3 (Constraint Propagation)**                             |
 | ------------------------------- | ------------------------------------------ | ------------------------------------------------- | ------------------------------------------------------------- |
@@ -170,47 +162,40 @@ Weil:
 | Betrachtet Constraints zwischen | **Aktuelle Variable vs. bisherige**        | **Aktuelle Variable vs. direkte Nachbarn**        | **Jedes (X,Y)-Paar im gesamten Graph**                        |
 | Wie weit denkt er voraus?       | Gar nicht voraus - reagiert nur auf Fehler | Prüft Nachbar-Domains auf direkte Widersprüche    | **Filtert Domains global** durch Wiederholungen               |
 
-
-
----
-
 ## **Problemstruktur nutzen** 
 
 ### Was bedeutet **Problemstruktur ausnutzen**?
-> Es heißt: **Bevor** du irgendeinen Algorithmus blind loslaufen lässt (z. B. Backtracking),  
-> schaust du dir **die Form des Problems an** - also seine **Graphstruktur** -  
-> um zu erkennen, ob du es **einfacher oder effizienter** lösen kannst.
+> Es heißt: **Bevor** man irgendeinen Algorithmus blind loslaufen lässt (z. B. Backtracking),  
+> schaut man sich **die Form des Problems an** - also seine **Graphstruktur** -  
+> um zu erkennen, ob man es **einfacher oder effizienter** lösen kannst.
 
 
-### 🔄 Vergleich mit dem Alltag:
-Stell dir vor, du willst ein Puzzle lösen:
+### Vergleich mit dem Alltag:
+Man will ein Puzzle lösen:
 
-- Du könntest **einfach drauflos puzzeln** (Backtracking)
-- Oder du **schaust zuerst**, ob:
-    - Du die Ecken findest → (Strukturanalyse)
-    - Es zwei getrennte Puzzle-Sektionen gibt → (Komponenten)
-    - Ein Bereich besonders kompliziert aussieht → (Cutset)
+- Man könnte **einfach drauflos puzzeln** (Backtracking)
+- Oder man **schaust zuerst**, ob:
+    - man die Ecken findet -> (Strukturanalyse)
+    - Es zwei getrennte Puzzle-Sektionen gibt -> (Komponenten)
+    - Ein Bereich besonders kompliziert aussieht -> (Cutset)
 
-➡️ Danach entscheidest du, **wie du vorgehst**
+Danach entscheidest man, **wie man vorgeht**
 ### Zusammenhangskomponenten:
-- Wenn das CSP aus **unabhängigen Teilen** besteht → bearbeite sie getrennt
+- Wenn das CSP aus **unabhängigen Teilen** besteht -> bearbeite sie getrennt
 ### Baumstruktur:
 - Wenn der Constraint-Graph **zyklusfrei** ist, kann man sehr schnell lösen
 ### Schnittmengenkonditionierung:
 - Entferne eine Variable, um einen Baum zu erhalten
 - Löse das vereinfachte Problem zuerst
 
+## **Lokale Suche mit Min-Conflicts - Zusammenfassung**
 
----
+### **Ziel:**
 
-## 🧠 **Lokale Suche mit Min-Conflicts - Zusammenfassung**
-
-### 🔎 **Ziel:**
-
-Finde eine gültige Lösung für ein CSP, indem du **schrittweise Konflikte reduzierst**,  
+Finde eine gültige Lösung für ein CSP, indem man **schrittweise Konflikte reduziert**,  
 statt den gesamten Suchbaum zu durchsuchen.
 
-### 🔄 **Ablauf des Algorithmus:**
+### **Ablauf des Algorithmus:**
 
 1. **Starte mit einer vollständigen, zufälligen Zuweisung** (auch mit Fehlern)
 2. **Solange Konflikte bestehen:**
@@ -220,40 +205,32 @@ statt den gesamten Suchbaum zu durchsuchen.
         
 3. **Abbruch:**
     
-    - ✅ Wenn **kein Konflikt mehr da ist** → Lösung gefunden
-    - ❌ Oder nach vielen Versuchen → vermutlich Sackgasse
+    - Wenn **kein Konflikt mehr da ist** -> Lösung gefunden
+    - Oder nach vielen Versuchen -> vermutlich Sackgasse
         
 
 
-### 🧩 **Was bedeutet „lokal“?**
+### **Was bedeutet „lokal“?**
 
 - Es wird **immer nur eine Variable auf einmal geändert**
 - Es wird **nur im direkten „Nachbarschaftsbereich“** des aktuellen Zustands geschaut
 - Keine globale Sicht, keine Rückverfolgung
     
-
----
-
-### 🎯 **Stärken:**
+### **Stärken:**
 
 - **Sehr effizient** bei großen CSPs (z. B. N-Damen mit Millionen Feldern)
 - **Einfach zu implementieren**
 - **Schnell** - oft in wenigen Schritten zur Lösung
     
-
----
-
-### ⚠️ **Schwächen:**
+### **Schwächen:**
 
 - Kann in **lokalen Minima** hängen bleiben  
-    → Wenn keine Änderung mehr Konflikte reduziert
+    -> Wenn keine Änderung mehr Konflikte reduziert
 - **Abhängig vom Startzustand**
-- **Heuristik-basiert** → schlechte Heuristik = schlechte Ergebnisse
+- **Heuristik-basiert** -> schlechte Heuristik = schlechte Ergebnisse
 - **Keine Garantie**, eine Lösung zu finden
 
----
-
-### 🛠 **Typische Gegenmaßnahmen:**
+### **Typische Gegenmaßnahmen:**
 
 |Technik|Beschreibung|
 |---|---|
@@ -262,19 +239,14 @@ statt den gesamten Suchbaum zu durchsuchen.
 |**Mehrfachdurchläufe**|Algorithmus mehrfach starten, beste Lösung behalten|
 |**Hybridverfahren**|Lokale Suche mit anderen Techniken kombinieren|
 
----
-
-### 🧠 **Kernaussage:**
+### **Kernaussage:**
 
 > Lokale Suche mit Min-Conflicts ist wie ein „Greedy“-Wanderer:  
 > Er startet irgendwo, schaut nur um sich herum, geht dort hin, wo es **lokal besser** aussieht -  
 > aber **ohne Karte**, ohne Rückblick, und nur mit Hoffnung, dass es der richtige Weg ist.
 > Also bei schlechter Bewertung des aktuellen Zustands und der Folgezustände(Heuristik) kann man sich schneller in lokalen Minima hängenbleiben
 
-
----
-
-## ✅ Fazit: Wann nutzt man was?
+## Fazit: Wann nutzt man was?
 
 | Strategie            | Gut für                        | Vorteil                            |
 | -------------------- | ------------------------------ | ---------------------------------- |

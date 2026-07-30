@@ -18,8 +18,6 @@ tags:
     
 Tools: **InQL (Burp)**, **GraphQLmap**, **GraphiQL**, **GraphQL Voyager**.
 
----
-
 ## 12) Schnelle Checkliste (Pen-Test)
 
 -  Endpoint gefunden? (auch GraphiQL/Playground)

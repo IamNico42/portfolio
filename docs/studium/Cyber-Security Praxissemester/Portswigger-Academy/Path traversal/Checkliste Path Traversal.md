@@ -9,7 +9,6 @@ tags:
 ---
 ## Checkliste
 
-
 1. Prüfen ob irgendwo Pfade aufgerufen werden z. B. wenn Bilder oder andere Inhalte geladen werden.
 
 ```html

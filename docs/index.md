@@ -41,5 +41,5 @@ KI kann beim Implementieren unterstützen, aber sie ersetzt nicht das konzeption
 
 ---
 
-👉 Schau dich ruhig um - die Navigation führt dich durch meine Themenbereiche.  
+Schau dich ruhig um - die Navigation führt dich durch meine Themenbereiche.  
 Wenn du dir ein Bild davon machen willst, wie ich arbeite oder denke, sind meine Notizen und Projekte ein guter Einstiegspunkt.

@@ -12,18 +12,17 @@ tags:
 ## User Authentication: Passwords
 
 **Worum geht's?**  
-→ Nutzer authentifizieren sich typischerweise mit Passwörtern. Damit ein Passwort sicher ist, muss es schwer zu erraten sein.
+-> Nutzer authentifizieren sich typischerweise mit Passwörtern. Damit ein Passwort sicher ist, muss es schwer zu erraten sein.
 
 **Wichtige Konzepte:**
 
 ### Passwortstärke
 
 - **Anzahl möglicher Kombinationen** bestimmt, wie schwer ein Passwort zu erraten ist.
-    
 - Formel:
     $$
     \text{Anzahl der möglichen Passwörter} = (\text{Anzahl der möglichen Zeichen})^{\text{Länge des Passworts}} $$
-- Beispiel: Nur Kleinbuchstaben (26 Zeichen), Passwortlänge = $14 → 26^{14}$Kombinationen.
+- Beispiel: Nur Kleinbuchstaben (26 Zeichen), Passwortlänge = $14 -> 26^{14}$Kombinationen.
     
 
 ### Brute-Force-Angriff
@@ -51,7 +50,7 @@ tags:
 ### Erfolgswahrscheinlichkeit und Lockout
 
 - Manche Systeme **sperren Accounts**, wenn zu viele Fehlversuche auftreten.
-- Typische Schutzmaßnahme: Nach 5 falschen Passwörtern → Account-Sperre.
+- Typische Schutzmaßnahme: Nach 5 falschen Passwörtern -> Account-Sperre.
 
 ![[it-secuirty-passwords.png]]
 
@@ -59,7 +58,7 @@ tags:
 ## 2. Access Control
 
 **Worum geht's?**  
-→ Systeme müssen regeln, **wer auf welche Ressourcen zugreifen darf**.
+-> Systeme müssen regeln, **wer auf welche Ressourcen zugreifen darf**.
 
 **Wichtige Konzepte:**
 
@@ -76,13 +75,13 @@ tags:
 
 - **ACL:**  
     Objekt-zentriert. Jedes Objekt hat eine Liste, die beschreibt, wer es benutzen darf.  
-    Beispiel: Datei „Geheim.pdf“ →
+    Beispiel: Datei „Geheim.pdf“ ->
     - Max: Lesen
     - Anna: Lesen + Schreiben
         
 - **Capability List:**  
     Subjekt-zentriert. Jeder Benutzer hat eine Liste, welche Objekte er benutzen darf.  
-    Beispiel: Benutzer Max →
+    Beispiel: Benutzer Max ->
     - Lesen: Geheim.pdf
     - Schreiben: Hausarbeit.docx
 **Apps auf dem Smartphone:**
@@ -101,13 +100,13 @@ tags:
 - Nutzer bekommen **Rollen** zugewiesen.
 - Rollen besitzen bestimmte Berechtigungen.
 - Beispiel Moodle:
-    - Student → Aufgaben abgeben, Materialien lesen.
-    - Dozent → Aufgaben hochladen, Abgaben bewerten.
-    - Admin → Einstellungen ändern.
+    - Student -> Aufgaben abgeben, Materialien lesen.
+    - Dozent -> Aufgaben hochladen, Abgaben bewerten.
+    - Admin -> Einstellungen ändern.
 
 **Vorteil:**
 
-- Einfacher, Benutzer zu verwalten → Änderungen nur an der Rolle nötig, nicht an jedem einzelnen Benutzer.
+- Einfacher, Benutzer zu verwalten -> Änderungen nur an der Rolle nötig, nicht an jedem einzelnen Benutzer.
 
 ---
 
@@ -119,7 +118,7 @@ tags:
     - Malware kann sich schwerer mit Adminrechten verbreiten.
 
 **Fazit:**  
-→ **Keine unnötige Bürokratie**, sondern sinnvolle Risikominimierung!
+-> **Keine unnötige Bürokratie**, sondern sinnvolle Risikominimierung!
 
 
 ### Discretionary Access Control (DAC)
@@ -143,7 +142,7 @@ tags:
 
 **Typische Systeme mit DAC:**
 
-- Windows NTFS-Dateisystem (über Datei-Eigenschaften → Sicherheit)
+- Windows NTFS-Dateisystem (über Datei-Eigenschaften -> Sicherheit)
 - Unix/Linux (Berechtigungen: lesen/schreiben/ausführen)
     
 
@@ -175,8 +174,8 @@ tags:
 - Dateien werden mit einer „Geheimhaltungsstufe“ versehen: "Geheim", "Streng Geheim", "Öffentlich".
     
 - Benutzer bekommen ebenfalls eine Klassifizierung:
-    - Anna → darf "Streng Geheim" lesen
-    - Max → darf nur "Geheim" lesen
+    - Anna -> darf "Streng Geheim" lesen
+    - Max -> darf nur "Geheim" lesen
     
 - Das System entscheidet automatisch, ob Anna oder Max auf eine Datei zugreifen darf, **basierend auf diesen Stufen**.
 - **Benutzer können die Berechtigungen NICHT ändern**, auch wenn sie Besitzer der Datei sind.
@@ -204,7 +203,7 @@ tags:
 ### WDAC (Windows Defender Application Control)
 #### **Grundidee:**
 **Nur genehmigte Software darf laufen**  
-→ Alles andere wird blockiert - **auch Schadsoftware**, unbekannte Programme oder manipulierte Dateien.
+-> Alles andere wird blockiert - **auch Schadsoftware**, unbekannte Programme oder manipulierte Dateien.
 **Anders als Antivirenprogramme**, die böse Software erkennen wollen, **verhindert Whitelisting** von vornherein, dass überhaupt irgendetwas Unerlaubtes startet.
 
 - **Whitelisting**: Standardmäßig alles blockieren, was **nicht explizit erlaubt** ist.
@@ -214,13 +213,13 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 
 - Programme, die **an bestimmten Orten** gespeichert sind, sind erlaubt.
 - Beispiel: Nur Programme im Ordner **C:\Program Files** oder **C:\Windows** dürfen laufen.
-- **Problem:** Angreifer könnten Dateien in erlaubte Ordner kopieren → daher nicht allein sicher.
+- **Problem:** Angreifer könnten Dateien in erlaubte Ordner kopieren -> daher nicht allein sicher.
 #### 2. **Datei-Hash-Regeln**
 
 - Ein Hashwert (ein **digitaler Fingerabdruck**) wird von der Datei erstellt.
 - Nur Dateien mit einem **ganz bestimmten Hash** dürfen ausgeführt werden.
 - **Sehr sicher**, aber:
-    - Wenn ein Update kommt (z.B. neue Version eines Programms), ändert sich der Hash → neue Hashes müssen eingepflegt werden.
+    - Wenn ein Update kommt (z.B. neue Version eines Programms), ändert sich der Hash -> neue Hashes müssen eingepflegt werden.
 ### 3. **Signatur-/Zertifikatsregeln**
 
 - Nur Programme, die von **einem vertrauenswürdigen Herausgeber digital signiert** wurden, sind erlaubt.
@@ -238,8 +237,8 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 #### Code-Ausführung ist eingeschränkt
 - Nur erlaubte Programme (laut Whitelist) dürfen **neu gestartet oder geladen** werden.
 - Bedeutet:
-    - Neue Software ohne Erlaubnis? → Wird blockiert.
-    - Virus, der versucht, ein neues Programm zu starten? → Keine Chance.
+    - Neue Software ohne Erlaubnis? -> Wird blockiert.
+    - Virus, der versucht, ein neues Programm zu starten? -> Keine Chance.
 #### Dateizugriffe (Lesen/Schreiben) sind NICHT eingeschränkt
 - **WDAC kümmert sich nicht darum**, ob Dateien gelesen oder beschrieben werden.
 - Beispiel:
@@ -328,7 +327,7 @@ WDAC kann verschiedene Kriterien verwenden, um zu entscheiden, **was erlaubt ist
 
 ## 🌐 4. Wie hängen CVE, NVD und CVSS zusammen?
 
-1. Sicherheitsforscher melden eine Schwachstelle → **CVE-ID** wird vergeben.
+1. Sicherheitsforscher melden eine Schwachstelle -> **CVE-ID** wird vergeben.
 2. NIST fügt diesen Eintrag in die **NVD ein**, ergänzt um CVSS-Werte & technische Details.
 3. Sicherheitsverantwortliche nutzen NVD-Einträge, CVSS-Scores zur **Priorisierung** und Planung von Maßnahmen.
     
