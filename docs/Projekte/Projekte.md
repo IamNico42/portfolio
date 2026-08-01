@@ -29,7 +29,7 @@ hide:
     meines Praxissemesters bei Redfox Infosec in einer autorisierten Testumgebung.
   </p>
   <p>
-    Der Agent orientiert sich am Beacon-Prinzip bekannter C2-Systeme: Er meldet sich
+    Der Agent orientiert sich am Beacon-Prinzip bekannter C2-Systeme wie bei Cobalt Strike C2: Er meldet sich
     kontrolliert beim Server, nimmt neue Aufgaben entgegen und liefert Ergebnisse
     zurück. Dadurch habe ich mich praktisch mit Agent-Architektur, Payload-Aufbau,
     C2-Kommunikation und der Integration in ein bestehendes Framework beschäftigt.
