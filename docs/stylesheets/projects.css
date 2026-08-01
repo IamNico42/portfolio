@@ -1,0 +1,91 @@
+/* Projektvorschau auf der Startseite */
+.project-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1rem 0 0;
+}
+
+.project-preview {
+  display: flex;
+  min-height: 12rem;
+  flex-direction: column;
+  padding: 1rem;
+  color: var(--portfolio-heading) !important;
+  text-decoration: none !important;
+  background: var(--portfolio-surface);
+  border: 1px solid var(--portfolio-border);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.4rem 1.4rem rgba(0, 0, 0, 0.04);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.project-preview:hover {
+  transform: translateY(-0.25rem);
+  border-color: var(--portfolio-accent-border);
+  box-shadow: var(--portfolio-shadow);
+}
+
+.project-preview__index,
+.projects-kicker,
+.project-detail__topline,
+.project-status {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.project-preview__index {
+  margin-bottom: 0.65rem;
+  color: var(--portfolio-accent);
+  font-size: 0.59rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-preview strong { font-size: 0.95rem; }
+.project-preview p { color: var(--portfolio-muted); font-size: 0.73rem; line-height: 1.55; }
+.project-preview__link { margin-top: auto; color: var(--portfolio-accent); font-size: 0.65rem; font-weight: 700; }
+.project-preview-more { margin: 1rem 0 2.8rem !important; text-align: right; font-size: 0.72rem; font-weight: 700; }
+
+/* Vollständige Projektseite */
+.projects-intro { max-width: 44rem; margin: 0 0 2.2rem; }
+.projects-kicker { margin: 0 0 0.4rem !important; color: var(--portfolio-accent); font-size: 0.64rem; }
+.projects-intro h1 { margin-bottom: 0.8rem; }
+.projects-intro > p:last-child { color: var(--portfolio-muted); font-size: 0.9rem; }
+
+.project-catalog { display: grid; gap: 1rem; }
+.project-detail {
+  scroll-margin-top: 4rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: var(--portfolio-surface);
+  border: 1px solid var(--portfolio-border);
+  border-radius: 0.8rem;
+}
+
+.project-detail--featured {
+  background:
+    linear-gradient(135deg, var(--portfolio-accent-soft), transparent 45%),
+    var(--portfolio-surface);
+  border-color: var(--portfolio-accent-border);
+}
+
+.project-detail__topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--portfolio-muted); font-size: 0.57rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.project-detail h2 { margin: 0.65rem 0 0.55rem; padding: 0; background: none; border: 0; }
+.project-detail__lead { color: var(--portfolio-heading); font-size: 0.88rem; font-weight: 650; }
+.project-detail > p:not(.project-detail__lead) { color: var(--portfolio-muted); font-size: 0.77rem; }
+
+.project-status { padding: 0.2rem 0.42rem; color: var(--portfolio-accent); background: var(--portfolio-accent-soft); border: 1px solid var(--portfolio-accent-border); border-radius: 999px; font-size: 0.5rem; white-space: nowrap; }
+.project-status--active { color: #279963; border-color: rgba(39, 153, 99, 0.35); background: rgba(39, 153, 99, 0.09); }
+.project-status--honest { color: #b77b21; border-color: rgba(183, 123, 33, 0.35); background: rgba(183, 123, 33, 0.09); }
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.9rem 0; }
+.project-tags span { padding: 0.2rem 0.4rem; color: var(--portfolio-muted); font: 500 0.55rem "JetBrains Mono", ui-monospace, monospace; background: var(--portfolio-accent-soft); border-radius: 0.3rem; }
+.project-github { display: inline-flex; margin-top: 0.15rem; font-size: 0.68rem; font-weight: 700; }
+
+@media (max-width: 850px) {
+  .project-preview-grid { grid-template-columns: 1fr; }
+  .project-preview { min-height: 0; }
+}
+
+@media (max-width: 520px) {
+  .project-detail__topline { align-items: flex-start; flex-direction: column; gap: 0.45rem; }
+}

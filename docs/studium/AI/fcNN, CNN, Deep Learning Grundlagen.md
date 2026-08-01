@@ -1,4 +1,3 @@
-# Grundlagen des maschinellen Lernens am Beispiel MNIST
 
 ## 1. Überwachtes Lernen
 

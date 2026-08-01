@@ -193,7 +193,7 @@ Gefährlich / nur mit Vorsicht:
 
 
 ## Hacker-News
-[Hacker-News]((https://hckrnews.com/#)
+[Hacker-News](https://hckrnews.com/#)
 [Bleeping-Computer](https://www.bleepingcomputer.com/)
 
 ## Open-Source Tool

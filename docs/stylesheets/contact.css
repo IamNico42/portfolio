@@ -1,0 +1,104 @@
+/* =========================================================
+   NICO PORTFOLIO – KONTAKT + PROJEKT-SPRUNG (zwei Konsolen)
+   Immer düster, unter .nico-contact gescopet.
+   ========================================================= */
+.nico-contact {
+  --c-border: rgba(255,255,255,0.09);
+  --c-text:   #e7e9f3;
+  --c-muted:  #8b93a9;
+  --c-accent: #8b96ff;
+  --c-accent2:#aeb5ff;
+  --c-green:  #4ade80;
+  --c-mono: "JetBrains Mono", ui-monospace, monospace;
+  --c-ease: cubic-bezier(0.22,0.75,0.25,1);
+  margin: 3rem 0 0;
+}
+.nico-contact__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.nico-term {
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background:
+    radial-gradient(90% 120% at 85% -10%, rgba(139,150,255,0.13), transparent 55%),
+    rgba(11,13,20,0.72);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.38);
+}
+.nico-term__bar {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .55rem .9rem;
+  border-bottom: 1px solid var(--c-border);
+  background: rgba(255,255,255,0.02);
+}
+.nico-term__dots { display: flex; gap: 6px; }
+.nico-term__dots i { width: 10px; height: 10px; border-radius: 50%; }
+.nico-term__dots i:nth-child(1){ background:#ff5f57; }
+.nico-term__dots i:nth-child(2){ background:#febc2e; }
+.nico-term__dots i:nth-child(3){ background:#28c840; }
+.nico-term__title { font-family: var(--c-mono); font-size: .72rem; color: var(--c-muted); }
+
+.nico-term__body { padding: 1.3rem 1.4rem 1.5rem; }
+.nico-term__eyebrow { font-family: var(--c-mono); font-size: .76rem; color: var(--c-green); margin: 0 0 .5rem; }
+.nico-term__head {
+  font-family: "Space Grotesk", var(--c-mono); font-size: 1.45rem; font-weight: 700;
+  letter-spacing: -.02em; color: var(--c-text);
+  margin: 0 0 .5rem; padding: 0; background: none; border: 0;
+}
+.nico-term__text { color: var(--c-muted); font-size: .85rem; line-height: 1.6; margin: 0 0 1rem; }
+
+.nico-term__mail {
+  font-family: var(--c-mono); font-size: .84rem; color: var(--c-accent2);
+  margin: 0 0 .9rem;
+}
+
+.nico-term__cmd {
+  font-family: var(--c-mono); font-size: .82rem; color: var(--c-text);
+  margin: 0 0 1rem; padding: .55rem .7rem;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--c-border); border-radius: 8px;
+}
+.nico-term__cmd .d { color: var(--c-green); margin-right: .5ch; }
+.nico-term__cmd .cur {
+  display: inline-block; width: .5ch; height: 1em; margin-left: .1ch;
+  vertical-align: -.15em; background: var(--c-accent);
+  animation: nico-blink 1.05s steps(1) infinite;
+}
+@keyframes nico-blink { 0%,50%{opacity:1} 50.01%,100%{opacity:0} }
+
+.nico-term__actions { display: flex; flex-wrap: wrap; gap: .55rem; }
+.nico-term__btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .5rem .85rem;
+  font-family: var(--c-mono); font-size: .8rem; font-weight: 500;
+  color: var(--c-text); cursor: pointer; text-decoration: none !important;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--c-border); border-radius: 9px;
+  transition: transform .18s var(--c-ease), border-color .18s ease, color .18s ease, background .18s ease;
+}
+.nico-term__btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(139,150,255,0.4); color: var(--c-accent);
+  background: rgba(139,150,255,0.06);
+}
+.nico-term__btn--primary {
+  color: #0b0d14 !important; border: 0;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
+}
+.nico-term__btn--primary:hover { filter: brightness(1.08); color: #0b0d14 !important; }
+.nico-term__btn.is-copied { border-color: var(--c-green); color: var(--c-green); }
+.nico-term__btn .ico { font-size: .95em; }
+
+.nico-term__links { display: flex; gap: 1.1rem; margin-top: 1rem; }
+.nico-term__links a {
+  font-family: var(--c-mono); font-size: .76rem; color: var(--c-muted) !important;
+  text-decoration: none !important;
+}
+.nico-term__links a:hover { color: var(--c-accent) !important; }
+
+@media (max-width: 720px) {
+  .nico-contact__row { grid-template-columns: 1fr; }
+}

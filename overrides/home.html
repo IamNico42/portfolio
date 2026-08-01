@@ -1,0 +1,55 @@
+{% extends "main.html" %}
+
+<!-- Startseiten-Hero für Nicos Portfolio. -->
+{% block hero %}
+{% if page and page.is_homepage %}
+<section class="nico-hero" data-nico-hero>
+  <div class="nico-hero__inner">
+
+    <!-- Linke Seite: Linux-Konsole -->
+    <div class="term">
+      <div class="term__bar">
+        <span class="term__dots"><i></i><i></i><i></i></span>
+        <span class="term__title">nico@portfolio: ~</span>
+      </div>
+      <div class="term__body" data-term>
+        <p><span class="p">nico@portfolio<span class="d">:~$</span></span> <span class="cmd type">whoami</span></p>
+        <p class="out type">Nico - Applied Computer Science</p>
+        <p class="out type">B.Sc. Student @ HTWG Konstanz</p>
+        <p><span class="p">nico@portfolio<span class="d">:~$</span></span> <span class="cmd type">cat profile.md</span></p>
+        <p class="out type">Ich zerlege komplexe Systeme in kleine, logisch strukturierte Komponenten - und baue sie so, dass sie halten. Syntax ist Formsache; das Denken dahinter nicht.</p>
+        <p><span class="p">nico@portfolio<span class="d">:~$</span></span> <span class="cmd type">ls projects/</span></p>
+        <p class="out out--dirs type">redfox_mythic_agent/&nbsp;&nbsp;codebreaker/&nbsp;&nbsp;Peer2PeerChatRoom/</p>
+        <p><span class="p">nico@portfolio<span class="d">:~$</span></span> <span class="cmd type">tail -n1 cv.txt</span></p>
+        <p class="out out--muted type"># Praxissemester: IT-Security - Penetration Testing @ Redfox Infosec</p>
+        <span class="term__cursor"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="nico-skills reveal">
+    <p class="nico-eyebrow"></p>
+    <div class="skills">
+      <div class="skill"><span class="skill__name">SQL</span><span class="skill__track"><span class="skill__fill" style="--lvl:82%"></span></span><span class="skill__tag">sehr sicher</span></div>
+      <div class="skill"><span class="skill__name">Python</span><span class="skill__track"><span class="skill__fill" style="--lvl:64%"></span></span><span class="skill__tag">solide</span></div>
+      <div class="skill"><span class="skill__name">Java</span><span class="skill__track"><span class="skill__fill" style="--lvl:64%"></span></span><span class="skill__tag">solide</span></div>
+      <div class="skill"><span class="skill__name">C</span><span class="skill__track"><span class="skill__fill" style="--lvl:62%"></span></span><span class="skill__tag">solide</span></div>
+      <div class="skill"><span class="skill__name">HTML / CSS</span><span class="skill__track"><span class="skill__fill" style="--lvl:60%"></span></span><span class="skill__tag">Styling &amp; Docs</span></div>
+      <div class="skill"><span class="skill__name">Scala</span><span class="skill__track"><span class="skill__fill" style="--lvl:42%"></span></span><span class="skill__tag">Grundlagen+</span></div>
+      <div class="skill"><span class="skill__name">C++ / ASM</span><span class="skill__track"><span class="skill__fill" style="--lvl:24%"></span></span><span class="skill__tag">Grundlagen</span></div>
+      <div class="skill"><span class="skill__name">JavaScript</span><span class="skill__track"><span class="skill__fill" style="--lvl:24%"></span></span><span class="skill__tag">ausbaufähig</span></div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{{ super() }}
+{% endblock %}
+
+
+{% block content %}
+  {{ super() }}
+  {% if page and page.is_homepage %}
+    {% include "contact.html" %}
+  {% endif %}
+{% endblock %}

@@ -3,6 +3,8 @@ site_url: https://IamNico42.github.io/portfolio/
 
 theme:
     name: 'material'
+    name: material
+    custom_dir: overrides     
     palette:
 
     # Light mode
@@ -11,17 +13,17 @@ theme:
       primary: grey
       accent: indigo
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Dark mode
+        icon: material/sunglasses
+        name: Zieh deine Sonnenbrille auf - switch to dark mode
 
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: grey
-      accent: blue
+      accent: dark-blue
       toggle:
-        icon: material/toggle-switch
-        name: Light mode
+        icon: fontawesome/solid/blind
+        name: Werde blind - switch to light mode
 
 
 
@@ -29,9 +31,20 @@ theme:
       - content.code.copy
       - content.code.select
       - content.code.annotate
+      - navigation.instant
+      - navigation.tracking
+      - navigation.sections
+      - navigation.top
+      - toc.follow
 
 # Extensions
 markdown_extensions:
+  - md_in_html
+  - attr_list
+  - pymdownx.superfences
+  - pymdownx.emoji:              # Icons in den Karten der Startseite
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.arithmatex:
       generic: true
   - nl2br
@@ -80,18 +93,12 @@ plugins:
         draggable: true
         hideScrollbar: true
 
-  - blog:
-      blog_dir: projects/
-  - rss:
-      match_path: "projects/.*/posts/.*"  # Dynamische Regel für alle Projekte
-      date_from_meta:
-        as_creation: date
-      categories:
-        - categories
-        - tags
-
 extra_css:
   - stylesheets/styles.css
+  - stylesheets/home.css
+  - stylesheets/projects.css
+  - stylesheets/contact.css
+
 
 extra:
   generator: false
@@ -99,6 +106,9 @@ extra:
 
 
 extra_javascript:
+  - javascripts/home.js 
+  - javascripts/neural-bg.js
+  - javascripts/contact.js
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
