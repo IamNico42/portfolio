@@ -9,10 +9,8 @@ hide:
   <p class="projects-kicker"></p>
   <h1>Projekte</h1>
   <p>
-    Eine Auswahl meiner Arbeiten aus Studium, Praxissemester und Freizeit.
-    Nicht jedes Projekt ist ein fertiges Produkt - entscheidend ist, welches
-    technische Problem dahinterstand, wie wir es gelöst haben und was ich daraus
-    mitgenommen habe.
+    Hier eine kleine Liste von ein paar Projekten die ich privat oder im zusammenhang mit dem Studium oder Praxissemester erstellt habe.
+    Das sind bei weitem nicht alle Projekte, aber ein paar um sich ein kleines Bild von mir schaffen zu können.
   </p>
 </div>
 
@@ -81,7 +79,7 @@ hide:
     Software-Engineering-Kurs.
   </p>
   <p>
-    Statt ein vorhandenes, einfaches Spiel nachzubauen, entwickelten wir eine eigene
+    Statt ein vorhandenes, einfaches Spiel nachzubauen wie viele andere Studenten, entwickelten wir eine eigene
     Spielidee samt Konzepten, Regeln und technischer Struktur. Dadurch wurde das
     Projekt wesentlich anspruchsvoller als für den Kurs notwendig. Der geplante
     Umfang war letztlich größer als der verfügbare Zeitrahmen, weshalb das Spiel

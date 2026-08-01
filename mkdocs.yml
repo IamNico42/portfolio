@@ -2,11 +2,9 @@ site_name: Nico's Knowledge Base
 site_url: https://IamNico42.github.io/portfolio/
 
 theme:
-    name: 'material'
-    name: material
-    custom_dir: overrides     
-    palette:
-
+  name: material
+  custom_dir: overrides
+  palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -15,7 +13,6 @@ theme:
       toggle:
         icon: material/sunglasses
         name: Zieh deine Sonnenbrille auf - switch to dark mode
-
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -24,18 +21,15 @@ theme:
       toggle:
         icon: fontawesome/solid/blind
         name: Werde blind - switch to light mode
-
-
-
-    features:
-      - content.code.copy
-      - content.code.select
-      - content.code.annotate
-      - navigation.instant
-      - navigation.tracking
-      - navigation.sections
-      - navigation.top
-      - toc.follow
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - navigation.indexes
+    #- navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - toc.follow
 
 # Extensions
 markdown_extensions:
@@ -45,12 +39,9 @@ markdown_extensions:
   - pymdownx.emoji:              # Icons in den Karten der Startseite
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.arithmatex:
-      generic: true
   - nl2br
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
   - toc:
@@ -61,8 +52,6 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
-  - pymdownx.details
   - pymdownx.tasklist:
       custom_checkbox: true
   - def_list
@@ -73,9 +62,6 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.tabbed:
       alternate_style: true
-  - codehilite:
-      guess_lang: false
-      linenums: true
 
 
 
@@ -110,6 +96,6 @@ extra_javascript:
   - javascripts/neural-bg.js
   - javascripts/contact.js
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://unpkg.com/mermaid/dist/mermaid.min.js 
