@@ -46,6 +46,7 @@ Eigenschaften:
 Die **iterativ vertiefende Tiefensuche** führt wiederholt eine tiefenbegrenzte Tiefensuche aus. Die maximale Tiefe wird dabei schrittweise erhöht.
 
 Eigenschaften:
+
 - kombiniert den geringen Speicherverbrauch der Tiefensuche mit der Vollständigkeit der Breitensuche
 - findet bei einheitlichen Aktionskosten eine kürzeste Lösung
 - untersucht einige obere Ebenen mehrfach

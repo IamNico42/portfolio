@@ -3,35 +3,29 @@
    ========================================================= */
 
 /* ---------- Farbsystem: Light Mode ---------- */
-
 [data-md-color-scheme="default"] {
     --portfolio-accent: #4f5bd5;
     --portfolio-accent-light: #6875eb;
     --portfolio-accent-soft: rgba(79, 91, 213, 0.09);
     --portfolio-accent-border: rgba(79, 91, 213, 0.28);
-
     --portfolio-surface: rgba(255, 255, 255, 0.82);
     --portfolio-surface-hover: rgba(79, 91, 213, 0.06);
     --portfolio-border: rgba(30, 41, 59, 0.12);
     --portfolio-shadow: 0 8px 24px rgba(30, 41, 59, 0.07);
-
     --portfolio-heading: #182033;
     --portfolio-muted: #64748b;
 }
 
 /* ---------- Farbsystem: Dark Mode ---------- */
-
 [data-md-color-scheme="slate"] {
     --portfolio-accent: #8b96ff;
     --portfolio-accent-light: #aeb5ff;
     --portfolio-accent-soft: rgba(139, 150, 255, 0.11);
     --portfolio-accent-border: rgba(139, 150, 255, 0.3);
-
     --portfolio-surface: rgba(31, 36, 50, 0.84);
     --portfolio-surface-hover: rgba(139, 150, 255, 0.08);
     --portfolio-border: rgba(255, 255, 255, 0.11);
     --portfolio-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
-
     --portfolio-heading: #f1f4ff;
     --portfolio-muted: #a8b0c2;
 }
@@ -39,63 +33,33 @@
 /* =========================================================
    GRUNDLAYOUT
    ========================================================= */
-
-.md-grid {
-    max-width: 1500px;
-}
-
-.md-typeset {
-    line-height: 1.7;
-}
+.md-grid { max-width: 1500px; }
+.md-typeset { line-height: 1.7; }
 
 /* Dezenter Seitenhintergrund */
-
 [data-md-color-scheme="default"] body {
     background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(79, 91, 213, 0.07),
-            transparent 28rem
-        ),
+        radial-gradient(circle at 80% 10%, rgba(79, 91, 213, 0.07), transparent 28rem),
         var(--md-default-bg-color);
 }
-
 [data-md-color-scheme="slate"] body {
     background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(139, 150, 255, 0.08),
-            transparent 30rem
-        ),
+        radial-gradient(circle at 80% 10%, rgba(139, 150, 255, 0.08), transparent 30rem),
         var(--md-default-bg-color);
 }
 
 /* =========================================================
    HEADER
    ========================================================= */
-
 .md-header {
-    background: linear-gradient(
-        115deg,
-        #252936 0%,
-        #34394a 55%,
-        #424965 100%
-    );
-
+    background: linear-gradient(115deg, #252936 0%, #34394a 55%, #424965 100%);
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
 }
-
-.md-header__title {
-    font-weight: 700;
-    letter-spacing: 0.015em;
-}
+.md-header__title { font-weight: 700; letter-spacing: 0.015em; }
 
 /* =========================================================
    ÜBERSCHRIFTEN
    ========================================================= */
-
-/* Alle Überschriften */
-
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
@@ -108,74 +72,51 @@
 }
 
 /* H1 – Seitentitel */
-
 .md-typeset h1 {
     position: relative;
     margin: 0 0 1.2rem;
     padding-bottom: 0.55rem;
-
     font-size: 2.15em;
     font-weight: 800;
     line-height: 1.2;
 }
-
 .md-typeset h1::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
-
     width: 4.5rem;
     height: 0.22rem;
-
-    background: linear-gradient(
-        90deg,
-        var(--portfolio-accent),
-        var(--portfolio-accent-light)
-    );
-
+    background: linear-gradient(90deg, var(--portfolio-accent), var(--portfolio-accent-light));
     border-radius: 999px;
 }
 
 /* H2 – große Themenabschnitte */
-
 .md-typeset h2 {
     margin: 2rem 0 0.7rem;
     padding: 0.48rem 0.75rem;
-
     font-size: 1.55em;
     line-height: 1.35;
-
-    background: linear-gradient(
-        90deg,
-        var(--portfolio-accent-soft),
-        transparent 85%
-    );
-
+    background: linear-gradient(90deg, var(--portfolio-accent-soft), transparent 85%);
     border-left: 4px solid var(--portfolio-accent);
     border-radius: 0 8px 8px 0;
 }
 
 /* H3 – Unterabschnitte */
-
 .md-typeset h3 {
     margin: 1.45rem 0 0.4rem;
     padding-bottom: 0.25rem;
-
     font-size: 1.25em;
     line-height: 1.4;
-
     color: var(--portfolio-accent);
     border-bottom: 1px solid var(--portfolio-accent-border);
 }
 
 /* H4 – kleinere Unterpunkte */
-
 .md-typeset h4 {
     margin: 1.2rem 0 0.3rem;
     font-size: 1.08em;
 }
-
 .md-typeset h4::before {
     content: "›";
     margin-right: 0.4rem;
@@ -184,10 +125,8 @@
 }
 
 /* H5 */
-
 .md-typeset h5 {
     margin: 1rem 0 0.25rem;
-
     color: var(--portfolio-muted);
     font-size: 0.92em;
     font-weight: 750;
@@ -196,45 +135,30 @@
 }
 
 /* H6 */
-
 .md-typeset h6 {
     margin: 0.9rem 0 0.2rem;
-
     color: var(--portfolio-muted);
     font-size: 0.88em;
     font-weight: 650;
 }
 
 /* Weniger Abstand direkt nach Überschriften */
-
-.md-typeset h1 + p,
-.md-typeset h2 + p,
-.md-typeset h3 + p,
-.md-typeset h4 + p,
-.md-typeset h5 + p,
-.md-typeset h6 + p {
+.md-typeset h1 + p, .md-typeset h2 + p, .md-typeset h3 + p,
+.md-typeset h4 + p, .md-typeset h5 + p, .md-typeset h6 + p {
     margin-top: 0.35rem;
 }
-
-.md-typeset h1 + ul,
-.md-typeset h1 + ol,
-.md-typeset h2 + ul,
-.md-typeset h2 + ol,
-.md-typeset h3 + ul,
-.md-typeset h3 + ol,
-.md-typeset h4 + ul,
-.md-typeset h4 + ol,
-.md-typeset h5 + ul,
-.md-typeset h5 + ol,
-.md-typeset h6 + ul,
-.md-typeset h6 + ol {
+.md-typeset h1 + ul, .md-typeset h1 + ol,
+.md-typeset h2 + ul, .md-typeset h2 + ol,
+.md-typeset h3 + ul, .md-typeset h3 + ol,
+.md-typeset h4 + ul, .md-typeset h4 + ol,
+.md-typeset h5 + ul, .md-typeset h5 + ol,
+.md-typeset h6 + ul, .md-typeset h6 + ol {
     margin-top: 0.3rem;
 }
 
 /* =========================================================
    TEXT UND ABSÄTZE
    ========================================================= */
-
 .md-typeset p {
     margin-top: 0.65em;
     margin-bottom: 0.65em;
@@ -243,115 +167,55 @@
 /* =========================================================
    LISTEN
    ========================================================= */
-
-.md-typeset ul,
-.md-typeset ol {
+.md-typeset ul, .md-typeset ol {
     margin-top: 0.45em;
     margin-bottom: 0.8em;
 }
-
-.md-typeset li {
-    margin-bottom: 0.14em;
-}
-
-.md-typeset ul li::marker {
-    color: var(--portfolio-accent);
-}
-
-.md-typeset ol li::marker {
-    color: var(--portfolio-accent);
-    font-weight: 700;
-}
+.md-typeset li { margin-bottom: 0.14em; }
+.md-typeset ul li::marker { color: var(--portfolio-accent); }
+.md-typeset ol li::marker { color: var(--portfolio-accent); font-weight: 700; }
 
 /* =========================================================
    LINKS
    ========================================================= */
-
 .md-typeset a {
     color: var(--portfolio-accent);
     text-decoration-color: transparent;
     text-underline-offset: 0.16em;
-
-    transition:
-        color 160ms ease,
-        text-decoration-color 160ms ease;
+    transition: color 160ms ease, text-decoration-color 160ms ease;
 }
-
 .md-typeset a:hover {
     color: var(--portfolio-accent-light);
     text-decoration-color: currentColor;
 }
 
 /* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-.md-nav__link {
-    border-radius: 5px;
-    transition:
-        color 150ms ease,
-        background-color 150ms ease,
-        transform 150ms ease;
-}
-
-.md-nav__link:hover {
-    color: var(--portfolio-accent);
-    transform: translateX(2px);
-}
-
-.md-nav__link--active {
-    color: var(--portfolio-accent);
-    font-weight: 700;
-}
-
-/* =========================================================
    TABELLEN
    ========================================================= */
-
 .md-typeset table:not([class]) {
     overflow: hidden;
-
     border: 1px solid var(--portfolio-border);
     border-radius: 10px;
     box-shadow: var(--portfolio-shadow);
 }
-
 .md-typeset table:not([class]) th {
     color: var(--portfolio-heading);
-
-    background: linear-gradient(
-        90deg,
-        var(--portfolio-accent-soft),
-        transparent
-    );
-
+    background: linear-gradient(90deg, var(--portfolio-accent-soft), transparent);
     font-weight: 700;
 }
-
-.md-typeset table:not([class]) td {
-    border-top: 1px solid var(--portfolio-border);
-}
-
-.md-typeset table:not([class]) tr:hover {
-    background: var(--portfolio-surface-hover);
-}
+.md-typeset table:not([class]) td { border-top: 1px solid var(--portfolio-border); }
+.md-typeset table:not([class]) tr:hover { background: var(--portfolio-surface-hover); }
 
 /* =========================================================
    CODE
    ========================================================= */
-
 .md-typeset code {
     border: 1px solid var(--portfolio-border);
     border-radius: 5px;
 }
-
-.md-typeset pre > code {
-    border: 0;
-}
-
+.md-typeset pre > code { border: 0; }
 .md-typeset .highlight {
     overflow: hidden;
-
     border: 1px solid var(--portfolio-border);
     border-radius: 10px;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
@@ -360,13 +224,10 @@
 /* =========================================================
    ZITATE
    ========================================================= */
-
 .md-typeset blockquote {
     margin-left: 0;
     padding: 0.55rem 0.9rem;
-
     color: var(--portfolio-muted);
-
     background: var(--portfolio-accent-soft);
     border-left: 4px solid var(--portfolio-accent);
     border-radius: 0 8px 8px 0;
@@ -375,25 +236,17 @@
 /* =========================================================
    BILDER
    ========================================================= */
-
 .md-typeset img {
     border-radius: 10px;
-    transition:
-        transform 180ms ease,
-        box-shadow 180ms ease;
+    transition: transform 180ms ease, box-shadow 180ms ease;
 }
-
-.md-typeset img:hover {
-    box-shadow: var(--portfolio-shadow);
-}
+.md-typeset img:hover { box-shadow: var(--portfolio-shadow); }
 
 /* =========================================================
    DETAILS / AUSKLAPPBARE BEREICHE
    ========================================================= */
-
 .md-typeset details {
     overflow: hidden;
-
     border: 1px solid var(--portfolio-border);
     border-radius: 9px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
@@ -402,33 +255,22 @@
 /* =========================================================
    TRENNLINIEN
    ========================================================= */
-
 .md-typeset hr {
     height: 1px;
     margin: 1.8rem 0;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--portfolio-accent-border),
-        transparent
-    );
-
+    background: linear-gradient(90deg, transparent, var(--portfolio-accent-border), transparent);
     border: 0;
 }
 
 /* =========================================================
    PERMALINK-ZEICHEN
    ========================================================= */
-
 .md-typeset .headerlink {
     margin-left: 0.35rem;
     color: var(--portfolio-accent);
     opacity: 0;
-
     transition: opacity 150ms ease;
 }
-
 .md-typeset h1:hover .headerlink,
 .md-typeset h2:hover .headerlink,
 .md-typeset h3:hover .headerlink,
@@ -439,73 +281,111 @@
 }
 
 /* =========================================================
-   KOMPAKTERE AUFZÄHLUNGEN
+   KOMPAKTE AUFZÄHLUNGEN
    ========================================================= */
-
-/* Abstand vor und nach der gesamten Liste */
-.md-typeset ul,
-.md-typeset ol {
+.md-typeset ul, .md-typeset ol {
     margin-top: 0.25em;
     margin-bottom: 0.6em;
 }
-
-/* Abstand zwischen einzelnen Aufzählungspunkten */
-.md-typeset ul > li,
-.md-typeset ol > li {
+.md-typeset ul > li, .md-typeset ol > li {
     margin-top: 0.01em;
     margin-bottom: 0.01em;
 }
-
-/* Von MkDocs erzeugte Absätze innerhalb eines Listenpunkts */
 .md-typeset li > p {
     margin-top: 0.1em;
     margin-bottom: 0.1em;
 }
-
-/* Verschachtelte Listen kompakter darstellen */
-.md-typeset li > ul,
-.md-typeset li > ol {
+.md-typeset li > ul, .md-typeset li > ol {
     margin-top: 0.12em;
     margin-bottom: 0.12em;
 }
+.md-typeset p:has(+ ul), .md-typeset p:has(+ ol) { margin-bottom: 0.15em; }
+.md-typeset p + ul, .md-typeset p + ol { margin-top: 0.15em; }
+.md-typeset ul + p, .md-typeset ol + p { margin-top: 0.55em; }
 
-/* Text direkt vor einer Liste näher an die Liste ziehen */
-.md-typeset p:has(+ ul),
-.md-typeset p:has(+ ol) {
-    margin-bottom: 0.15em;
+/* =========================================================
+   SEITEN-NAVIGATION – Konsolen-/Brain-Look
+   ========================================================= */
+
+/* Titel oben als Prompt */
+.md-nav--primary > .md-nav__title {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--portfolio-muted);
+}
+.md-nav--primary > .md-nav__title::before {
+    content: "~/ ";
+    color: var(--portfolio-accent);
+    font-weight: 700;
 }
 
-/* Abstand einer direkt auf Text folgenden Liste */
-.md-typeset p + ul,
-.md-typeset p + ol {
-    margin-top: 0.15em;
+/* Nav-Links: Mono + cd-Pfeil */
+.md-nav--primary .md-nav__link {
+    position: relative;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: var(--portfolio-muted);
+    padding-left: 1.1rem;
+    border-radius: 5px;
+    transition: color 150ms ease, background-color 150ms ease, transform 150ms ease;
+}
+.md-nav--primary .md-nav__link::before {
+    content: "▸";
+    position: absolute;
+    left: 0.15rem;
+    color: var(--portfolio-accent);
+    opacity: 0.45;
+    transition: opacity 140ms ease, transform 140ms ease;
+}
+.md-nav--primary .md-nav__link:hover {
+    color: var(--portfolio-accent);
+    transform: translateX(2px);
+}
+.md-nav--primary .md-nav__link:hover::before { opacity: 1; }
+
+/* Aktive Seite: leuchtender Knoten */
+.md-nav--primary .md-nav__link--active {
+    color: var(--portfolio-heading);
+    font-weight: 700;
+}
+.md-nav--primary .md-nav__link--active::before {
+    content: "●";
+    opacity: 1;
+    color: var(--portfolio-accent);
+    text-shadow: 0 0 6px var(--portfolio-accent);
 }
 
-/* Abstand nach der Liste zum nächsten Absatz */
-.md-typeset ul + p,
-.md-typeset ol + p {
-    margin-top: 0.55em;
+/* Bereichs-Überschriften (Sections) als // Kommentar */
+.md-nav__item--section > .md-nav__link {
+    color: var(--portfolio-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.md-nav__item--section > .md-nav__link::before {
+    content: "//";
+    opacity: 0.6;
+}
+
+/* Suchfeld im Terminal-Look */
+.md-search__input {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
 }
 
 /* =========================================================
    MOBILE
    ========================================================= */
-
 @media screen and (max-width: 600px) {
-    .md-typeset h1 {
-        font-size: 1.85em;
-    }
-
+    .md-typeset h1 { font-size: 1.85em; }
     .md-typeset h2 {
         margin-top: 1.5rem;
         padding: 0.42rem 0.6rem;
         font-size: 1.4em;
     }
-
     .md-typeset h3 {
         margin-top: 1.15rem;
         font-size: 1.18em;
     }
 }
-
-
