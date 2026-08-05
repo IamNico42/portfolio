@@ -9,8 +9,7 @@ hide:
   <p class="projects-kicker"></p>
   <h1>Projekte</h1>
   <p>
-    Hier eine kleine Liste von ein paar Projekten die ich privat oder im zusammenhang mit dem Studium oder Praxissemester erstellt habe.
-    Das sind bei weitem nicht alle Projekte, aber ein paar um sich ein kleines Bild von mir schaffen zu können.
+	Hier findest du eine kleine Auswahl an Projekten, die ich privat, im Studium oder während meines Praxissemesters umgesetzt habe. Sie zeigt zwar nur einen Teil meiner bisherigen Arbeit, vermittelt aber einen ersten Eindruck von meinen Interessen und Erfahrungen.
   </p>
 </div>
 
