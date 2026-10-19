@@ -71,7 +71,13 @@ plugins:
   - roamlinks
   - callouts
   - meta-descriptions
-
+  - glightbox:
+      selector: "img"
+      lightbox_config:
+        loop: true
+        zoomable: true
+        draggable: true
+        hideScrollbar: true
 
 extra_css:
   - stylesheets/styles.css

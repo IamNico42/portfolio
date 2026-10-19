@@ -1,0 +1,8 @@
+mkdocs-material
+mkdocs-glightbox==0.5.1
+mkdocs-roamlinks-plugin
+mkdocs-callouts
+mkdocs-meta-descriptions-plugin
+mkdocs-mermaid2-plugin
+mkdocs-awesome-pages-plugin
+pymdown-extensions
