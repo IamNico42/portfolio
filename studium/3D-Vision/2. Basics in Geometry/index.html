@@ -1,0 +1,7306 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://IamNico42.github.io/portfolio/studium/3D-Vision/2.%20Basics%20in%20Geometry/">
+      
+      
+        <link rel="prev" href="../1.%20The%20Reconstruction%20Pipeline/">
+      
+      
+        <link rel="next" href="../../AI/%28CSP%29%20Constraint%20Satisfaction%20Problem/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2. Basics in Geometry - Nico's Knowledge Base</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/styles.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/projects.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/contact.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-worum-es-in-geometry-insgesamt-geht" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nico's Knowledge Base" class="md-header__button md-logo" aria-label="Nico's Knowledge Base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nico's Knowledge Base
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Basics in Geometry
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo" aria-label="Zieh deine Sonnenbrille auf - switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Zieh deine Sonnenbrille auf - switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 17H4C2.38 17 .96 15.74.76 14.14l-.5-2.99C.15 10.3.39 9.5.91 8.92S2.19 8 3 8h6c.83 0 1.58.35 2.06.96.11.15.21.31.29.49.43-.09.87-.09 1.29 0 .08-.18.18-.34.3-.49C13.41 8.35 14.16 8 15 8h6c.81 0 1.57.34 2.09.92.51.58.75 1.38.65 2.19l-.51 3.07C23.04 15.74 21.61 17 20 17h-3c-1.56 0-3.08-1.19-3.46-2.7l-.9-2.71c-.38-.28-.91-.28-1.29 0l-.92 2.78C10.07 15.82 8.56 17 7 17"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="dark-blue" aria-label="Werde blind - switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Werde blind - switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224-32a56 56 0 1 1 0 112 56 56 0 1 1 0-112m-64 237.3-22.6 22.6c-6 6-9.4 14.1-9.4 22.6V288c0 17.7-14.3 32-32 32s-32-14.3-32-32v-37.5c0-25.5 10.1-49.9 28.1-67.9l34.4-34.4c23.2-23.2 54.6-36.2 87.3-36.2 36.1 0 70.3 15.8 93.8 43.1l68.6 80c11.5 13.4 9.9 33.6-3.5 45.1s-33.6 9.9-45.1-3.5l-55.7-65v118.6l34.5 29.6c17.7 15.2 29.3 36.2 32.6 59.3l12.6 88.1c2.5 17.5-9.7 33.7-27.2 36.2s-33.7-9.7-36.2-27.2l-12.6-88.1c-1.1-7.7-5-14.7-10.9-19.8l-71.4-61.2c-21.3-18.2-33.5-44.9-33.5-72.9V205zm.1 165.8c2.4 2.3 4.8 4.6 7.4 6.8l46 39.4-2.2 7.6c-4.5 15.7-12.9 30-24.4 41.5l-68.3 68.3c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l68.3-68.3c3.8-3.8 6.6-8.6 8.1-13.8l10.4-36.3zm233.5-62.2c10.6-8 25.6-5.8 33.6 4.8l144 192c8 10.6 5.8 25.6-4.8 33.6s-25.6 5.8-33.6-4.8l-144-192c-8-10.6-5.8-25.6 4.8-33.6"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nico's Knowledge Base" class="md-nav__button md-logo" aria-label="Nico's Knowledge Base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Nico's Knowledge Base
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Projekte/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projekte
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projekte
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Studium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Studium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Vision
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D Vision
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20The%20Reconstruction%20Pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. The Reconstruction Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Basics in Geometry
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Basics in Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-worum-es-in-geometry-insgesamt-geht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Worum es in „Geometry“ insgesamt geht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-koordinatensysteme-der-startpunkt-von-allem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Koordinatensysteme: der Startpunkt von allem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-2d-affine-geometry-die-grundbausteine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 2D Affine Geometry: die Grundbausteine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 2D Affine Geometry: die Grundbausteine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-einen-beliebigen-punkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um einen beliebigen Punkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shearing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-was-ist-eine-affine-transformation-eigentlich" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Was ist eine affine Transformation eigentlich?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-similarity-transformation-und-rigid-body-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Similarity Transformation und Rigid Body Motion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Similarity Transformation und Rigid Body Motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#similarity-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Similarity Transformation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rigid-body-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rigid Body Motion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-homogene-koordinaten-warum-man-sie-braucht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Homogene Koordinaten: warum man sie braucht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3d-affine-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 3D Affine Geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-3d-translation-scaling-und-rotationen-um-achsen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 3D Translation, Scaling und Rotationen um Achsen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 3D Translation, Scaling und Rotationen um Achsen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translation in 3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skalierung-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skalierung in 3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-die-x-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um die x-Achse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-die-y-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um die y-Achse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-die-z-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um die z-Achse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-rotation-um-eine-beliebige-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Rotation um eine beliebige Achse
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-ubergang-zur-projektiven-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Übergang zur projektiven Geometrie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-was-ist-eine-projektion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Was ist eine Projektion?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-klassifikation-von-projektionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Klassifikation von Projektionen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-parallel-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Parallel Projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-perspective-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Perspective Projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-wann-lasst-sich-ein-punkt-uberhaupt-projizieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Wann lässt sich ein Punkt überhaupt projizieren?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-perspektivische-projektion-von-geraden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Perspektivische Projektion von Geraden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-wie-alles-zusammenhangt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Wie alles zusammenhängt
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/%28CSP%29%20Constraint%20Satisfaction%20Problem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    (CSP) Constraint Satisfaction Problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/AI-Zusammenfassung-Lernskript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Zusammenfassung Lernskript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/Machine%20Learning%20%26%20Neuronale%20Netze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning &amp; Neuronale Netze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/Minimax%20und%20Alpha%2C%20Beta%20Pruning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimax und Alpha, Beta Pruning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/Problem%20L%C3%B6sen%20durch%20Suche/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Lösen durch Suche
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI/fcNN%2C%20CNN%2C%20Deep%20Learning%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fcNN, CNN, Deep Learning Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmen und Datenstruktur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algorithmen und Datenstruktur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/1.%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/2.%20Grundlagen_Graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Grundlagen Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/3.%20Union-Find%20und%20Kruskal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Union Find und Kruskal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/4.%20K%C3%BCrzeste%20Weg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Kürzeste Weg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/5.%20Selbstbalancierende%20B%C3%A4ume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Selbstbalancierende Bäume
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/6.%20Graphentheorie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Graphentheorie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithmen%20und%20Datenstruktur/7.%20DFS%20-%20Detailreich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. DFS   Detailreich
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Betriebssysteme(unvollständig)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Betriebssysteme(unvollständig)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/Inhaltsverzeichnis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inhaltsverzeichnis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Einführung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0. Einführung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/1.%20Ein%20Dialog%20%C3%BCber%20Virtualisierung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Ein Dialog über Virtualisierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/2.%20Einf%C3%BChrung%20in%20Prozesse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Einführung in Prozesse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/0.%20Einf%C3%BChrung/3.%20Mechanismen%20Limited%20Direct%20Execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Mechanismen Limited Direct Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_3" id="__nav_3_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Scheduling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. Scheduling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/4.%20Einf%C3%BChrung%20in%20die%20CPU-Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Einführung in die CPU Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/5.%20CPU-Scheduling%20-%20Multi-Level%20Feedback%20Queue%20%28MLFQ%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. CPU Scheduling   Multi Level Feedback Queue (MLFQ)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/1.%20Scheduling/6.%20CPU-Scheduling%20-%20Lottery%20Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. CPU Scheduling   Lottery Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_4" id="__nav_3_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Memory Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Memory Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/0.%20Einf%C3%BChrung%20Speicherverwaltung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Einführung Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/1.%20Memory%20API%20%28Speicherverwaltung%20in%20C%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Memory API (Speicherverwaltung in C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/2.%20Address%20Translation%20%28Adress%C3%BCbersetzung%20%26%20Virtual%20Memory%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Address Translation (Adressübersetzung &amp; Virtual Memory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/3.%20Basic-Speicherverwaltung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Basic Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/2.%20Memory%20Management/4.%20Advanced-Speicherverwaltung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Advanced Speicherverwaltung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_5" id="__nav_3_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Concurrency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Betriebssysteme%28unvollst%C3%A4ndig%29/3.%20Concurrency/0.%20Einf%C3%BChrung%20in%20Concurrency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Einführung in Concurrency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNAI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CNAI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CNAI/%C3%9C1.%20CNAI%20lokale%20Modelle%20testen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ü1. CNAI lokale Modelle testen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6">
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebreaker   Cyberkrieg(Scala)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebreaker   Cyberkrieg(Scala)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Codebreaker%20-%20Cyberkrieg%28Scala%29/Grundlegende%20Idee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grundlegende Idee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyber Security Praxissemester
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cyber Security Praxissemester
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Common-Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/HTTP%201.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP 1.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_3" id="__nav_3_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Active-Directory/1.%20Windows%20Domains/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Windows Domains
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4" id="__nav_3_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portswigger Academy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Portswigger Academy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_1" id="__nav_3_7_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Testing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Testing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/API-Testing/1.%20API%20Recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. API Recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/API-Testing/2.%20Identifizieren%20und%20Interagieren%20mit%20API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Identifizieren und Interagieren mit API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/API-Testing/3.%20Preventing%20API%20Vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Preventing API Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/API-Testing/4.%20Server-Side%20Parameter%20Pollution%28SSPP%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Server Side Parameter Pollution(SSPP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/API-Testing/5.%20Preventing%20Server-Side%20Parameter%20Pollution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Preventing Server Side Parameter Pollution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/API-Testing/API%20Checkliste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Checkliste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_2" id="__nav_3_7_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Authentication vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Authentication%20vulnerabilities/1.%20SF-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SF Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Authentication%20vulnerabilities/2.%20MF-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. MF Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Authentication%20vulnerabilities/3.%20Other-Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Other Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Authentication%20vulnerabilities/4.%20Best-Practice%20-%20Prevent%20Authentication%20misstakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Best Practice   Prevent Authentication misstakes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_3" id="__nav_3_7_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Clickjacking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Clickjacking/1.%20Was%20ist%20Clickjacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Was ist Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Clickjacking/2.%20Clickbandit%20-%20Prefilled%20Input%20Clickjacking%20-%20Multistep%20Clickjacking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Clickbandit   Prefilled Input Clickjacking   Multistep Clickjacking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Clickjacking/3.%20Preventing%20Clickjacking%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Preventing Clickjacking Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_4" id="__nav_3_7_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross Origin Resource Sharing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cross Origin Resource Sharing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Cross-Origin%20Resource%20Sharing/1.%20Was%20ist%20CORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Was ist CORS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Cross-Origin%20Resource%20Sharing/2.%20CORS%20Vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. CORS Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_5" id="__nav_3_7_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Upload vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    File Upload vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/File-Upload%20vulnerabilities/1.%20File-Upload%20vulnerabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. File Upload vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_6">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_6" id="__nav_3_7_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GraphQL API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/GraphQL%20API/1.%20Graph%20QL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Graph QL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/GraphQL%20API/2.%20Discovering%20Schema%20Information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Discovering Schema Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/GraphQL%20API/3.%20Attack%20API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Attack API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/GraphQL%20API/5.%20Preventing%20GraphQL%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Preventing GraphQL Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/GraphQL%20API/GraphQL%20Checkliste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL Checkliste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_7">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_7" id="__nav_3_7_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path traversal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Path traversal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Path%20traversal/1.%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Path%20traversal/2.%20Preventing%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preventing Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Path%20traversal/Checkliste%20Path%20Traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checkliste Path Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_8">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_8" id="__nav_3_7_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prototype Pollution
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prototype Pollution
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Prototype%20Pollution/1.%20Prototype%20Pollution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prototype Pollution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Prototype%20Pollution/2.%20Schwachstellen%20%26%20L%C3%B6sungen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Schwachstellen &amp; Lösungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Prototype%20Pollution/3.%20Prototype%20Pollution%20via%20Browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Prototype Pollution via Browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_9">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_9" id="__nav_3_7_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SQLi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/1.%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/2.%20SQL%20Injection%20UNION%20Attacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. SQL Injection UNION Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/3.%20SQL%20Injection%20Set%20Of%20Views/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Injection Set Of Views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/4.%20Blind%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Blind SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/5.%20Error-Based%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Error Based SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/6.%20Blind%20SQL%20Injection%20OAST%20Technik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Blind SQL Injection OAST Technik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/7.%20SQL%20Injection%20In%20Different%20Contexts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. SQL Injection In Different Contexts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/8.%20Second-Order%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Second Order SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/9.%20Prevent%20SQL%20Injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Prevent SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SQLi/Checkliste%20SQLi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checkliste SQLi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_10">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_10" id="__nav_3_7_4_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SSRF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/SSRF/1.%20SSRF-Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. SSRF Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_11">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_11" id="__nav_3_7_4_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Cache Deception
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web Cache Deception
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Web%20Cache%20Deception/1.%20Web%20-%20Caches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Web   Caches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Web%20Cache%20Deception/2.%20Delimiter%20Discrepancies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Delimiter Discrepancies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Web%20Cache%20Deception/3.%20Normalization%20Discrepancies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Normalization Discrepancies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/Web%20Cache%20Deception/4.%20Best-Practice%20-%20Prevent%20WND/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Best Practice   Prevent WND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4_12">
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_4_12" id="__nav_3_7_4_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSockets vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_4_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WebSockets vulnerabilities
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/WebSockets%20vulnerabilities/1.%20Manipulating%20Websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Manipulating Websockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/WebSockets%20vulnerabilities/2.%20Manipulating%20Handshake-Websocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Manipulating Handshake Websocket
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cyber-Security%20Praxissemester/Portswigger-Academy/WebSockets%20vulnerabilities/3.%20Secure-Websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Secure Websockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbanken
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Datenbanken
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Datenbanken/Datenbanken-Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbanken Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IT Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security%20Theorie%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Theorie 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security%20Zusammenfassung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Zusammenfassung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security-Aktuelles%282025%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security Aktuelles(2025)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security-HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security HTTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IT-Security/IT-Security-XSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Security XSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10">
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechnernetze
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rechnernetze
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_10_1" id="__nav_3_10_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Praktisch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_10_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Praktisch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/1.%20Wireshark%20-%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Wireshark   Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/2.%20Socket%20-%20monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Socket Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/3.%20Socket%20-%20Programmierung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Socket Programmierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Praktisch/4.%20Peer%20To%20Peer%20-%20Projekt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Peer To Peer - Projekt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_10_2" id="__nav_3_10_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theoretisch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theoretisch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Theoretisch/1.%20Paket%C3%BCbertragung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Paketübertragung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Theoretisch/2.%20Page%20Load%20Times/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Page Load Times
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Theoretisch/3.%20TCP%20-%20Congestion%20Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. TCP   Congestion Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Rechnernetze/Theoretisch/4.%20Verkehrslenkung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verkehrslenkung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11">
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signale Sensoren Systeme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Signale Sensoren Systeme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Signale%20Sensoren%20Systeme/1.%20Grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Signale%20Sensoren%20Systeme/2.%20Signale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Signale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Signale%20Sensoren%20Systeme/3.%20Fourier%20Analyse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Fourier Analyse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12">
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theoretische Informatik
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theoretische Informatik
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/1.%20Sprachen%20u.%20Grammatik%20u.%20BNF%20u.%20Syntaxdiagramm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Sprachen u. Grammatik u. BNF u. Syntaxdiagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/2.%20Regul%C3%A4re%20Sprachen%2C%20Endlicher%20Automat%2C%20Regul%C3%A4re%20Grammatik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reguläre Sprachen, Endlicher Automat, Reguläre Grammatik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/3.%20Determinismus%20und%20Potenzmengenkonstruktion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Determinismus und Potenzmengenkonstruktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/4.%20Regul%C3%A4re%20Ausdr%C3%BCcke/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Reguläre Ausdrücke
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/5.%20Kellerautomat%20%28PDA%29%20und%20Kontextfreie%20Grammatik%20%28CFG%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Kellerautomat (PDA) und Kontextfreie Grammatik (CFG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/6.%20Chomsky-Normalform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Chomsky Normalform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Theoretische%20Informatik/7.%20Turing%20Maschine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Turing Maschine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13">
+        
+          
+          <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verteilte Systeme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Verteilte Systeme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/1.%20Was%20sind%20%28verteilte%29%20Systeme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Was sind (verteilte) Systeme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/2.%20Lokal%20vs%20Verteilt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Lokal vs Verteilt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/3.%20Interaktionsmodi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Interaktionsmodi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/4.%20Transparenz%20und%20Koh%C3%A4renz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Transparenz und Kohärenz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/5.%20Skalierbarkeit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Skalierbarkeit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/6.%20Nebenl%C3%A4ufigkeit%20%26%20Parallelit%C3%A4t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Nebenläufigkeit &amp; Parallelität
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/7.%20Kommunikationsgrad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Kommunikationsgrad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/8.%20Softwarearchitektur%20vs%20Systemarchitektur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Softwarearchitektur vs Systemarchitektur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Verteilte%20Systeme/9.%20SCRUM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. SCRUM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-worum-es-in-geometry-insgesamt-geht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Worum es in „Geometry“ insgesamt geht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-koordinatensysteme-der-startpunkt-von-allem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Koordinatensysteme: der Startpunkt von allem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-2d-affine-geometry-die-grundbausteine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 2D Affine Geometry: die Grundbausteine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 2D Affine Geometry: die Grundbausteine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-einen-beliebigen-punkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um einen beliebigen Punkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shearing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reflections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-was-ist-eine-affine-transformation-eigentlich" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Was ist eine affine Transformation eigentlich?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-similarity-transformation-und-rigid-body-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Similarity Transformation und Rigid Body Motion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Similarity Transformation und Rigid Body Motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#similarity-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Similarity Transformation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rigid-body-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rigid Body Motion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-homogene-koordinaten-warum-man-sie-braucht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Homogene Koordinaten: warum man sie braucht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3d-affine-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 3D Affine Geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-3d-translation-scaling-und-rotationen-um-achsen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 3D Translation, Scaling und Rotationen um Achsen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 3D Translation, Scaling und Rotationen um Achsen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translation in 3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skalierung-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skalierung in 3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-die-x-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um die x-Achse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-die-y-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um die y-Achse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotation-um-die-z-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation um die z-Achse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-rotation-um-eine-beliebige-achse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Rotation um eine beliebige Achse
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-ubergang-zur-projektiven-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Übergang zur projektiven Geometrie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-was-ist-eine-projektion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Was ist eine Projektion?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-klassifikation-von-projektionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Klassifikation von Projektionen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-parallel-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Parallel Projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-perspective-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Perspective Projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-wann-lasst-sich-ein-punkt-uberhaupt-projizieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Wann lässt sich ein Punkt überhaupt projizieren?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-perspektivische-projektion-von-geraden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Perspektivische Projektion von Geraden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-wie-alles-zusammenhangt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Wie alles zusammenhängt
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>2. Basics in Geometry</h1>
+
+<h2 id="1-worum-es-in-geometry-insgesamt-geht">1. Worum es in „Geometry“ insgesamt geht<a class="headerlink" href="#1-worum-es-in-geometry-insgesamt-geht" title="Permanent link">¶</a></h2>
+<p>Das gesamte Kapitel beantwortet im Grunde zwei große Fragen:</p>
+<p>Erstens: <strong>Wie bewege oder verändere ich Punkte und Objekte im Raum mathematisch?</strong><br>
+Das ist der Teil <strong>Affine Geometry</strong>. Dort geht es um Translation, Rotation, Skalierung, Scherung, Spiegelung und die Kombination dieser Transformationen.</p>
+<p>Zweitens: <strong>Wie kommt ein 3D-Punkt aus der Welt auf ein 2D-Bild?</strong><br>
+Das ist der Teil <strong>Projective Geometry</strong>. Dort geht es um Projektionen allgemein, um Parallelprojektionen und um perspektivische Projektionen, also im Grunde um das mathematische Kameramodell.</p>
+<p>Ganz grob kann man sich merken:</p>
+<p><strong>Affine Geometrie = Objekt im Raum bewegen oder verformen</strong><br>
+<strong>Projektive Geometrie = Objekt auf eine Bildebene abbilden</strong></p>
+<h2 id="2-koordinatensysteme-der-startpunkt-von-allem">2. Koordinatensysteme: der Startpunkt von allem<a class="headerlink" href="#2-koordinatensysteme-der-startpunkt-von-allem" title="Permanent link">¶</a></h2>
+<p>Wir arbeiten mit <strong>orthonormalen beziehungsweise kartesischen Koordinatensystemen</strong>. Es gibt beispielsweise ein Koordinatensystem <span class="arithmatex">\(S\)</span> und ein anderes Koordinatensystem <span class="arithmatex">\(S'\)</span>. Dabei kann es sich zum Beispiel um ein <strong>lokales Objektsystem</strong> und ein <strong>globales Weltsystem</strong> handeln.</p>
+<p>Gesucht ist dann entweder die Transformation von <span class="arithmatex">\(S\)</span> nach <span class="arithmatex">\(S'\)</span> oder die Darstellung eines Punktes im jeweils anderen Bezugssystem.</p>
+<p>Ein Objekt kann in seinem eigenen lokalen Objektkoordinatensystem beschrieben sein, während ein Scanner, eine Kamera oder die gesamte Szene ein globales Weltsystem verwendet. Die Geometrie beschreibt, wie dieselben Punkte korrekt zwischen diesen Koordinatensystemen umgerechnet werden.</p>
+<p>Wichtig ist dabei die Unterscheidung zwischen zwei Sichtweisen:</p>
+<ul>
+<li>Bei einer <strong>aktiven Transformation</strong> wird der Punkt oder das Objekt tatsächlich bewegt.</li>
+<li>Bei einer <strong>passiven Transformation</strong> bleibt das Objekt an derselben Stelle, aber das verwendete Koordinatensystem wird gewechselt.</li>
+</ul>
+<p>Mathematisch sind beide Sichtweisen eng miteinander verbunden, allerdings wird bei einem Koordinatensystemwechsel häufig die inverse Transformation benötigt.</p>
+<h2 id="3-2d-affine-geometry-die-grundbausteine">3. 2D Affine Geometry: die Grundbausteine<a class="headerlink" href="#3-2d-affine-geometry-die-grundbausteine" title="Permanent link">¶</a></h2>
+<p>Der erste große inhaltliche Teil ist die <strong>zweidimensionale affine Geometrie</strong>. Dort werden die elementaren geometrischen Transformationen eingeführt.</p>
+<h4 id="translation">Translation<a class="headerlink" href="#translation" title="Permanent link">¶</a></h4>
+<p>Die einfachste Transformation ist die <strong>Translation</strong>. Ein Punkt <span class="arithmatex">\(\mathbf p\)</span> wird durch einen Translationsvektor <span class="arithmatex">\(\mathbf t\)</span> verschoben:</p>
+<div class="arithmatex">\[
+\mathbf p' = \mathbf p + \mathbf t
+\]</div>
+<p>Mit</p>
+<div class="arithmatex">\[
+\mathbf p =
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+\qquad\text{und}\qquad
+\mathbf t =
+\begin{pmatrix}
+t_x \\
+t_y
+\end{pmatrix}
+\]</div>
+<p>ergibt sich:</p>
+<div class="arithmatex">\[
+\mathbf p' =
+\begin{pmatrix}
+x+t_x \\
+y+t_y
+\end{pmatrix}
+\]</div>
+<p>Die Achsen und die Form des Objekts bleiben dabei unverändert. Lediglich die Position des Punktes beziehungsweise des Objekts verändert sich.</p>
+<p>Anschaulich: Das Objekt bleibt exakt gleich, wird aber an eine andere Position verschoben.</p>
+<h4 id="rotation">Rotation<a class="headerlink" href="#rotation" title="Permanent link">¶</a></h4>
+<p>Bei einer <strong>Rotation</strong> wird ein Punkt <span class="arithmatex">\(\mathbf p\)</span> um einen Winkel <span class="arithmatex">\(\varphi\)</span> gedreht. Bei Verwendung von Spaltenvektoren lautet die zweidimensionale Rotationsmatrix:</p>
+<div class="arithmatex">\[
+R(\varphi) =
+\begin{pmatrix}
+\cos\varphi &amp; -\sin\varphi \\
+\sin\varphi &amp; \cos\varphi
+\end{pmatrix}
+\]</div>
+<p>Der gedrehte Punkt ergibt sich durch:</p>
+<div class="arithmatex">\[
+\mathbf p' = R(\varphi)\mathbf p
+\]</div>
+<p>Die Rotationsmatrix ist orthogonal. Daher gilt:</p>
+<div class="arithmatex">\[
+R^T R = I
+\]</div>
+<p>und damit:</p>
+<div class="arithmatex">\[
+R^{-1}=R^T
+\]</div>
+<p>Zusätzlich gilt für eine reine Rotation:</p>
+<div class="arithmatex">\[
+\det(R)=1
+\]</div>
+<p>Bei einer Rotation bleiben folgende Eigenschaften erhalten:</p>
+<ul>
+<li>Längen</li>
+<li>Winkel</li>
+<li>Parallelität</li>
+<li>Orientierung</li>
+</ul>
+<p>Ein Quadrat bleibt somit ein Quadrat und wird lediglich gedreht.</p>
+<h3 id="rotation-um-einen-beliebigen-punkt">Rotation um einen beliebigen Punkt<a class="headerlink" href="#rotation-um-einen-beliebigen-punkt" title="Permanent link">¶</a></h3>
+<p>Die bisherige Rotationsmatrix dreht einen Punkt um den Ursprung. Soll stattdessen um einen beliebigen Punkt <span class="arithmatex">\(\mathbf c\)</span> rotiert werden, erfolgt die Transformation in drei Schritten:</p>
+<ol>
+<li>Den Rotationspunkt <span class="arithmatex">\(\mathbf c\)</span> in den Ursprung verschieben.</li>
+<li>Die Rotation um den Ursprung ausführen.</li>
+<li>Das Ergebnis wieder zurückverschieben.</li>
+</ol>
+<p>Die gesamte Transformation lautet:</p>
+<div class="arithmatex">\[
+\mathbf p'
+=
+\mathbf c
++
+R(\varphi)(\mathbf p-\mathbf c)
+\]</div>
+<p>Die Reihenfolge der einzelnen Transformationen ist dabei entscheidend, denn die <strong>Matrixmultiplikation ist nicht kommutativ</strong>. Im Allgemeinen gilt also:</p>
+<div class="arithmatex">\[
+AB \neq BA
+\]</div>
+<p>Erst verschieben und anschließend drehen ist deshalb nicht dasselbe wie erst drehen und anschließend verschieben.</p>
+<h3 id="scaling">Scaling<a class="headerlink" href="#scaling" title="Permanent link">¶</a></h3>
+<p>Bei der <strong>Skalierung</strong> wird ein Objekt entlang der Koordinatenachsen gestreckt oder gestaucht. In 2D verwendet man dafür die Skalierungsfaktoren <span class="arithmatex">\(\lambda_1\)</span> und <span class="arithmatex">\(\lambda_2\)</span>:</p>
+<div class="arithmatex">\[
+S =
+\begin{pmatrix}
+\lambda_1 &amp; 0 \\
+0 &amp; \lambda_2
+\end{pmatrix}
+\]</div>
+<p>Der skalierte Punkt ergibt sich durch:</p>
+<div class="arithmatex">\[
+\mathbf p' = S\mathbf p
+\]</div>
+<p>Für <span class="arithmatex">\(\lambda_1=\lambda_2\)</span> handelt es sich um eine <strong>uniforme Skalierung</strong>. Das Objekt wird in alle Richtungen gleichmäßig vergrößert oder verkleinert.</p>
+<p>Für <span class="arithmatex">\(\lambda_1\neq\lambda_2\)</span> handelt es sich um eine <strong>nicht uniforme Skalierung</strong>. Dabei kann sich die Form des Objekts verändern.</p>
+<p>Eine Skalierung kann folgende Eigenschaften verändern:</p>
+<ul>
+<li>Längen</li>
+<li>Winkel</li>
+<li>Flächen</li>
+<li>Orientierung</li>
+</ul>
+<p>Die Orientierung ändert sich genau dann, wenn die Skalierungsfaktoren unterschiedliche Vorzeichen besitzen:</p>
+<div class="arithmatex">\[
+\lambda_1\lambda_2&lt;0
+\]</div>
+<p>Ist einer der Skalierungsfaktoren null, wird die Geometrie auf eine niedrigere Dimension reduziert. Ein zweidimensionales Objekt kann dadurch beispielsweise auf eine Gerade zusammenfallen.</p>
+<h3 id="shearing">Shearing<a class="headerlink" href="#shearing" title="Permanent link">¶</a></h3>
+<p>Bei einer <strong>Scherung</strong> wird eine Koordinate abhängig von der jeweils anderen Koordinate verschoben. Ein Rechteck kann dadurch beispielsweise zu einem Parallelogramm werden.</p>
+<p>Eine Scherung in <span class="arithmatex">\(x\)</span>-Richtung kann mit folgender Matrix beschrieben werden:</p>
+<div class="arithmatex">\[
+H_x(k) =
+\begin{pmatrix}
+1 &amp; k \\
+0 &amp; 1
+\end{pmatrix}
+\]</div>
+<p>Damit gilt:</p>
+<div class="arithmatex">\[
+x'=x+ky
+\]</div>
+<p>und:</p>
+<div class="arithmatex">\[
+y'=y
+\]</div>
+<p>Eine Scherung verändert im Allgemeinen Winkel und Längen, erhält aber weiterhin die Parallelität von Geraden.</p>
+<h3 id="reflections">Reflections<a class="headerlink" href="#reflections" title="Permanent link">¶</a></h3>
+<p>Bei einer <strong>Spiegelung</strong> wird ein Objekt an einer Geraden, einer Achse oder einem Punkt gespiegelt.</p>
+<p>Die Spiegelung an der <span class="arithmatex">\(x\)</span>-Achse wird beschrieben durch:</p>
+<div class="arithmatex">\[
+M_x =
+\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\]</div>
+<p>Die Spiegelung an der <span class="arithmatex">\(y\)</span>-Achse lautet:</p>
+<div class="arithmatex">\[
+M_y =
+\begin{pmatrix}
+-1 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}
+\]</div>
+<p>Die Spiegelung an der Geraden <span class="arithmatex">\(y=x\)</span> lautet:</p>
+<div class="arithmatex">\[
+M_{y=x} =
+\begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}
+\]</div>
+<p>Eine Spiegelung am Ursprung wird beschrieben durch:</p>
+<div class="arithmatex">\[
+M_O =
+\begin{pmatrix}
+-1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\]</div>
+<p>Bei Spiegelungen bleiben Längen und Winkel erhalten, die Orientierung wird jedoch umgekehrt.</p>
+<h2 id="4-was-ist-eine-affine-transformation-eigentlich">4. Was ist eine affine Transformation eigentlich?<a class="headerlink" href="#4-was-ist-eine-affine-transformation-eigentlich" title="Permanent link">¶</a></h2>
+<p>Nachdem die elementaren Transformationen eingeführt wurden, kann eine <strong>affine Abbildung</strong> allgemein definiert werden als:</p>
+<div class="arithmatex">\[
+\mathbf p' = A\mathbf p+\mathbf t
+\]</div>
+<p>Dabei beschreibt <span class="arithmatex">\(A\)</span> den linearen Anteil der Transformation und <span class="arithmatex">\(\mathbf t\)</span> die Translation.</p>
+<p>Zu den affinen Abbildungen gehören:</p>
+<ul>
+<li>Translationen</li>
+<li>Rotationen</li>
+<li>Skalierungen</li>
+<li>Scherungen</li>
+<li>Spiegelungen</li>
+<li>Kombinationen dieser Transformationen</li>
+</ul>
+<p>Bei einer nicht entarteten affinen Transformation ist die Matrix <span class="arithmatex">\(A\)</span> invertierbar:</p>
+<div class="arithmatex">\[
+\det(A)\neq 0
+\]</div>
+<p>Affine Transformationen erhalten folgende geometrische Eigenschaften:</p>
+<ul>
+<li>Parallelität</li>
+<li>Kollinearität</li>
+<li>Teilverhältnisse von Punkten auf derselben Geraden</li>
+<li>Geraden werden wieder auf Geraden abgebildet</li>
+</ul>
+<p>Nicht zwangsläufig erhalten bleiben:</p>
+<ul>
+<li>Längen</li>
+<li>Winkel</li>
+<li>Flächen</li>
+<li>Orientierung</li>
+<li>beliebige Abstandsverhältnisse</li>
+</ul>
+<p>Ein Quadrat wird durch eine allgemeine, nicht entartete affine Transformation typischerweise zu einem Parallelogramm.</p>
+<p>Wichtig ist die genaue Aussage über Verhältnisse: Affine Transformationen erhalten nicht beliebige Verhältnisse zwischen beliebigen Punkten, sondern insbesondere die Teilverhältnisse kollinearer Punkte.</p>
+<h2 id="5-similarity-transformation-und-rigid-body-motion">5. Similarity Transformation und Rigid Body Motion<a class="headerlink" href="#5-similarity-transformation-und-rigid-body-motion" title="Permanent link">¶</a></h2>
+<p>Affine Transformationen lassen sich in wichtige Spezialfälle unterteilen.</p>
+<h4 id="similarity-transformation">Similarity Transformation<a class="headerlink" href="#similarity-transformation" title="Permanent link">¶</a></h4>
+<p>Eine <strong>Ähnlichkeitstransformation</strong> besteht aus einer einheitlichen Skalierung, einer Rotation beziehungsweise orthogonalen Transformation und einer Translation:</p>
+<div class="arithmatex">\[
+\mathbf p' = sR\mathbf p+\mathbf t
+\]</div>
+<p>Dabei ist:</p>
+<ul>
+<li><span class="arithmatex">\(s&gt;0\)</span> der einheitliche Skalierungsfaktor</li>
+<li><span class="arithmatex">\(R\)</span> eine Rotationsmatrix</li>
+<li><span class="arithmatex">\(\mathbf t\)</span> der Translationsvektor</li>
+</ul>
+<p>Bei einer Ähnlichkeitstransformation bleiben folgende Eigenschaften erhalten:</p>
+<ul>
+<li>Winkel</li>
+<li>Parallelität</li>
+<li>Längenverhältnisse</li>
+<li>die grundlegende Form des Objekts</li>
+</ul>
+<p>Alle Längen werden mit demselben Faktor <span class="arithmatex">\(s\)</span> skaliert. Ein Quadrat bleibt deshalb ein Quadrat, kann aber größer oder kleiner, gedreht und verschoben werden.</p>
+<h3 id="rigid-body-motion">Rigid Body Motion<a class="headerlink" href="#rigid-body-motion" title="Permanent link">¶</a></h3>
+<p>Eine <strong>starre Bewegung</strong> wird beschrieben durch:</p>
+<div class="arithmatex">\[
+\mathbf p'=R\mathbf p+\mathbf t
+\]</div>
+<p>Dabei ist <span class="arithmatex">\(R\)</span> eine orthogonale Matrix. Es gilt:</p>
+<div class="arithmatex">\[
+R^T R=I
+\]</div>
+<p>und damit:</p>
+<div class="arithmatex">\[
+R^{-1}=R^T
+\]</div>
+<p>Eine starre Bewegung erhält:</p>
+<ul>
+<li>Längen</li>
+<li>Winkel</li>
+<li>Abstände</li>
+<li>Parallelität</li>
+<li>Längenverhältnisse</li>
+</ul>
+<p>Für eine <strong>proper rigid motion</strong> gilt:</p>
+<div class="arithmatex">\[
+\det(R)=1
+\]</div>
+<p>Sie besteht aus Rotation und Translation und erhält die Orientierung.</p>
+<p>Für eine <strong>improper rigid motion</strong> gilt:</p>
+<div class="arithmatex">\[
+\det(R)=-1
+\]</div>
+<p>Sie enthält zusätzlich eine Spiegelung und verändert deshalb die Orientierung.</p>
+<p>Eine starre Bewegung ist besonders für 3D-Vision wichtig, weil sich viele reale Objekte zwar bewegen und drehen, dabei aber nicht verformen.</p>
+<h2 id="6-homogene-koordinaten-warum-man-sie-braucht">6. Homogene Koordinaten: warum man sie braucht<a class="headerlink" href="#6-homogene-koordinaten-warum-man-sie-braucht" title="Permanent link">¶</a></h2>
+<p>Homogene Koordinaten werden eingeführt, weil die Schreibweise</p>
+<div class="arithmatex">\[
+\mathbf p'=A\mathbf p+\mathbf t
+\]</div>
+<p>bei der Kombination mehrerer Transformationen unhandlich werden kann. Ziel ist es, sowohl den linearen Anteil als auch die Translation durch eine einzige Matrixmultiplikation auszudrücken.</p>
+<p>Ein zweidimensionaler Punkt</p>
+<div class="arithmatex">\[
+\mathbf p =
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+\]</div>
+<p>wird in homogenen Koordinaten dargestellt als:</p>
+<div class="arithmatex">\[
+\tilde{\mathbf p} =
+\begin{pmatrix}
+x \\
+y \\
+1
+\end{pmatrix}
+\]</div>
+<p>Allgemein repräsentiert jeder Vektor</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+wx \\
+wy \\
+w
+\end{pmatrix},
+\qquad w\neq 0,
+\]</div>
+<p>denselben kartesischen Punkt <span class="arithmatex">\((x,y)^T\)</span>.</p>
+<p>Ein allgemeiner homogener Punkt</p>
+<div class="arithmatex">\[
+\tilde{\mathbf p} =
+\begin{pmatrix}
+X \\
+Y \\
+W
+\end{pmatrix}
+\]</div>
+<p>wird durch Division durch die letzte Koordinate wieder in kartesische Koordinaten überführt:</p>
+<div class="arithmatex">\[
+x=\frac{X}{W}
+\qquad\text{und}\qquad
+y=\frac{Y}{W},
+\qquad W\neq 0
+\]</div>
+<p>Homogene Koordinaten sind nur bis auf einen von null verschiedenen Skalierungsfaktor eindeutig. Deshalb gilt:</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+X \\
+Y \\
+W
+\end{pmatrix}
+\sim
+\lambda
+\begin{pmatrix}
+X \\
+Y \\
+W
+\end{pmatrix},
+\qquad
+\lambda\neq 0
+\]</div>
+<p>Eine affine 2D-Transformation kann nun vollständig als Matrixmultiplikation geschrieben werden:</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+x' \\
+y' \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+a_{11} &amp; a_{12} &amp; t_x \\
+a_{21} &amp; a_{22} &amp; t_y \\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+1
+\end{pmatrix}
+\]</div>
+<p>Der große Vorteil ist, dass Translation, Rotation, Skalierung und Kombinationen davon einheitlich als Matrizen dargestellt werden können.</p>
+<p>In 2D verwendet man dafür <span class="arithmatex">\(3\times 3\)</span>-Matrizen, in 3D entsprechend <span class="arithmatex">\(4\times 4\)</span>-Matrizen.</p>
+<p>Mehrere Transformationen können anschließend durch Matrixmultiplikation zu einer einzigen Gesamttransformation kombiniert werden.</p>
+<h2 id="7-3d-affine-geometry">7. 3D Affine Geometry<a class="headerlink" href="#7-3d-affine-geometry" title="Permanent link">¶</a></h2>
+<p>Der gleiche Gedanke wird anschließend auf den dreidimensionalen Raum erweitert.</p>
+<p>Eine allgemeine affine 3D-Abbildung lautet:</p>
+<div class="arithmatex">\[
+\mathbf p'=A\mathbf p+\mathbf t
+\]</div>
+<p>Dabei ist <span class="arithmatex">\(A\)</span> eine <span class="arithmatex">\(3\times 3\)</span>-Matrix und <span class="arithmatex">\(\mathbf t\)</span> ein dreidimensionaler Translationsvektor.</p>
+<p>Eine 3D-Ähnlichkeitstransformation lautet:</p>
+<div class="arithmatex">\[
+\mathbf p'=sR\mathbf p+\mathbf t
+\]</div>
+<p>Eine starre 3D-Bewegung lautet:</p>
+<div class="arithmatex">\[
+\mathbf p'=R\mathbf p+\mathbf t
+\]</div>
+<p>Die geometrischen Eigenschaften verhalten sich grundsätzlich wie im zweidimensionalen Fall.</p>
+<p>Eine allgemeine affine 3D-Transformation besitzt <strong>12 Parameter</strong>:</p>
+<ul>
+<li>neun Einträge der <span class="arithmatex">\(3\times 3\)</span>-Matrix <span class="arithmatex">\(A\)</span></li>
+<li>drei Einträge des Translationsvektors <span class="arithmatex">\(\mathbf t\)</span></li>
+</ul>
+<p>Zur eindeutigen Bestimmung benötigt man mindestens vier geeignete, nicht koplanare Punktkorrespondenzen.</p>
+<p>Eine 3D-Ähnlichkeitstransformation besitzt <strong>7 Freiheitsgrade</strong>:</p>
+<ul>
+<li>drei für die Rotation</li>
+<li>drei für die Translation</li>
+<li>einen für die einheitliche Skalierung</li>
+</ul>
+<p>Zu ihrer Bestimmung benötigt man mindestens drei geeignete, nicht kollineare Punktkorrespondenzen.</p>
+<p>Eine starre 3D-Bewegung besitzt <strong>6 Freiheitsgrade</strong>:</p>
+<ul>
+<li>drei für die Rotation</li>
+<li>drei für die Translation</li>
+</ul>
+<p>Die Anzahl der Parameter zeigt, wie viele unabhängige Größen eine Transformation besitzt und wie viele Punktkorrespondenzen benötigt werden, um sie zu bestimmen.</p>
+<h2 id="8-3d-translation-scaling-und-rotationen-um-achsen">8. 3D Translation, Scaling und Rotationen um Achsen<a class="headerlink" href="#8-3d-translation-scaling-und-rotationen-um-achsen" title="Permanent link">¶</a></h2>
+<p>In homogenen Koordinaten wird ein 3D-Punkt dargestellt als:</p>
+<div class="arithmatex">\[
+\tilde{\mathbf p} =
+\begin{pmatrix}
+x \\
+y \\
+z \\
+1
+\end{pmatrix}
+\]</div>
+<h3 id="translation-in-3d">Translation in 3D<a class="headerlink" href="#translation-in-3d" title="Permanent link">¶</a></h3>
+<p>Eine Translation um den Vektor <span class="arithmatex">\((t_x,t_y,t_z)^T\)</span> wird durch folgende <span class="arithmatex">\(4\times 4\)</span>-Matrix beschrieben:</p>
+<div class="arithmatex">\[
+T =
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; t_x \\
+0 &amp; 1 &amp; 0 &amp; t_y \\
+0 &amp; 0 &amp; 1 &amp; t_z \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</div>
+<h3 id="skalierung-in-3d">Skalierung in 3D<a class="headerlink" href="#skalierung-in-3d" title="Permanent link">¶</a></h3>
+<p>Eine Skalierung mit den Faktoren <span class="arithmatex">\(\lambda_1\)</span>, <span class="arithmatex">\(\lambda_2\)</span> und <span class="arithmatex">\(\lambda_3\)</span> wird beschrieben durch:</p>
+<div class="arithmatex">\[
+S =
+\begin{pmatrix}
+\lambda_1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \lambda_2 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \lambda_3 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</div>
+<h3 id="rotation-um-die-x-achse">Rotation um die x-Achse<a class="headerlink" href="#rotation-um-die-x-achse" title="Permanent link">¶</a></h3>
+<div class="arithmatex">\[
+R_x(\varphi) =
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \cos\varphi &amp; -\sin\varphi &amp; 0 \\
+0 &amp; \sin\varphi &amp; \cos\varphi &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</div>
+<p>Bei dieser Rotation bleibt die <span class="arithmatex">\(x\)</span>-Koordinate unverändert. Die <span class="arithmatex">\(y\)</span>- und <span class="arithmatex">\(z\)</span>-Koordinaten werden wie bei einer zweidimensionalen Rotation transformiert.</p>
+<h3 id="rotation-um-die-y-achse">Rotation um die y-Achse<a class="headerlink" href="#rotation-um-die-y-achse" title="Permanent link">¶</a></h3>
+<div class="arithmatex">\[
+R_y(\varphi) =
+\begin{pmatrix}
+\cos\varphi &amp; 0 &amp; \sin\varphi &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+-\sin\varphi &amp; 0 &amp; \cos\varphi &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</div>
+<p>Hier bleibt die <span class="arithmatex">\(y\)</span>-Koordinate unverändert.</p>
+<h3 id="rotation-um-die-z-achse">Rotation um die z-Achse<a class="headerlink" href="#rotation-um-die-z-achse" title="Permanent link">¶</a></h3>
+<div class="arithmatex">\[
+R_z(\varphi) =
+\begin{pmatrix}
+\cos\varphi &amp; -\sin\varphi &amp; 0 &amp; 0 \\
+\sin\varphi &amp; \cos\varphi &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</div>
+<p>Hier bleibt die <span class="arithmatex">\(z\)</span>-Koordinate unverändert. Diese Rotation entspricht deshalb direkt der zweidimensionalen Rotation in der <span class="arithmatex">\(x\)</span>-<span class="arithmatex">\(y\)</span>-Ebene.</p>
+<p>Die Vorzeichen der Sinus-Terme hängen von der verwendeten Koordinaten- und Drehrichtungskonvention ab. Die hier gezeigten Matrizen gelten für ein rechtshändiges Koordinatensystem mit Spaltenvektoren.</p>
+<h2 id="9-rotation-um-eine-beliebige-achse">9. Rotation um eine beliebige Achse<a class="headerlink" href="#9-rotation-um-eine-beliebige-achse" title="Permanent link">¶</a></h2>
+<p>Anspruchsvoller ist die Rotation um eine <strong>beliebige Achse <span class="arithmatex">\(G\)</span></strong> im Raum.</p>
+<p>Die Idee ist nicht unbedingt, eine große fertige Formel auswendig zu lernen, sondern den Konstruktionsgedanken zu verstehen.</p>
+<p>Die Achse besitzt einen normierten Richtungsvektor:</p>
+<div class="arithmatex">\[
+\mathbf b =
+\begin{pmatrix}
+b_x \\
+b_y \\
+b_z
+\end{pmatrix}
+\]</div>
+<p>mit:</p>
+<div class="arithmatex">\[
+\lVert\mathbf b\rVert=1
+\]</div>
+<p>Eine Rotation um diese beliebige Achse kann auf Rotationen um die Standardachsen zurückgeführt werden.</p>
+<p>Der grundsätzliche Rechenweg lautet:</p>
+<ol>
+<li>Den Achsenvektor durch geeignete Hilfsrotationen in Richtung der <span class="arithmatex">\(z\)</span>-Achse drehen.</li>
+<li>Die gewünschte Rotation um die <span class="arithmatex">\(z\)</span>-Achse durchführen.</li>
+<li>Die zuvor ausgeführten Hilfsrotationen in umgekehrter Reihenfolge rückgängig machen.</li>
+</ol>
+<p>Symbolisch kann das beispielsweise geschrieben werden als:</p>
+<div class="arithmatex">\[
+R_G
+=
+R_{\text{Hilf}}^{-1}
+R_z(\varphi)
+R_{\text{Hilf}}
+\]</div>
+<p>Die Reihenfolge ist erneut wichtig, weil Matrixmultiplikation nicht kommutativ ist.</p>
+<p>Man unterscheidet zwischen <strong>intrinsischen</strong> und <strong>extrinsischen</strong> Rotationen:</p>
+<ul>
+<li>Bei <strong>intrinsischen Rotationen</strong> wird um die mitbewegten Achsen des Objekts rotiert.</li>
+<li>Bei <strong>extrinsischen Rotationen</strong> wird um die feststehenden Achsen des globalen Koordinatensystems rotiert.</li>
+</ul>
+<p>Euler- und Tait-Bryan-Winkel verwenden unterschiedliche Folgen solcher Achsenrotationen. Man verwendet dabei die extrinsische <span class="arithmatex">\(z\)</span>-<span class="arithmatex">\(y\)</span>-<span class="arithmatex">\(z\)</span>-Darstellung.</p>
+<p>Verläuft die Rotationsachse nicht durch den Ursprung, sondern durch einen Punkt <span class="arithmatex">\(\mathbf c\)</span>, muss zusätzlich translatiert werden:</p>
+<div class="arithmatex">\[
+\mathbf p'
+=
+\mathbf c
++
+R_G(\mathbf p-\mathbf c)
+\]</div>
+<p>Man verschiebt die Achse also zunächst in den Ursprung, führt dort die Rotation aus und verschiebt anschließend alles wieder zurück.</p>
+<h2 id="10-ubergang-zur-projektiven-geometrie">10. Übergang zur projektiven Geometrie<a class="headerlink" href="#10-ubergang-zur-projektiven-geometrie" title="Permanent link">¶</a></h2>
+<p>Nach der affinen Geometrie wechselt das Kapitel zur <strong>projektiven Geometrie</strong>.</p>
+<p>Zunächst werden die Grundideen einer <strong>Pinhole Camera</strong> und eines <strong>Collimators</strong> gegenübergestellt.</p>
+<p>Bei einer Pinhole-Kamera verlaufen alle Projektionsstrahlen durch ein gemeinsames Projektionszentrum <span class="arithmatex">\(N\)</span>. Bei einer realen Lochkamera entsteht auf der hinter dem Loch liegenden Bildebene ein umgekehrtes Bild.</p>
+<p>Ein Kollimator arbeitet dagegen mit annähernd parallelen Strahlen. Mathematisch entspricht dies eher einer Parallelprojektion.</p>
+<p>Diese Modelle liefern die physikalische beziehungsweise geometrische Intuition hinter den später verwendeten Projektionsgleichungen.</p>
+<h2 id="11-was-ist-eine-projektion">11. Was ist eine Projektion?<a class="headerlink" href="#11-was-ist-eine-projektion" title="Permanent link">¶</a></h2>
+<p>Eine Projektion ist allgemein eine Abbildung eines Raumes der Dimension <span class="arithmatex">\(n\)</span> auf einen Raum geringerer Dimension.</p>
+<p>Da Kameras und klassische Bildschirme zweidimensionale Geräte sind, müssen dreidimensionale Objekte auf eine zweidimensionale Bildebene abgebildet werden.</p>
+<p>Ein Raumpunkt wird dazu entlang eines <strong>Projektionsstrahls</strong> auf eine <strong>Projektions- beziehungsweise Bildebene</strong> abgebildet.</p>
+<p>Der Schnittpunkt des Projektionsstrahls mit der Bildebene ergibt den projizierten Bildpunkt.</p>
+<p>Bei einer Zentralprojektion wird die Richtung des Strahls durch den Objektpunkt und das Projektionszentrum bestimmt. Bei einer Parallelprojektion besitzen alle Projektionsstrahlen dieselbe Richtung.</p>
+<h2 id="12-klassifikation-von-projektionen">12. Klassifikation von Projektionen<a class="headerlink" href="#12-klassifikation-von-projektionen" title="Permanent link">¶</a></h2>
+<p>Projektionen lassen sich zunächst in zwei Hauptgruppen unterteilen:</p>
+<ul>
+<li>zentrale Projektionen</li>
+<li>parallele Projektionen</li>
+</ul>
+<p>Bei einer <strong>zentralen Projektion</strong> laufen alle Projektionsstrahlen durch ein gemeinsames Projektionszentrum.</p>
+<p>Dazu gehören:</p>
+<ul>
+<li>1-Punkt-Perspektive</li>
+<li>2-Punkt-Perspektive</li>
+<li>3-Punkt-Perspektive</li>
+</ul>
+<p>Bei einer <strong>Parallelprojektion</strong> verlaufen alle Projektionsstrahlen parallel. Das Projektionszentrum kann dabei als Punkt im Unendlichen interpretiert werden.</p>
+<p>Parallelprojektionen werden weiter unterteilt in:</p>
+<ul>
+<li>orthogonale Parallelprojektionen</li>
+<li>schiefe Parallelprojektionen</li>
+</ul>
+<p>Zu den orthogonalen Parallelprojektionen gehören unter anderem:</p>
+<ul>
+<li>Principal Views</li>
+<li>Axonometrie</li>
+<li>isometrische Projektion</li>
+<li>dimetrische Projektion</li>
+<li>trimetrische Projektion</li>
+</ul>
+<p>Zu den schiefen Parallelprojektionen gehören beispielsweise:</p>
+<ul>
+<li>Cavalier Projection</li>
+<li>Military Projection</li>
+</ul>
+<p>Die Klassifikation hängt davon ab,</p>
+<ul>
+<li>ob die Projektionsstrahlen parallel oder zentral verlaufen,</li>
+<li>wie die Projektionsstrahlen zur Bildebene liegen,</li>
+<li>und wie die Hauptachsen des Objekts relativ zur Bildebene ausgerichtet sind.</li>
+</ul>
+<h2 id="13-parallel-projection">13. Parallel Projection<a class="headerlink" href="#13-parallel-projection" title="Permanent link">¶</a></h2>
+<p>Bei der <strong>Parallelprojektion</strong> verlaufen alle Projektionsstrahlen parallel zu einer vorgegebenen Richtung. Das Projektionszentrum kann daher als Punkt im Unendlichen betrachtet werden.</p>
+<p>Im Gegensatz zur perspektivischen Projektion hängt die dargestellte Größe eines Objekts nicht von seiner Entfernung zur Kamera ab. Weiter entfernte Objekte werden also nicht automatisch kleiner dargestellt.</p>
+<p>Vorteile der Parallelprojektion sind:</p>
+<ul>
+<li>parallele Geraden bleiben parallel,</li>
+<li>es entstehen keine perspektivischen Fluchtpunkte,</li>
+<li>technische Maße können bei bekannter Projektion und bekanntem Maßstab ausgewertet werden,</li>
+<li>die Darstellung eignet sich gut für technische Zeichnungen.</li>
+</ul>
+<p>Allerdings bleiben nicht in jeder beliebigen Raumrichtung automatisch die tatsächlichen Längen erhalten. Wahre Längen lassen sich direkt insbesondere für Richtungen beziehungsweise Ebenen ablesen, die passend zur Projektion liegen. Andere Richtungen können verkürzt dargestellt werden.</p>
+<p>Der Nachteil besteht darin, dass eine Parallelprojektion weniger realistisch wirkt, weil der perspektivische Tiefeneindruck fehlt.</p>
+<p>Beispiele sind die <strong>Military Projection</strong> und die <strong>Cavalier Projection</strong>.</p>
+<h2 id="14-perspective-projection">14. Perspective Projection<a class="headerlink" href="#14-perspective-projection" title="Permanent link">¶</a></h2>
+<p>Die <strong>perspektivische Projektion</strong>, auch <strong>Zentralprojektion</strong> genannt, bildet die Grundlage des mathematischen Kameramodells.</p>
+<p>Das Kameramodell besitzt:</p>
+<ul>
+<li>ein Projektionszentrum <span class="arithmatex">\(N\)</span>,</li>
+<li>eine Bildebene,</li>
+<li>einen Hauptpunkt <span class="arithmatex">\(H\)</span>,</li>
+<li>und die principal distance beziehungsweise Brennweite <span class="arithmatex">\(f\)</span>.</li>
+</ul>
+<p>Für eine vereinfachte Herleitung wird angenommen:</p>
+<div class="arithmatex">\[
+N=O
+\]</div>
+<p>Das Projektionszentrum liegt somit im Ursprung des Kamerakoordinatensystems.</p>
+<p>Außerdem wird angenommen:</p>
+<div class="arithmatex">\[
+H=O'
+\]</div>
+<p>Der Hauptpunkt liegt damit im Ursprung des Bildkoordinatensystems.</p>
+<p>In der hier verwendeten Konvention blickt die Kamera entlang der negativen <span class="arithmatex">\(z\)</span>-Achse.</p>
+<p>Ein dreidimensionaler Punkt wird beschrieben durch:</p>
+<div class="arithmatex">\[
+\mathbf p =
+\begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix}
+\]</div>
+<p>Der entsprechende zweidimensionale Bildpunkt lautet:</p>
+<div class="arithmatex">\[
+\mathbf p' =
+\begin{pmatrix}
+x' \\
+y'
+\end{pmatrix}
+\]</div>
+<p>Durch ähnliche Dreiecke erhält man die Projektionsgleichungen:</p>
+<div class="arithmatex">\[
+x'=-f\frac{x}{z}
+\]</div>
+<p>und:</p>
+<div class="arithmatex">\[
+y'=-f\frac{y}{z}
+\]</div>
+<p>Zusammengefasst ergibt sich:</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+x' \\
+y'
+\end{pmatrix}
+=
+-\frac{f}{z}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+\]</div>
+<p>In homogenen Koordinaten kann die Projektion durch eine <span class="arithmatex">\(3\times 4\)</span>-Projektionsmatrix dargestellt werden:</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+X' \\
+Y' \\
+W'
+\end{pmatrix}
+=
+\begin{pmatrix}
+-f &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; -f &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z \\
+1
+\end{pmatrix}
+\]</div>
+<p>Dadurch ergibt sich:</p>
+<div class="arithmatex">\[
+X'=-fx,
+\qquad
+Y'=-fy,
+\qquad
+W'=z
+\]</div>
+<p>Nach der Rückkehr zu kartesischen Bildkoordinaten gilt:</p>
+<div class="arithmatex">\[
+x'=\frac{X'}{W'}
+\qquad\text{und}\qquad
+y'=\frac{Y'}{W'}
+\]</div>
+<p>und damit erneut:</p>
+<div class="arithmatex">\[
+x'=-f\frac{x}{z},
+\qquad
+y'=-f\frac{y}{z}
+\]</div>
+<p>Je größer der Betrag <span class="arithmatex">\(|z|\)</span> der Tiefenkoordinate ist, desto kleiner erscheinen die Bildkoordinaten des Punktes. Genau daraus entsteht der perspektivische Tiefeneindruck.</p>
+<p>Das Minuszeichen hängt von der verwendeten Kamera- und Bildebenenkonvention ab. Bei einer anderen Lage der Bildebene können die Formeln auch ohne Minuszeichen angegeben werden.</p>
+<h2 id="15-wann-lasst-sich-ein-punkt-uberhaupt-projizieren">15. Wann lässt sich ein Punkt überhaupt projizieren?<a class="headerlink" href="#15-wann-lasst-sich-ein-punkt-uberhaupt-projizieren" title="Permanent link">¶</a></h2>
+<p>Ein 3D-Punkt kann unter diesem Kameramodell nur dann auf einen endlichen Bildpunkt projiziert werden, wenn gilt:</p>
+<div class="arithmatex">\[
+z\neq 0
+\]</div>
+<p>Für <span class="arithmatex">\(z=0\)</span> ist die perspektivische Abbildung nicht definiert, weil in den Projektionsgleichungen durch <span class="arithmatex">\(z\)</span> dividiert wird.</p>
+<p>Ein Punkt mit <span class="arithmatex">\(z=0\)</span> liegt in der durch das Projektionszentrum verlaufenden Ebene, die parallel zur Bildebene ist. Sein Projektionsstrahl besitzt deshalb keinen endlichen Schnittpunkt mit der Bildebene.</p>
+<p>Mathematisch ist dies direkt an den Formeln erkennbar:</p>
+<div class="arithmatex">\[
+x'=-f\frac{x}{z}
+\qquad\text{und}\qquad
+y'=-f\frac{y}{z}
+\]</div>
+<p>Für <span class="arithmatex">\(z=0\)</span> würde eine Division durch null entstehen.</p>
+<h2 id="16-perspektivische-projektion-von-geraden">16. Perspektivische Projektion von Geraden<a class="headerlink" href="#16-perspektivische-projektion-von-geraden" title="Permanent link">¶</a></h2>
+<p>Eine affine 3D-Gerade kann parametrisch dargestellt werden als:</p>
+<div class="arithmatex">\[
+\mathbf p(\lambda)
+=
+\mathbf a+\lambda\mathbf g
+\]</div>
+<p>Dabei ist <span class="arithmatex">\(\mathbf a\)</span> ein Punkt auf der Geraden und <span class="arithmatex">\(\mathbf g\)</span> ihr Richtungsvektor:</p>
+<div class="arithmatex">\[
+\mathbf a =
+\begin{pmatrix}
+a_1 \\
+a_2 \\
+a_3
+\end{pmatrix}
+\qquad\text{und}\qquad
+\mathbf g =
+\begin{pmatrix}
+g_1 \\
+g_2 \\
+g_3
+\end{pmatrix}
+\]</div>
+<p>Ein Punkt auf der Geraden besitzt damit die Koordinaten:</p>
+<div class="arithmatex">\[
+\mathbf p(\lambda)
+=
+\begin{pmatrix}
+a_1+\lambda g_1 \\
+a_2+\lambda g_2 \\
+a_3+\lambda g_3
+\end{pmatrix}
+\]</div>
+<p>Nach der perspektivischen Projektion ergeben sich die Bildkoordinaten:</p>
+<div class="arithmatex">\[
+x'(\lambda)
+=
+-f
+\frac{a_1+\lambda g_1}
+     {a_3+\lambda g_3}
+\]</div>
+<p>und:</p>
+<div class="arithmatex">\[
+y'(\lambda)
+=
+-f
+\frac{a_2+\lambda g_2}
+     {a_3+\lambda g_3}
+\]</div>
+<p>Eine 3D-Gerade wird bei einer zentralen Projektion grundsätzlich wieder auf eine 2D-Gerade abgebildet, sofern kein degenerierter Sonderfall vorliegt.</p>
+<p>Verläuft die 3D-Gerade durch das Projektionszentrum, werden alle projizierbaren Punkte der Geraden auf denselben Bildpunkt abgebildet. Die Projektion degeneriert dann von einer Geraden zu einem Punkt.</p>
+<p>Liegt die gesamte Gerade in der Ebene <span class="arithmatex">\(z=0\)</span>, gilt:</p>
+<div class="arithmatex">\[
+a_3=0
+\qquad\text{und}\qquad
+g_3=0
+\]</div>
+<p>In diesem Fall besitzt die Gerade keine endliche Projektion auf der Bildebene.</p>
+<p>Ein einzelner Geradenpunkt ist außerdem nicht projektierbar, wenn für seinen Parameterwert gilt:</p>
+<div class="arithmatex">\[
+a_3+\lambda g_3=0
+\]</div>
+<p>Projektive Geometrie erhält somit Geraden grundsätzlich als Geraden, verändert aber im Gegensatz zur affinen Geometrie Parallelität, Längen, Winkel und Teilverhältnisse.</p>
+<p>Insbesondere können parallele Geraden nach der Projektion in einem gemeinsamen Fluchtpunkt zusammentreffen.</p>
+<h2 id="17-wie-alles-zusammenhangt">17. Wie alles zusammenhängt<a class="headerlink" href="#17-wie-alles-zusammenhangt" title="Permanent link">¶</a></h2>
+<p>Zuerst werden Punkte und Objekte in einem lokalen Koordinatensystem beschrieben.<br>
+Anschließend wird die <strong>affine Geometrie</strong> verwendet, um diese Punkte:</p>
+<ul>
+<li>zu verschieben,</li>
+<li>zu drehen,</li>
+<li>zu skalieren,</li>
+<li>zu spiegeln,</li>
+<li>zu scheren,</li>
+<li>oder zwischen Objekt-, Welt- und Kamerakoordinatensystemen umzurechnen.</li>
+</ul>
+<p>Durch homogene Koordinaten können diese Transformationen einheitlich als Matrixmultiplikationen dargestellt und miteinander kombiniert werden.</p>
+<p>Danach wird die <strong>projektive Geometrie</strong> verwendet, um die dreidimensionalen Punkte aus dem Kamerakoordinatensystem auf die zweidimensionale Bildebene zu projizieren.</p>
+<p>Dafür benötigt man insbesondere:</p>
+<ul>
+<li>das Projektionszentrum,</li>
+<li>die Bildebene,</li>
+<li>den Hauptpunkt,</li>
+<li>die Brennweite beziehungsweise principal distance,</li>
+<li>und die Position des Punktes relativ zur Kamera.</li>
+</ul>
+<p>Kurz gesagt:<br>
+<strong>Affine Geometrie beschreibt, wo und in welcher Form sich ein Objekt im Raum befindet.</strong><br>
+<strong>Projektive Geometrie beschreibt, wie dieses Objekt im Bild erscheint.</strong></p>
+<p>Der wichtigste Gesamtzusammenhang lautet:<br>
+<strong>Zuerst wird das Objekt durch affine Transformationen im Raum positioniert. Anschließend wird es durch eine projektive Transformation auf die Bildebene abgebildet.</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.indexes", "navigation.tracking", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/home.js"></script>
+      
+        <script src="../../../javascripts/neural-bg.js"></script>
+      
+        <script src="../../../javascripts/contact.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
